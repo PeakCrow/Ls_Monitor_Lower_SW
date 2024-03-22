@@ -15,7 +15,7 @@ extern TX_THREAD   AppTaskUserIFTCB;
 extern uint64_t    AppTaskUserIFStk[APP_CFG_TASK_USER_IF_STK_SIZE/8];
 extern TX_THREAD   AppTaskMsgProTCB;
 extern uint64_t    AppTaskMsgProStk[APP_CFG_TASK_MsgPro_STK_SIZE/8];
-extern TX_MUTEX    AppPrintfSemp                /* 用于printf互斥 */
+extern TX_MUTEX    AppPrintfSemp;               /* 用于printf互斥 */
 extern TX_EVENT_FLAGS_GROUP  EventGroup;        /* 事件标志组 */
 extern TX_EVENT_FLAGS_GROUP  EventGroup;        /* 事件标志组 */
 

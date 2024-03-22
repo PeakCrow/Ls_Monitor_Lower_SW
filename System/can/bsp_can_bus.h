@@ -17,10 +17,12 @@
 
 #define     CAN1_RX_IRQN            CAN1_RX0_IRQn
 
-#define     CAN1_BUS_BAUDE_1M       3                   /* 使用1mbps的速度时，在发送报文时(不管时小于3条还是大于3条),都会丢失少量报文，谨慎使用 */
+#define     CAN1_BUS_BAUDE_1M       3                   /* 使用1mbps的速度时，在发送报文时
+                                                        (不管时小于3条还是大于3条),都会丢失少量报文
+                                                        谨慎使用 */
 #define     CAN1_BUS_BAUDE_500k     6
-#define     CAN1_BUS_BAUDE_250      k12
-#define     CAN1_BUS_BUUDE_RATE     CAN1_BUS_BAUDE_500k /* 默认波特率 */
+#define     CAN1_BUS_BAUDE_250      12
+#define     CAN1_BUS_BAUDE_RATE     CAN1_BUS_BAUDE_500k /* 默认波特率 */
 
 extern CAN_RxHeaderTypeDef can_rx_msg;
 extern uint8_t g_canrxbuf[8];       /* 不能做成全局变量，不然无法触发中断(?????) */

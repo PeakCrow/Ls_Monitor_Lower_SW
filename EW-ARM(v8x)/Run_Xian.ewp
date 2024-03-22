@@ -66,7 +66,7 @@
                 </option>
                 <option>
                     <name>OGLastSavedByProductVersion</name>
-                    <state>8.50.9.33458</state>
+                    <state>8.50.6.28950</state>
                 </option>
                 <option>
                     <name>GeneralEnableMisra</name>
@@ -530,7 +530,7 @@
             <name>AARM</name>
             <archiveVersion>2</archiveVersion>
             <data>
-                <version>11</version>
+                <version>10</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>1</debug>
                 <option>
@@ -580,7 +580,7 @@
                 </option>
                 <option>
                     <name>ADefines</name>
-                    <state>TX_ENABLE_FPU_SUPPORT</state>
+                    <state></state>
                 </option>
                 <option>
                     <name>AList</name>
@@ -685,10 +685,6 @@
                 <option>
                     <name>AsmNoLiteralPool</name>
                     <state>0</state>
-                </option>
-                <option>
-                    <name>PreInclude</name>
-                    <state></state>
                 </option>
             </data>
         </settings>

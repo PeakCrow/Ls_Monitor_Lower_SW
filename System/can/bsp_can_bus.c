@@ -16,60 +16,60 @@ uint8_t g_canrxbuf[8] = {0};        /* 不能做成全局变量，不然无法�
 *******************************************************************************/
 void bsp_InitCan1Bus(void)
 {
-	CAN_FilterTypeDef  sFilterConfig;
-	CAN_FilterTypeDef  sFilterConfig2;
-	
-	/*CAN单元初始化*/
-	hCAN.Instance                       = CANx_BUS_1;             /* CAN外设 */
-	hCAN.Init.Prescaler                 = CAN1_BUS_BUUDE_RATE;    /* BTR-BRP 波特率分频器  定义了时间单元的时间长度 42/(1+6+7)/6=500kbps */
-	hCAN.Init.Mode                      = CAN_MODE_NORMAL;        /* 正常工作模式 */
-	hCAN.Init.SyncJumpWidth             = CAN_SJW_1TQ;            /* BTR-SJW 重新同步跳跃宽度 1个时间单元 */
-	hCAN.Init.TimeSeg1                  = CAN_BS1_6TQ;            /* BTR-TS1 时间段1 占用了6个时间单元 */
-	hCAN.Init.TimeSeg2                  = CAN_BS2_7TQ;            /* BTR-TS1 时间段2 占用了7个时间单元 */
-	hCAN.Init.TimeTriggeredMode         = DISABLE;                /* MCR-TTCM  关闭时间触发通信模式使能 */
-	hCAN.Init.AutoBusOff                = ENABLE;                 /* MCR-ABOM  自动离线管理 */
-	hCAN.Init.AutoWakeUp                = ENABLE;                 /* MCR-AWUM  使用自动唤醒模式 */
-	hCAN.Init.AutoRetransmission        = DISABLE;                /* MCR-NART  禁止报文自动重传 	DISABLE-自动重传 */
-	hCAN.Init.ReceiveFifoLocked         = DISABLE;                /* MCR-RFLM  接收FIFO 锁定模式	DISABLE-溢出时新报文会覆盖原有报文 */
-	hCAN.Init.TransmitFifoPriority      = ENABLE;                 /* MCR-TXFP  发送FIFO优先级 DISABLE-优先级取决于报文标示符 */
-	HAL_CAN_Init(&hCAN);
-	
-	/*CAN过滤器初始化*/
-	sFilterConfig.FilterMode            = CAN_FILTERMODE_IDMASK;  /* 工作在标识符屏蔽位模式 */
-	sFilterConfig.FilterScale           = CAN_FILTERSCALE_32BIT; /* 过滤器位宽为单个32位。*/
-	/* 使能报文标识符过滤器按照标识符的内容进行对比过滤，扩展ID不是如下的旧抛弃掉，是的话，会存入FIFO0 */
-	/* id左移3位，是为了将0位保留位、1位RTR位、2位IDE位补0 */
-	/* 右移16位是将整个id的高16位取出赋值给过滤器高位 */
-	sFilterConfig.FilterIdHigh          = (((uint32_t)0x1314<<3)&0xFFFF0000)>>16;       /* 要过滤的ID高位 */
-	sFilterConfig.FilterIdLow           = (((uint32_t)0x1314<<3)|CAN_ID_EXT|CAN_RTR_DATA)&0xFFFF; /* 要过滤的ID低位 */
-	sFilterConfig.FilterMaskIdHigh      = 0xFFFF;               /* 过滤器高16位每位必须匹配 */
-	sFilterConfig.FilterMaskIdLow       = 0xFFFF;               /* 过滤器低16位每位必须匹配 */
-	sFilterConfig.FilterFIFOAssignment  = CAN_FILTER_FIFO0;     /* 过滤器被关联到FIFO 0 */
-	sFilterConfig.FilterActivation      = ENABLE;               /* 使能过滤器 */
-	sFilterConfig.FilterBank            = 14;
-	HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig);
-	
-	/*CAN过滤器初始化*/
-	sFilterConfig2.FilterMode           = CAN_FILTERMODE_IDMASK;  /* 工作在标识符屏蔽位模式 */
-	sFilterConfig2.FilterScale          = CAN_FILTERSCALE_32BIT; /* 过滤器位宽为单个32位。*/
-	sFilterConfig2.FilterIdHigh         = (((uint32_t)0x1315<<3)&0xFFFF0000)>>16;       /* 要过滤的ID高位 */
-	sFilterConfig2.FilterIdLow          = (((uint32_t)0x1315<<3)|CAN_ID_EXT|CAN_RTR_DATA)&0xFFFF; /* 要过滤的ID低位 */
-	sFilterConfig2.FilterMaskIdHigh     = 0xFFFF;               /* 过滤器高16位每位必须匹配 */
-	sFilterConfig2.FilterMaskIdLow      = 0xFFFF;               /* 过滤器低16位每位必须匹配 */
-	sFilterConfig2.FilterFIFOAssignment = CAN_FILTER_FIFO1;     /* 过滤器被关联到FIFO 1 */
-	sFilterConfig2.FilterActivation     = ENABLE;               /* 使能过滤器 */
-	sFilterConfig2.FilterBank           = 10;
-	HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig2);
-
-	HAL_CAN_Start(&hCAN);
-	HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO0_MSG_PENDING);
-	HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO0_FULL);
-	HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO0_OVERRUN);
-
-	
-	HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO1_MSG_PENDING);
-	HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO1_FULL);
-	HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO1_OVERRUN);
+    CAN_FilterTypeDef  sFilterConfig;
+    CAN_FilterTypeDef  sFilterConfig2;
+    
+    /*CAN单元初始化*/
+    hCAN.Instance                       = CANx_BUS_1;             /* CAN外设 */
+    hCAN.Init.Prescaler                 = CAN1_BUS_BAUDE_RATE;    /* BTR-BRP 波特率分频器  定义了时间单元的时间长度 42/(1+6+7)/6=500kbps */
+    hCAN.Init.Mode                      = CAN_MODE_NORMAL;        /* 正常工作模式 */
+    hCAN.Init.SyncJumpWidth             = CAN_SJW_1TQ;            /* BTR-SJW 重新同步跳跃宽度 1个时间单元 */
+    hCAN.Init.TimeSeg1                  = CAN_BS1_6TQ;            /* BTR-TS1 时间段1 占用了6个时间单元 */
+    hCAN.Init.TimeSeg2                  = CAN_BS2_7TQ;            /* BTR-TS1 时间段2 占用了7个时间单元 */
+    hCAN.Init.TimeTriggeredMode         = DISABLE;                /* MCR-TTCM  关闭时间触发通信模式使能 */
+    hCAN.Init.AutoBusOff                = ENABLE;                 /* MCR-ABOM  自动离线管理 */
+    hCAN.Init.AutoWakeUp                = ENABLE;                 /* MCR-AWUM  使用自动唤醒模式 */
+    hCAN.Init.AutoRetransmission        = DISABLE;                /* MCR-NART  禁止报文自动重传 	DISABLE-自动重传 */
+    hCAN.Init.ReceiveFifoLocked         = DISABLE;                /* MCR-RFLM  接收FIFO 锁定模式	DISABLE-溢出时新报文会覆盖原有报文 */
+    hCAN.Init.TransmitFifoPriority      = ENABLE;                 /* MCR-TXFP  发送FIFO优先级 DISABLE-优先级取决于报文标示符 */
+    HAL_CAN_Init(&hCAN);
+    
+    /*CAN过滤器初始化*/
+    sFilterConfig.FilterMode            = CAN_FILTERMODE_IDMASK;  /* 工作在标识符屏蔽位模式 */
+    sFilterConfig.FilterScale           = CAN_FILTERSCALE_32BIT; /* 过滤器位宽为单个32位。*/
+    /* 使能报文标识符过滤器按照标识符的内容进行对比过滤，扩展ID不是如下的就抛弃掉，是的话，会存入FIFO0 */
+    /* id左移3位，是为了将0位保留位、1位RTR位、2位IDE位补0 */
+    /* 右移16位是将整个id的高16位取出赋值给过滤器高位 */
+    sFilterConfig.FilterIdHigh          = (((uint32_t)0x1314<<3)&0xFFFF0000)>>16;       /* 要过滤的ID高位 */
+    sFilterConfig.FilterIdLow           = (((uint32_t)0x1314<<3)|CAN_ID_EXT|CAN_RTR_DATA)&0xFFFF; /* 要过滤的ID低位 */
+    sFilterConfig.FilterMaskIdHigh      = 0xFFFF;               /* 过滤器高16位每位必须匹配 */
+    sFilterConfig.FilterMaskIdLow       = 0xFFFF;               /* 过滤器低16位每位必须匹配 */
+    sFilterConfig.FilterFIFOAssignment  = CAN_FILTER_FIFO0;     /* 过滤器被关联到FIFO 0 */
+    sFilterConfig.FilterActivation      = ENABLE;               /* 使能过滤器 */
+    sFilterConfig.FilterBank            = 14;
+    HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig);
+    
+    /*CAN过滤器初始化*/
+    sFilterConfig2.FilterMode           = CAN_FILTERMODE_IDMASK;  /* 工作在标识符屏蔽位模式 */
+    sFilterConfig2.FilterScale          = CAN_FILTERSCALE_32BIT; /* 过滤器位宽为单个32位。*/
+    sFilterConfig2.FilterIdHigh         = (((uint32_t)0x1315<<3)&0xFFFF0000)>>16;       /* 要过滤的ID高位 */
+    sFilterConfig2.FilterIdLow          = (((uint32_t)0x1315<<3)|CAN_ID_EXT|CAN_RTR_DATA)&0xFFFF; /* 要过滤的ID低位 */
+    sFilterConfig2.FilterMaskIdHigh     = 0xFFFF;               /* 过滤器高16位每位必须匹配 */
+    sFilterConfig2.FilterMaskIdLow      = 0xFFFF;               /* 过滤器低16位每位必须匹配 */
+    sFilterConfig2.FilterFIFOAssignment = CAN_FILTER_FIFO1;     /* 过滤器被关联到FIFO 1 */
+    sFilterConfig2.FilterActivation     = ENABLE;               /* 使能过滤器 */
+    sFilterConfig2.FilterBank           = 10;
+    HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig2);
+    
+    HAL_CAN_Start(&hCAN);
+    HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO0_MSG_PENDING);
+    HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO0_FULL);
+    HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO0_OVERRUN);
+    
+    
+    HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO1_MSG_PENDING);
+    HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO1_FULL);
+    HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO1_OVERRUN);
 }
 
 
@@ -169,12 +169,11 @@ HAL_StatusTypeDef bsp_Can1_Send_buf(uint32_t _id,uint8_t _buf[],uint8_t _dlc)
 *******************************************************************************/
 void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
 {
-
   if(hcan->Instance==CANx_BUS_1)
   {
     CAN1_FPRCE_RESET();
     CAN1_RELEASE_RESET();
-  
+    
     /**CAN GPIO Configuration
     PB8     ------> CAN_RX
     PB9     ------> CAN_TX 
@@ -226,7 +225,6 @@ void CAN1_RX0_IRQHandler(void)
     HAL_CAN_GetRxMessage(&hCAN, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
 }
 
-
 /*******************************************************************************
   * @FunctionName: bsp_Can1_Receive_buf
   * @Author:       trx
@@ -262,7 +260,7 @@ uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
     }
     else
         printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
-	}
-	return can_rx_msg.DLC;
+    }
+    return can_rx_msg.DLC;
 }
 
