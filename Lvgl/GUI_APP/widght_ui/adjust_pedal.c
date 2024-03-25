@@ -43,8 +43,8 @@ static lv_timer_t * Realtime_Motorpos_timer;
 
 void Adjust_Pedal_Ui(lv_obj_t *parent)
 {
-	/* 定义并创建图像按钮 */
-	lv_obj_t* Imgbtn_MC;	
+    /* 定义并创建图像按钮 */
+    lv_obj_t* Imgbtn_MC;
     Imgbtn_MC = lv_imgbtn_create(parent);
     /* 设置按钮释放时的图像 */
     lv_imgbtn_set_src(Imgbtn_MC,LV_STATE_DEFAULT,"0:/PICTURE/adjust_pedal.bin","0:/PICTURE/adjust_pedal.bin",NULL);
@@ -84,8 +84,8 @@ static void App_btn_Back_Cb(lv_event_t* e)
     switch ((uint8_t)code) {
         case LV_EVENT_RELEASED:
             {
-				/* 删除可调踏板界面中的定时器任务对象 */
-				lv_timer_del(Realtime_Motorpos_timer);
+                /* 删除可调踏板界面中的定时器任务对象 */
+                lv_timer_del(Realtime_Motorpos_timer);
                 lv_obj_del(parent);
             }
             break;
@@ -110,11 +110,11 @@ static void Adjust_Pedal_In_Ui(lv_obj_t* parent)
     lv_obj_t * zero_button;
     lv_obj_t * zero_label;	
     char buf[12];
-	lv_obj_t * shadow_label1,*shadow_label2,*shadow_label3;
-	uint8_t pos_buf[2] = {0};
-	const lv_font_t *font = &myFont20;
-	
-	
+    lv_obj_t * shadow_label1,*shadow_label2,*shadow_label3;
+    uint8_t pos_buf[2] = {0};
+    const lv_font_t *font = &myFont20;
+    
+    
     /* 样式配置 */
     /*Properties to transition*/
     static lv_style_prop_t props[] = {
@@ -294,13 +294,13 @@ static void Adjust_Pedal_In_Ui(lv_obj_t* parent)
         lv_obj_align_to(shadow_label1,driverpos_label1,LV_ALIGN_TOP_LEFT,2,2);
 
         shadow_label2 = lv_label_create(parent);
-        lv_obj_add_style(shadow_label2,&style_shadow,0);		
+        lv_obj_add_style(shadow_label2,&style_shadow,0);
         lv_label_set_text(shadow_label2,lv_label_get_text(driverpos_label2));
         lv_obj_set_style_text_font(shadow_label2,&lv_font_montserrat_24,LV_PART_MAIN);
         lv_obj_align_to(shadow_label2,driverpos_label2,LV_ALIGN_TOP_LEFT,2,2);
         
-        shadow_label3 = lv_label_create(parent);	
-        lv_obj_add_style(shadow_label3,&style_shadow,0);		
+        shadow_label3 = lv_label_create(parent);
+        lv_obj_add_style(shadow_label3,&style_shadow,0);
         lv_label_set_text(shadow_label3,lv_label_get_text(driverpos_label3));
         lv_obj_set_style_text_font(shadow_label3,&lv_font_montserrat_24,LV_PART_MAIN);
         lv_obj_align_to(shadow_label3,driverpos_label3,LV_ALIGN_TOP_LEFT,2,2);	
@@ -318,28 +318,28 @@ static void Adjust_Pedal_In_Ui(lv_obj_t* parent)
 /* 电机位置label显示回调函数 */
 static void Pos_Label_Cb(lv_event_t *e)
 {
-	lv_event_code_t code = lv_event_get_code(e);	
-	lv_obj_t * pos_label = lv_event_get_user_data(e);
-	
-	/* 读取闭环电机的实时位置，也就是电机自上电/使能起所转过的角度 */
-	uint8_t Postition[] = {0xe0,0x36};
-	uint8_t Pos[5] = {0};
-	int32_t PosQueue = 0;	
-	
-	if(code == LV_EVENT_PRESSING ){		
-		comSendBuf(COM3,Postition,2);
-		for(int i = 0;i < 5;i++)
-			comGetChar(COM3,&Pos[i]);		
-		if(Pos[0] == 0xe0)
-			PosQueue = ((Pos[1]<<24) | (Pos[2]<<16) | (Pos[3] << 8) | Pos[4]);
-
-		/* 更新标签文本值 */			
-		NumberConuts = PosQueue / 65535.00;
-		DriverX_Pos.current_pos = NumberConuts;
-		lv_label_set_text_fmt(pos_label,"Pedal_Pos : %.2f",NumberConuts);
-
-	}else if(code == LV_EVENT_RELEASED){
-		App_Printf("%d ",PosQueue);
+    lv_event_code_t code = lv_event_get_code(e);	
+    lv_obj_t * pos_label = lv_event_get_user_data(e);
+    
+    /* 读取闭环电机的实时位置，也就是电机自上电/使能起所转过的角度 */
+    uint8_t Postition[] = {0xe0,0x36};
+    uint8_t Pos[5] = {0};
+    int32_t PosQueue = 0;
+    
+    if(code == LV_EVENT_PRESSING ){
+        comSendBuf(COM3,Postition,2);
+        for(int i = 0;i < 5;i++)
+            comGetChar(COM3,&Pos[i]);   
+        if(Pos[0] == 0xe0)
+            PosQueue = ((Pos[1]<<24) | (Pos[2]<<16) | (Pos[3] << 8) | Pos[4]);
+    
+        /* 更新标签文本值 */   
+        NumberConuts = PosQueue / 65535.00;
+        DriverX_Pos.current_pos = NumberConuts;
+        lv_label_set_text_fmt(pos_label,"Pedal_Pos : %.2f",NumberConuts);
+    
+    }else if(code == LV_EVENT_RELEASED){
+        App_Printf("%d ",PosQueue);
         App_I2C_EE_BufferWrite(Pos,0x00,5);
     }
 }
@@ -363,45 +363,45 @@ static void Shild_Sw_Cb(lv_event_t * e)
 /* 正转按钮回调函数 */
 static void Forward_Btn_Cb(lv_event_t* e)
 {
-	uint8_t stop_motor[] = {0xe0,0xf7};
-	uint8_t Forward_rotation[] = {0xe0,0xf6,0x7e};/* 电机以127档速度正转 */
+    uint8_t stop_motor[] = {0xe0,0xf7};
+    uint8_t Forward_rotation[] = {0xe0,0xf6,0x7e};/* 电机以127档速度正转 */
     lv_event_code_t code = lv_event_get_code(e);
-	lv_obj_t * pos_label = lv_event_get_user_data(e);
-	
+    lv_obj_t * pos_label = lv_event_get_user_data(e);
+    
     if(code == LV_EVENT_PRESSED){        
-		comSendBuf(COM3,Forward_rotation,3);
-		lv_timer_pause(Realtime_Motorpos_timer);
-	}
+        comSendBuf(COM3,Forward_rotation,3);
+        lv_timer_pause(Realtime_Motorpos_timer);
+    }
     else if(code == LV_EVENT_RELEASED){
-		comSendBuf(COM3,stop_motor,2);	
-		lv_timer_resume(Realtime_Motorpos_timer);
+        comSendBuf(COM3,stop_motor,2);	
+        lv_timer_resume(Realtime_Motorpos_timer);
         lv_event_send(pos_label,LV_EVENT_RELEASED,NULL);
     }
-	else if(code == LV_EVENT_PRESSING){
-		lv_event_send(pos_label,LV_EVENT_PRESSING,NULL);
-	}	
+    else if(code == LV_EVENT_PRESSING){
+        lv_event_send(pos_label,LV_EVENT_PRESSING,NULL);
+    }   
 
 }
 /* 反转按钮回调函数 */
 static void Reverse_Btn_Cb(lv_event_t* e)
 {
-	uint8_t stop_motor[] = {0xe0,0xf7};
-	uint8_t Reverse_rotation[] = {0xe0,0xf6,0xfe};/* 电机以127档速度反转 */
+    uint8_t stop_motor[] = {0xe0,0xf7};
+    uint8_t Reverse_rotation[] = {0xe0,0xf6,0xfe};/* 电机以127档速度反转 */
     lv_event_code_t code = lv_event_get_code(e);
-	lv_obj_t * pos_label = lv_event_get_user_data(e);
-	
+    lv_obj_t * pos_label = lv_event_get_user_data(e);
+    
     if(code == LV_EVENT_PRESSED){
-		comSendBuf(COM3,Reverse_rotation,3);
-		lv_timer_pause(Realtime_Motorpos_timer);
-	}
+        comSendBuf(COM3,Reverse_rotation,3);
+        lv_timer_pause(Realtime_Motorpos_timer);
+    }
     else if(code == LV_EVENT_RELEASED){
-		comSendBuf(COM3,stop_motor,2);	
-		lv_timer_resume(Realtime_Motorpos_timer);
+        comSendBuf(COM3,stop_motor,2);
+        lv_timer_resume(Realtime_Motorpos_timer);
         lv_event_send(pos_label,LV_EVENT_RELEASED,NULL);
     }
-	else if(code == LV_EVENT_PRESSING){
-		lv_event_send(pos_label,LV_EVENT_PRESSING,NULL);
-	}
+    else if(code == LV_EVENT_PRESSING){
+        lv_event_send(pos_label,LV_EVENT_PRESSING,NULL);
+    }
 }
 
 
@@ -412,9 +412,9 @@ static void Radio_Btn_Cb(lv_event_t * e)
     lv_obj_t * cont = lv_event_get_current_target(e);
     lv_obj_t * act_cb = lv_event_get_target(e);
     lv_obj_t * old_cb = lv_obj_get_child(cont, (int32_t)*active_id);
-	uint8_t Reverse_rotation[] = {0xe0,0xf6,0xfe};/* 电机以127档速度反转 */
-	uint8_t Forward_rotation[] = {0xe0,0xf6,0x7e};/* 电机以127档速度正转 */	
-	
+    uint8_t Reverse_rotation[] = {0xe0,0xf6,0xfe};/* 电机以127档速度反转 */
+    uint8_t Forward_rotation[] = {0xe0,0xf6,0x7e};/* 电机以127档速度正转 */	
+    
 
     /*Do nothing if the container was clicked*/
     if(act_cb == cont) return;
@@ -427,62 +427,62 @@ static void Radio_Btn_Cb(lv_event_t * e)
     *active_id = lv_obj_get_index(act_cb);
 
     App_Printf("select radio buttons:%d \n",(int)active_index_2+1);
-	if(active_index_2+1 == 1){
-			App_Printf("车手1位置：%.2f 车手上电位置：%.2f\r\n",DriverX_Pos.driver1_pos,DriverX_Pos.current_pos);					
-			if(DriverX_Pos.current_pos < DriverX_Pos.driver1_pos){
-					comSendBuf(COM3,Reverse_rotation,3);
-					App_Printf("车手1位置选择\r\n");				
-				}
-			else{
-					comSendBuf(COM3,Forward_rotation,3);
-				}		
-			tx_event_flags_set(&EventGroup, DRIVER1_POS, TX_OR);
-		}
-	else if(active_index_2+1 == 2){
-			App_Printf("车手2位置：%.2f 车手上电位置：%.2f\r\n",DriverX_Pos.driver2_pos,DriverX_Pos.current_pos);					
-			if(DriverX_Pos.current_pos < DriverX_Pos.driver2_pos){
-					comSendBuf(COM3,Reverse_rotation,3);
-					App_Printf("车手2位置选择\r\n");
-				}
-			else{
-					comSendBuf(COM3,Forward_rotation,3);
-				}		
-			tx_event_flags_set(&EventGroup, DRIVER2_POS, TX_OR);
-		}
-	else if(active_index_2+1 == 3){
-			App_Printf("车手3位置：%.2f 车手上电位置：%.2f\r\n",DriverX_Pos.driver3_pos,DriverX_Pos.current_pos);							
-			if(DriverX_Pos.current_pos < DriverX_Pos.driver3_pos){
-					comSendBuf(COM3,Reverse_rotation,3);
-					App_Printf("车手3位置选择\r\n");
-				}
-			else{
-					comSendBuf(COM3,Forward_rotation,3);
-				}		
-			tx_event_flags_set(&EventGroup, DRIVER3_POS, TX_OR);
-		}
+    if(active_index_2+1 == 1){
+        App_Printf("车手1位置：%.2f 车手上电位置：%.2f\r\n",DriverX_Pos.driver1_pos,DriverX_Pos.current_pos);   
+        if(DriverX_Pos.current_pos < DriverX_Pos.driver1_pos){
+                comSendBuf(COM3,Reverse_rotation,3);
+                App_Printf("车手1位置选择\r\n");
+            }
+        else{
+                comSendBuf(COM3,Forward_rotation,3);
+            }   
+        tx_event_flags_set(&EventGroup, DRIVER1_POS, TX_OR);
+    }
+    else if(active_index_2+1 == 2){
+        App_Printf("车手2位置：%.2f 车手上电位置：%.2f\r\n",DriverX_Pos.driver2_pos,DriverX_Pos.current_pos);   
+        if(DriverX_Pos.current_pos < DriverX_Pos.driver2_pos){
+                comSendBuf(COM3,Reverse_rotation,3);
+                App_Printf("车手2位置选择\r\n");
+            }
+        else{
+                comSendBuf(COM3,Forward_rotation,3);
+            }   
+        tx_event_flags_set(&EventGroup, DRIVER2_POS, TX_OR);
+    }
+    else if(active_index_2+1 == 3){
+        App_Printf("车手3位置：%.2f 车手上电位置：%.2f\r\n",DriverX_Pos.driver3_pos,DriverX_Pos.current_pos);   
+        if(DriverX_Pos.current_pos < DriverX_Pos.driver3_pos){
+                comSendBuf(COM3,Reverse_rotation,3);
+                App_Printf("车手3位置选择\r\n");
+            }
+        else{
+                comSendBuf(COM3,Forward_rotation,3);
+            }   
+        tx_event_flags_set(&EventGroup, DRIVER3_POS, TX_OR);
+        }
 }
 /* 车手位置记录更新按钮 */
 static void Record_Btn_Cb(lv_event_t *e)
 {
-    (void)e;	
-	/* 将.2f浮点数扩大100倍 */
-	uint16_t driver_pos = NumberConuts * 100;
-	uint8_t pos[] = {(driver_pos / 100),(driver_pos % 100)};
-	if((active_index_2+1) == 1){
-		App_I2C_EE_BufferWrite(pos,0x05,2);	
-		lv_event_send(driverpos_label1,LV_EVENT_RELEASED,NULL);
-		DriverX_Pos.driver1_pos = NumberConuts;
-	}
-	else if((active_index_2+1) == 2){
-		App_I2C_EE_BufferWrite(pos,0x05+1*Drive_Pos_Size,2);
-		lv_event_send(driverpos_label2,LV_EVENT_RELEASED,NULL);
-		DriverX_Pos.driver2_pos = NumberConuts;
-	}
-	else if((active_index_2+1) == 3){
-		App_I2C_EE_BufferWrite(pos,0x05+2*Drive_Pos_Size,2);
-		lv_event_send(driverpos_label3,LV_EVENT_RELEASED,NULL);
-		DriverX_Pos.driver3_pos = NumberConuts;
-	}
+    (void)e;    
+    /* 将.2f浮点数扩大100倍 */
+    uint16_t driver_pos = NumberConuts * 100;
+    uint8_t pos[] = {(driver_pos / 100),(driver_pos % 100)};
+    if((active_index_2+1) == 1){
+        App_I2C_EE_BufferWrite(pos,0x05,2);	
+        lv_event_send(driverpos_label1,LV_EVENT_RELEASED,NULL);
+        DriverX_Pos.driver1_pos = NumberConuts;
+    }
+    else if((active_index_2+1) == 2){
+        App_I2C_EE_BufferWrite(pos,0x05+1*Drive_Pos_Size,2);
+        lv_event_send(driverpos_label2,LV_EVENT_RELEASED,NULL);
+        DriverX_Pos.driver2_pos = NumberConuts;
+    }
+    else if((active_index_2+1) == 3){
+        App_I2C_EE_BufferWrite(pos,0x05+2*Drive_Pos_Size,2);
+        lv_event_send(driverpos_label3,LV_EVENT_RELEASED,NULL);
+        DriverX_Pos.driver3_pos = NumberConuts;
+    }
 }
 /* 踏板0位置标定 */
 static void Zero_Btn_Cb(lv_event_t * e)
@@ -493,85 +493,85 @@ static void Zero_Btn_Cb(lv_event_t * e)
 /* 车手位置label显示 */
 static void Driverpos1_Label_Cb(lv_event_t * e)
 {
-	(void)e;
-	lv_obj_t * act_cb = lv_event_get_user_data(e);
-	if((active_index_2+1) == 1){
-		lv_label_set_text_fmt(driverpos_label1,"Driver %d Pos %.2f ",1,NumberConuts);
-		lv_label_set_text(act_cb,lv_label_get_text(driverpos_label1));
-	}
+    (void)e;
+    lv_obj_t * act_cb = lv_event_get_user_data(e);
+    if((active_index_2+1) == 1){
+        lv_label_set_text_fmt(driverpos_label1,"Driver %d Pos %.2f ",1,NumberConuts);
+        lv_label_set_text(act_cb,lv_label_get_text(driverpos_label1));
+    }
 }
 static void Driverpos2_Label_Cb(lv_event_t * e)
 {
-	(void)e;
-	lv_obj_t * act_cb = lv_event_get_user_data(e);
-	if((active_index_2+1) == 2){
-		lv_label_set_text_fmt(driverpos_label2,"Driver %d Pos %.2f ",1,NumberConuts);
-		lv_label_set_text(act_cb,lv_label_get_text(driverpos_label2));
-	}
+    (void)e;
+    lv_obj_t * act_cb = lv_event_get_user_data(e);
+    if((active_index_2+1) == 2){
+        lv_label_set_text_fmt(driverpos_label2,"Driver %d Pos %.2f ",1,NumberConuts);
+        lv_label_set_text(act_cb,lv_label_get_text(driverpos_label2));
+    }
 }
 static void Driverpos3_Label_Cb(lv_event_t * e)
 {
-	(void)e;
-	lv_obj_t * act_cb = lv_event_get_user_data(e);
-	if((active_index_2+1) == 3){
-		lv_label_set_text_fmt(driverpos_label3,"Driver %d Pos %.2f ",1,NumberConuts);
-		lv_label_set_text(act_cb,lv_label_get_text(driverpos_label3));
-	}
+    (void)e;
+    lv_obj_t * act_cb = lv_event_get_user_data(e);
+    if((active_index_2+1) == 3){
+        lv_label_set_text_fmt(driverpos_label3,"Driver %d Pos %.2f ",1,NumberConuts);
+        lv_label_set_text(act_cb,lv_label_get_text(driverpos_label3));
+    }
 }
 
 static void Realtime_MotorPos_Cb(lv_timer_t * e)
 {
-	/* 读取闭环电机的实时位置，也就是电机自上电/使能起所转过的角度 */
-	static uint8_t Postition[] = {0xe0,0x36};
-	uint8_t Pos[4] = {0};
+    /* 读取闭环电机的实时位置，也就是电机自上电/使能起所转过的角度 */
+    static uint8_t Postition[] = {0xe0,0x36};
+    uint8_t Pos[4] = {0};
     int32_t PosQueue = 0;
-	uint8_t pos_tmp = 0;
-	uint8_t stop_motor[] = {0xe0,0xf7};
-	//uint8_t ack[2] = {0};
-
-	lv_obj_t * pos_label = e->user_data;	
-	comSendBuf(COM3,Postition,2);
-	/* 
+    uint8_t pos_tmp = 0;
+    uint8_t stop_motor[] = {0xe0,0xf7};
+    //uint8_t ack[2] = {0};
+    
+    lv_obj_t * pos_label = e->user_data;	
+    comSendBuf(COM3,Postition,2);
+    /* 
 		不知道为什么只有第一次定时任务数据是正确的
 		按下按钮之后后面的数据会错位
 		所以在定时获取位置时稍微改变下数据接收逻辑
 	*/
-	while(comGetChar(COM3,&pos_tmp)){
-			if(pos_tmp == 0xe0)
-				break;
-		}
-	for(uint8_t i = 0;i < 4;i++)
-			comGetChar(COM3,&Pos[i]);
-
-	PosQueue = ((Pos[0]<<24) | (Pos[1]<<16) | (Pos[2] << 8) | Pos[3]);	
-	/* 更新标签文本值 */ 		
-	NumberConuts = PosQueue / 65535.00;
-	if(NumberConuts < 100.00)
-		DriverX_Pos.current_pos = NumberConuts;
-
-	lv_label_set_text_fmt(pos_label,"Pedal_Pos : %.2f",DriverX_Pos.current_pos);
-	
+    while(comGetChar(COM3,&pos_tmp)){
+            if(pos_tmp == 0xe0)
+                break;
+        }
+    for(uint8_t i = 0;i < 4;i++)
+            comGetChar(COM3,&Pos[i]);
+    
+    PosQueue = ((Pos[0]<<24) | (Pos[1]<<16) | (Pos[2] << 8) | Pos[3]);	
+    /* 更新标签文本值 */ 		
+    NumberConuts = PosQueue / 65535.00;
+    if(NumberConuts < 100.00)
+        DriverX_Pos.current_pos = NumberConuts;
+    
+    lv_label_set_text_fmt(pos_label,"Pedal_Pos : %.2f",DriverX_Pos.current_pos);
+    
     /* 要加一个延时将上面读取实时位置的命令发送和下面的电机停止命令分开 */
     /* 不然电机停止命令无效 */
     /* 因为串口是异步通讯 */
-	tx_thread_sleep(2);
-	if((DriverX_Pos.current_pos < (DriverX_Pos.driver1_pos+1.0f))
-		&&(DriverX_Pos.current_pos > (DriverX_Pos.driver1_pos-1.0f))
-		&&active_index_2+1 == 1){
-				comSendBuf(COM3,stop_motor,2);
-			}
-	else if((DriverX_Pos.current_pos < (DriverX_Pos.driver2_pos+1.0f))
-		&&(DriverX_Pos.current_pos > (DriverX_Pos.driver2_pos-1.0f))
-		&&active_index_2+1 == 2){
-				comSendBuf(COM3,stop_motor,2);
-		}
-	else if((DriverX_Pos.current_pos < (DriverX_Pos.driver3_pos+1.0f))
-		&&(DriverX_Pos.current_pos > (DriverX_Pos.driver3_pos-1.0f))
-		&&active_index_2+1 == 3){
-				comSendBuf(COM3,stop_motor,2);
-			}
-	
-	App_Printf("lvgl timer pos is %.2f,%.2f\r\n",NumberConuts,DriverX_Pos.current_pos);
+    tx_thread_sleep(2);
+    if((DriverX_Pos.current_pos < (DriverX_Pos.driver1_pos+1.0f))
+        &&(DriverX_Pos.current_pos > (DriverX_Pos.driver1_pos-1.0f))
+        &&active_index_2+1 == 1){
+                comSendBuf(COM3,stop_motor,2);
+            }
+    else if((DriverX_Pos.current_pos < (DriverX_Pos.driver2_pos+1.0f))
+        &&(DriverX_Pos.current_pos > (DriverX_Pos.driver2_pos-1.0f))
+        &&active_index_2+1 == 2){
+                comSendBuf(COM3,stop_motor,2);
+        }
+    else if((DriverX_Pos.current_pos < (DriverX_Pos.driver3_pos+1.0f))
+        &&(DriverX_Pos.current_pos > (DriverX_Pos.driver3_pos-1.0f))
+        &&active_index_2+1 == 3){
+                comSendBuf(COM3,stop_motor,2);
+            }
+    
+    App_Printf("lvgl timer pos is %.2f,%.2f\r\n",NumberConuts,DriverX_Pos.current_pos);
 }
 
 

@@ -1,5 +1,11 @@
 #include "sys.h"
 
+#if USE_THREADX == 0
+/* 裸机下中断通知标志 */
+Sys_IrqNoti_Flag sys_irqnoti_flag;
+#endif
+
+
 //时钟系统配置函数
 //Fvco=Fs*(plln/pllm);
 //SYSCLK=Fvco/pllp=Fs*(plln/(pllm*pllp));
@@ -38,8 +44,8 @@ void Stm32_Clock_Init(uint32_t plln,uint32_t pllm,uint32_t pllp,uint32_t pllq)
     RCC_OscInitStructure.HSEState=RCC_HSE_ON;                      //打开HSE
     RCC_OscInitStructure.PLL.PLLState=RCC_PLL_ON;//打开PLL
     RCC_OscInitStructure.PLL.PLLSource=RCC_PLLSOURCE_HSE;//PLL时钟源选择HSE
-    RCC_OscInitStructure.PLL.PLLM=pllm; //主PLL和音频PLL分频系数(PLL之前的分频),取值范围:2~63.--8
-    RCC_OscInitStructure.PLL.PLLN=plln; //主PLL倍频系数(PLL倍频),取值范围:64~432.  					--336
+    RCC_OscInitStructure.PLL.PLLM=pllm; //主PLL和音频PLL分频系数(PLL之前的分频),取值范围:2~63    .--8
+    RCC_OscInitStructure.PLL.PLLN=plln; //主PLL倍频系数(PLL倍频),取值范围:64~432.                 --336
     RCC_OscInitStructure.PLL.PLLP=pllp; //系统时钟的主PLL分频系数(PLL之后的分频),取值范围:2,4,6,8.(仅限这4个值!)--2
     RCC_OscInitStructure.PLL.PLLQ=pllq; //USB/SDIO/随机数产生器等的主PLL分频系数(PLL之后的分频),取值范围:2~15.  --7
     ret=HAL_RCC_OscConfig(&RCC_OscInitStructure);//初始化
@@ -56,14 +62,16 @@ void Stm32_Clock_Init(uint32_t plln,uint32_t pllm,uint32_t pllp,uint32_t pllq)
     
     if(ret!=HAL_OK) while(1);
 
-	 //STM32F405x/407x/415x/417x Z版本的器件支持预取功能
-	if (HAL_GetREVID() == 0x1001)
-	{
-		__HAL_FLASH_PREFETCH_BUFFER_ENABLE();  //使能flash预取
-	}
-
+    //STM32F405x/407x/415x/417x Z版本的器件支持预取功能
+    if (HAL_GetREVID() == 0x1001)
+    {
+        __HAL_FLASH_PREFETCH_BUFFER_ENABLE();  //使能flash预取
+    }
+#if USE_THREADX == 0
+    /* 裸机下中断通知标志 */
+    sys_irqnoti_flag.can1_rx_flag = 0;
+#endif
 }
-
 
 
 
@@ -73,9 +81,9 @@ void Stm32_Clock_Init(uint32_t plln,uint32_t pllm,uint32_t pllp,uint32_t pllq)
 //line：指向在文件中的行数
 void assert_failed(uint8_t* file, uint32_t line)
 { 
-	while (1)
-	{
-	}
+    while (1)
+    {
+    }
 }
 #endif
 

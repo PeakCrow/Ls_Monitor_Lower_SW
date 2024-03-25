@@ -6,7 +6,7 @@ TX_THREAD   AppTaskMsgProTCB;
 uint64_t    AppTaskMsgProStk[APP_CFG_TASK_MsgPro_STK_SIZE/8];
 TX_MUTEX    AppPrintfSemp;              /* 用于printf互斥 */
 TX_MUTEX    App_PowerDownSave;          /* 用于掉电保存 */
-
+bsp_all_msg bsp_msg;                    /* 驱动与GUI层的数据中间件 */
 
 void AppTaskMsgPro(ULONG thread_input)
 {
@@ -131,7 +131,7 @@ void  App_Printf(const char *fmt, ...)
 */
 void    App_I2C_EE_BufferWrite(uint8_t* pBuffer, uint8_t WriteAddr,uint16_t NumByteToWrite)
 {
-	/* 互斥操作 */
+    /* 互斥操作 */
     tx_mutex_get(&App_PowerDownSave, TX_WAIT_FOREVER);
     I2C_EE_BufferWrite(pBuffer,WriteAddr,NumByteToWrite);
     tx_mutex_put(&App_PowerDownSave);	

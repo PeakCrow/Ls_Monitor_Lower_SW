@@ -108,58 +108,6 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef * hcan)
 }
 
 /*******************************************************************************
-  * @FunctionName: bsp_Can1_Send_buf
-  * @Author:       trx
-  * @DateTime:     2022年5月25日 20:58:40 
-  * @Purpose:      can发送函数，支持一次发送3个以上的报文，不然一次最多只能发送3条
-  * @param:        _id                要发送的报文id
-  * @param:        _buf[]             报文的数据
-  * @param:        _dlc               报文数据的长度，0-8可选
-  * @return:       HAL_OK:代表发送成功;HAL_ERROR:发送失败
-*******************************************************************************/
-HAL_StatusTypeDef bsp_Can1_Send_buf(uint32_t _id,uint8_t _buf[],uint8_t _dlc)
-{
-    CAN_TxHeaderTypeDef can_tx_msg;
-    if(IS_CAN_STDID(_id))
-    {
-        can_tx_msg.StdId = _id;
-        can_tx_msg.IDE = CAN_ID_STD;
-    }
-    else if(IS_CAN_EXTID(_id))
-    {
-        can_tx_msg.ExtId = _id;
-        can_tx_msg.IDE = CAN_ID_EXT;
-    }
-    else
-    {
-        printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
-    }
-    if (_dlc >8)
-    {
-        return HAL_ERROR;
-    }
-    else
-    {
-        can_tx_msg.DLC = _dlc;
-    }
-    can_tx_msg.RTR = CAN_RTR_DATA;          /* 默认都是数据帧 */
-    can_tx_msg.TransmitGlobalTime = DISABLE;
-    
-    if(HAL_CAN_IsTxMessagePending(&hCAN,CAN_TX_MAILBOX0) == HAL_OK)/* 代表没有挂起的发送报文  */
-        HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX0);
-    else if(HAL_CAN_IsTxMessagePending(&hCAN,CAN_TX_MAILBOX0) != HAL_OK)
-        HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX1);
-    else if(HAL_CAN_IsTxMessagePending(&hCAN,CAN_TX_MAILBOX0) != HAL_OK)
-        HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX2);
-    else
-        return HAL_ERROR;
-    while(HAL_CAN_GetTxMailboxesFreeLevel(&hCAN) == 0){}            /* 如果空闲发送邮箱为0，则死循环，等待发送邮箱不为空，有可用的邮箱 */
-                                                                    /* 添加一组大括号，避免报警告没有返回状态 */
-    return HAL_OK;
-
-}
-
-/*******************************************************************************
   * @FunctionName: HAL_CAN_MspDeInit
   * @Author:       trx
   * @DateTime:     2022年5月25日23:55:24 
@@ -222,7 +170,11 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 void CAN1_RX0_IRQHandler(void)
 {
     HAL_CAN_IRQHandler(&hCAN);              /* 需要在中断函数中调用此函数来清除中断标志位 */
-    HAL_CAN_GetRxMessage(&hCAN, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
+#if USE_THREADX == 0        /* 裸机使用标志位进行通知 */
+    sys_irqnoti_flag.can1_rx_flag = 1;
+#else       /* 使用 threadx 中的事件标志组进行通知 */
+    tx_event_flags_set(&EventGroup, CAN1_RX_FLAG, TX_OR);
+#endif
 }
 
 /*******************************************************************************
@@ -231,7 +183,8 @@ void CAN1_RX0_IRQHandler(void)
   * @DateTime:     2022年5月26日 20:37:22 
   * @Purpose:      can报文接收函数，目前只配置了一个id
                     而且好像fifo1无法正常使用
-                    并且fifo0与fifo1都无法进入邮箱填满函数
+                    并且fifo0与fifo1都无法进入邮箱填满函数 
+                    是因为每次接收的报文都立刻取了出来
   * @param:        _id   ：要接收报文的id
   * @param:        _buf[]：报文数据数组
   * @return:       DLC:返回报文的数据长度
@@ -239,28 +192,104 @@ void CAN1_RX0_IRQHandler(void)
 uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
 {
     uint8_t i;
-    if(IS_CAN_STDID(_id))
+#if USE_THREADX == 0        /* 裸机使用标志位进行通知 */
+    if(1 == sys_irqnoti_flag.can1_rx_flag)
+#else       /* 使用 threadx 中的事件标志组进行通知 */
+    ULONG actual_events = 0;
+    tx_event_flags_get(&EventGroup,     /* 事件标志控制块 */
+                        CAN1_RX_FLAG,     /* 等待标志 */
+                        TX_OR_CLEAR ,     /* 等待任意bit满足即可 */
+                        &actual_events,      /* 获取实际值 */
+                        TX_WAIT_FOREVER);    /* 永久等待 */
+    if(CAN1_RX_FLAG == actual_events)
+#endif
     {
-        if(can_rx_msg.StdId == _id)
+    /* 获取 can1 FIFO0 中数据 */
+    HAL_CAN_GetRxMessage(&hCAN, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
+        if(IS_CAN_STDID(_id))
         {
-            for(i = 0;i < can_rx_msg.DLC;i++)
-            _buf[i] = g_canrxbuf[i];
+            if(_id == can_rx_msg.StdId)
+            {
+                for(i = 0;i < can_rx_msg.DLC;i++)
+                _buf[i] = g_canrxbuf[i];
+            }
+            else
+                printf("No id 0x%x Rx value: file %s on line %d\r\n",_id,__FILE__,__LINE__);
         }
-        else
-            printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
-    }
-    else if(IS_CAN_EXTID(_id))
-    {
-    if(can_rx_msg.ExtId == _id)
-    {
-        for(i = 0;i < can_rx_msg.DLC;i++)
+        else if(IS_CAN_EXTID(_id))
         {
-            _buf[i] = g_canrxbuf[i];
+            if(_id ==can_rx_msg.ExtId)
+            {
+                for(i = 0;i < can_rx_msg.DLC;i++)
+                {
+                    _buf[i] = g_canrxbuf[i];
+                }
+            }
+            else
+                printf("No id 0x%x Rx value: file %s on line %d\r\n",_id,__FILE__,__LINE__);
         }
     }
-    else
-        printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
-    }
+#if USE_THREADX == 0        /* 裸机使用标志位通知完成后清0 */
+    sys_irqnoti_flag.can1_rx_flag = 0;
+#endif
+    /* 将服务于 GUI 的数据进行更新 */
+    bsp_msg.g_canrxbuf = g_canrxbuf;
+    bsp_msg.can_rx_msg = &can_rx_msg;
     return can_rx_msg.DLC;
 }
 
+/*******************************************************************************
+  * @FunctionName: bsp_Can1_Send_buf
+  * @Author:       trx
+  * @DateTime:     2024年3月25日16点28分
+  * @Purpose:      can发送函数，支持一次发送3个以上的报文，不然一次最多只能发送3条
+  * @param:        _id                要发送的报文id
+  * @param:        _buf[]             报文的数据
+  * @param:        _dlc               报文数据的长度，0-8可选
+  * @return:       HAL_OK:代表发送成功;HAL_ERROR:发送失败
+*******************************************************************************/
+HAL_StatusTypeDef bsp_Can1_Send_buf(uint32_t _id,uint8_t _buf[],uint8_t _dlc)
+{
+    CAN_TxHeaderTypeDef can_tx_msg;
+    if(IS_CAN_STDID(_id))
+    {
+        can_tx_msg.StdId = _id;
+        can_tx_msg.IDE = CAN_ID_STD;
+    }
+    else if(IS_CAN_EXTID(_id))
+    {
+        can_tx_msg.ExtId = _id;
+        can_tx_msg.IDE = CAN_ID_EXT;
+    }
+    else
+    {
+        printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
+    }
+    if (_dlc >8)
+    {
+        return HAL_ERROR;
+    }
+    else
+    {
+        can_tx_msg.DLC = _dlc;
+    }
+    can_tx_msg.RTR = CAN_RTR_DATA;          /* 默认都是数据帧 */
+    can_tx_msg.TransmitGlobalTime = DISABLE;
+    
+    if(3U == HAL_CAN_GetTxMailboxesFreeLevel(&hCAN))    /* 查询是否3个发送邮箱都不可用 */
+    {
+        printf("No Free Tx Mailbox Can be used: file %s on line %d\r\n",__FILE__,__LINE__);
+    }
+    else
+    {
+        if(HAL_CAN_IsTxMessagePending(&hCAN,CAN_TX_MAILBOX0) == HAL_OK)/* 代表没有挂起的发送报文  */
+            HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX0);
+        else if(HAL_CAN_IsTxMessagePending(&hCAN,CAN_TX_MAILBOX0) != HAL_OK)
+            HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX1);
+        else if(HAL_CAN_IsTxMessagePending(&hCAN,CAN_TX_MAILBOX0) != HAL_OK)
+            HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX2);
+        else
+            return HAL_ERROR;
+    }
+    return HAL_OK;
+}

@@ -119,6 +119,24 @@ typedef __I uint8_t vuc8;
 
 /*
 *********************************************************************************************************
+*                                           中断通知标志
+*********************************************************************************************************
+*/
+typedef struct _Sys_IrqNoti_Flag
+{
+    unsigned int can1_rx_flag    : 1;
+    unsigned int    : 1;
+    unsigned int    : 1;
+    unsigned int    : 1;
+    unsigned int    : 1;
+    unsigned int    : 1;
+    unsigned int    : 1;
+    unsigned int    : 1;
+}Sys_IrqNoti_Flag, *Sys_IrqNoti_FlagP;
+
+
+/*
+*********************************************************************************************************
 *                                          变量和函敿
 *********************************************************************************************************
 */
@@ -135,10 +153,15 @@ typedef __I uint8_t vuc8;
 /* 方便RTOS里面使用 */
 extern void SysTick_ISR(void);      /* 滴答定时器中断外部文件声明*/
 
+#if USE_THREADX == 0
+/* 裸机下中断通知标志 */
+extern Sys_IrqNoti_Flag sys_irqnoti_flag;
+#endif
+
 #define bsp_ProPer1ms  SysTick_ISR
 
 //位带操作,实现51类似的GPIO控制功能
-//具体实现思想,参考<CM3权威指南>>第五竿87页~92顿.M4同M3类似,只是寄存器地址变了.
+//具体实现思想,参考<CM3权威指南>>第五章87页~92页.M4同M3类似,只是寄存器地址改变.
 //IO口操作宏定义
 #define BITBAND(addr, bitnum) ((addr & 0xF0000000)+0x2000000+((addr &0xFFFFF)<<5)+(bitnum<<2)) 
 #define MEM_ADDR(addr)  *((volatile unsigned long  *)(addr)) 
@@ -212,10 +235,10 @@ void Stm32_Clock_Init(uint32_t plln,uint32_t pllm,uint32_t pllp,uint32_t pllq);/
 *********************************************************************************************************
 */
 
-void WFI_SET(void);                  /* 执行WFI指令 */
-void INTX_DISABLE(void);          /* 关闭所有中断 */
-void INTX_ENABLE(void);            /* 开启所有中断*/
-void MSR_MSP(uint32_t addr);         /* 设置堆栈地址 */
+void WFI_SET(void);                    /* 执行WFI指令 */
+void INTX_DISABLE(void);               /* 关闭所有中断 */
+void INTX_ENABLE(void);                /* 开启所有中断*/
+void MSR_MSP(uint32_t addr);           /* 设置堆栈地址 */
 
 #define  USE_THREADX    1               /* 配置是否使用threadx操作系统 */
 

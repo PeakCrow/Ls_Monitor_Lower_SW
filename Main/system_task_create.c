@@ -6,8 +6,8 @@
 */
 #define  APP_CFG_TASK_COM_PRIO           7u
 #define  APP_CFG_TASK_COM_STK_SIZE       1024u
-#define  TASK_START_CREATE_PRIO         		 7u
-#define  TASK_START_CREATE_SIZE     			 1024u
+#define  TASK_START_CREATE_PRIO          7u
+#define  TASK_START_CREATE_SIZE          1024u
 /*
 *********************************************************************************************************
 *                                       静态全局变量
@@ -23,14 +23,14 @@ static  uint64_t    AppTaskStartStk[TASK_START_CREATE_SIZE/8];
 *********************************************************************************************************
 */
 TX_TIMER AppTimer; 
-TX_EVENT_FLAGS_GROUP  EventGroup; 	/* 事件标志组 */
+TX_EVENT_FLAGS_GROUP  EventGroup;    /* 事件标志组 */
 /*
 *********************************************************************************************************
 *                                      函数声明
 *********************************************************************************************************
 */
 static  void  AppTaskStart          (ULONG thread_input);
-static  void  AppTaskCOM			(ULONG thread_input);
+static  void  AppTaskCOM            (ULONG thread_input);
 static  void  AppTaskCreate         (void);
 static  void  AppSysObjCreate       (void);
         void  TimerCallback         (ULONG thread_input);
@@ -190,27 +190,26 @@ void TimerCallback(ULONG thread_input)
 */
 static  void  AppSysObjCreate (void)
 {
-	/* 创建互斥信号量 */
+    /* 创建互斥信号量 */
     tx_mutex_create(&AppPrintfSemp,"AppPrintfSemp",TX_NO_INHERIT);
-	tx_mutex_create(&AppLCDSemp,"AppLCDSemp",TX_NO_INHERIT);	
-		
-	/* 定时器组 */
-	tx_timer_create(&AppTimer,
-					"App Timer",
-					TimerCallback, 
-					0,                  /* 传递的参数 */
-					500,                /* 设置定时器时间溢出的初始延迟，单位ThreadX系统时间节拍数 */
-					1, 				    /* 设置初始延迟后的定时器运行周期，如果设置为0，表示单次定时器,单位ms */
-					TX_AUTO_ACTIVATE);	/* 激活定时器 */
-	
-	/* 创建事件标志组 */
-	tx_event_flags_create(&EventGroup, "EventGroupName");
+    tx_mutex_create(&AppLCDSemp,"AppLCDSemp",TX_NO_INHERIT);	
+        
+    /* 定时器组 */
+    tx_timer_create(&AppTimer,
+                    "App Timer",
+                    TimerCallback, 
+                    0,                  /* 传递的参数 */
+                    500,                /* 设置定时器时间溢出的初始延迟，单位ThreadX系统时间节拍数 */
+                    1,                  /* 设置初始延迟后的定时器运行周期，如果设置为0，表示单次定时器,单位ms */
+                    TX_AUTO_ACTIVATE);  /* 激活定时器 */
+    
+    /* 创建事件标志组 */
+    tx_event_flags_create(&EventGroup, "EventGroupName");
 }
 void bsp_RunPer10ms()
 {
-	bsp_Key_Scan10ms();	/* 轻触按键扫描函数 */
+    bsp_Key_Scan10ms();	/* 轻触按键扫描函数 */
 }
-    
 
 
 
