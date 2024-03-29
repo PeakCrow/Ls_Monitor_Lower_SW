@@ -19,7 +19,7 @@ void bsp_InitCan1Bus(void)
     CAN_FilterTypeDef  sFilterConfig;
     CAN_FilterTypeDef  sFilterConfig2;
     
-    /*CAN单元初始化*/
+    /* CAN单元初始化 */
     hCAN.Instance                       = CANx_BUS_1;             /* CAN外设 */
     hCAN.Init.Prescaler                 = CAN1_BUS_BAUDE_RATE;    /* BTR-BRP 波特率分频器  定义了时间单元的时间长度 42/(1+6+7)/6=500kbps */
     hCAN.Init.Mode                      = CAN_MODE_NORMAL;        /* 正常工作模式 */
@@ -34,39 +34,40 @@ void bsp_InitCan1Bus(void)
     hCAN.Init.TransmitFifoPriority      = ENABLE;                 /* MCR-TXFP  发送FIFO优先级 DISABLE-优先级取决于报文标示符 */
     HAL_CAN_Init(&hCAN);
     
-    /*CAN过滤器初始化*/
-    sFilterConfig.FilterMode            = CAN_FILTERMODE_IDMASK;  /* 工作在标识符屏蔽位模式 */
-    sFilterConfig.FilterScale           = CAN_FILTERSCALE_32BIT; /* 过滤器位宽为单个32位。*/
+    /* CAN过滤器初始化 */
     /* 使能报文标识符过滤器按照标识符的内容进行对比过滤，扩展ID不是如下的就抛弃掉，是的话，会存入FIFO0 */
     /* id左移3位，是为了将0位保留位、1位RTR位、2位IDE位补0 */
     /* 右移16位是将整个id的高16位取出赋值给过滤器高位 */
+    sFilterConfig.FilterMode            = CAN_FILTERMODE_IDMASK;     /* 工作在标识符屏蔽位模式 */
+    sFilterConfig.FilterScale           = CAN_FILTERSCALE_32BIT;     /* 过滤器位宽为单个32位。*/
     sFilterConfig.FilterIdHigh          = (((uint32_t)0x1314<<3)&0xFFFF0000)>>16;       /* 要过滤的ID高位 */
     sFilterConfig.FilterIdLow           = (((uint32_t)0x1314<<3)|CAN_ID_EXT|CAN_RTR_DATA)&0xFFFF; /* 要过滤的ID低位 */
     sFilterConfig.FilterMaskIdHigh      = 0xFFFF;               /* 过滤器高16位每位必须匹配 */
     sFilterConfig.FilterMaskIdLow       = 0xFFFF;               /* 过滤器低16位每位必须匹配 */
     sFilterConfig.FilterFIFOAssignment  = CAN_FILTER_FIFO0;     /* 过滤器被关联到FIFO 0 */
-    sFilterConfig.FilterActivation      = ENABLE;               /* 使能过滤器 */
+    sFilterConfig.FilterActivation      = CAN_FILTER_ENABLE;               /* 使能过滤器 */
     sFilterConfig.FilterBank            = 14;
     HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig);
     
-    /*CAN过滤器初始化*/
-    sFilterConfig2.FilterMode           = CAN_FILTERMODE_IDMASK;  /* 工作在标识符屏蔽位模式 */
-    sFilterConfig2.FilterScale          = CAN_FILTERSCALE_32BIT; /* 过滤器位宽为单个32位。*/
+    /* CAN过滤器初始化 */
+    sFilterConfig2.FilterMode           = CAN_FILTERMODE_IDMASK;    /* 工作在标识符屏蔽位模式 */
+    sFilterConfig2.FilterScale          = CAN_FILTERSCALE_32BIT;    /* 过滤器位宽为单个32位。*/
     sFilterConfig2.FilterIdHigh         = (((uint32_t)0x1315<<3)&0xFFFF0000)>>16;       /* 要过滤的ID高位 */
     sFilterConfig2.FilterIdLow          = (((uint32_t)0x1315<<3)|CAN_ID_EXT|CAN_RTR_DATA)&0xFFFF; /* 要过滤的ID低位 */
     sFilterConfig2.FilterMaskIdHigh     = 0xFFFF;               /* 过滤器高16位每位必须匹配 */
     sFilterConfig2.FilterMaskIdLow      = 0xFFFF;               /* 过滤器低16位每位必须匹配 */
     sFilterConfig2.FilterFIFOAssignment = CAN_FILTER_FIFO1;     /* 过滤器被关联到FIFO 1 */
-    sFilterConfig2.FilterActivation     = ENABLE;               /* 使能过滤器 */
+    sFilterConfig2.FilterActivation     = CAN_FILTER_ENABLE;               /* 使能过滤器 */
     sFilterConfig2.FilterBank           = 10;
     HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig2);
     
     HAL_CAN_Start(&hCAN);
+    
+    /* 此处打开 CAN_IER寄存器中的各种中断 eg OVERRUN FIFO FULL FIFO pending ..  */
     HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO0_MSG_PENDING);
     HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO0_FULL);
     HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO0_OVERRUN);
-    
-    
+
     HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO1_MSG_PENDING);
     HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO1_FULL);
     HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO1_OVERRUN);
@@ -101,7 +102,8 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef * hcan)
         gpio_init.Speed     = GPIO_SPEED_FREQ_HIGH;
         gpio_init.Alternate = GPIO_AF9_CAN1;
         HAL_GPIO_Init(CAN1_RX_GPIO_PORT,&gpio_init);
-
+        
+        /* 这里打开的是 NVIC 的中断 */
         HAL_NVIC_SetPriority(CAN1_RX_IRQN,0,0);/* 初始化中断优先级 */
         HAL_NVIC_EnableIRQ(CAN1_RX_IRQN);
     }
@@ -144,7 +146,7 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
 *******************************************************************************/
 void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan)
 {
-    printf("fifo0数据接收满\r\n");         /* 目前无法触发FIFO邮箱满的情况 */
+    printf("fifo0数据接收满\r\n");
 }
 
 /*******************************************************************************
@@ -157,7 +159,7 @@ void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan)
 *******************************************************************************/
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
-    //App_Printf("持续接收数据fifo0\r\n");
+    printf("持续接收数据fifo0\r\n");
 }
 /*******************************************************************************
   * @FunctionName: CAN1_RX0_IRQHandler
@@ -205,7 +207,15 @@ uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
 #endif
     {
     /* 获取 can1 FIFO0 中数据 */
-    HAL_CAN_GetRxMessage(&hCAN, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
+    if(0U != HAL_CAN_GetRxFifoFillLevel(&hCAN,CAN_FILTER_FIFO0))
+    {
+        HAL_CAN_GetRxMessage(&hCAN, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
+    }
+    /* 获取 can1 FIFO1 中数据 */
+    else if(0U != HAL_CAN_GetRxFifoFillLevel(&hCAN,CAN_FILTER_FIFO1))
+    {
+        HAL_CAN_GetRxMessage(&hCAN, CAN_FILTER_FIFO1,&can_rx_msg,g_canrxbuf);
+    }
         if(IS_CAN_STDID(_id))
         {
             if(_id == can_rx_msg.StdId)

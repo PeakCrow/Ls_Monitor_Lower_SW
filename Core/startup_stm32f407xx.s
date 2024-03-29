@@ -45,10 +45,10 @@
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Stack_Size      EQU     0x0400;			;栈的大小，这里分配了1k大小
-                AREA    STACK, NOINIT, READWRITE, ALIGN=3 ;AREA，一个新的数据段，STACK是段名，不初始化，可读可写，8字节对齐
-Stack_Mem       SPACE   Stack_Size				;分配栈内存空间
-__initial_sp									;紧挨着SPACE语句放置，表示栈的结束地址，即栈顶地址，栈是由高向低生长的
+Stack_Size      EQU     0x0400                              ;栈的大小，这里分配了1k大小
+                AREA    STACK, NOINIT, READWRITE, ALIGN=3   ;AREA，一个新的数据段，STACK是段名，不初始化，可读可写，8字节对齐
+Stack_Mem       SPACE   Stack_Size                          ;分配栈内存空间
+__initial_sp                                                ;紧挨着SPACE语句放置，表示栈的结束地址，即栈顶地址，栈是由高向低生长的
 
 
 ; <h> Heap Configuration
@@ -56,26 +56,26 @@ __initial_sp									;紧挨着SPACE语句放置，表示栈的结束地址，�
 ; </h>
 
 
-Heap_Size      EQU     0x0400;				;堆的大小，这里同样分配了1k大小,这里可以开小点无所谓，因为malloc函数是从这里申请内存的
+Heap_Size      EQU     0x0400                               ;堆的大小，这里同样分配了1k大小,这里可以开小点无所谓，因为只有malloc函数是从这里申请内存的
 
 
-                AREA    HEAP, NOINIT, READWRITE, ALIGN=3 ;AREA，一个新的数据段，HEAP是段名，不初始化，可读可写，8字节对齐
-__heap_base										;堆的起始地址
-Heap_Mem        SPACE   Heap_Size				;分配堆内存空间
-__heap_limit									;堆的结束地址，堆是由低向高生长的，跟栈的生长方向相反
+                AREA    HEAP, NOINIT, READWRITE, ALIGN=3    ;AREA，一个新的数据段，HEAP是段名，不初始化，可读可写，8字节对齐
+__heap_base                                                 ;堆的起始地址
+Heap_Mem        SPACE   Heap_Size                           ;分配堆内存空间
+__heap_limit                                                ;堆的结束地址，堆是由低向高生长的，跟栈的生长方向相反
 
-                PRESERVE8						;指定当前文件的堆栈按照8字节对齐
-                THUMB							;表示后面的指令兼容THUMB指令集，16bit
-												;现在Cortex-M系列的都使用THUMB-2指令集，32bit，兼容16bit与32bit的指令，是THUMB的超集
+                PRESERVE8                                   ;指定当前文件的堆栈按照8字节对齐
+                THUMB                                       ;表示后面的指令兼容THUMB指令集，16bit
+                                                            ;现在Cortex-M系列的都使用THUMB-2指令集，32bit，兼容16bit与32bit的指令，是THUMB的超集
 
 ; Vector Table Mapped to Address 0 at Reset
-                AREA    RESET, DATA, READONLY	;一个新的数据段，RESET是段名，只读
-                EXPORT  __Vectors				;全局属性 标号 __Vectors 向量表起始地址
-                EXPORT  __Vectors_End			;全局属性 标号 __Vectors_End 向量表结束地址
-                EXPORT  __Vectors_Size			;全局属性 标号 __Vectors_Size
-												;全局属性，可供外部的文件调用，IAR编译器，使用的是 GLOBAL 指令
+                AREA    RESET, DATA, READONLY               ;一个新的数据段，RESET是段名，只读
+                EXPORT  __Vectors                           ;全局属性 标号 __Vectors 向量表起始地址
+                EXPORT  __Vectors_End                       ;全局属性 标号 __Vectors_End 向量表结束地址
+                EXPORT  __Vectors_Size                      ;全局属性 标号 __Vectors_Size
+                                                            ;全局属性，可供外部的文件调用，IAR编译器，使用的是 GLOBAL 指令
 
-				;DCD 分配一个或者多个字节为单位的内存，以四字节对齐，并要求初始化这些内存，DCD分配了堆内存(?)，并且以ESR的入口地址初始化他们								
+                ;DCD 分配一个或者多个字节为单位的内存，以四字节对齐，并要求初始化这些内存，DCD分配了堆内存(?)，并且以ESR的入口地址初始化他们
 __Vectors       DCD     __initial_sp               ; Top of Stack
                 DCD     Reset_Handler              ; Reset Handler
                 DCD     NMI_Handler                ; NMI Handler
@@ -180,28 +180,28 @@ __Vectors       DCD     __initial_sp               ; Top of Stack
                                          
 __Vectors_End
 
-__Vectors_Size  EQU  __Vectors_End - __Vectors				;向量表结束地址减去向量表起始地址就是向量表大小
+__Vectors_Size  EQU  __Vectors_End - __Vectors              ;向量表结束地址减去向量表起始地址就是向量表大小
 
-                AREA    |.text|, CODE, READONLY				;一个新的数据段，|.text|是段名，只读
+                AREA    |.text|, CODE, READONLY             ;一个新的数据段，|.text|是段名，只读
 
-; Reset handler												;复位子程序
-Reset_Handler    PROC										;PROC 定义子程序，与ENDP成对使用，表示子程序开始
+; Reset handler                                             ;复位子程序
+Reset_Handler    PROC                                       ;PROC 定义子程序，与ENDP成对使用，表示子程序开始
                  EXPORT  Reset_Handler             [WEAK]
-        IMPORT  SystemInit									;是系统上电后第一个执行的程序调用SystemInit函数初始化时钟(函数定义c在system_stm32f4xx.c文件中)
-        IMPORT  __main										;调用main函数进入到c语言的世界(函数定义在main.c文件中)
+        IMPORT  SystemInit                                  ;是系统上电后第一个执行的程序调用SystemInit函数初始化时钟(函数定义c在system_stm32f4xx.c文件中)
+        IMPORT  __main                                      ;调用main函数进入到c语言的世界(函数定义在main.c文件中)
 
-                 LDR     R0, =SystemInit					;LDR 从存储器中加载一个字到一个寄存器中
-                 BLX     R0									;跳转到由寄存器给出的地址，并根据寄存器的LSE确定处理器的状态，
-                 											;还要把跳转前的下条指令地址保存到LR
-                 LDR     R0, =__main						;LDR 从存储器中加载一个字节到一个寄存器中
-                 BX      R0									;跳转到由寄存器/标号给出的地址，不用返回
-                 ENDP										;ENDP 定义子程序，与PROC成对使用，表示子程序结束
+                 LDR     R0, =SystemInit                    ;LDR 从存储器中加载一个字到一个寄存器中
+                 BLX     R0                                 ;跳转到由寄存器给出的地址，并根据寄存器的LSE确定处理器的状态，
+                                                            ;还要把跳转前的下条指令地址保存到LR
+                 LDR     R0, =__main                        ;LDR 从存储器中加载一个字节到一个寄存器中
+                 BX      R0                                 ;跳转到由寄存器/标号给出的地址，不用返回
+                 ENDP                                       ;ENDP 定义子程序，与PROC成对使用，表示子程序结束
 
 ; Dummy Exception Handlers (infinite loops which can be modified)
 ;开启了某个中断后，没有写配套的中断服务程序后者函数名写错，那么中断来临时，程序会跳到这里来，进行无限循环
 NMI_Handler     PROC
                 EXPORT  NMI_Handler                [WEAK]
-                B       .									;B 跳转到一个标号，这里跳转到一个 . ，即表示无限循环
+                B       .                                   ;B 跳转到一个标号，这里跳转到一个 . ，即表示无限循环
                 ENDP
 HardFault_Handler\
                 PROC
@@ -411,34 +411,34 @@ FPU_IRQHandler
 
                 ENDP
 
-                ALIGN											;对指令或者数据存放的地址进行对齐，后面会跟一个立即数，缺省表示4字节对齐
+                ALIGN                                           ;对指令或者数据存放的地址进行对齐，后面会跟一个立即数，缺省表示4字节对齐
 
 ;*******************************************************************************
 ; User Stack and Heap initialization
 ;*******************************************************************************
-                 IF      :DEF:__MICROLIB						;如果定义了__MICROLIB这个宏
+                 IF      :DEF:__MICROLIB                        ;如果定义了__MICROLIB这个宏
                 
                  EXPORT  __initial_sp
                  EXPORT  __heap_base
                  EXPORT  __heap_limit
                 
-                 ELSE											
+                 ELSE
                 
-                 IMPORT  __use_two_region_memory				;否则使用双段存储器模式
-                 EXPORT  __user_initial_stackheap				;用户自己来初始化堆栈
+                 IMPORT  __use_two_region_memory                ;否则使用双段存储器模式
+                 EXPORT  __user_initial_stackheap               ;用户自己来初始化堆栈
                  
 __user_initial_stackheap
 
-                 LDR     R0, =  Heap_Mem						;LDR 从存储器中加载字到一个寄存器中
-                 LDR     R1, =	(Stack_Mem 	+ Stack_Size)
-                 LDR     R2, = 	(Heap_Mem 	+  Heap_Size)
-                 LDR     R3, = 	Stack_Mem
-                 BX      LR										;跳转到由寄存器/标号给出的地址，不用返回
+                 LDR     R0, =  Heap_Mem                        ;LDR 从存储器中加载字到一个寄存器中
+                 LDR     R1, =  (Stack_Mem  + Stack_Size)
+                 LDR     R2, =  (Heap_Mem   +  Heap_Size)
+                 LDR     R3, =  Stack_Mem
+                 BX      LR                                     ;跳转到由寄存器/标号给出的地址，不用返回
 
                  ALIGN
 
-                 ENDIF											;IF ELSE ENDIF 配套使用
-	
-                 END											;文件结束
+                 ENDIF                                          ;IF ELSE ENDIF 配套使用
+
+                 END                                            ;文件结束
 
 ;************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE*****
