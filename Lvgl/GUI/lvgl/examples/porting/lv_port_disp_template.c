@@ -151,7 +151,7 @@ void lv_port_disp_init(void)
 static void disp_init(void)
 {
     /*You code here*/
-	bsp_Initlcd();		/* 初始化LCD屏幕 */
+    bsp_Initlcd();		/* 初始化LCD屏幕 */
     dma_config();
 }
 

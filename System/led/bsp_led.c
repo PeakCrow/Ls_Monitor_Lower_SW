@@ -59,8 +59,8 @@ void bsp_InitLed(void)
 		由于将GPIO设置为输出时，GPIO输出寄存器的值缺省是0，因此会驱动LED点亮.
 		这是我不希望的，因此在改变GPIO为输出前，先关闭LED指示灯
 	*/
-	bsp_LedOff(1);
-	bsp_LedOn(2);
+	bsp_LedOn(1);
+	bsp_LedOff(2);
 
 
 	/* 配置LED */
