@@ -130,7 +130,7 @@ void  App_Printf(const char *fmt, ...)
 *   形    参 : 同I2C_EE_BufferWrite的参数。
 *   返 回 值: 无
 */
-void    App_I2C_EE_BufferWrite(uint8_t* pBuffer, uint8_t WriteAddr,uint16_t NumByteToWrite)
+void App_I2C_EE_BufferWrite(uint8_t* pBuffer, uint8_t WriteAddr,uint16_t NumByteToWrite)
 {
     /* 互斥操作 */
     tx_mutex_get(&App_PowerDownSave, TX_WAIT_FOREVER);

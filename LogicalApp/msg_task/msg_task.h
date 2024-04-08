@@ -34,6 +34,7 @@ void  AppTaskMsgPro             (ULONG thread_input);
 void  AppTaskUserIF             (ULONG thread_input);
 void  App_Printf                (const char *fmt, ...);
 void  App_I2C_EE_ByteWrite  (uint8_t * pBuffer, uint8_t WriteAddr);
+void  App_I2C_EE_BufferWrite(uint8_t* pBuffer, uint8_t WriteAddr,uint16_t NumByteToWrite);
 
 #endif
 

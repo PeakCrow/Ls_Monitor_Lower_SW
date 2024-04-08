@@ -701,13 +701,13 @@ void lcd_draw_bline(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2,uint8_t s
 //清空屏幕并在右上角显示"RST"
 void Load_Drow_Dialog(void)
 {
-	LCD_Clear(TFT_WHITE);//清屏   
- 	POINT_COLOR=TFT_BLUE;//设置字体为蓝色 
-	LCD_ShowString(lcddev.width-24,0,200,16,16,"RST");//显示清屏区域
-  	POINT_COLOR=TFT_RED;//设置画笔蓝色 
+    LCD_Clear(TFT_WHITE);//清屏   
+    POINT_COLOR=TFT_BLUE;//设置字体为蓝色 
+    LCD_ShowString(lcddev.width-24,0,200,16,16,(uint8_t*)"RST");//显示清屏区域
+    POINT_COLOR=TFT_RED;//设置画笔蓝色 
 }
 ////////////////////////////////////////////////////////////////////////////////
-//5个触控点的颜色(电容触摸屏用)												 
+//5个触控点的颜色(电容触摸屏用)
 const uint16_t POINT_COLOR_TBL[5]={TFT_RED,TFT_GREEN,TFT_BLUE,TFT_BROWN,TFT_GRED};  
 //电容触摸屏测试函数
 void ctp_test(void)

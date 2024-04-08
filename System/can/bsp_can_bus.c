@@ -303,3 +303,4 @@ HAL_StatusTypeDef bsp_Can1_Send_buf(uint32_t _id,uint8_t _buf[],uint8_t _dlc)
     }
     return HAL_OK;
 }
+

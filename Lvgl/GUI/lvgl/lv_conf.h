@@ -582,7 +582,7 @@
 #if LV_USE_LABEL
     #define LV_LABEL_TEXT_SELECTION 1 /*Enable selecting text of the label--启用选择标签的文本*/
     #define LV_LABEL_LONG_TXT_HINT 1  /*Store some extra info in labels to speed up drawing of very long texts*/
-																	/*--在标签中存储一些额外信息，以加快绘制非常长的文本*/
+                                      /*--在标签中存储一些额外信息，以加快绘制非常长的文本*/
 #endif
 
 #define LV_USE_LINE       1
