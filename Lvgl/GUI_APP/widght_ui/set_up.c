@@ -10,7 +10,7 @@ static void App_btn_Back_Cb(lv_event_t* e);
 
 
 void Set_Up_Ui(lv_obj_t *parent)
-{	
+{    
     /* 定义并创建图像按钮 */
     lv_obj_t* Imgbtn_MC;
     Imgbtn_MC = lv_imgbtn_create(parent);
@@ -53,15 +53,15 @@ static void Imgbtn_MC_cb(lv_event_t * e)
 
 static void App_btn_Back_Cb(lv_event_t* e)
 {
-	lv_event_code_t code = lv_event_get_code(e);
-	lv_obj_t* parent = lv_event_get_user_data(e);
-	switch ((uint8_t)code) {
-		case LV_EVENT_RELEASED:
-			{
-				lv_obj_del(parent);
-			}
-			break;
-	}
+    lv_event_code_t code = lv_event_get_code(e);
+    lv_obj_t* parent = lv_event_get_user_data(e);
+    switch ((uint8_t)code) {
+        case LV_EVENT_RELEASED:
+            {
+                lv_obj_del(parent);
+            }
+            break;
+    }
 }
 
 

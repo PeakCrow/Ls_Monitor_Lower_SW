@@ -53,16 +53,16 @@ void Sensor_Ui(lv_obj_t *parent)
 }
 static void App_btn_Back_Cb(lv_event_t* e)
 {
-	lv_event_code_t code = lv_event_get_code(e);
-	lv_obj_t* parent = lv_event_get_user_data(e);
-	switch ((uint8_t)code) {
-		case LV_EVENT_RELEASED:
-			{
-				lv_timer_del(Realtime_Sensor_timer);
-				lv_obj_del(parent);
-			}
-			break;
-	}
+    lv_event_code_t code = lv_event_get_code(e);
+    lv_obj_t* parent = lv_event_get_user_data(e);
+    switch ((uint8_t)code) {
+        case LV_EVENT_RELEASED:
+            {
+                lv_timer_del(Realtime_Sensor_timer);
+                lv_obj_del(parent);
+            }
+            break;
+    }
 }
 static void Imgbtn_MC_cb(lv_event_t * e)
 {
@@ -88,7 +88,7 @@ static void event_chart_cb(lv_event_t* e)
     else if(code == LV_EVENT_DRAW_POST_END) {
         uint32_t id = lv_chart_get_pressed_point(chart);
         if(id == LV_CHART_POINT_NONE) 
-			return;
+            return;
 
         //LV_LOG_USER("Selected point %d", (int)id);
 
@@ -255,18 +255,18 @@ static void Sensor_In_Ui(lv_obj_t * parent)
     lv_anim_set_repeat_count(&a, LV_ANIM_REPEAT_INFINITE);
     lv_anim_start(&a);
 #endif
-	/* 创建一个LVGL定时器定时添加chart数据 */
-	Realtime_Sensor_timer = lv_timer_create(Realtime_Sensor_Cb,1000,NULL);
-	lv_timer_set_cb(Realtime_Sensor_timer,Realtime_Sensor_Cb);	
+    /* 创建一个LVGL定时器定时添加chart数据 */
+    Realtime_Sensor_timer = lv_timer_create(Realtime_Sensor_Cb,1000,NULL);
+    lv_timer_set_cb(Realtime_Sensor_timer,Realtime_Sensor_Cb);    
 
 
 }
 static void Realtime_Sensor_Cb(lv_timer_t * e)
 {
-	lv_chart_set_next_value(analog1,ser,(short)lv_rand(0,5000));
-	lv_chart_set_next_value(analog2,ser1,(short)lv_rand(0,5000));
-	lv_chart_set_next_value(analog3,ser2,(short)lv_rand(0,5000));
-	lv_chart_set_next_value(analog4,ser3,(short)lv_rand(0,5000));
+    lv_chart_set_next_value(analog1,ser,(short)lv_rand(0,5000));
+    lv_chart_set_next_value(analog2,ser1,(short)lv_rand(0,5000));
+    lv_chart_set_next_value(analog3,ser2,(short)lv_rand(0,5000));
+    lv_chart_set_next_value(analog4,ser3,(short)lv_rand(0,5000));
 
 }
 

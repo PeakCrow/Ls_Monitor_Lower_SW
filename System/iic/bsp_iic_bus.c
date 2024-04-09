@@ -1,6 +1,6 @@
 #include "bsp_iic_bus.h"
 
-I2C_HandleTypeDef	iic_handle;
+I2C_HandleTypeDef    iic_handle;
 
 static void I2C_Mode_Config(void);
 
@@ -8,7 +8,7 @@ static void I2C_Mode_Config(void);
 
 void bsp_I2C_EE_Init()
 {
-	I2C_Mode_Config();
+    I2C_Mode_Config();
 }
 
 
@@ -47,7 +47,7 @@ HAL_I2C_Init(&iic_handle);
 *******************************************************************************/
 void HAL_I2C_MspInit(I2C_HandleTypeDef * hi2c)
 {
-GPIO_InitTypeDef	gpio_initstruct;
+GPIO_InitTypeDef    gpio_initstruct;
 
     /* 初始化iic通讯的引脚时钟 */
     I2Cx_SCL_GPIO_CLK_ENABLE();
@@ -97,7 +97,7 @@ uint32_t I2C_EE_ByteWrite(uint8_t * pBuffer, uint8_t WriteAddr)
     /* 检查通讯状态 */
     if (status != HAL_OK)
     {
-    	/* 执行用户定义的超时回调函数 */
+        /* 执行用户定义的超时回调函数 */
     }
     while (HAL_I2C_GetState(&iic_handle) != HAL_I2C_STATE_READY){}
 
@@ -170,7 +170,7 @@ uint32_t I2C_EE_PageWrite(uint8_t * pBuffer, uint8_t WriteAddr, uint8_t NumByteT
         //printf("iic总线数据传输未结束");
     }
 
-	return status;
+    return status;
 }
 
 
@@ -195,8 +195,8 @@ void I2C_EE_BufferWrite(uint8_t * pBuffer, uint8_t WriteAddr, uint16_t NumByteTo
             while (NumOfPage--)
                 {
                     I2C_EE_PageWrite(pBuffer,WriteAddr,EEPROM_PAGESIZE);
-                    WriteAddr += EEPROM_PAGESIZE;	/* 芯片数据写入的地址递增一页 */
-                    pBuffer += EEPROM_PAGESIZE;		/* 数据数组下入的索引递增一页 */
+                    WriteAddr += EEPROM_PAGESIZE;    /* 芯片数据写入的地址递增一页 */
+                    pBuffer += EEPROM_PAGESIZE;        /* 数据数组下入的索引递增一页 */
                 }
             /* 如果剩余的个数为0，则不写入，不为0，则写入 */
             if (NumOfSingle != 0)

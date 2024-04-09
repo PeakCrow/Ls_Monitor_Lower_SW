@@ -12,13 +12,14 @@
   * - 2022-4-25  TRX Created
 *********************************************/
 #include "sys.h"
-/*
- * @FunctionName : main
- * @DateTime     : 2024年2月25日 02:57:35
- * @Purpose      : 主函数程序入口
- * @param        : void
- * @return       : void
-*/
+/**
+  * @FunctionName: main
+  * @Author:       trx
+  * @DateTime:     2024年2月25日 02:57:35
+  * @Purpose:      主函数程序入口 
+  * @param:        none
+  * @return:       none
+**/
 int main(void)
 {
     HAL_Init();                         /* HAL库初始化 */

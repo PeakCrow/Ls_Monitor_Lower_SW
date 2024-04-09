@@ -1,422 +1,422 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.50.9.278/W32 for ARM                  09/Apr/2024  00:13:36
+# IAR ELF Linker V8.50.6.265/W32 for ARM                  09/Apr/2024  14:14:30
 # Copyright 2007-2020 IAR Systems AB.
 #
 #    Output file  =
-#        J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Exe\Run_Xian.out
+#        D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Exe\Run_Xian.out
 #    Map file     =
-#        J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\List\Run_Xian.map
+#        D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\List\Run_Xian.map
 #    Command line =
-#        -f C:\Users\ADMINI~1\AppData\Local\Temp\EW3584.tmp
-#        ("J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\about_phone_ui.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\adjust_pedal.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\battery_box.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_can_bus.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_dwt.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_font.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_iic_bus.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_inkscreen.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_key.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_lcd.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_led.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_mlx90614.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_rotation.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_sdio_sd.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_spi_ads1256.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_spi_bus.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_spi_flash.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_spi_flash_demo.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_sram.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_tim_pwm.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_touch.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_usart_fifo.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_ws2812b.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\cc936.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\cool_control.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\diskio.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\ff.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\ff_gen_drv.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\gui_task.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\HardFaultHandler.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\iwdg.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_anim.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_anim_timeline.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_animimg.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_arc.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_area.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_async.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_bar.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_bidi.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_btn.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_btnmatrix.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_calendar.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_calendar_header_arrow.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_calendar_header_dropdown.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_canvas.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_chart.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_checkbox.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_color.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_colorwheel.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_disp.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_arc.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_img.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_label.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_layer.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_line.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_mask.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_rect.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_arc.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_blend.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_dither.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_gradient.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_img.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_layer.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_letter.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_line.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_polygon.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_rect.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_transform.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_transform.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_triangle.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_dropdown.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_event.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_extra.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_flex.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_dejavu_16_persian_hebrew.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_fmt_txt.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_loader.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_10.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_12.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_12_subpx.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_14.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_16.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_24.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_8.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_simsun_16_cjk.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_unscii_16.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_unscii_8.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_fragment.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_fragment_manager.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_fs.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_fs_fatfs.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_gc.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_grid.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_gridnav.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_group.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_hal_disp.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_hal_indev.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_hal_tick.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_ime_pinyin.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_img.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_img_buf.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_img_cache.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_img_decoder.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_imgbtn.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_imgfont.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_indev.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_indev_scroll.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_keyboard.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_label.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_led.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_line.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_list.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_ll.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_log.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_lru.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_math.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_mem.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_menu.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_meter.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_monkey.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_msg.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_msgbox.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_class.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_draw.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_pos.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_scroll.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_style.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_style_gen.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_tree.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_objx_templ.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_port_disp_template.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_port_indev_template.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_printf.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_refr.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_roller.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_slider.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_snapshot.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_span.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_spinbox.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_spinner.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_style.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_style_gen.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_switch.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_table.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_tabview.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_templ.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_textarea.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_theme.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_theme_basic.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_theme_default.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_theme_mono.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_tileview.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_timer.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_tlsf.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_txt.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_txt_ap.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_utils.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_win.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\main.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\Monitor.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\motor_control_ui.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\msg_task.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\myFont20.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\myFont36.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\sd_diskio_dma.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\SEGGER_HardFaultHandler.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\sensor_ui.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\set_up.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\startup_stm32f407xx.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\statistic_task.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_can.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_cortex.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_crc.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_dma.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_dma_ex.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_eth.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_gpio.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_i2c.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_i2c_ex.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_iwdg.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_msp.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_pwr.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_pwr_ex.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_rcc.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_rcc_ex.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_sd.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_spi.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_sram.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_tim.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_tim_ex.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_uart.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_it.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_ll_fsmc.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_ll_sdmmc.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\sys.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\syscall.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\system_stm32f4xx.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\system_task_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\ticktim.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_allocate.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_cleanup.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_initialize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_performance_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_performance_system_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_prioritize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_release.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_allocate.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_cleanup.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_initialize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_performance_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_performance_system_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_prioritize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_search.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_release.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_cleanup.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_initialize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_performance_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_performance_system_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_set.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_set_notify.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_iar.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_initialize_high_level.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_initialize_kernel_enter.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_initialize_kernel_setup.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_initialize_low_level.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_misra.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_cleanup.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_initialize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_performance_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_performance_system_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_prioritize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_priority_change.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_put.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_cleanup.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_flush.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_front_send.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_initialize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_performance_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_performance_system_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_prioritize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_receive.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_send.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_send_notify.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_ceiling_put.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_cleanup.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_initialize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_performance_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_performance_system_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_prioritize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_put.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_put_notify.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_context_restore.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_context_save.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_entry_exit_notify.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_identify.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_initialize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_interrupt_control.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_interrupt_disable.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_interrupt_restore.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_performance_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_performance_system_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_preemption_change.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_priority_change.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_relinquish.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_reset.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_resume.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_schedule.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_shell_entry.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_sleep.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_stack_analyze.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_stack_build.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_stack_error_handler.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_stack_error_notify.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_suspend.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_system_preempt_check.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_system_resume.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_system_return.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_system_suspend.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_terminate.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_time_slice.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_time_slice_change.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_timeout.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_wait_abort.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_time_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_time_set.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_activate.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_change.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_deactivate.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_expiration_process.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_initialize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_interrupt.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_performance_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_performance_system_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_system_activate.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_system_deactivate.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_thread_entry.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_buffer_full_notify.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_disable.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_enable.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_event_filter.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_event_unfilter.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_initialize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_interrupt_control.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_isr_enter_insert.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_isr_exit_insert.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_object_register.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_object_unregister.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_user_event_insert.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_block_allocate.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_block_pool_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_block_pool_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_block_pool_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_block_pool_prioritize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_block_release.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_byte_allocate.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_byte_pool_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_byte_pool_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_byte_pool_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_byte_pool_prioritize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_byte_release.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_event_flags_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_event_flags_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_event_flags_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_event_flags_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_event_flags_set.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_event_flags_set_notify.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_mutex_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_mutex_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_mutex_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_mutex_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_mutex_prioritize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_mutex_put.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_flush.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_front_send.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_prioritize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_receive.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_send.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_send_notify.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_ceiling_put.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_prioritize.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_put.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_put_notify.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_entry_exit_notify.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_preemption_change.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_priority_change.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_relinquish.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_reset.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_resume.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_suspend.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_terminate.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_time_slice_change.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_wait_abort.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_timer_activate.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_timer_change.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_timer_create.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_timer_deactivate.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_timer_delete.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_timer_info_get.o"
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\vehicle_status.o"
+#        -f C:\Users\RUNXIA~1.TIA\AppData\Local\Temp\EW5E7F.tmp
+#        ("D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\about_phone_ui.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\adjust_pedal.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\battery_box.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_can_bus.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_dwt.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_font.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_iic_bus.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_inkscreen.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_key.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_lcd.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_led.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_mlx90614.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_rotation.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_sdio_sd.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_spi_ads1256.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_spi_bus.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_spi_flash.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_spi_flash_demo.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_sram.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_tim_pwm.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_touch.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_usart_fifo.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\bsp_ws2812b.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\cc936.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\cool_control.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\diskio.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\ff.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\ff_gen_drv.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\gui_task.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\HardFaultHandler.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\iwdg.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_anim.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_anim_timeline.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_animimg.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_arc.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_area.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_async.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_bar.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_bidi.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_btn.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_btnmatrix.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_calendar.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_calendar_header_arrow.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_calendar_header_dropdown.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_canvas.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_chart.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_checkbox.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_color.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_colorwheel.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_disp.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_arc.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_img.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_label.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_layer.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_line.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_mask.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_rect.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_arc.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_blend.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_dither.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_gradient.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_img.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_layer.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_letter.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_line.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_polygon.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_rect.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_sw_transform.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_transform.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_draw_triangle.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_dropdown.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_event.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_extra.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_flex.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_dejavu_16_persian_hebrew.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_fmt_txt.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_loader.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_10.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_12.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_12_subpx.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_14.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_16.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_24.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_montserrat_8.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_simsun_16_cjk.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_unscii_16.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_font_unscii_8.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_fragment.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_fragment_manager.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_fs.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_fs_fatfs.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_gc.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_grid.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_gridnav.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_group.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_hal_disp.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_hal_indev.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_hal_tick.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_ime_pinyin.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_img.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_img_buf.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_img_cache.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_img_decoder.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_imgbtn.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_imgfont.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_indev.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_indev_scroll.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_keyboard.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_label.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_led.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_line.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_list.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_ll.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_log.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_lru.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_math.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_mem.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_menu.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_meter.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_monkey.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_msg.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_msgbox.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_class.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_draw.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_pos.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_scroll.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_style.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_style_gen.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_obj_tree.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_objx_templ.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_port_disp_template.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_port_indev_template.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_printf.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_refr.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_roller.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_slider.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_snapshot.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_span.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_spinbox.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_spinner.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_style.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_style_gen.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_switch.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_table.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_tabview.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_templ.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_textarea.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_theme.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_theme_basic.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_theme_default.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_theme_mono.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_tileview.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_timer.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_tlsf.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_txt.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_txt_ap.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_utils.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_win.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\main.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\Monitor.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\motor_control_ui.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\msg_task.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\myFont20.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\myFont36.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\sd_diskio_dma.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\SEGGER_HardFaultHandler.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\sensor_ui.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\set_up.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\startup_stm32f407xx.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\statistic_task.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_can.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_cortex.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_crc.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_dma.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_dma_ex.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_eth.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_gpio.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_i2c.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_i2c_ex.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_iwdg.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_msp.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_pwr.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_pwr_ex.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_rcc.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_rcc_ex.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_sd.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_spi.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_sram.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_tim.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_tim_ex.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_hal_uart.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_it.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_ll_fsmc.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\stm32f4xx_ll_sdmmc.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\sys.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\syscall.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\system_stm32f4xx.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\system_task_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\ticktim.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_allocate.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_cleanup.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_initialize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_performance_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_performance_system_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_pool_prioritize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_block_release.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_allocate.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_cleanup.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_initialize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_performance_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_performance_system_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_prioritize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_pool_search.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_byte_release.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_cleanup.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_initialize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_performance_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_performance_system_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_set.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_event_flags_set_notify.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_iar.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_initialize_high_level.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_initialize_kernel_enter.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_initialize_kernel_setup.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_initialize_low_level.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_misra.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_cleanup.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_initialize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_performance_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_performance_system_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_prioritize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_priority_change.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_mutex_put.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_cleanup.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_flush.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_front_send.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_initialize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_performance_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_performance_system_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_prioritize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_receive.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_send.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_queue_send_notify.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_ceiling_put.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_cleanup.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_initialize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_performance_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_performance_system_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_prioritize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_put.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_semaphore_put_notify.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_context_restore.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_context_save.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_entry_exit_notify.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_identify.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_initialize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_interrupt_control.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_interrupt_disable.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_interrupt_restore.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_performance_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_performance_system_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_preemption_change.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_priority_change.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_relinquish.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_reset.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_resume.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_schedule.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_shell_entry.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_sleep.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_stack_analyze.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_stack_build.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_stack_error_handler.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_stack_error_notify.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_suspend.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_system_preempt_check.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_system_resume.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_system_return.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_system_suspend.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_terminate.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_time_slice.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_time_slice_change.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_timeout.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_thread_wait_abort.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_time_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_time_set.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_activate.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_change.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_deactivate.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_expiration_process.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_initialize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_interrupt.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_performance_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_performance_system_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_system_activate.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_system_deactivate.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_timer_thread_entry.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_buffer_full_notify.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_disable.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_enable.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_event_filter.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_event_unfilter.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_initialize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_interrupt_control.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_isr_enter_insert.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_isr_exit_insert.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_object_register.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_object_unregister.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\tx_trace_user_event_insert.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_block_allocate.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_block_pool_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_block_pool_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_block_pool_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_block_pool_prioritize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_block_release.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_byte_allocate.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_byte_pool_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_byte_pool_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_byte_pool_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_byte_pool_prioritize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_byte_release.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_event_flags_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_event_flags_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_event_flags_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_event_flags_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_event_flags_set.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_event_flags_set_notify.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_mutex_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_mutex_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_mutex_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_mutex_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_mutex_prioritize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_mutex_put.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_flush.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_front_send.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_prioritize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_receive.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_send.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_queue_send_notify.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_ceiling_put.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_prioritize.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_put.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_semaphore_put_notify.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_entry_exit_notify.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_preemption_change.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_priority_change.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_relinquish.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_reset.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_resume.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_suspend.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_terminate.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_time_slice_change.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_thread_wait_abort.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_timer_activate.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_timer_change.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_timer_create.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_timer_deactivate.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_timer_delete.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\txe_timer_info_get.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\vehicle_status.o"
 #        --redirect _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb
 #        --no_out_extension -o
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Exe\Run_Xian.out"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Exe\Run_Xian.out"
 #        --map
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\List\Run_Xian.map"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\List\Run_Xian.map"
 #        --config
-#        "J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\stm32f407xx_flash.icf"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\stm32f407xx_flash.icf"
 #        --semihosting --entry __iar_program_start --vfe --text_out locale)
 #
 ###############################################################################
@@ -464,7 +464,7 @@ No sections matched the following patterns:
   .intvec            ro code   0x800'0000     0x188  startup_stm32f407xx.o [1]
                              - 0x800'0188     0x188
 
-"P1":                                      0x1'15d1
+"P1":                                      0x1'15c1
   .rodata            const     0x800'0188    0x2f80  bsp_font.o [1]
   .text              ro code   0x800'3108    0x1750  bsp_lcd.o [1]
   .text              ro code   0x800'4858     0x248  stm32f4xx_hal_gpio.o [1]
@@ -573,39 +573,39 @@ No sections matched the following patterns:
   .text              ro code   0x800'eccc      0xd4  bsp_led.o [1]
   .text              ro code   0x800'eda0      0x28  bsp_ws2812b.o [1]
   .text              ro code   0x800'edc8     0x1c0  bsp_spi_flash.o [1]
-  .text              ro code   0x800'ef88     0x16c  msg_task.o [1]
-  .text              ro code   0x800'f0f4      0xcc  txe_mutex_create.o [1]
-  .text              ro code   0x800'f1c0      0xe8  txe_timer_create.o [1]
-  .text              ro code   0x800'f2a8      0xb4  txe_event_flags_create.o [1]
-  .text              ro code   0x800'f35c     0x238  tx_thread_create.o [1]
-  .text              ro code   0x800'f594      0x48  FltToDbl.o [3]
-  .text              ro code   0x800'f5dc       0xa  Monitor.o [1]
-  .text              ro code   0x800'f5e6       0x2  ticktim.o [1]
-  .text              ro code   0x800'f5e8     0x1d0  stm32f4xx_hal_i2c.o [1]
-  .text              ro code   0x800'f7b8      0x18  strcpy.o [4]
-  .text              ro code   0x800'f7d0      0x3c  vsnprint.o [2]
-  .text              ro code   0x800'f80c      0x7c  txe_mutex_get.o [1]
-  .text              ro code   0x800'f888      0x4c  txe_mutex_put.o [1]
-  .text              ro code   0x800'f8d4     0x13c  stm32f4xx_hal_rcc_ex.o [1]
-  .text              ro code   0x800'fa10     0x134  tx_mutex_create.o [1]
-  .text              ro code   0x800'fb44     0x144  tx_timer_create.o [1]
-  .text              ro code   0x800'fc88     0x124  tx_event_flags_create.o [1]
-  .text              ro code   0x800'fdac      0x44  tx_thread_stack_build.o [1]
-  .text              ro code   0x800'fdf0     0x11c  tx_trace_object_register.o [1]
-  .text              ro code   0x800'ff0c      0x18  lv_hal_tick.o [1]
-  .text              ro code   0x800'ff24     0x1c8  tx_mutex_get.o [1]
-  .text              ro code   0x801'00ec     0x24c  tx_thread_time_slice.o [1]
-  .text              ro code   0x801'0338     0x130  tx_timer_thread_entry.o [1]
-  .text              ro code   0x801'0468      0xe8  tx_timer_interrupt.o [1]
-  .text              ro code   0x801'0550      0x24  tx_timer_expiration_process.o [1]
-  .text              ro code   0x801'0574      0xe0  SEGGER_HardFaultHandler.o [1]
-  .text              ro code   0x801'0654      0xe0  tx_timer_initialize.o [1]
-  .text              ro code   0x801'0734      0xd0  tx_thread_schedule.o [1]
-  .text              ro code   0x801'0804      0xc8  tx_mutex_cleanup.o [1]
-  .rodata            const     0x801'08cc      0xb8  bsp_touch.o [1]
-  .text              ro code   0x801'0984      0xb0  sys.o [1]
-  .text              ro code   0x801'0a34      0x38  stm32f4xx_hal.o [1]
-  .text              ro code   0x801'0a6c       0x2  stm32f4xx_hal_msp.o [1]
+  .text              ro code   0x800'ef88      0xfc  msg_task.o [1]
+  .text              ro code   0x800'f084      0xcc  txe_mutex_create.o [1]
+  .text              ro code   0x800'f150      0xe8  txe_timer_create.o [1]
+  .text              ro code   0x800'f238      0xb4  txe_event_flags_create.o [1]
+  .text              ro code   0x800'f2ec     0x238  tx_thread_create.o [1]
+  .text              ro code   0x800'f524      0x48  FltToDbl.o [3]
+  .text              ro code   0x800'f56c       0xa  Monitor.o [1]
+  .text              ro code   0x800'f576       0x2  ticktim.o [1]
+  .text              ro code   0x800'f578     0x1d0  stm32f4xx_hal_i2c.o [1]
+  .text              ro code   0x800'f748      0x18  strcpy.o [4]
+  .text              ro code   0x800'f760     0x120  sys.o [1]
+  .text              ro code   0x800'f880      0x3c  vsnprint.o [2]
+  .text              ro code   0x800'f8bc      0x7c  txe_mutex_get.o [1]
+  .text              ro code   0x800'f938      0x4c  txe_mutex_put.o [1]
+  .text              ro code   0x800'f984     0x134  tx_mutex_create.o [1]
+  .text              ro code   0x800'fab8     0x144  tx_timer_create.o [1]
+  .text              ro code   0x800'fbfc     0x124  tx_event_flags_create.o [1]
+  .text              ro code   0x800'fd20      0x44  tx_thread_stack_build.o [1]
+  .text              ro code   0x800'fd64     0x11c  tx_trace_object_register.o [1]
+  .text              ro code   0x800'fe80      0x18  lv_hal_tick.o [1]
+  .text              ro code   0x800'fe98      0x38  stm32f4xx_hal.o [1]
+  .text              ro code   0x800'fed0     0x13c  stm32f4xx_hal_rcc_ex.o [1]
+  .text              ro code   0x801'000c     0x1c8  tx_mutex_get.o [1]
+  .text              ro code   0x801'01d4       0x2  stm32f4xx_hal_msp.o [1]
+  .text              ro code   0x801'01d8     0x24c  tx_thread_time_slice.o [1]
+  .text              ro code   0x801'0424     0x130  tx_timer_thread_entry.o [1]
+  .text              ro code   0x801'0554      0xe8  tx_timer_interrupt.o [1]
+  .text              ro code   0x801'063c      0x24  tx_timer_expiration_process.o [1]
+  .text              ro code   0x801'0660      0xe0  SEGGER_HardFaultHandler.o [1]
+  .text              ro code   0x801'0740      0xe0  tx_timer_initialize.o [1]
+  .text              ro code   0x801'0820      0xd0  tx_thread_schedule.o [1]
+  .text              ro code   0x801'08f0      0xc8  tx_mutex_cleanup.o [1]
+  .rodata            const     0x801'09b8      0xb8  bsp_touch.o [1]
   .text              ro code   0x801'0a70      0x98  tx_thread_initialize.o [1]
   .text              ro code   0x801'0b08      0x88  tx_initialize_high_level.o [1]
   .text              ro code   0x801'0b90      0x40  tx_trace_initialize.o [1]
@@ -643,54 +643,58 @@ No sections matched the following patterns:
   .text              ro code   0x801'1288       0xa  cexit.o [4]
   .rodata            const     0x801'1294      0x1c  bsp_can_bus.o [1]
   .rodata            const     0x801'12b0      0x1c  statistic_task.o [1]
-  .text              ro code   0x801'12cc      0x1c  cstartup_M.o [4]
-  .rodata            const     0x801'12e8      0x18  bsp_can_bus.o [1]
-  .rodata            const     0x801'1300      0x18  msg_task.o [1]
-  .rodata            const     0x801'1318      0x18  msg_task.o [1]
-  .rodata            const     0x801'1330      0x18  msg_task.o [1]
-  .rodata            const     0x801'1348      0x18  msg_task.o [1]
-  .text              ro code   0x801'1360      0x16  xprout.o [2]
-  .text              ro code   0x801'1378       0xc  putchar.o [2]
-  .rodata            const     0x801'1384      0x14  bsp_touch.o [1]
-  .rodata            const     0x801'1398      0x14  bsp_touch.o [1]
-  .rodata            const     0x801'13ac      0x14  msg_task.o [1]
-  .rodata            const     0x801'13c0      0x14  msg_task.o [1]
-  .rodata            const     0x801'13d4      0x14  msg_task.o [1]
-  .rodata            const     0x801'13e8      0x14  msg_task.o [1]
-  .rodata            const     0x801'13fc      0x14  msg_task.o [1]
-  .rodata            const     0x801'1410      0x14  msg_task.o [1]
-  .rodata            const     0x801'1424      0x14  tx_timer_initialize.o [1]
-  .text              ro code   0x801'1438      0x12  HardFaultHandler.o [1]
-  .rodata            const     0x801'144c      0x10  bsp_key.o [1]
-  .rodata            const     0x801'145c      0x10  bsp_spi_flash.o [1]
-  .rodata            const     0x801'146c      0x10  bsp_tim_pwm.o [1]
-  .rodata            const     0x801'147c      0x10  bsp_touch.o [1]
-  .rodata            const     0x801'148c      0x10  gui_task.o [1]
-  .rodata            const     0x801'149c      0x10  system_stm32f4xx.o [1]
-  .rodata            const     0x801'14ac      0x10  system_task_create.o [1]
-  .rodata            const     0x801'14bc      0x10  system_task_create.o [1]
-  .rodata            const     0x801'14cc      0x10  system_task_create.o [1]
-  .rodata            const     0x801'14dc      0x10  system_task_create.o [1]
-  .rodata            const     0x801'14ec      0x10  system_task_create.o [1]
-  .rodata            const     0x801'14fc      0x10  system_task_create.o [1]
-  .rodata            const     0x801'150c      0x10  system_task_create.o [1]
-  .rodata            const     0x801'151c      0x10  system_task_create.o [1]
-  .text              ro code   0x801'152c      0x10  startup_stm32f407xx.o [1]
-  .rodata            const     0x801'153c       0xc  bsp_lcd.o [1]
-  .rodata            const     0x801'1548       0xc  bsp_spi_flash.o [1]
-  .rodata            const     0x801'1554       0xc  bsp_spi_flash.o [1]
-  .rodata            const     0x801'1560       0xc  bsp_spi_flash.o [1]
-  .rodata            const     0x801'156c       0xc  bsp_spi_flash.o [1]
-  .rodata            const     0x801'1578       0xc  bsp_spi_flash.o [1]
-  .rodata            const     0x801'1584       0xc  bsp_touch.o [1]
-  .rodata            const     0x801'1590       0xc  bsp_touch.o [1]
-  .rodata            const     0x801'159c       0xc  system_task_create.o [1]
-  .rodata            const     0x801'15a8       0xc  system_task_create.o [1]
-  .text              ro code   0x801'15b4       0xc  stm32f4xx_it.o [1]
-  .rodata            const     0x801'15c0       0x8  bsp_touch.o [1]
-  .rodata            const     0x801'15c8       0x8  stm32f4xx_hal_dma.o [1]
-  .rodata            const     0x801'15d0       0x8  system_stm32f4xx.o [1]
-  .rodata            const     0x801'15d8       0x8  xprintffull_nomb.o [2]
+  .rodata            const     0x801'12cc      0x18  bsp_can_bus.o [1]
+  .rodata            const     0x801'12e4      0x18  msg_task.o [1]
+  .rodata            const     0x801'12fc      0x18  msg_task.o [1]
+  .rodata            const     0x801'1314      0x18  msg_task.o [1]
+  .rodata            const     0x801'132c      0x18  msg_task.o [1]
+  .text              ro code   0x801'1344      0x16  xprout.o [2]
+  .text              ro code   0x801'135c       0xc  putchar.o [2]
+  .rodata            const     0x801'1368      0x14  bsp_touch.o [1]
+  .rodata            const     0x801'137c      0x14  bsp_touch.o [1]
+  .rodata            const     0x801'1390      0x14  msg_task.o [1]
+  .rodata            const     0x801'13a4      0x14  msg_task.o [1]
+  .rodata            const     0x801'13b8      0x14  msg_task.o [1]
+  .rodata            const     0x801'13cc      0x14  msg_task.o [1]
+  .rodata            const     0x801'13e0      0x14  msg_task.o [1]
+  .rodata            const     0x801'13f4      0x14  msg_task.o [1]
+  .rodata            const     0x801'1408      0x14  tx_timer_initialize.o [1]
+  .text              ro code   0x801'141c      0x12  HardFaultHandler.o [1]
+  .rodata            const     0x801'1430      0x10  bsp_key.o [1]
+  .rodata            const     0x801'1440      0x10  bsp_spi_flash.o [1]
+  .rodata            const     0x801'1450      0x10  bsp_tim_pwm.o [1]
+  .rodata            const     0x801'1460      0x10  bsp_touch.o [1]
+  .rodata            const     0x801'1470      0x10  gui_task.o [1]
+  .rodata            const     0x801'1480      0x10  system_stm32f4xx.o [1]
+  .rodata            const     0x801'1490      0x10  system_task_create.o [1]
+  .rodata            const     0x801'14a0      0x10  system_task_create.o [1]
+  .rodata            const     0x801'14b0      0x10  system_task_create.o [1]
+  .rodata            const     0x801'14c0      0x10  system_task_create.o [1]
+  .rodata            const     0x801'14d0      0x10  system_task_create.o [1]
+  .rodata            const     0x801'14e0      0x10  system_task_create.o [1]
+  .rodata            const     0x801'14f0      0x10  system_task_create.o [1]
+  .rodata            const     0x801'1500      0x10  system_task_create.o [1]
+  .text              ro code   0x801'1510      0x10  startup_stm32f407xx.o [1]
+  .rodata            const     0x801'1520       0xc  bsp_lcd.o [1]
+  .rodata            const     0x801'152c       0xc  bsp_spi_flash.o [1]
+  .rodata            const     0x801'1538       0xc  bsp_spi_flash.o [1]
+  .rodata            const     0x801'1544       0xc  bsp_spi_flash.o [1]
+  .rodata            const     0x801'1550       0xc  bsp_spi_flash.o [1]
+  .rodata            const     0x801'155c       0xc  bsp_spi_flash.o [1]
+  .rodata            const     0x801'1568       0xc  bsp_touch.o [1]
+  .rodata            const     0x801'1574       0xc  bsp_touch.o [1]
+  .rodata            const     0x801'1580       0xc  system_task_create.o [1]
+  .rodata            const     0x801'158c       0xc  system_task_create.o [1]
+  .text              ro code   0x801'1598       0xc  stm32f4xx_it.o [1]
+  .text              ro code   0x801'15a4       0xc  cstartup_M.o [4]
+  .rodata            const     0x801'15b0       0x8  bsp_touch.o [1]
+  .rodata            const     0x801'15b8       0x8  stm32f4xx_hal_dma.o [1]
+  .rodata            const     0x801'15c0       0x8  system_stm32f4xx.o [1]
+  .rodata            const     0x801'15c8       0x8  xprintffull_nomb.o [2]
+  .text              ro code   0x801'15d0       0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'15d4       0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'15d8       0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'15dc       0x4  startup_stm32f407xx.o [1]
   .text              ro code   0x801'15e0       0x4  startup_stm32f407xx.o [1]
   .text              ro code   0x801'15e4       0x4  startup_stm32f407xx.o [1]
   .text              ro code   0x801'15e8       0x4  startup_stm32f407xx.o [1]
@@ -757,14 +761,10 @@ No sections matched the following patterns:
   .text              ro code   0x801'16dc       0x4  startup_stm32f407xx.o [1]
   .text              ro code   0x801'16e0       0x4  startup_stm32f407xx.o [1]
   .text              ro code   0x801'16e4       0x4  startup_stm32f407xx.o [1]
-  .text              ro code   0x801'16e8       0x4  startup_stm32f407xx.o [1]
-  .text              ro code   0x801'16ec       0x4  startup_stm32f407xx.o [1]
-  .text              ro code   0x801'16f0       0x4  startup_stm32f407xx.o [1]
-  .text              ro code   0x801'16f4       0x4  startup_stm32f407xx.o [1]
-  .rodata            const     0x801'16f8       0x0  zero_init3.o [4]
-  .rodata            const     0x801'16f8       0x0  lz77_init_single.o [4]
-  Initializer bytes  const     0x801'16f8      0x61  <for P2-1>
-                             - 0x801'1759  0x1'15d1
+  .rodata            const     0x801'16e8       0x0  zero_init3.o [4]
+  .rodata            const     0x801'16e8       0x0  lz77_init_single.o [4]
+  Initializer bytes  const     0x801'16e8      0x61  <for P2-1>
+                             - 0x801'1749  0x1'15c1
 
 "P2", part 1 of 3:                            0x4e6
   P2-1                        0x2000'0000     0x4e6  <Init block>
@@ -914,7 +914,7 @@ Unused ranges:
 
          From           To      Size
          ----           --      ----
-   0x801'1759   0x80f'ffff  0xe'e8a7
+   0x801'1749   0x80f'ffff  0xe'e8b7
   0x2000'04e6  0x2000'04e7       0x2
   0x2000'6a14  0x2000'6a17       0x4
   0x2000'7218  0x2001'ffff  0x1'8de8
@@ -932,7 +932,7 @@ Zero (__iar_zero_init3)
 
 Copy/lz77 (__iar_lz77_init_single3)
     1 source range, total size 0x61 (7% of destination):
-           0x801'16f8    0x61
+           0x801'16e8    0x61
     1 destination range, total size 0x4e6:
           0x2000'0000   0x4e6
 
@@ -948,7 +948,7 @@ command line/config:
     -----------------------------------------------------------
     Total:
 
-J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj: [1]
+D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj: [1]
     HardFaultHandler.o                     18
     Monitor.o                              10
     SEGGER_HardFaultHandler.o             224       44       68
@@ -971,7 +971,7 @@ J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj: [1]
     gui_task.o                             48       16    2'280
     lv_hal_tick.o                          24                 5
     main.o                                 30
-    msg_task.o                            364      248    1'256
+    msg_task.o                            252      248    1'256
     sd_diskio_dma.o                        28                 8
     startup_stm32f407xx.o                 688
     statistic_task.o                      324      284    2'605
@@ -993,7 +993,7 @@ J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj: [1]
     stm32f4xx_it.o                         12
     stm32f4xx_ll_fsmc.o                   228
     stm32f4xx_ll_sdmmc.o                  496
-    sys.o                                 176
+    sys.o                                 288
     system_stm32f4xx.o                     96       24        4
     system_task_create.o                  624      184    2'492
     ticktim.o                             326                71
@@ -1084,7 +1084,7 @@ rt7M_tl.a: [4]
     I64DivZer.o                             2
     cexit.o                                10
     cmain.o                                30
-    cstartup_M.o                           28
+    cstartup_M.o                           12
     data_init.o                            40
     lz77_init_single.o                    120
     memchr.o                               88
@@ -1094,7 +1094,7 @@ rt7M_tl.a: [4]
     strlen.o                               54
     zero_init3.o                           58
     -----------------------------------------------------------
-    Total:                              1'378
+    Total:                              1'362
 
 shb_l.a: [5]
     exit.o                                 20
@@ -1104,7 +1104,7 @@ shb_l.a: [5]
     Gaps                                   59       10
     Linker created                                  32    2'048
 ---------------------------------------------------------------
-    Grand Total:                       51'331   20'182   29'202
+    Grand Total:                       51'315   20'182   29'202
 
 
 *******************************************************************************
@@ -1125,8 +1125,8 @@ ADS1256_Send8Bit         0x800'4c01    0x48  Code  Lc  bsp_spi_ads1256.o [1]
 ADS1256_SetChannal       0x800'4cc5    0x1c  Code  Lc  bsp_spi_ads1256.o [1]
 ADS1256_WriteCmd         0x800'4caf    0x16  Code  Lc  bsp_spi_ads1256.o [1]
 ADS1256_WriteReg         0x800'4c85    0x2a  Code  Lc  bsp_spi_ads1256.o [1]
-AHBPrescTable            0x801'149c    0x10  Data  Gb  system_stm32f4xx.o [1]
-APBPrescTable            0x801'15d0     0x8  Data  Gb  system_stm32f4xx.o [1]
+AHBPrescTable            0x801'1480    0x10  Data  Gb  system_stm32f4xx.o [1]
+APBPrescTable            0x801'15c0     0x8  Data  Gb  system_stm32f4xx.o [1]
 AppLCDSemp              0x2000'6710    0x34  Data  Gb  gui_task.o [1]
 AppPrintfSemp           0x2000'6744    0x34  Data  Gb  msg_task.o [1]
 AppSysObjCreate          0x800'e71b    0x46  Code  Lc  system_task_create.o [1]
@@ -1157,7 +1157,7 @@ BSP_SD_ReadCpltCallback
                          0x800'dd25     0x8  Code  Gb  sd_diskio_dma.o [1]
 BSP_SD_WriteCpltCallback
                          0x800'dd1d     0x8  Code  Gb  sd_diskio_dma.o [1]
-BusFault_Handler         0x801'15b9     0x2  Code  Gb  stm32f4xx_it.o [1]
+BusFault_Handler         0x801'159d     0x2  Code  Gb  stm32f4xx_it.o [1]
 CAN1_RX0_IRQHandler      0x800'c0a7    0x14  Code  Gb  bsp_can_bus.o [1]
 CMD_RDX                 0x2000'04e4     0x1  Data  Gb  bsp_touch.o [1]
 CMD_RDY                 0x2000'04e5     0x1  Data  Gb  bsp_touch.o [1]
@@ -1182,10 +1182,10 @@ DMA2_Stream6_IRQHandler
 DMA_CalcBaseAndBitshift
                          0x800'9de5    0x30  Code  Lc  stm32f4xx_hal_dma.o [1]
 DMA_CalcBaseAndBitshift::flagBitshiftOffset
-                         0x801'15c8     0x8  Data  Lc  stm32f4xx_hal_dma.o [1]
+                         0x801'15b8     0x8  Data  Lc  stm32f4xx_hal_dma.o [1]
 DMA_CheckFifoParam       0x800'9e21    0x88  Code  Lc  stm32f4xx_hal_dma.o [1]
 DMA_SetConfig            0x800'9db7    0x2e  Code  Lc  stm32f4xx_hal_dma.o [1]
-DebugMon_Handler         0x801'15bf     0x2  Code  Gb  stm32f4xx_it.o [1]
+DebugMon_Handler         0x801'15a3     0x2  Code  Gb  stm32f4xx_it.o [1]
 DispTaskInfo             0x800'e94d    0x5e  Code  Gb  statistic_task.o [1]
 EXTI9_5_IRQHandler       0x800'4d95     0xa  Code  Gb  bsp_spi_ads1256.o [1]
 EventGroup              0x2000'6878    0x28  Data  Gb  system_task_create.o [1]
@@ -1194,13 +1194,13 @@ FSMC_NORSRAM_Extended_Timing_Init
 FSMC_NORSRAM_Init        0x800'4dad    0x58  Code  Gb  stm32f4xx_ll_fsmc.o [1]
 FSMC_NORSRAM_Timing_Init
                          0x800'4e05    0x44  Code  Gb  stm32f4xx_ll_fsmc.o [1]
-GT9147_CFG_TBL           0x801'08cc    0xb8  Data  Gb  bsp_touch.o [1]
+GT9147_CFG_TBL           0x801'09b8    0xb8  Data  Gb  bsp_touch.o [1]
 GT9147_Init              0x800'7353   0x124  Code  Gb  bsp_touch.o [1]
 GT9147_RD_Reg            0x800'72db    0x78  Code  Gb  bsp_touch.o [1]
 GT9147_Scan              0x800'7479   0x1ea  Code  Gb  bsp_touch.o [1]
 GT9147_Scan::t          0x2000'6a0e     0x1  Data  Lc  bsp_touch.o [1]
 GT9147_Send_Cfg          0x800'7219    0x5a  Code  Gb  bsp_touch.o [1]
-GT9147_TPX_TBL           0x801'1584     0xc  Data  Gb  bsp_touch.o [1]
+GT9147_TPX_TBL           0x801'1568     0xc  Data  Gb  bsp_touch.o [1]
 GT9147_WR_Reg            0x800'7273    0x68  Code  Gb  bsp_touch.o [1]
 HAL_CAN_ActivateNotification
                          0x800'bcc5    0x2c  Code  Gb  stm32f4xx_hal_can.o [1]
@@ -1223,20 +1223,20 @@ HAL_GPIO_EXTI_IRQHandler
                          0x800'4a49    0x1c  Code  Gb  stm32f4xx_hal_gpio.o [1]
 HAL_GPIO_Init            0x800'4859   0x1dc  Code  Gb  stm32f4xx_hal_gpio.o [1]
 HAL_GPIO_WritePin        0x800'4a35    0x14  Code  Gb  stm32f4xx_hal_gpio.o [1]
-HAL_GetREVID             0x801'0a5d     0x8  Code  Gb  stm32f4xx_hal.o [1]
+HAL_GetREVID             0x800'fec1     0x8  Code  Gb  stm32f4xx_hal.o [1]
 HAL_GetTick              0x800'4b4d    0x42  Code  Gb  bsp_dwt.o [1]
 HAL_GetTick::ticks      0x2000'690c     0x4  Data  Lc  bsp_dwt.o [1]
-HAL_I2C_Init             0x800'f5e9   0x1b8  Code  Gb  stm32f4xx_hal_i2c.o [1]
+HAL_I2C_Init             0x800'f579   0x1b8  Code  Gb  stm32f4xx_hal_i2c.o [1]
 HAL_I2C_MspInit          0x800'ec23    0x92  Code  Gb  bsp_iic_bus.o [1]
-HAL_Init                 0x801'0a35    0x28  Code  Gb  stm32f4xx_hal.o [1]
+HAL_Init                 0x800'fe99    0x28  Code  Gb  stm32f4xx_hal.o [1]
 HAL_InitTick             0x800'4b49     0x4  Code  Gb  bsp_dwt.o [1]
-HAL_MspInit              0x801'0a6d     0x2  Code  Gb  stm32f4xx_hal_msp.o [1]
+HAL_MspInit              0x801'01d5     0x2  Code  Gb  stm32f4xx_hal_msp.o [1]
 HAL_NVIC_EnableIRQ       0x800'a863     0xa  Code  Gb  stm32f4xx_hal_cortex.o [1]
 HAL_NVIC_SetPriority     0x800'a841    0x22  Code  Gb  stm32f4xx_hal_cortex.o [1]
 HAL_NVIC_SetPriorityGrouping
                          0x800'a839     0x8  Code  Gb  stm32f4xx_hal_cortex.o [1]
 HAL_RCC_ClockConfig      0x800'b7d1   0x138  Code  Gb  stm32f4xx_hal_rcc.o [1]
-HAL_RCC_DeInit           0x800'f8d5   0x112  Code  Gb  stm32f4xx_hal_rcc_ex.o [1]
+HAL_RCC_DeInit           0x800'fed1   0x112  Code  Gb  stm32f4xx_hal_rcc_ex.o [1]
 HAL_RCC_GetHCLKFreq      0x800'b909     0x6  Code  Gb  stm32f4xx_hal_rcc.o [1]
 HAL_RCC_GetPCLK1Freq     0x800'b90f    0x16  Code  Gb  stm32f4xx_hal_rcc.o [1]
 HAL_RCC_GetPCLK2Freq     0x800'b925    0x16  Code  Gb  stm32f4xx_hal_rcc.o [1]
@@ -1279,13 +1279,13 @@ HAL_TIM_PWM_Stop_DMA     0x800'903d    0xe2  Code  Gb  stm32f4xx_hal_tim.o [1]
 HAL_TIM_PeriodElapsedCallback
                          0x800'990d     0xa  Code  Gb  bsp_rotation.o [1]
 HAL_UART_Init            0x800'b449    0x76  Code  Gb  stm32f4xx_hal_uart.o [1]
-HardFaultHandler         0x801'0575    0xe0  Code  Gb  SEGGER_HardFaultHandler.o [1]
+HardFaultHandler         0x801'0661    0xe0  Code  Gb  SEGGER_HardFaultHandler.o [1]
 HardFaultRegs           0x2000'6690    0x40  Data  Lc  SEGGER_HardFaultHandler.o [1]
-HardFault_Handler        0x801'1439          Code  Gb  HardFaultHandler.o [1]
+HardFault_Handler        0x801'141d          Code  Gb  HardFaultHandler.o [1]
 I2C_Mode_Config          0x800'ebed    0x36  Code  Lc  bsp_iic_bus.o [1]
 InitHardUart             0x800'af8b   0x214  Code  Lc  bsp_usart_fifo.o [1]
 IsKeyDownFunc            0x800'dd8b    0x6a  Code  Lc  bsp_key.o [1]
-JumpToBootloader         0x800'f04f    0x5a  Code  Lc  msg_task.o [1]
+JumpToBootloader         0x800'f803    0x5a  Code  Gb  sys.o [1]
 KeyPinActive             0x800'dd39    0x52  Code  Lc  bsp_key.o [1]
 LCD_Clear                0x800'44b7    0x2e  Code  Gb  bsp_lcd.o [1]
 LCD_Display_Dir          0x800'432d    0x7c  Code  Gb  bsp_lcd.o [1]
@@ -1302,8 +1302,8 @@ LCD_WriteRAM_Prepare     0x800'3141     0xa  Code  Gb  bsp_lcd.o [1]
 LCD_WriteReg             0x800'3137     0xa  Code  Gb  bsp_lcd.o [1]
 Load_Drow_Dialog         0x800'7875    0x32  Code  Gb  bsp_touch.o [1]
 MX_DMA_Init              0x800'a315    0xc2  Code  Gb  bsp_tim_pwm.o [1]
-MemManage_Handler        0x801'15b7     0x2  Code  Gb  stm32f4xx_it.o [1]
-NMI_Handler              0x801'15b5     0x2  Code  Gb  stm32f4xx_it.o [1]
+MemManage_Handler        0x801'159b     0x2  Code  Gb  stm32f4xx_it.o [1]
+NMI_Handler              0x801'1599     0x2  Code  Gb  stm32f4xx_it.o [1]
 NVIC_EnableIRQ           0x800'a7c5    0x14  Code  Lc  stm32f4xx_hal_cortex.o [1]
 NVIC_EncodePriority      0x800'a7fd    0x3c  Code  Lc  stm32f4xx_hal_cortex.o [1]
 NVIC_GetPriorityGrouping
@@ -1318,8 +1318,8 @@ OSIdleCtrRun            0x2000'693c     0x4  Data  Gb  statistic_task.o [1]
 OSStatInit               0x800'ea31    0x2e  Code  Gb  statistic_task.o [1]
 OSStatRdy               0x2000'6a10     0x1  Data  Gb  statistic_task.o [1]
 POINT_COLOR             0x2000'0000     0x4  Data  Gb  bsp_lcd.o [1]
-POINT_COLOR_TBL          0x801'1590     0xc  Data  Gb  bsp_touch.o [1]
-PendSV_Handler           0x801'0761          Code  Gb  tx_thread_schedule.o [1]
+POINT_COLOR_TBL          0x801'1574     0xc  Data  Gb  bsp_touch.o [1]
+PendSV_Handler           0x801'084d          Code  Gb  tx_thread_schedule.o [1]
 ReadStatus              0x2000'6928     0x4  Data  Lc  sd_diskio_dma.o [1]
 Region$$Table$$Base      0x801'11d0           --   Gb  - Linker created -
 Region$$Table$$Limit     0x801'11f0           --   Gb  - Linker created -
@@ -1341,8 +1341,8 @@ SD_Write_IT              0x800'dabd    0x26  Code  Lc  stm32f4xx_hal_sd.o [1]
 SPI_EndRxTxTransaction   0x800'd133    0x26  Code  Lc  stm32f4xx_hal_spi.o [1]
 SPI_WaitFlagStateUntilTimeout
                          0x800'd093    0xa0  Code  Lc  stm32f4xx_hal_spi.o [1]
-SVC_Handler              0x801'15bd     0x2  Code  Gb  stm32f4xx_it.o [1]
-Stm32_Clock_Init         0x801'0985    0xb0  Code  Gb  sys.o [1]
+SVC_Handler              0x801'15a1     0x2  Code  Gb  stm32f4xx_it.o [1]
+Stm32_Clock_Init         0x800'f761    0xa2  Code  Gb  sys.o [1]
 SysTick_Handler          0x801'0d13          Code  Gb  tx_initialize_low_level.o [1]
 SysTick_ISR              0x800'eb1f    0xb2  Code  Gb  ticktim.o [1]
 SysTick_ISR::s_count10ms
@@ -1385,13 +1385,13 @@ USART3_IRQHandler        0x800'b309     0xa  Code  Gb  bsp_usart_fifo.o [1]
 UartIRQ                  0x800'b209    0xec  Code  Lc  bsp_usart_fifo.o [1]
 UartSend                 0x800'b36d    0x8e  Code  Lc  bsp_usart_fifo.o [1]
 UartVarInit              0x800'aeb9    0xd2  Code  Lc  bsp_usart_fifo.o [1]
-UsageFault_Handler       0x801'15bb     0x2  Code  Gb  stm32f4xx_it.o [1]
+UsageFault_Handler       0x801'159f     0x2  Code  Gb  stm32f4xx_it.o [1]
 WriteStatus             0x2000'6924     0x4  Data  Lc  sd_diskio_dma.o [1]
 _Continue               0x2000'692c     0x4  Data  Lc  SEGGER_HardFaultHandler.o [1]
 _LitobFullNoMb           0x800'5d1d   0x10a  Code  Lc  xprintffull_nomb.o [2]
 _Locale_lconv           0x2000'0464    0x38  Data  Lc  xlocale_c.o [2]
 _PrintfFullNoMb          0x800'4f61   0xd98  Code  Gb  xprintffull_nomb.o [2]
-_Prout                   0x801'1361    0x16  Code  Gb  xprout.o [2]
+_Prout                   0x801'1345    0x16  Code  Gb  xprout.o [2]
 _PutcharFullNoMb         0x800'5e8d    0x20  Code  Lc  xprintffull_nomb.o [2]
 _PutcharsFullNoMb        0x800'5ead    0x2e  Code  Lc  xprintffull_nomb.o [2]
 _SNProut                 0x800'5f73    0x1a  Code  Gb  xsnprout.o [2]
@@ -1402,7 +1402,7 @@ __aeabi_d2uiz            0x800'669d          Code  Gb  DblToU32.o [3]
 __aeabi_ddiv             0x800'6455          Code  Gb  DblDiv.o [3]
 __aeabi_dmul             0x800'66e1          Code  Gb  DblMul.o [3]
 __aeabi_dsub             0x800'6371          Code  Gb  DblSub.o [3]
-__aeabi_f2d              0x800'f595          Code  Gb  FltToDbl.o [3]
+__aeabi_f2d              0x800'f525          Code  Gb  FltToDbl.o [3]
 __aeabi_i2d              0x800'634d          Code  Gb  S32ToDbl.o [3]
 __aeabi_ldiv0            0x800'6c31          Code  Gb  I64DivZer.o [4]
 __aeabi_memclr4          0x800'a881          Code  Gb  ABImemclr4.o [4]
@@ -1432,7 +1432,7 @@ __iar_init_vfp           0x801'11ad          Code  Gb  fpinit_M.o [3]
 __iar_ldexp64            0x800'61d5          Code  Gb  ldexp.o [3]
 __iar_lz77_init_single3
                          0x801'0c55    0x78  Code  Gb  lz77_init_single.o [4]
-__iar_program_start      0x801'12cd          Code  Gb  cstartup_M.o [4]
+__iar_program_start      0x801'15a5          Code  Gb  cstartup_M.o [4]
 __iar_scalbln64          0x800'61d5          Code  Gb  ldexp.o [3]
 __iar_scalbn64           0x800'61d5          Code  Gb  ldexp.o [3]
 __iar_softfp___iar_frexp64
@@ -1441,13 +1441,13 @@ __iar_softfp_frexp       0x800'6105          Code  Gb  frexp.o [3]
 __iar_softfp_frexpl      0x800'6105          Code  Gb  frexp.o [3]
 __iar_zero_init3         0x800'5f23    0x3a  Code  Gb  zero_init3.o [4]
 __low_level_init         0x801'127f     0x4  Code  Gb  low_level_init.o [2]
-__tx_PendSVHandler       0x801'0761          Code  Gb  tx_thread_schedule.o [1]
+__tx_PendSVHandler       0x801'084d          Code  Gb  tx_thread_schedule.o [1]
 __tx_SysTickHandler      0x801'0d13          Code  Gb  tx_initialize_low_level.o [1]
 __tx_free_memory_start  0x2000'68fc          Data  Gb  tx_initialize_low_level.o [1]
 __vector_table           0x800'0000          Data  Gb  startup_stm32f407xx.o [1]
 _call_main               0x801'126d          Code  Gb  cmain.o [4]
 _exit                    0x801'1289          Code  Gb  cexit.o [4]
-_main                    0x801'1277          Code  Gb  cmain.o [4]
+_main                    0x801'127b          Code  Gb  cmain.o [4]
 _tx_block_pool_created_count
                         0x2000'6968     0x4  Data  Gb  tx_initialize_high_level.o [1]
 _tx_block_pool_created_ptr
@@ -1457,7 +1457,7 @@ _tx_byte_pool_created_count
                         0x2000'6970     0x4  Data  Gb  tx_initialize_high_level.o [1]
 _tx_byte_pool_created_ptr
                         0x2000'696c     0x4  Data  Gb  tx_initialize_high_level.o [1]
-_tx_event_flags_create   0x800'fc89   0x124  Code  Gb  tx_event_flags_create.o [1]
+_tx_event_flags_create   0x800'fbfd   0x124  Code  Gb  tx_event_flags_create.o [1]
 _tx_event_flags_created_count
                         0x2000'6958     0x4  Data  Gb  tx_initialize_high_level.o [1]
 _tx_event_flags_created_ptr
@@ -1471,18 +1471,18 @@ _tx_initialize_low_level
                          0x801'0ccd          Code  Gb  tx_initialize_low_level.o [1]
 _tx_initialize_unused_memory
                         0x2000'6974     0x4  Data  Gb  tx_initialize_high_level.o [1]
-_tx_mutex_cleanup        0x801'0805    0x7a  Code  Gb  tx_mutex_cleanup.o [1]
-_tx_mutex_create         0x800'fa11   0x134  Code  Gb  tx_mutex_create.o [1]
+_tx_mutex_cleanup        0x801'08f1    0x7a  Code  Gb  tx_mutex_cleanup.o [1]
+_tx_mutex_create         0x800'f985   0x134  Code  Gb  tx_mutex_create.o [1]
 _tx_mutex_created_count
                         0x2000'6960     0x4  Data  Gb  tx_initialize_high_level.o [1]
 _tx_mutex_created_ptr   0x2000'695c     0x4  Data  Gb  tx_initialize_high_level.o [1]
-_tx_mutex_get            0x800'ff25   0x1c8  Code  Gb  tx_mutex_get.o [1]
+_tx_mutex_get            0x801'000d   0x1c8  Code  Gb  tx_mutex_get.o [1]
 _tx_mutex_prioritize     0x800'e329   0x168  Code  Gb  tx_mutex_prioritize.o [1]
 _tx_mutex_priority_change
                          0x800'e491    0xf0  Code  Gb  tx_mutex_priority_change.o [1]
 _tx_mutex_put            0x800'e055   0x2d4  Code  Gb  tx_mutex_put.o [1]
 _tx_mutex_thread_release
-                         0x801'087f    0x40  Code  Gb  tx_mutex_cleanup.o [1]
+                         0x801'096b    0x40  Code  Gb  tx_mutex_cleanup.o [1]
 _tx_queue_created_count
                         0x2000'6950     0x4  Data  Gb  tx_initialize_high_level.o [1]
 _tx_queue_created_ptr   0x2000'694c     0x4  Data  Gb  tx_initialize_high_level.o [1]
@@ -1492,7 +1492,7 @@ _tx_semaphore_created_ptr
                         0x2000'6944     0x4  Data  Gb  tx_initialize_high_level.o [1]
 _tx_thread_application_stack_error_handler
                         0x2000'69a4     0x4  Data  Gb  tx_thread_initialize.o [1]
-_tx_thread_create        0x800'f35d   0x238  Code  Gb  tx_thread_create.o [1]
+_tx_thread_create        0x800'f2ed   0x238  Code  Gb  tx_thread_create.o [1]
 _tx_thread_created_count
                         0x2000'6988     0x4  Data  Gb  tx_thread_initialize.o [1]
 _tx_thread_created_ptr  0x2000'6984     0x4  Data  Gb  tx_thread_initialize.o [1]
@@ -1511,12 +1511,12 @@ _tx_thread_priority_list
                         0x2000'630c    0x80  Data  Gb  tx_thread_initialize.o [1]
 _tx_thread_priority_maps
                         0x2000'698c     0x4  Data  Gb  tx_thread_initialize.o [1]
-_tx_thread_schedule      0x801'0735          Code  Gb  tx_thread_schedule.o [1]
+_tx_thread_schedule      0x801'0821          Code  Gb  tx_thread_schedule.o [1]
 _tx_thread_shell_entry   0x801'0bd1    0x84  Code  Gb  tx_thread_shell_entry.o [1]
 _tx_thread_sleep         0x800'7a4d   0x14c  Code  Gb  tx_thread_sleep.o [1]
 _tx_thread_stack_analyze
                          0x800'7f51    0x80  Code  Gb  tx_thread_stack_analyze.o [1]
-_tx_thread_stack_build   0x800'fdad          Code  Gb  tx_thread_stack_build.o [1]
+_tx_thread_stack_build   0x800'fd21          Code  Gb  tx_thread_stack_build.o [1]
 _tx_thread_stack_error_handler
                          0x800'7f31    0x20  Code  Gb  tx_thread_stack_error_handler.o [1]
 _tx_thread_system_preempt_check
@@ -1535,23 +1535,23 @@ _tx_thread_system_state
                         0x2000'0460     0x4  Data  Gb  tx_thread_initialize.o [1]
 _tx_thread_system_suspend
                          0x800'7bb7   0x332  Code  Gb  tx_thread_system_suspend.o [1]
-_tx_thread_time_slice    0x801'00ed   0x24c  Code  Gb  tx_thread_time_slice.o [1]
+_tx_thread_time_slice    0x801'01d9   0x24c  Code  Gb  tx_thread_time_slice.o [1]
 _tx_thread_timeout       0x801'0fd5    0x38  Code  Gb  tx_thread_timeout.o [1]
 _tx_time_get             0x800'4e91    0xd0  Code  Gb  tx_time_get.o [1]
-_tx_timer_create         0x800'fb45   0x144  Code  Gb  tx_timer_create.o [1]
+_tx_timer_create         0x800'fab9   0x144  Code  Gb  tx_timer_create.o [1]
 _tx_timer_created_count
                         0x2000'69c4     0x4  Data  Gb  tx_timer_initialize.o [1]
 _tx_timer_created_ptr   0x2000'69c0     0x4  Data  Gb  tx_timer_initialize.o [1]
 _tx_timer_current_ptr   0x2000'69b8     0x4  Data  Gb  tx_timer_initialize.o [1]
 _tx_timer_expiration_process
-                         0x801'0551    0x24  Code  Gb  tx_timer_expiration_process.o [1]
+                         0x801'063d    0x24  Code  Gb  tx_timer_expiration_process.o [1]
 _tx_timer_expired       0x2000'69bc     0x4  Data  Gb  tx_timer_initialize.o [1]
 _tx_timer_expired_time_slice
                         0x2000'69ac     0x4  Data  Gb  tx_timer_initialize.o [1]
 _tx_timer_expired_timer_ptr
                         0x2000'69c8     0x4  Data  Gb  tx_timer_initialize.o [1]
-_tx_timer_initialize     0x801'0655    0xe0  Code  Gb  tx_timer_initialize.o [1]
-_tx_timer_interrupt      0x801'0469          Code  Gb  tx_timer_interrupt.o [1]
+_tx_timer_initialize     0x801'0741    0xe0  Code  Gb  tx_timer_initialize.o [1]
+_tx_timer_interrupt      0x801'0555          Code  Gb  tx_timer_interrupt.o [1]
 _tx_timer_list          0x2000'638c    0x80  Data  Gb  tx_timer_initialize.o [1]
 _tx_timer_list_end      0x2000'69b4     0x4  Data  Gb  tx_timer_initialize.o [1]
 _tx_timer_list_start    0x2000'69b0     0x4  Data  Gb  tx_timer_initialize.o [1]
@@ -1564,7 +1564,7 @@ _tx_timer_system_clock  0x2000'69a8     0x4  Data  Gb  tx_timer_initialize.o [1]
 _tx_timer_system_deactivate
                          0x800'c861    0x2e  Code  Gb  tx_timer_system_deactivate.o [1]
 _tx_timer_thread        0x2000'61d4    0xb4  Data  Gb  tx_timer_initialize.o [1]
-_tx_timer_thread_entry   0x801'0339   0x130  Code  Gb  tx_timer_thread_entry.o [1]
+_tx_timer_thread_entry   0x801'0425   0x130  Code  Gb  tx_timer_thread_entry.o [1]
 _tx_timer_thread_stack_area
                         0x2000'58e8   0x400  Data  Gb  tx_timer_initialize.o [1]
 _tx_timer_time_slice    0x2000'69d8     0x4  Data  Gb  tx_timer_initialize.o [1]
@@ -1583,7 +1583,7 @@ _tx_trace_full_notify_function
 _tx_trace_header_ptr    0x2000'69dc     0x4  Data  Gb  tx_trace_initialize.o [1]
 _tx_trace_initialize     0x801'0b91    0x40  Code  Gb  tx_trace_initialize.o [1]
 _tx_trace_object_register
-                         0x800'fdf1   0x11c  Code  Gb  tx_trace_object_register.o [1]
+                         0x800'fd65   0x11c  Code  Gb  tx_trace_object_register.o [1]
 _tx_trace_registry_end_ptr
                         0x2000'69e4     0x4  Data  Gb  tx_trace_initialize.o [1]
 _tx_trace_registry_search_start
@@ -1593,13 +1593,13 @@ _tx_trace_registry_start_ptr
 _tx_trace_total_registry_entries
                         0x2000'69fc     0x4  Data  Gb  tx_trace_initialize.o [1]
 _txe_event_flags_create
-                         0x800'f2a9    0xb4  Code  Gb  txe_event_flags_create.o [1]
+                         0x800'f239    0xb4  Code  Gb  txe_event_flags_create.o [1]
 _txe_event_flags_set     0x800'c0f5    0x34  Code  Gb  txe_event_flags_set.o [1]
-_txe_mutex_create        0x800'f0f5    0xcc  Code  Gb  txe_mutex_create.o [1]
-_txe_mutex_get           0x800'f80d    0x7c  Code  Gb  txe_mutex_get.o [1]
-_txe_mutex_put           0x800'f889    0x4c  Code  Gb  txe_mutex_put.o [1]
+_txe_mutex_create        0x800'f085    0xcc  Code  Gb  txe_mutex_create.o [1]
+_txe_mutex_get           0x800'f8bd    0x7c  Code  Gb  txe_mutex_get.o [1]
+_txe_mutex_put           0x800'f939    0x4c  Code  Gb  txe_mutex_put.o [1]
 _txe_thread_create       0x800'e7f1   0x15c  Code  Gb  txe_thread_create.o [1]
-_txe_timer_create        0x800'f1c1    0xe8  Code  Gb  txe_timer_create.o [1]
+_txe_timer_create        0x800'f151    0xe8  Code  Gb  txe_timer_create.o [1]
 abort                    0x800'6abd     0x6  Code  Gb  abort.o [2]
 asc2_1206_lcd            0x800'c890   0x474  Data  Gb  bsp_font.o [1]
 asc2_1608_lcd            0x800'a8bc   0x5f0  Data  Gb  bsp_font.o [1]
@@ -1637,7 +1637,7 @@ bsp_PutKey               0x800'deff    0x18  Code  Gb  bsp_key.o [1]
 bsp_RCC_GPIO_Enable      0x800'9ead   0x148  Code  Gb  bsp_tim_pwm.o [1]
 bsp_RCC_TIM_Enable       0x800'9ff5   0x208  Code  Gb  bsp_tim_pwm.o [1]
 bsp_RunPer10ms           0x800'e7e9     0x8  Code  Gb  system_task_create.o [1]
-bsp_RunPer1ms            0x800'f5dd     0xa  Code  Gb  Monitor.o [1]
+bsp_RunPer1ms            0x800'f56d     0xa  Code  Gb  Monitor.o [1]
 bsp_SetKeyParam          0x800'ded7    0x28  Code  Lc  bsp_key.o [1]
 bsp_SetTIMOutPWM         0x800'a3ef   0x26c  Code  Gb  bsp_tim_pwm.o [1]
 bsp_SetTIMOutPWM::pwm_led4
@@ -1684,16 +1684,16 @@ lcddev                  0x2000'68ec    0x10  Data  Gb  bsp_lcd.o [1]
 ldexp                    0x800'61d5          Code  Gb  ldexp.o [3]
 ldexpl                   0x800'61d5          Code  Gb  ldexp.o [3]
 localeconv               0x800'6885     0x4  Code  Gb  xlocale_c.o [2]
-lv_tick_inc              0x800'ff0d    0x10  Code  Gb  lv_hal_tick.o [1]
+lv_tick_inc              0x800'fe81    0x10  Code  Gb  lv_hal_tick.o [1]
 main                     0x801'1231    0x1e  Code  Gb  main.o [1]
 memchr                   0x800'6005          Code  Gb  memchr.o [4]
 obuf                    0x2000'65c0    0x50  Data  Lc  xfiles.o [2]
 printf                   0x800'4bad    0x28  Code  Gb  printf.o [2]
-putchar                  0x801'1379     0xc  Code  Gb  putchar.o [2]
+putchar                  0x801'135d     0xc  Code  Gb  putchar.o [2]
 s_BaudRatePrescaler     0x2000'6910     0x4  Data  Lc  bsp_spi_bus.o [1]
 s_CLKPhase              0x2000'6914     0x4  Data  Lc  bsp_spi_bus.o [1]
 s_CLKPolarity           0x2000'6918     0x4  Data  Lc  bsp_spi_bus.o [1]
-s_gpio_list              0x801'144c    0x10  Data  Lc  bsp_key.o [1]
+s_gpio_list              0x801'1430    0x10  Data  Lc  bsp_key.o [1]
 s_tBtn                  0x2000'68a0    0x20  Data  Lc  bsp_key.o [1]
 s_tKey                  0x2000'68dc    0x10  Data  Lc  bsp_key.o [1]
 s_tTmr                  0x2000'66d0    0x40  Data  Lc  ticktim.o [1]
@@ -1708,25 +1708,25 @@ sf_ReadInfo              0x800'edfb    0xc4  Code  Gb  bsp_spi_flash.o [1]
 sf_SetCS                 0x800'edc9    0x32  Code  Gb  bsp_spi_flash.o [1]
 strchr                   0x800'5f5d          Code  Gb  strchr.o [4]
 strcmp                   0x800'7a39          Code  Gb  strcmp.o [4]
-strcpy                   0x800'f7b9          Code  Gb  strcpy.o [4]
+strcpy                   0x800'f749          Code  Gb  strcpy.o [4]
 strlen                   0x800'5fcd          Code  Gb  strlen.o [4]
 sys_time                0x2000'6920     0x4  Data  Lc  lv_hal_tick.o [1]
 tick_irq_flag           0x2000'6a0f     0x1  Data  Lc  lv_hal_tick.o [1]
 tp_dev                  0x2000'0428    0x34  Data  Gb  bsp_touch.o [1]
 tx_application_define    0x800'e581    0x88  Code  Gb  system_task_create.o [1]
-tx_thread_fpu_disable    0x801'07fd          Code  Gb  tx_thread_schedule.o [1]
-tx_thread_fpu_enable     0x801'07fb          Code  Gb  tx_thread_schedule.o [1]
+tx_thread_fpu_disable    0x801'08e9          Code  Gb  tx_thread_schedule.o [1]
+tx_thread_fpu_enable     0x801'08e7          Code  Gb  tx_thread_schedule.o [1]
 uSdHandle               0x2000'6288    0x84  Data  Gb  bsp_sdio_sd.o [1]
-vsnprintf                0x800'f7d1    0x3c  Code  Gb  vsnprint.o [2]
+vsnprintf                0x800'f881    0x3c  Code  Gb  vsnprint.o [2]
 
 
-[1] = J:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj
+[1] = D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj
 [2] = dl7M_tlf.a
 [3] = m7M_tls.a
 [4] = rt7M_tl.a
 [5] = shb_l.a
 
-  51'331 bytes of readonly  code memory
+  51'315 bytes of readonly  code memory
   20'182 bytes of readonly  data memory
   29'202 bytes of readwrite data memory
 

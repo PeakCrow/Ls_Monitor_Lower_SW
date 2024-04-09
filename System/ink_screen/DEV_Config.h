@@ -1,12 +1,12 @@
 /*****************************************************************************
-* | File      	:   DEV_Config.h
+* | File          :   DEV_Config.h
 * | Author      :   Waveshare team
 * | Function    :   Hardware underlying interface
 * | Info        :
 *                Used to shield the underlying layers of each master 
 *                and enhance portability
 *----------------
-* |	This version:   V2.0
+* |    This version:   V2.0
 * | Date        :   2018-10-30
 * | Info        :
 * 1.add:
@@ -55,28 +55,28 @@
 //#include "ticktim.h"
 
 /* BUSY  PA1 */
-#define	INK_BUSY_CLK_ENABLE()		__HAL_RCC_GPIOA_CLK_ENABLE()
-#define	INK_BUSY_GPIO_PORT			GPIOA
-#define	INK_BUSY_GPIO_PIN			GPIO_PIN_1
-#define	INK_BUSY_GPIO_READ			PAin(1)
+#define    INK_BUSY_CLK_ENABLE()        __HAL_RCC_GPIOA_CLK_ENABLE()
+#define    INK_BUSY_GPIO_PORT            GPIOA
+#define    INK_BUSY_GPIO_PIN            GPIO_PIN_1
+#define    INK_BUSY_GPIO_READ            PAin(1)
 
 /* RST  PA7 */
-#define INK_RST_CLK_ENABLE()		__HAL_RCC_GPIOA_CLK_ENABLE()
-#define	INK_RST_GPIO_PORT			GPIOA
-#define	INK_RST_GPIO_PIN			GPIO_PIN_7
-#define	INK_RST_GPIO_WRITE			PAout(7)
+#define INK_RST_CLK_ENABLE()        __HAL_RCC_GPIOA_CLK_ENABLE()
+#define    INK_RST_GPIO_PORT            GPIOA
+#define    INK_RST_GPIO_PIN            GPIO_PIN_7
+#define    INK_RST_GPIO_WRITE            PAout(7)
 
 /* DC  PB12 */
-#define INK_DC_CLK_ENABLE()			__HAL_RCC_GPIOB_CLK_ENABLE()
-#define	INK_DC_GPIO_PORT			GPIOB
-#define	INK_DC_GPIO_PIN				GPIO_PIN_12
-#define	INK_DC_GPIO_WRITE			PBout(12)
+#define INK_DC_CLK_ENABLE()            __HAL_RCC_GPIOB_CLK_ENABLE()
+#define    INK_DC_GPIO_PORT            GPIOB
+#define    INK_DC_GPIO_PIN                GPIO_PIN_12
+#define    INK_DC_GPIO_WRITE            PBout(12)
 
 /* CS  PC0 */
-#define	INK_CS_CLK_ENABLE()			__HAL_RCC_GPIOC_CLK_ENABLE()
-#define	INK_CS_GPIO_PORT			GPIOC
-#define	INK_CS_GPIO_PIN				GPIO_PIN_0
-#define	INK_CS_GPIO_WRITE			PCout(0)
+#define    INK_CS_CLK_ENABLE()            __HAL_RCC_GPIOC_CLK_ENABLE()
+#define    INK_CS_GPIO_PORT            GPIOC
+#define    INK_CS_GPIO_PIN                GPIO_PIN_0
+#define    INK_CS_GPIO_WRITE            PCout(0)
 
 
 /**

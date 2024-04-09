@@ -11,32 +11,32 @@
 *******************************************************************************/
  uint32_t bsp_Mlx90614_Write(uint8_t * pBuffer, uint8_t WriteAddr)
  {
-	 HAL_StatusTypeDef	 status = HAL_OK;
+     HAL_StatusTypeDef     status = HAL_OK;
  
-	 status = HAL_I2C_Mem_Write(&iic_handle,SA,(uint16_t)WriteAddr,I2C_MEMADD_SIZE_8BIT,pBuffer,1,100);
+     status = HAL_I2C_Mem_Write(&iic_handle,SA,(uint16_t)WriteAddr,I2C_MEMADD_SIZE_8BIT,pBuffer,1,100);
  
-	 /* 检查通讯状态 */
-	 if (status != HAL_OK)
-		 {
-			 /* 执行用户定义的超时回调函数 */
-		 }
-	 while (HAL_I2C_GetState(&iic_handle) != HAL_I2C_STATE_READY)
-		 {
-			 
-		 }
+     /* 检查通讯状态 */
+     if (status != HAL_OK)
+         {
+             /* 执行用户定义的超时回调函数 */
+         }
+     while (HAL_I2C_GetState(&iic_handle) != HAL_I2C_STATE_READY)
+         {
+             
+         }
  
-	 /* 检查eeprom芯片是否准备好对于下一个新的操作 */
-	 while(HAL_I2C_IsDeviceReady(&iic_handle,SA,I2Cx_TIMEOUT_MAX,I2Cx_TIMEOUT_MAX) == HAL_TIMEOUT)
-		 {
-			 
-		 }
-	 /* 等待数据传输结束 */
-	 while(HAL_I2C_GetState(&iic_handle) != HAL_I2C_STATE_READY)
-		 {
-			 
-		 }
-	 
-	 return status;
+     /* 检查eeprom芯片是否准备好对于下一个新的操作 */
+     while(HAL_I2C_IsDeviceReady(&iic_handle,SA,I2Cx_TIMEOUT_MAX,I2Cx_TIMEOUT_MAX) == HAL_TIMEOUT)
+         {
+             
+         }
+     /* 等待数据传输结束 */
+     while(HAL_I2C_GetState(&iic_handle) != HAL_I2C_STATE_READY)
+         {
+             
+         }
+     
+     return status;
  }
 /*******************************************************************************
   * @FunctionName: bsp_Mlx90614_ReadBuf
@@ -50,11 +50,11 @@
 *******************************************************************************/
  uint32_t bsp_Mlx90614_ReadBuf(uint8_t * pBuffer, uint8_t ReadAdder, uint16_t NumByteToRead)
 {
-	HAL_StatusTypeDef status = HAL_OK;
+    HAL_StatusTypeDef status = HAL_OK;
 
-	status = HAL_I2C_Mem_Read(&iic_handle,SA,ReadAdder,I2C_MEMADD_SIZE_8BIT,(uint8_t*)pBuffer,NumByteToRead,1000);
+    status = HAL_I2C_Mem_Read(&iic_handle,SA,ReadAdder,I2C_MEMADD_SIZE_8BIT,(uint8_t*)pBuffer,NumByteToRead,1000);
 
-	return status;
+    return status;
 }
 
 /*******************************************************************************
@@ -67,16 +67,16 @@
 *******************************************************************************/
 float bsp_MLX90614_ReadTemp(void)
 {
-	float temp = 0;
-	uint8_t buf1[1] = {RAM_TOBJ1},buf_read[3];
-	if(bsp_Mlx90614_Write(buf1,SA) != HAL_OK)
-		{
-			printf("红外传感器安装错误\r\n");
-			return temp;
-		}
-	bsp_Mlx90614_ReadBuf(buf_read,RAM_TOBJ1,3);
-	temp = (buf_read[1] << 8 | buf_read[0]) * 0.02 - 273.15;
-	return temp;
+    float temp = 0;
+    uint8_t buf1[1] = {RAM_TOBJ1},buf_read[3];
+    if(bsp_Mlx90614_Write(buf1,SA) != HAL_OK)
+        {
+            printf("红外传感器安装错误\r\n");
+            return temp;
+        }
+    bsp_Mlx90614_ReadBuf(buf_read,RAM_TOBJ1,3);
+    temp = (buf_read[1] << 8 | buf_read[0]) * 0.02 - 273.15;
+    return temp;
 }
 
 /*********************************END OF FILE*********************************/

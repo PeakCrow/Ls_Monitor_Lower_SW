@@ -29,8 +29,8 @@ void bsp_InitCan1Bus(void)
     hCAN.Init.TimeTriggeredMode         = DISABLE;                /* MCR-TTCM  关闭时间触发通信模式使能 */
     hCAN.Init.AutoBusOff                = ENABLE;                 /* MCR-ABOM  自动离线管理 */
     hCAN.Init.AutoWakeUp                = ENABLE;                 /* MCR-AWUM  使用自动唤醒模式 */
-    hCAN.Init.AutoRetransmission        = DISABLE;                /* MCR-NART  禁止报文自动重传 	DISABLE-自动重传 */
-    hCAN.Init.ReceiveFifoLocked         = DISABLE;                /* MCR-RFLM  接收FIFO 锁定模式	DISABLE-溢出时新报文会覆盖原有报文 */
+    hCAN.Init.AutoRetransmission        = DISABLE;                /* MCR-NART  禁止报文�    �动重传 	DISABLE-自动重传 */
+    hCAN.Init.ReceiveFifoLocked         = DISABLE;                /* MCR-RFLM  接收FIFO 锁    ��模式	DISABLE-溢出时新报文会覆盖原有报文 */
     hCAN.Init.TransmitFifoPriority      = ENABLE;                 /* MCR-TXFP  发送FIFO优先级 DISABLE-优先级取决于报文标示符 */
     HAL_CAN_Init(&hCAN);
     
@@ -119,21 +119,21 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef * hcan)
 *******************************************************************************/
 void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
 {
-  if(hcan->Instance==CANx_BUS_1)
-  {
-    CAN1_FPRCE_RESET();
-    CAN1_RELEASE_RESET();
-    
-    /**CAN GPIO Configuration
-    PB8     ------> CAN_RX
-    PB9     ------> CAN_TX 
-    */
-    HAL_GPIO_DeInit(CAN1_TX_GPIO_PORT, CAN1_TX_PIN);
-    HAL_GPIO_DeInit(CAN1_RX_GPIO_PORT, CAN1_RX_PIN);
+    if(hcan->Instance==CANx_BUS_1)
+    {
+        CAN1_FPRCE_RESET();
+        CAN1_RELEASE_RESET();
 
-    /* Peripheral interrupt Deinit */
-    HAL_NVIC_DisableIRQ(CAN1_RX_IRQN);
-  }
+        /**CAN GPIO Configuration
+        PB8     ------> CAN_RX
+        PB9     ------> CAN_TX 
+        */
+        HAL_GPIO_DeInit(CAN1_TX_GPIO_PORT, CAN1_TX_PIN);
+        HAL_GPIO_DeInit(CAN1_RX_GPIO_PORT, CAN1_RX_PIN);
+
+        /* Peripheral interrupt Deinit */
+        HAL_NVIC_DisableIRQ(CAN1_RX_IRQN);
+    }
 } 
 
 /*******************************************************************************

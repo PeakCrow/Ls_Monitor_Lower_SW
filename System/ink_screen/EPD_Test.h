@@ -1,10 +1,10 @@
 /*****************************************************************************
-* | File      	:	  EPD_Test.h
+* | File          :      EPD_Test.h
 * | Author      :   Waveshare team
 * | Function    :   e-Paper test Demo
 * | Info        :
 *----------------
-* |	This version:   V1.0
+* |    This version:   V1.0
 * | Date        :   2019-06-11
 * | Info        :   
 #
@@ -74,7 +74,7 @@ int EPD_4in2bc_test(void);
 int EPD_4in2b_V2_test(void);
 
 int EPD_5in65f_test(void);
-	
+    
 int EPD_5in83_test(void);
 int EPD_5in83_V2_test(void);
 int EPD_5in83bc_test(void);

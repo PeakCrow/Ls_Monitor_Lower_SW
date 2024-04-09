@@ -109,7 +109,7 @@ void lv_port_disp_init(void)
     /* Example for 1) */
     /* 初始化显示缓冲区 */
     static lv_disp_draw_buf_t draw_buf_dsc_1;
-    lv_disp_draw_buf_init(&draw_buf_dsc_1,buf_1, NULL,MY_DISP_HOR_RES * MY_DISP_VER_RES);		  /*Initialize the display buffer*/
+    lv_disp_draw_buf_init(&draw_buf_dsc_1,buf_1, NULL,MY_DISP_HOR_RES * MY_DISP_VER_RES);          /*Initialize the display buffer*/
 
     /*-----------------------------------
      * Register the display in LVGL
@@ -151,7 +151,7 @@ void lv_port_disp_init(void)
 static void disp_init(void)
 {
     /*You code here*/
-    bsp_Initlcd();		/* 初始化LCD屏幕 */
+    bsp_Initlcd();        /* 初始化LCD屏幕 */
     dma_config();
 }
 
@@ -195,7 +195,7 @@ static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_colo
 //    }
 
 
-	//    /* 在指定区域内填充指定颜色块 */
+    //    /* 在指定区域内填充指定颜色块 */
     lcd_draw_fast_rgb_color(area->x1,area->y1,area->x2,area->y2,(uint16_t*)color_p);
     /*IMPORTANT!!!
      *Inform the graphics library that you are ready with the flushing*/

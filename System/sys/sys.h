@@ -228,7 +228,8 @@ extern Sys_IrqNoti_Flag sys_irqnoti_flag;
 
 
 
-void Stm32_Clock_Init(uint32_t plln,uint32_t pllm,uint32_t pllp,uint32_t pllq);//时钟系统配置
+void Stm32_Clock_Init(uint32_t plln,uint32_t pllm,uint32_t pllp,uint32_t pllq);/* 时钟系统配置 */
+void JumpToBootloader(void);        /* 系统 boot loader 跳转 --> uart */
 /*
 *********************************************************************************************************
 *                                           汇编函数 nouseful

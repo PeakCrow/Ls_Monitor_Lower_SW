@@ -42,7 +42,7 @@ void Vehicle_Status_Ui(lv_obj_t *parent)
     lv_obj_add_style(Imgbtn_MC,&style_pr,LV_STATE_PRESSED);
     /* 设置按钮回调 */
     lv_obj_add_event_cb(Imgbtn_MC,Imgbtn_MC_cb,LV_EVENT_ALL,NULL);
-	
+    
 }
 
 static void Imgbtn_MC_cb(lv_event_t * e)
@@ -55,13 +55,13 @@ static void Imgbtn_MC_cb(lv_event_t * e)
 
 static void App_btn_Back_Cb(lv_event_t* e)
 {
-	lv_event_code_t code = lv_event_get_code(e);
-	lv_obj_t* parent = lv_event_get_user_data(e);
-	switch ((uint8_t)code) {
-		case LV_EVENT_RELEASED:
-			{
-				lv_obj_del(parent);
-			}
-			break;
-	}
+    lv_event_code_t code = lv_event_get_code(e);
+    lv_obj_t* parent = lv_event_get_user_data(e);
+    switch ((uint8_t)code) {
+        case LV_EVENT_RELEASED:
+            {
+                lv_obj_del(parent);
+            }
+            break;
+    }
 }

@@ -254,15 +254,15 @@ void HardFaultHandler(unsigned int* pStack) {
   
 #if 1
   {
-	  const char *pError = ERR_INFO;
-	  uint8_t i;
+      const char *pError = ERR_INFO;
+      uint8_t i;
 
-	  for (i = 0; i < strlen(ERR_INFO); i++)
-	  {
-		 USART1->DR = pError[i];
-		 /* 等待发送结束 */
-		 while((USART1->SR & USART_SR_TC) == 0);
-	  }	
+      for (i = 0; i < strlen(ERR_INFO); i++)
+      {
+         USART1->DR = pError[i];
+         /* 等待发送结束 */
+         while((USART1->SR & USART_SR_TC) == 0);
+      }    
   }
 #endif
   //

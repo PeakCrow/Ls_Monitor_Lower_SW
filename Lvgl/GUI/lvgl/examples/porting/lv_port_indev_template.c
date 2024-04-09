@@ -185,7 +185,7 @@ void lv_port_indev_init(void)
 static void touchpad_init(void)
 {
     /*Your code comes here*/
-	bsp_InitLcdTouch();	 /* ³õÊ¼»¯ÆÁÄ»´¥ÃşÇı¶¯ */	
+    bsp_InitLcdTouch();     /* ³õÊ¼»¯ÆÁÄ»´¥    şÇı¶¯ */	
 }
 
 /*Will be called by the library to read the touchpad*/

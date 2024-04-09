@@ -18,10 +18,10 @@ enum
 
 typedef struct
 {
-	uint32_t 	ChipID;			/* 芯片ID */
-	char 		ChipName[16];	/* 芯片型号字符串，主要用于显示 */
-	uint32_t 	TotalSize;		/* 总容量 */
-	uint16_t 	SectorSize;		/* 扇区大小 */
+    uint32_t     ChipID;            /* 芯片ID */
+    char         ChipName[16];    /* 芯片型号字符串，主要用于显示 */
+    uint32_t     TotalSize;        /* 总容量 */
+    uint16_t     SectorSize;        /* 扇区大小 */
 }SFLASH_T;
 
 void bsp_InitSFlash(void);

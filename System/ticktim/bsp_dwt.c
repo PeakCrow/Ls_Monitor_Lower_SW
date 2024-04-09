@@ -99,7 +99,7 @@ void bsp_DelayUS(uint32_t _ulDelayTime)
     
     tStart = DWT_CYCCNT;                                     /* 刚进入时的计数器 */
     tCnt = 0;
-    tDelayCnt = _ulDelayTime * (SystemCoreClock / 1000000);	 /* 需要的节拍 */
+    tDelayCnt = _ulDelayTime * (SystemCoreClock / 1000000);     /* 需要的节拍 */
 
     while(tCnt < tDelayCnt)
     {

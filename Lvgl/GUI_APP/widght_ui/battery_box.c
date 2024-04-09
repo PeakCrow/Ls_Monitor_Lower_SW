@@ -65,19 +65,19 @@ static void Imgbtn_MC_cb(lv_event_t * e)
     lv_event_code_t code = lv_event_get_code(e);
 
     if(code == LV_EVENT_RELEASED)
-		Battery_Box_In_Ui(App_Common_Init((" 电池箱数据 "),App_btn_Back_Cb));
+        Battery_Box_In_Ui(App_Common_Init((" 电池箱数据 "),App_btn_Back_Cb));
 }
 static void App_btn_Back_Cb(lv_event_t* e)
 {
-	lv_event_code_t code = lv_event_get_code(e);
-	lv_obj_t* parent = lv_event_get_user_data(e);
-	switch ((uint8_t)code) {
-		case LV_EVENT_RELEASED:
-			{
-				lv_obj_del(parent);
-			}
-			break;
-	}
+    lv_event_code_t code = lv_event_get_code(e);
+    lv_obj_t* parent = lv_event_get_user_data(e);
+    switch ((uint8_t)code) {
+        case LV_EVENT_RELEASED:
+            {
+                lv_obj_del(parent);
+            }
+            break;
+    }
 }
 
 
@@ -96,7 +96,7 @@ static void Battery_Box_In_Ui(lv_obj_t * parent)
 
     /* 电池soc */
     ui_Image_Battery_BG = lv_img_create(parent);
-	lv_img_set_src(ui_Image_Battery_BG,"0:/PICTURE/battery_bg.bin");
+    lv_img_set_src(ui_Image_Battery_BG,"0:/PICTURE/battery_bg.bin");
     lv_obj_set_width(ui_Image_Battery_BG, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Image_Battery_BG, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_align(ui_Image_Battery_BG, LV_ALIGN_CENTER);
@@ -105,27 +105,27 @@ static void Battery_Box_In_Ui(lv_obj_t * parent)
     lv_obj_set_style_shadow_width(ui_Image_Battery_BG, 50, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_shadow_spread(ui_Image_Battery_BG, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-	
+    
     ui_Image_Particle1 = lv_img_create(parent);   
     lv_img_set_src(ui_Image_Particle1,"0:/PICTURE/particle_1.bin");
     lv_obj_set_height(ui_Image_Particle1, LV_SIZE_CONTENT);
     lv_obj_set_width(ui_Image_Particle1, LV_SIZE_CONTENT);   /// 1
-	lv_obj_align_to(ui_Image_Particle1,ui_Image_Battery_BG,LV_ALIGN_CENTER,0,0);
-	lv_obj_set_style_shadow_opa(ui_Image_Particle1, 255, LV_STATE_DEFAULT);
+    lv_obj_align_to(ui_Image_Particle1,ui_Image_Battery_BG,LV_ALIGN_CENTER,0,0);
+    lv_obj_set_style_shadow_opa(ui_Image_Particle1, 255, LV_STATE_DEFAULT);
 
     ui_Image_Particle2 = lv_img_create(parent);
     lv_img_set_src(ui_Image_Particle2,"0:/PICTURE/particle_2.bin");
     lv_obj_set_height(ui_Image_Particle2, LV_SIZE_CONTENT);
     lv_obj_set_width(ui_Image_Particle2, LV_SIZE_CONTENT);   /// 1
     lv_obj_align_to(ui_Image_Particle2,ui_Image_Battery_BG,LV_ALIGN_CENTER,0,0);
-	lv_obj_set_style_shadow_opa(ui_Image_Particle2, 255, LV_STATE_DEFAULT );
+    lv_obj_set_style_shadow_opa(ui_Image_Particle2, 255, LV_STATE_DEFAULT );
 
     ui_Image_Particle3 = lv_img_create(parent);
     lv_img_set_src(ui_Image_Particle3,"0:/PICTURE/particle_3.bin");
     lv_obj_set_height(ui_Image_Particle3, LV_SIZE_CONTENT);
-   	lv_obj_set_width(ui_Image_Particle3, LV_SIZE_CONTENT);   /// 1
+       lv_obj_set_width(ui_Image_Particle3, LV_SIZE_CONTENT);   /// 1
     lv_obj_align_to(ui_Image_Particle3,ui_Image_Battery_BG,LV_ALIGN_CENTER,0,0);
-	lv_obj_set_style_shadow_opa(ui_Image_Particle3, 255, LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_opa(ui_Image_Particle3, 255, LV_STATE_DEFAULT);
 
     /*Set only the properties that should be different*/
     static lv_style_t style_warning;
@@ -308,21 +308,21 @@ static void Battery_Box_In_Ui(lv_obj_t * parent)
     lv_anim_start(&b);
 
 
-	lv_anim_t c;
-	lv_anim_init(&c);
-	lv_anim_set_var(&c, ui_Image_Particle3);
-	lv_anim_set_time(&c, 2920);
-	lv_anim_set_exec_cb(&c, ofs_set_y_anim);
-	lv_anim_set_values(&c, 0, -110);
-	lv_anim_set_path_cb(&c, lv_anim_path_linear);
-	lv_anim_set_delay(&c,0);
-	lv_anim_set_playback_time(&c, 0);
-	lv_anim_set_playback_delay(&c,0);
-	lv_anim_set_repeat_count(&c, LV_ANIM_REPEAT_INFINITE);
-	lv_anim_set_repeat_delay(&c, 0);
-	lv_anim_set_early_apply(&c, false);
-	lv_anim_start(&c);    
-#endif   	
+    lv_anim_t c;
+    lv_anim_init(&c);
+    lv_anim_set_var(&c, ui_Image_Particle3);
+    lv_anim_set_time(&c, 2920);
+    lv_anim_set_exec_cb(&c, ofs_set_y_anim);
+    lv_anim_set_values(&c, 0, -110);
+    lv_anim_set_path_cb(&c, lv_anim_path_linear);
+    lv_anim_set_delay(&c,0);
+    lv_anim_set_playback_time(&c, 0);
+    lv_anim_set_playback_delay(&c,0);
+    lv_anim_set_repeat_count(&c, LV_ANIM_REPEAT_INFINITE);
+    lv_anim_set_repeat_delay(&c, 0);
+    lv_anim_set_early_apply(&c, false);
+    lv_anim_start(&c);    
+#endif       
 }
 
 
