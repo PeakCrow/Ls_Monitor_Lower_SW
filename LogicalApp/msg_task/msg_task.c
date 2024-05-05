@@ -58,6 +58,7 @@ void AppTaskUserIF(ULONG thread_input)
     uint8_t ucKeyCode;      /* 按键代码 */
     (void)thread_input;
     App_Printf("按键驱动初始化!\n");
+    uint8_t data[] = {0,1,2,3,4,5,6,7};
     while(1)
     {
         ucKeyCode = bsp_GetKey();
@@ -88,6 +89,10 @@ void AppTaskUserIF(ULONG thread_input)
                   break;
                 case KEY_MULTI_DOWM:
                   App_Printf("kmulti按键按下\r\n");
+                  bsp_Can1_Send_buf(0x34,data,8);
+                  bsp_Can1_Send_buf(0x35,data,8);
+                  bsp_Can1_Send_buf(0x36,data,8);
+                  bsp_Can1_Send_buf(0x37,data,8);
                   break;
                 case KEY_MULTI_UP:
                   App_Printf("kmulti按键弹起\r\n");

@@ -20,7 +20,11 @@ void AppTaskTFTLCD    (ULONG thread_input)
     App_Printf((char*)lcd_id,"LCD ID:%04X\n",lcddev.id);
     #if 0
     tx_mutex_get(&AppLCDSemp, TX_WAIT_FOREVER);
-    Gui_Monitor_App();                  /* 运行lvgl例程 */
+    //Gui_Monitor_App();                  /* 运行lvgl例程 */
+    /* 创建返回按钮 */
+    lv_obj_t * App_btn_Back = NULL;
+    App_btn_Back = lv_btn_create(lv_obj_create(lv_scr_act()));
+    lv_obj_set_size(App_btn_Back,40,40);
     tx_mutex_put(&AppLCDSemp);
     while(1)
     {
@@ -28,7 +32,7 @@ void AppTaskTFTLCD    (ULONG thread_input)
         lv_timer_handler();
         //IWDG_Feed();
         tx_mutex_put(&AppLCDSemp);
-        tx_thread_sleep(5);
+        tx_thread_sleep(1);
     }
     #else
     Load_Drow_Dialog();

@@ -107,6 +107,13 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef * hcan)
         HAL_NVIC_SetPriority(CAN1_RX_IRQN,0,0);/* 初始化中断优先级 */
         HAL_NVIC_EnableIRQ(CAN1_RX_IRQN);
     }
+    GPIO_InitTypeDef GPIO_Initure;
+    __HAL_RCC_GPIOB_CLK_ENABLE();           //开启GPIOB时钟
+    GPIO_Initure.Pin=GPIO_PIN_11;           //PB11 CAN STB控制
+    GPIO_Initure.Mode=GPIO_MODE_OUTPUT_PP;  //推挽输出
+    GPIO_Initure.Pull=GPIO_PULLDOWN;        //上拉 disable 下拉 enable
+    GPIO_Initure.Speed=GPIO_SPEED_HIGH;     //高速
+    HAL_GPIO_Init(GPIOB,&GPIO_Initure);
 }
 
 /*******************************************************************************
@@ -172,11 +179,11 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 void CAN1_RX0_IRQHandler(void)
 {
     HAL_CAN_IRQHandler(&hCAN);              /* 需要在中断函数中调用此函数来清除中断标志位 */
-#if USE_THREADX == 0        /* 裸机使用标志位进行通知 */
-    sys_irqnoti_flag.can1_rx_flag = 1;
-#else       /* 使用 threadx 中的事件标志组进行通知 */
-    tx_event_flags_set(&EventGroup, CAN1_RX_FLAG, TX_OR);
-#endif
+//#if USE_THREADX == 0        /* 裸机使用标志位进行通知 */
+//    sys_irqnoti_flag.can1_rx_flag = 1;
+//#else       /* 使用 threadx 中的事件标志组进行通知 */
+//    tx_event_flags_set(&EventGroup, CAN1_RX_FLAG, TX_OR);
+//#endif
 }
 
 /*******************************************************************************
@@ -194,17 +201,17 @@ void CAN1_RX0_IRQHandler(void)
 uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
 {
     uint8_t i;
-#if USE_THREADX == 0        /* 裸机使用标志位进行通知 */
-    if(1 == sys_irqnoti_flag.can1_rx_flag)
-#else       /* 使用 threadx 中的事件标志组进行通知 */
-    ULONG actual_events = 0;
-    tx_event_flags_get(&EventGroup,     /* 事件标志控制块 */
-                        CAN1_RX_FLAG,     /* 等待标志 */
-                        TX_OR_CLEAR ,     /* 等待任意bit满足即可 */
-                        &actual_events,      /* 获取实际值 */
-                        TX_WAIT_FOREVER);    /* 永久等待 */
-    if(CAN1_RX_FLAG == actual_events)
-#endif
+//#if USE_THREADX == 0        /* 裸机使用标志位进行通知 */
+//    if(1 == sys_irqnoti_flag.can1_rx_flag)
+//#else       /* 使用 threadx 中的事件标志组进行通知 */
+//    ULONG actual_events = 0;
+//    tx_event_flags_get(&EventGroup,     /* 事件标志控制块 */
+//                        CAN1_RX_FLAG,     /* 等待标志 */
+//                        TX_OR_CLEAR ,     /* 等待任意bit满足即可 */
+//                        &actual_events,      /* 获取实际值 */
+//                        TX_WAIT_FOREVER);    /* 永久等待 */
+//    if(CAN1_RX_FLAG == actual_events)
+//#endif
     {
     /* 获取 can1 FIFO0 中数据 */
     if(0U != HAL_CAN_GetRxFifoFillLevel(&hCAN,CAN_FILTER_FIFO0))
@@ -223,8 +230,9 @@ uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
                 for(i = 0;i < can_rx_msg.DLC;i++)
                 _buf[i] = g_canrxbuf[i];
             }
-            else
-                printf("No id 0x%x Rx value: file %s on line %d\r\n",_id,__FILE__,__LINE__);
+            else{
+//                printf("No id 0x%x Rx value: file %s on line %d\r\n",_id,__FILE__,__LINE__);
+            }
         }
         else if(IS_CAN_EXTID(_id))
         {
@@ -235,9 +243,15 @@ uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
                     _buf[i] = g_canrxbuf[i];
                 }
             }
-            else
-                printf("No id 0x%x Rx value: file %s on line %d\r\n",_id,__FILE__,__LINE__);
+            else{
+//                printf("No id 0x%x Rx value: file %s on line %d\r\n",_id,__FILE__,__LINE__);
+            }
         }
+    }
+    App_Printf("id %d \n",_id);
+    for(uint8_t i = 0;i< can_rx_msg.DLC;i++)
+    {
+        App_Printf("data[%d] = %d\n",i,g_canrxbuf[i]);
     }
 #if USE_THREADX == 0        /* 裸机使用标志位通知完成后清0 */
     sys_irqnoti_flag.can1_rx_flag = 0;
@@ -286,21 +300,18 @@ HAL_StatusTypeDef bsp_Can1_Send_buf(uint32_t _id,uint8_t _buf[],uint8_t _dlc)
     can_tx_msg.RTR = CAN_RTR_DATA;          /* 默认都是数据帧 */
     can_tx_msg.TransmitGlobalTime = DISABLE;
     
-    if(3U == HAL_CAN_GetTxMailboxesFreeLevel(&hCAN))    /* 查询是否3个发送邮箱都不可用 */
-    {
-        printf("No Free Tx Mailbox Can be used: file %s on line %d\r\n",__FILE__,__LINE__);
-    }
+    while(0U == HAL_CAN_GetTxMailboxesFreeLevel(&hCAN));    /* 查询是否3个发送邮箱都不可用 */
+//    {
+//        printf("No Free Tx Mailbox Can be used: file %s on line %d\r\n",__FILE__,__LINE__);
+//    }
+    if(HAL_CAN_IsTxMessagePending(&hCAN,CAN_TX_MAILBOX0) == HAL_OK)/* 代表没有挂起的发送报文  */
+        HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX0);
+    else if(HAL_CAN_IsTxMessagePending(&hCAN,CAN_TX_MAILBOX0) != HAL_OK)
+        HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX1);
+    else if(HAL_CAN_IsTxMessagePending(&hCAN,CAN_TX_MAILBOX0) != HAL_OK)
+        HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX2);
     else
-    {
-        if(HAL_CAN_IsTxMessagePending(&hCAN,CAN_TX_MAILBOX0) == HAL_OK)/* 代表没有挂起的发送报文  */
-            HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX0);
-        else if(HAL_CAN_IsTxMessagePending(&hCAN,CAN_TX_MAILBOX0) != HAL_OK)
-            HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX1);
-        else if(HAL_CAN_IsTxMessagePending(&hCAN,CAN_TX_MAILBOX0) != HAL_OK)
-            HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX2);
-        else
-            return HAL_ERROR;
-    }
+        return HAL_ERROR;
     return HAL_OK;
 }
 

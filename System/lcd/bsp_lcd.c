@@ -16,7 +16,7 @@ _lcd_dev lcddev;//π‹¿ÌLCDµƒ÷ÿ“™≤Œ ˝
 void LCD_WR_REG(vuint16_t regval)
 {
     regval = regval;// π”√-O2”≈ªØµƒ ±∫Ú,±ÿ–Î≤Â»Îµƒ—” ±
-    LCD->LCD_REG = regval;//–¥»Î“™–¥µƒ    ƒ¥Ê∆˜–Ú∫≈	
+    LCD->LCD_REG = regval;//
 }
 //–¥LCD ˝æ›
 //data:“™–¥»Îµƒ÷µ
@@ -182,12 +182,12 @@ void bsp_Initlcd(void)
     GPIO_Initure.Speed=GPIO_SPEED_HIGH;     //∏ﬂÀŸ
     HAL_GPIO_Init(GPIOB,&GPIO_Initure);
     
-    __HAL_RCC_GPIOG_CLK_ENABLE();           //ø™∆ÙGPIOG ±÷”
-    GPIO_Initure.Pin=GPIO_PIN_14;           //PG14,∏¥Œªøÿ÷∆ ¿≠µÕ∏¥Œª
+    __HAL_RCC_GPIOA_CLK_ENABLE();           //ø™∆ÙGPIOA ±÷”
+    GPIO_Initure.Pin=GPIO_PIN_3;           //PA3,∏¥Œªøÿ÷∆ ¿≠µÕ∏¥Œª
     GPIO_Initure.Mode=GPIO_MODE_OUTPUT_PP;  //Õ∆ÕÏ ‰≥ˆ
     GPIO_Initure.Pull=GPIO_PULLUP;          //…œ¿≠
     GPIO_Initure.Speed=GPIO_SPEED_HIGH;     //∏ﬂÀŸ
-    HAL_GPIO_Init(GPIOG,&GPIO_Initure); 
+    HAL_GPIO_Init(GPIOA,&GPIO_Initure); 
     
     TFTSRAM_Handler.Instance=FSMC_NORSRAM_DEVICE;                
     TFTSRAM_Handler.Extended=FSMC_NORSRAM_EXTENDED_DEVICE;    
@@ -659,7 +659,7 @@ void bsp_Initlcd(void)
     LCD_Display_Dir(1);//ƒ¨»œŒ™∫·∆¡
     LCD_LED = 1;//µ„¡¡±≥π‚
     LCD_Clear(TFT_WHITE);
-    PGout(14) = 1;
+    PAout(3) = 1;
 }
 //…Ë÷√LCDœ‘ æ∑ΩœÚ
 //dir:0, ˙∆¡£ª1,∫·∆¡
