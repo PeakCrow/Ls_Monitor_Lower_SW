@@ -6,9 +6,6 @@ TX_THREAD   AppTaskMsgProTCB;
 uint64_t    AppTaskMsgProStk[APP_CFG_TASK_MsgPro_STK_SIZE/8];
 TX_MUTEX    AppPrintfSemp;              /* 用于printf互斥 */
 TX_MUTEX    App_PowerDownSave;          /* 用于掉电保存 */
-bsp_all_msg bsp_msg;                    /* 驱动与GUI层的数据中间件 */
-
-
 
 
 void AppTaskMsgPro(ULONG thread_input)
@@ -25,7 +22,7 @@ void AppTaskMsgPro(ULONG thread_input)
                                     TX_WAIT_FOREVER);/* 永久等待 */
         if(status == TX_SUCCESS)
         {
-            switch (actual_events)
+        switch (actual_events)
             {
                 case DRIVER1_POS:
                     /*  */
@@ -55,69 +52,63 @@ void AppTaskMsgPro(ULONG thread_input)
 */
 void AppTaskUserIF(ULONG thread_input)
 {
-    uint8_t ucKeyCode;      /* 按键代码 */
+    uint8_t ucKeyCode;    /* 按键代码 */
     (void)thread_input;
     App_Printf("按键驱动初始化!\n");
-    uint8_t data[] = {0,1,2,3,4,5,6,7};
     while(1)
     {
-        ucKeyCode = bsp_GetKey();
-        if (ucKeyCode != KEY_NONE)
+ucKeyCode = bsp_GetKey();
+if (ucKeyCode != KEY_NONE)
         {
             switch(ucKeyCode)
             {
                 case KEY_0_UP:                  /* K1键按打印任务执行情况 */
-                  App_Printf("k0按键弹起\r\n");
-                  break;
+                    App_Printf("k0按键弹起\r\n");
+                    break;
                 case KEY_0_DOWN:                 /* k0按键按下 */
-                  App_Printf("k0按键按下\r\n");
-                  App_Printf("k0按键按下 new boot!!!\r\n");
-                  DispTaskInfo();
-                  break;
+                    App_Printf("k0按键按下\r\n");
+                    DispTaskInfo();
+                    break;
                 case KEY_UP_UP:
-                  App_Printf("kup按键弹起\r\n");
-                  break;
+                    App_Printf("kup按键弹起\r\n");
+                    break;
                 case KEY_UP_DOWN:               /* kup按键按下 */
-                  App_Printf("kup按键按下\r\n");
-                  JumpToBootloader();
-                  break;
+                    App_Printf("kup按键按下\r\n");
+                    break;
                 case KEY_0_LONG:
-                  App_Printf("k0按键长按\r\n");
-                  break;
+                    App_Printf("k0按键长按\r\n");
+                    break;
                 case KEY_UP_LONG:
-                  App_Printf("kup按键长按\r\n");
-                  break;
+                    App_Printf("kup按键长按\r\n");
+                    break;
                 case KEY_MULTI_DOWM:
-                  App_Printf("kmulti按键按下\r\n");
-                  bsp_Can1_Send_buf(0x34,data,8);
-                  bsp_Can1_Send_buf(0x35,data,8);
-                  bsp_Can1_Send_buf(0x36,data,8);
-                  bsp_Can1_Send_buf(0x37,data,8);
-                  break;
+                    App_Printf("kmulti按键按下\r\n");
+                    break;
                 case KEY_MULTI_UP:
-                  App_Printf("kmulti按键弹起\r\n");
-                  break;
+                    App_Printf("kmulti按键弹起\r\n");
+                    break;
                 case KEY_MULTI_LONG:
-                  App_Printf("kmulti按键长按\r\n");
-                  break;
+                    App_Printf("kmulti按键长按\r\n");
+                    break;
             }
         }
         tx_thread_sleep(20);
     }
 }
 
-/**
-  * @FunctionName: App_Printf
-  * @Author:       trx
-  * @DateTime:     2024年4月8日13点54分
-  * @Purpose:      线程安全的printf方式 
-  * @param:        在C中，当无法列出传递函数的所有实参的类型和数目时。
-  * @param:        可以用省略号指定参数表
-  * @return:       none
-**/
-void App_Printf(const char *fmt, ...)
+/*
+*********************************************************************************************************
+*    函 数 名: App_Printf
+*    功能说明: 线程安全的printf方式
+*    形    参 : 同printf的参数。
+*             在C中，当无法列出传递函数的所有实参的类型和数目时,
+*             可以用省略号指定参数表
+*    返 回 值: 无
+*********************************************************************************************************
+*/
+void  App_Printf(const char *fmt, ...)
 {
-    char  buf_str[200 + 1];     /* 特别注意，如果printf的变量较多，注意此局部变量的大小是否够用 */
+    char  buf_str[200 + 1];/* 特别注意，如果printf的变量较多，注意此局部变量的大小是否够用 */
     va_list   v_args;
     va_start(v_args, fmt);
    (void)vsnprintf((char       *)&buf_str[0],
@@ -130,20 +121,20 @@ void App_Printf(const char *fmt, ...)
     printf("%s", buf_str);
     tx_mutex_put(&AppPrintfSemp);
 }
-/**
-  * @FunctionName: App_I2C_EE_BufferWrite
-  * @Author:       trx
-  * @DateTime:     2024年4月8日13点54分
-  * @Purpose:      线程安全的eeprom写人方式 
-  * @param:        同I2C_EE_BufferWrite的参数。
-  * @return:       none
-**/
-void App_I2C_EE_BufferWrite(uint8_t* pBuffer, uint8_t WriteAddr,uint16_t NumByteToWrite)
+/*
+*********************************************************************************************************
+*    函 数 名: App_I2C_EE_BufferWrite
+*    功能说明: 线程安全的eeprom写人方式
+*    形    参 : 同I2C_EE_BufferWrite的参数。
+*    返 回 值: 无
+*********************************************************************************************************
+*/
+void    App_I2C_EE_BufferWrite(uint8_t* pBuffer, uint8_t WriteAddr,uint16_t NumByteToWrite)
 {
     /* 互斥操作 */
     tx_mutex_get(&App_PowerDownSave, TX_WAIT_FOREVER);
     I2C_EE_BufferWrite(pBuffer,WriteAddr,NumByteToWrite);
-    tx_mutex_put(&App_PowerDownSave);
+    tx_mutex_put(&App_PowerDownSave);    
 }
 
 

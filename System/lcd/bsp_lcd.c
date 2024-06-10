@@ -16,7 +16,7 @@ _lcd_dev lcddev;//¹ÜÀíLCDµÄÖØÒª²ÎÊý
 void LCD_WR_REG(vuint16_t regval)
 {
     regval = regval;//Ê¹ÓÃ-O2ÓÅ»¯µÄÊ±ºò,±ØÐë²åÈëµÄÑÓÊ±
-    LCD->LCD_REG = regval;//
+    LCD->LCD_REG = regval;//Ð´ÈëÒªÐ´µÄ    Ä´æÆ÷ÐòºÅ	
 }
 //Ð´LCDÊý¾Ý
 //data:ÒªÐ´ÈëµÄÖµ
@@ -137,18 +137,18 @@ uint32_t LCD_ReadPoint(uint32_t x,uint32_t y)
 //´Ëº¯Êý»á±»HAL_SRAM_Init()µ÷ÓÃ
 //hsram:SRAM¾ä±ú
 void HAL_SRAM_MspInit(SRAM_HandleTypeDef *hsram)
-{
+{    
     GPIO_InitTypeDef GPIO_Initure;
     
-    __HAL_RCC_FSMC_CLK_ENABLE();        //Ê¹ÄÜFSMCÊ±ÖÓ
-    __HAL_RCC_GPIOD_CLK_ENABLE();       //Ê¹ÄÜGPIODÊ±ÖÓ
-    __HAL_RCC_GPIOE_CLK_ENABLE();       //Ê¹ÄÜGPIOEÊ±ÖÓ
-    __HAL_RCC_GPIOF_CLK_ENABLE();       //Ê¹ÄÜGPIOFÊ±ÖÓ
-    __HAL_RCC_GPIOG_CLK_ENABLE();       //Ê¹ÄÜGPIOGÊ±ÖÓ
+    __HAL_RCC_FSMC_CLK_ENABLE();            //Ê¹ÄÜFSMCÊ±ÖÓ
+    __HAL_RCC_GPIOD_CLK_ENABLE();            //Ê¹ÄÜGPIODÊ±ÖÓ
+    __HAL_RCC_GPIOE_CLK_ENABLE();            //Ê¹ÄÜGPIOEÊ±ÖÓ
+    __HAL_RCC_GPIOF_CLK_ENABLE();            //Ê¹ÄÜGPIOFÊ±ÖÓ
+    __HAL_RCC_GPIOG_CLK_ENABLE();            //Ê¹ÄÜGPIOGÊ±ÖÓ
     
     //³õÊ¼»¯PD0,1,4,5,8,9,10,14,15
     GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_8|\
-                    GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_14|GPIO_PIN_15;
+                     GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_14|GPIO_PIN_15;
     GPIO_Initure.Mode=GPIO_MODE_AF_PP;         //ÍÆÍì¸´ÓÃ
     GPIO_Initure.Pull=GPIO_PULLUP;            //ÉÏÀ­
     GPIO_Initure.Speed=GPIO_SPEED_HIGH;        //¸ßËÙ
@@ -157,7 +157,7 @@ void HAL_SRAM_MspInit(SRAM_HandleTypeDef *hsram)
     
     //³õÊ¼»¯PE7,8,9,10,11,12,13,14,15
     GPIO_Initure.Pin=GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|\
-                    GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
+                     GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
     HAL_GPIO_Init(GPIOE,&GPIO_Initure);
     
     //³õÊ¼»¯PF12
@@ -175,26 +175,19 @@ void bsp_Initlcd(void)
     FSMC_NORSRAM_TimingTypeDef FSMC_ReadWriteTim;
     FSMC_NORSRAM_TimingTypeDef FSMC_WriteTim;
     
-    __HAL_RCC_GPIOB_CLK_ENABLE();           //¿ªÆôGPIOBÊ±ÖÓ
-    GPIO_Initure.Pin=GPIO_PIN_15;           //PB15,±³¹â¿ØÖÆ
+    __HAL_RCC_GPIOB_CLK_ENABLE();            //¿ªÆôGPIOBÊ±ÖÓ
+    GPIO_Initure.Pin=GPIO_PIN_15;              //PB15,±³¹â¿ØÖÆ
     GPIO_Initure.Mode=GPIO_MODE_OUTPUT_PP;  //ÍÆÍìÊä³ö
     GPIO_Initure.Pull=GPIO_PULLUP;          //ÉÏÀ­
     GPIO_Initure.Speed=GPIO_SPEED_HIGH;     //¸ßËÙ
-    HAL_GPIO_Init(GPIOB,&GPIO_Initure);
-    
-    __HAL_RCC_GPIOA_CLK_ENABLE();           //¿ªÆôGPIOAÊ±ÖÓ
-    GPIO_Initure.Pin=GPIO_PIN_3;           //PA3,¸´Î»¿ØÖÆ À­µÍ¸´Î»
-    GPIO_Initure.Mode=GPIO_MODE_OUTPUT_PP;  //ÍÆÍìÊä³ö
-    GPIO_Initure.Pull=GPIO_PULLUP;          //ÉÏÀ­
-    GPIO_Initure.Speed=GPIO_SPEED_HIGH;     //¸ßËÙ
-    HAL_GPIO_Init(GPIOA,&GPIO_Initure); 
-    
+    HAL_GPIO_Init(GPIOB,&GPIO_Initure); 
+
     TFTSRAM_Handler.Instance=FSMC_NORSRAM_DEVICE;                
     TFTSRAM_Handler.Extended=FSMC_NORSRAM_EXTENDED_DEVICE;    
     
     TFTSRAM_Handler.Init.NSBank=FSMC_NORSRAM_BANK4;                     //Ê¹ÓÃNE4
-    TFTSRAM_Handler.Init.DataAddressMux=FSMC_DATA_ADDRESS_MUX_DISABLE;  //µØÖ·/Êý¾ÝÏß²»¸´ÓÃ
-    TFTSRAM_Handler.Init.MemoryType=FSMC_MEMORY_TYPE_SRAM;              //SRAM
+    TFTSRAM_Handler.Init.DataAddressMux=FSMC_DATA_ADDRESS_MUX_DISABLE;     //µØÖ·/Êý¾ÝÏß²»¸´ÓÃ
+    TFTSRAM_Handler.Init.MemoryType=FSMC_MEMORY_TYPE_SRAM;               //SRAM
     TFTSRAM_Handler.Init.MemoryDataWidth=FSMC_NORSRAM_MEM_BUS_WIDTH_16; //16Î»Êý¾Ý¿í¶È
     TFTSRAM_Handler.Init.BurstAccessMode=FSMC_BURST_ACCESS_MODE_DISABLE; //ÊÇ·ñÊ¹ÄÜÍ»·¢·ÃÎÊ,½ö¶ÔÍ¬²½Í»·¢´æ´¢Æ÷ÓÐÐ§,´Ë´¦Î´ÓÃµ½
     TFTSRAM_Handler.Init.WaitSignalPolarity=FSMC_WAIT_SIGNAL_POLARITY_LOW;//µÈ´ýÐÅºÅµÄ¼«ÐÔ,½öÔÚÍ»·¢Ä£Ê½·ÃÎÊÏÂÓÐÓÃ
@@ -204,32 +197,32 @@ void bsp_Initlcd(void)
     TFTSRAM_Handler.Init.ExtendedMode=FSMC_EXTENDED_MODE_ENABLE;        //¶ÁÐ´Ê¹ÓÃ²»Í¬µÄÊ±Ðò
     TFTSRAM_Handler.Init.AsynchronousWait=FSMC_ASYNCHRONOUS_WAIT_DISABLE;//ÊÇ·ñÊ¹ÄÜÍ¬²½´«ÊäÄ£Ê½ÏÂµÄµÈ´ýÐÅºÅ,´Ë´¦Î´ÓÃµ½
     TFTSRAM_Handler.Init.WriteBurst=FSMC_WRITE_BURST_DISABLE;           //½ûÖ¹Í»·¢Ð´
-    TFTSRAM_Handler.Init.ContinuousClock=FSMC_CONTINUOUS_CLOCK_SYNC_ASYNC;
-    
-    
+    TFTSRAM_Handler.Init.ContinuousClock=FSMC_CONTINUOUS_CLOCK_SYNC_ASYNC;    
+
+
     //FMC¶ÁÊ±Ðò¿ØÖÆ¼Ä´æÆ÷
-    FSMC_ReadWriteTim.AddressSetupTime=0x0F;        //µØÖ·½¨Á¢Ê±¼ä£¨ADDSET£©Îª16¸öHCLK 1/168M=6ns*16=96ns
+    FSMC_ReadWriteTim.AddressSetupTime=0x0F;           //µØÖ·½¨Á¢Ê±¼ä£¨ADDSET£©Îª16¸öHCLK 1/168M=6ns*16=96ns
     FSMC_ReadWriteTim.AddressHoldTime=0;
-    FSMC_ReadWriteTim.DataSetupTime=60;             //Êý¾Ý±£´æÊ±¼äÎª    0¸öHCLK	=6*60=360ns
+    FSMC_ReadWriteTim.DataSetupTime=60;                //Êý¾Ý±£´æÊ±¼äÎª    0¸öHCLK	=6*60=360ns
     FSMC_ReadWriteTim.AccessMode=FSMC_ACCESS_MODE_A;//Ä£Ê½A
     //FMCÐ´Ê±Ðò¿ØÖÆ¼Ä´æÆ÷
-    FSMC_WriteTim.BusTurnAroundDuration=0;          //×ÜÏßÖÜ×ª½×¶Î³ÖÐøÊ±¼äÎª0£¬´Ë±äÁ¿²»¸³ÖµµÄ»°»áÄªÃûÆäÃîµÄ×Ô¶¯ÐÞ¸ÄÎª4¡£µ¼ÖÂ³ÌÐòÔËÐÐÕý³£
-    FSMC_WriteTim.AddressSetupTime=9;               //µØÖ·½¨Á¢Ê±¼ä£¨ADDSET£©Îª9¸öHCLK =54ns 
+    FSMC_WriteTim.BusTurnAroundDuration=0;            //×ÜÏßÖÜ×ª½×¶Î³ÖÐøÊ±¼äÎª0£¬´Ë±äÁ¿²»¸³ÖµµÄ»°»áÄªÃûÆäÃîµÄ×Ô¶¯ÐÞ¸ÄÎª4¡£µ¼ÖÂ³ÌÐòÔËÐÐÕý³£
+    FSMC_WriteTim.AddressSetupTime=9;                  //µØÖ·½¨Á¢Ê±¼ä£¨ADDSET£©Îª9¸öHCLK =54ns 
     FSMC_WriteTim.AddressHoldTime=0;
     FSMC_WriteTim.DataSetupTime=8;                  //Êý¾Ý±£´æÊ±¼äÎª6ns*9¸öHCLK=54n
     FSMC_WriteTim.AccessMode=FSMC_ACCESS_MODE_A;    //Ä£Ê½A
-    HAL_SRAM_Init(&TFTSRAM_Handler,&FSMC_ReadWriteTim,&FSMC_WriteTim);
+    HAL_SRAM_Init(&TFTSRAM_Handler,&FSMC_ReadWriteTim,&FSMC_WriteTim);    
     
     bsp_DelayMS(50);
     
     LCD_WR_REG(0XDA00);    
-    lcddev.id=LCD_RD_DATA();        //¶Á»Ø0X00
+    lcddev.id=LCD_RD_DATA();        //¶Á»Ø0X    0	 
     LCD_WR_REG(0XDB00);    
     lcddev.id=LCD_RD_DATA();        //¶Á»Ø0X80
     lcddev.id<<=8;    
     //printf("%d",lcddev.id);
     LCD_WR_REG(0XDC00);    
-    lcddev.id|=LCD_RD_DATA();       //¶Á»Ø0X00
+    lcddev.id|=LCD_RD_DATA();        //¶Á»Ø0X00
     //printf("%d",lcddev.id);
     if(lcddev.id == 0x8000)
         lcddev.id = 0x5510;//NT35510¶Á»ØµÄIDÊÇ8000H,Îª·½±ãÇø·Ö,ÎÒÃÇÇ¿ÖÆÉèÖÃÎª5510
@@ -358,7 +351,7 @@ void bsp_Initlcd(void)
         LCD_WriteReg(0xD208,0x00);
         LCD_WriteReg(0xD209,0x5C);
         LCD_WriteReg(0xD20A,0x00);
-    
+
         LCD_WriteReg(0xD20B,0x81);
         LCD_WriteReg(0xD20C,0x00);
         LCD_WriteReg(0xD20D,0xA6);
@@ -411,7 +404,7 @@ void bsp_Initlcd(void)
         LCD_WriteReg(0xD308,0x00);
         LCD_WriteReg(0xD309,0x5C);
         LCD_WriteReg(0xD30A,0x00);
-    
+
         LCD_WriteReg(0xD30B,0x81);
         LCD_WriteReg(0xD30C,0x00);
         LCD_WriteReg(0xD30D,0xA6);
@@ -465,7 +458,7 @@ void bsp_Initlcd(void)
         LCD_WriteReg(0xD409,0x5C);
         LCD_WriteReg(0xD40A,0x00);
         LCD_WriteReg(0xD40B,0x81);
-    
+
         LCD_WriteReg(0xD40C,0x00);
         LCD_WriteReg(0xD40D,0xA6);
         LCD_WriteReg(0xD40E,0x00);
@@ -518,7 +511,7 @@ void bsp_Initlcd(void)
         LCD_WriteReg(0xD509,0x5C);
         LCD_WriteReg(0xD50A,0x00);
         LCD_WriteReg(0xD50B,0x81);
-    
+
         LCD_WriteReg(0xD50C,0x00);
         LCD_WriteReg(0xD50D,0xA6);
         LCD_WriteReg(0xD50E,0x00);
@@ -571,7 +564,7 @@ void bsp_Initlcd(void)
         LCD_WriteReg(0xD609,0x5C);
         LCD_WriteReg(0xD60A,0x00);
         LCD_WriteReg(0xD60B,0x81);
-    
+
         LCD_WriteReg(0xD60C,0x00);
         LCD_WriteReg(0xD60D,0xA6);
         LCD_WriteReg(0xD60E,0x00);
@@ -651,15 +644,14 @@ void bsp_Initlcd(void)
     if(lcddev.id == 0x5510)//ÉèÖÃWRÊ±ÐòÎª×î¿ì
     {
         //ÖØÐÂÅäÖÃÐ´Ê±Ðò¿ØÖÆ¼Ä´æÆ÷µÄÊ±Ðò
-        FSMC_Bank1E->BWTR[6] &=~(0xf<<0);   //µØÖ·½¨Á¢Ê±¼ä(ADDSET)ÇåÁã
-        FSMC_Bank1E->BWTR[6] &=~(0XF<<8);   //Êý¾Ý±£´æÊ±¼äÇåÁã
-        FSMC_Bank1E->BWTR[6] |= 3 << 0;     //µØÖ·½¨Á¢Ê±¼äÎª3¸öHCLK = 18ns
-        FSMC_Bank1E->BWTR[6] |= 2 << 8;     //Êý¾Ý±£´æÊ±¼ä(DATAST)Îª6ns * 3¸öHCLK = 18ns
+        FSMC_Bank1E->BWTR[6] &=~(0xf<<0);//µØÖ·½¨Á¢Ê±¼ä(ADDSET)ÇåÁã
+        FSMC_Bank1E->BWTR[6] &=~(0XF<<8);//Êý¾Ý±£´æÊ±¼äÇåÁã
+        FSMC_Bank1E->BWTR[6] |= 3 << 0;//µØÖ·½¨Á¢Ê±¼äÎª3¸öHCLK = 18ns
+        FSMC_Bank1E->BWTR[6] |= 2 << 8;//Êý¾Ý±£´æÊ±¼ä(DATAST)Îª6ns * 3¸öHCLK = 18ns
     }
     LCD_Display_Dir(1);//Ä¬ÈÏÎªºáÆÁ
     LCD_LED = 1;//µãÁÁ±³¹â
     LCD_Clear(TFT_WHITE);
-    PAout(3) = 1;
 }
 //ÉèÖÃLCDÏÔÊ¾·½Ïò
 //dir:0,ÊúÆÁ£»1,ºáÆÁ
@@ -673,10 +665,10 @@ void LCD_Display_Dir(uint8_t dir)
         if(lcddev.id == 0x5510)
         {
             lcddev.wramcmd=0X2C00;
-            lcddev.setxcmd=0X2A00;
+             lcddev.setxcmd=0X2A00;
             lcddev.setycmd=0X2B00; 
             lcddev.width=480;
-            lcddev.height=800;
+            lcddev.height=800;    
         }
     }
     else //ºáÆÁ
@@ -686,10 +678,10 @@ void LCD_Display_Dir(uint8_t dir)
         if(lcddev.id == 0x5510)
         {
             lcddev.wramcmd=0X2C00;
-            lcddev.setxcmd=0X2A00;
+             lcddev.setxcmd=0X2A00;
             lcddev.setycmd=0X2B00; 
             lcddev.width=800;
-            lcddev.height=480;
+            lcddev.height=480;          
         }
     }
     LCD_Scan_Dir(DFT_SCAN_DIR);//Ä¬ÈÏÉ¨Ãè·½Ïò
@@ -698,13 +690,13 @@ void LCD_Display_Dir(uint8_t dir)
 //×¢Òâ:ÆäËûº¯Êý¿ÉÄÜ»áÊÜµ½´Ëº¯ÊýÉèÖÃµÄÓ°Ïì(ÓÈÆäÊÇ9341),
 //ËùÒÔ,Ò»°ãÉèÖÃÎªL2R_U2D¼´¿É,Èç¹ûÉèÖÃÎªÆäËûÉ¨Ãè·½Ê½,¿ÉÄÜµ¼ÖÂÏÔÊ¾²»Õý³£.
 //dir:0~7,´ú±í8¸ö·½Ïò(¾ßÌå¶¨Òå¼ûlcd.h)
-//9341/5310/5510/1963µÈICÒÑ¾­Êµ¼Ê²âÊÔ
+//9341/5310/5510/1963µÈICÒÑ¾­Ê    ¼Ê²âÊÔ	 
 
 void LCD_Scan_Dir(uint8_t dir)
 {
     uint16_t regval = 0;
     uint16_t dirreg = 0;
-//  uint16_t temp;
+//    uint16_t temp;
     if((lcddev.dir == 1) && (lcddev.id == 0x5510))//9341/5310/5510/1963,ÌØÊâ´¦Àí
     {
         switch(dir)
@@ -738,18 +730,19 @@ void LCD_Scan_Dir(uint8_t dir)
         dirreg = 0x3600;
     //5510²»ÐèÒªBGR
     LCD_WriteReg(dirreg,regval);
-        if(lcddev.id==0X5510)
-        {
-            LCD_WR_REG(lcddev.setxcmd);LCD_WR_DATA(0); 
-            LCD_WR_REG(lcddev.setxcmd+1);LCD_WR_DATA(0); 
-            LCD_WR_REG(lcddev.setxcmd+2);LCD_WR_DATA((lcddev.width-1)>>8); 
-            LCD_WR_REG(lcddev.setxcmd+3);LCD_WR_DATA((lcddev.width-1)&0XFF); 
-            LCD_WR_REG(lcddev.setycmd);LCD_WR_DATA(0); 
-            LCD_WR_REG(lcddev.setycmd+1);LCD_WR_DATA(0); 
-            LCD_WR_REG(lcddev.setycmd+2);LCD_WR_DATA((lcddev.height-1)>>8); 
-            LCD_WR_REG(lcddev.setycmd+3);LCD_WR_DATA((lcddev.height-1)&0XFF);
-        }
+    if(lcddev.id==0X5510)
+    {
+        LCD_WR_REG(lcddev.setxcmd);LCD_WR_DATA(0); 
+        LCD_WR_REG(lcddev.setxcmd+1);LCD_WR_DATA(0); 
+        LCD_WR_REG(lcddev.setxcmd+2);LCD_WR_DATA((lcddev.width-1)>>8); 
+        LCD_WR_REG(lcddev.setxcmd+3);LCD_WR_DATA((lcddev.width-1)&0XFF); 
+        LCD_WR_REG(lcddev.setycmd);LCD_WR_DATA(0); 
+        LCD_WR_REG(lcddev.setycmd+1);LCD_WR_DATA(0); 
+        LCD_WR_REG(lcddev.setycmd+2);LCD_WR_DATA((lcddev.height-1)>>8); 
+        LCD_WR_REG(lcddev.setycmd+3);LCD_WR_DATA((lcddev.height-1)&0XFF);
     }
+}
+    
 }
 
 void LCD_Clear(uint32_t color)
@@ -773,18 +766,18 @@ void LCD_Draw_Circle(uint16_t x0,uint16_t y0,uint8_t r)
 {
     int a,b;
     int di;
-    a=0;b=r;
+    a=0;b=r;      
     di=3-(r<<1);             //ÅÐ¶ÏÏÂ¸öµãÎ»ÖÃµÄ±êÖ¾
     while(a<=b)
     {
         LCD_DrawPoint(x0+a,y0-b);             //5
-        LCD_DrawPoint(x0+b,y0-a);             //0
-        LCD_DrawPoint(x0+b,y0+a);             //4
-        LCD_DrawPoint(x0+a,y0+b);             //6
-        LCD_DrawPoint(x0-a,y0+b);             //1
-        LCD_DrawPoint(x0-b,y0+a);             
-        LCD_DrawPoint(x0-a,y0-b);             //2
-        LCD_DrawPoint(x0-b,y0-a);             //7
+         LCD_DrawPoint(x0+b,y0-a);             //0           
+        LCD_DrawPoint(x0+b,y0+a);             //4               
+        LCD_DrawPoint(x0+a,y0+b);             //6 
+        LCD_DrawPoint(x0-a,y0+b);             //1       
+         LCD_DrawPoint(x0-b,y0+a);             
+        LCD_DrawPoint(x0-a,y0-b);             //2             
+          LCD_DrawPoint(x0-b,y0-a);             //7                  
         a++;
         //Ê¹ÓÃBresenhamËã·¨»­Ô²     
         if(di<0)
@@ -793,10 +786,10 @@ void LCD_Draw_Circle(uint16_t x0,uint16_t y0,uint8_t r)
         {
             di+=10+4*(a-b);   
             b--;
-        }
+        }                             
     }
 }
-//ÔÚÖ¸¶¨ÇøÓòÄÚÌî³äÖ¸¶¨ÑÕÉ«¿é
+//ÔÚÖ¸¶¨ÇøÓòÄÚÌ            Ö¸¶¨ÑÕÉ«¿é			 
 //(sx,sy),(ex,ey):Ìî³ä¾ØÐÎ¶Ô½Ç×ø±ê,ÇøÓò´óÐ¡Îª:(ex-sx+1)*(ey-sy+1)   
 //color:ÒªÌî³äµÄÑÕÉ«
 void LCD_Color_Fill(uint16_t sx,uint16_t sy,uint16_t ex,uint16_t ey,uint16_t *color)
@@ -813,6 +806,7 @@ void LCD_Color_Fill(uint16_t sx,uint16_t sy,uint16_t ex,uint16_t ey,uint16_t *co
             LCD->LCD_RAM = color[i*width+j];//Ð´ÈëÊý¾Ý
     }
 }
+    
 
 //ÔÚÖ¸¶¨Î»ÖÃÏÔÊ¾Ò»¸ö×Ö·û
 //x,y:ÆðÊ¼×ø±ê
@@ -821,20 +815,20 @@ void LCD_Color_Fill(uint16_t sx,uint16_t sy,uint16_t ex,uint16_t ey,uint16_t *co
 //mode:µþ¼Ó·½Ê½(1)»¹ÊÇ·Çµþ¼Ó·½Ê½(0)
 #if 1
 void LCD_ShowChar(uint16_t x,uint16_t y,uint8_t num,uint8_t size,uint8_t mode)
-{
+{                                
     uint8_t temp,t1,t;
     uint16_t y0=y;
-    uint8_t csize=(size/8+((size%8)?1:0))*(size/2);     //µÃµ½×ÖÌåÒ»¸ö×Ö·û¶ÔÓ    µãÕó¼¯ËùÕ¼µÄ×Ö½ÚÊý	
-    num=num-' ';//µÃµ½Æ«ÒÆºóµÄÖµ£¨ASCII×Ö¿âÊÇ´Ó¿Õ¸ñ¿ªÊ¼È¡Ä££¬ËùÒÔ-' '¾ÍÊÇ¶ÔÓ¦×Ö·ûµÄ×Ö¿â£©
+    uint8_t csize=(size/8+((size%8)?1:0))*(size/2);        //µÃµ½×ÖÌåÒ»¸ö×Ö·û¶ÔÓ    µãÕó¼¯ËùÕ¼µÄ×Ö½ÚÊý	
+     num=num-' ';//µÃµ½Æ«ÒÆºóµÄÖµ£¨ASCII×Ö¿âÊÇ´Ó¿Õ¸ñ¿ªÊ¼È¡Ä££¬ËùÒÔ-' '¾ÍÊÇ¶ÔÓ¦×Ö·ûµÄ×Ö¿â£©
     for(t=0;t<csize;t++)
     {   
-        if(size==12)temp=asc2_1206_lcd[num][t];         //µ÷ÓÃ1206×ÖÌå
+        if(size==12)temp=asc2_1206_lcd[num][t];          //µ÷ÓÃ1206×ÖÌå
         else if(size==16)temp=asc2_1608_lcd[num][t];    //µ÷ÓÃ1608×ÖÌå
         else if(size==24)temp=asc2_2412_lcd[num][t];    //µ÷ÓÃ2412×ÖÌå
         else if(size==32)temp=asc2_3216_lcd[num][t];    //µ÷ÓÃ3216×ÖÌå
-        else return;                                    //Ã»ÓÐµÄ×Ö¿â
+        else return;                                //Ã»ÓÐµÄ×Ö¿â
         for(t1=0;t1<8;t1++)
-        {
+        {                
             if(temp&0x80)LCD_Fast_DrawPoint(x,y,POINT_COLOR);
             else if(mode==0)LCD_Fast_DrawPoint(x,y,BACK_COLOR);
             temp<<=1;
@@ -848,7 +842,7 @@ void LCD_ShowChar(uint16_t x,uint16_t y,uint8_t num,uint8_t size,uint8_t mode)
                 break;
             }
         }       
-    }
+    }                            
 }   
 #endif
 
@@ -876,28 +870,28 @@ void LCD_ShowString(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uint8_t
 //x,y:×ø±ê
 //color:ÑÕÉ«
 void LCD_Fast_DrawPoint(uint16_t x,uint16_t y,uint32_t color)
-{
+{       
     if(lcddev.id==0X9341||lcddev.id==0X5310)
     {
         LCD_WR_REG(lcddev.setxcmd); 
-        LCD_WR_DATA(x>>8);LCD_WR_DATA(x&0XFF);
+        LCD_WR_DATA(x>>8);LCD_WR_DATA(x&0XFF);               
         LCD_WR_REG(lcddev.setycmd); 
-        LCD_WR_DATA(y>>8);LCD_WR_DATA(y&0XFF);
+        LCD_WR_DATA(y>>8);LCD_WR_DATA(y&0XFF);               
     }else if(lcddev.id==0X5510)
     {
         LCD_WR_REG(lcddev.setxcmd);LCD_WR_DATA(x>>8);  
-        LCD_WR_REG(lcddev.setxcmd+1);LCD_WR_DATA(x&0XFF);
+        LCD_WR_REG(lcddev.setxcmd+1);LCD_WR_DATA(x&0XFF);      
         LCD_WR_REG(lcddev.setycmd);LCD_WR_DATA(y>>8);  
         LCD_WR_REG(lcddev.setycmd+1);LCD_WR_DATA(y&0XFF); 
     }else if(lcddev.id==0X1963)
     {
         if(lcddev.dir==0)x=lcddev.width-1-x;
         LCD_WR_REG(lcddev.setxcmd); 
-        LCD_WR_DATA(x>>8);LCD_WR_DATA(x&0XFF);
-        LCD_WR_DATA(x>>8);LCD_WR_DATA(x&0XFF);
+        LCD_WR_DATA(x>>8);LCD_WR_DATA(x&0XFF);         
+        LCD_WR_DATA(x>>8);LCD_WR_DATA(x&0XFF);         
         LCD_WR_REG(lcddev.setycmd); 
-        LCD_WR_DATA(y>>8);LCD_WR_DATA(y&0XFF);
-        LCD_WR_DATA(y>>8);LCD_WR_DATA(y&0XFF);
+        LCD_WR_DATA(y>>8);LCD_WR_DATA(y&0XFF);         
+        LCD_WR_DATA(y>>8);LCD_WR_DATA(y&0XFF);         
     }         
     LCD->LCD_REG=lcddev.wramcmd; 
     LCD->LCD_RAM=color; 
@@ -912,9 +906,9 @@ void LCD_Fill(uint16_t sx,uint16_t sy,uint16_t ex,uint16_t ey,uint32_t color)
     xlen=ex-sx+1;     
     for(i=sy;i<=ey;i++)
     {
-        LCD_SetCursor(sx,i);                    //ÉèÖÃ¹â±êÎ»ÖÃ 
-        LCD_WriteRAM_Prepare();                 //¿ªÊ¼Ð´ÈëGRAM
-        for(j=0;j<xlen;j++)LCD->LCD_RAM=color;    //ÏÔÊ¾ÑÕÉ« 
+        LCD_SetCursor(sx,i);                      //ÉèÖÃ¹â±êÎ»ÖÃ 
+        LCD_WriteRAM_Prepare();                 //¿ªÊ¼Ð´Èë    RAM	  
+        for(j=0;j<xlen;j++)LCD->LCD_RAM=color;    //ÏÔÊ¾Ñ    É« 	    
     }  
 }  
 /**

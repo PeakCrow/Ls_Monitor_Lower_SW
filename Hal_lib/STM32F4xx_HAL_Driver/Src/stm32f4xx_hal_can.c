@@ -1523,8 +1523,7 @@ HAL_StatusTypeDef HAL_CAN_GetRxMessage(CAN_HandleTypeDef *hcan, uint32_t RxFifo,
       (state == HAL_CAN_STATE_LISTENING))
   {
     /* Check the Rx FIFO */
-    /* Rx element is assigned to Rx FIFO 0 */
-    if (RxFifo == CAN_RX_FIFO0) 
+    if (RxFifo == CAN_RX_FIFO0) /* Rx element is assigned to Rx FIFO 0 */
     {
       /* Check that the Rx FIFO 0 is not empty */
       if ((hcan->Instance->RF0R & CAN_RF0R_FMP0) == 0U)

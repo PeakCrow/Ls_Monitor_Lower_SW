@@ -6,7 +6,7 @@
 *   版    本 : V1.0
 *   描    述 : 在CM3，CM4，CM7中可以有3种跟踪源：ETM, ITM 和DWT，本驱动主要实现
 *              DWT中的时钟周期（CYCCNT）计数功能，此功能非常重要，可以很方便的
-*              计算程序执行的时钟周期个数
+*              计算程序执行的时钟周期个数??
 *   修改记录 :
 *       版本    日期        作者          说明
 *       V1.0    2019-02-24   Eric2013    正式发布
@@ -21,7 +21,7 @@
 
 /*
 *********************************************************************************************************
-*                                             寄存器
+*                                             寄存??
 *********************************************************************************************************
 */
 #define  DEM_CR_TRCENA               (1 << 24)
@@ -47,7 +47,7 @@ void bsp_InitDWT(void)
  * @DateTime     : 2024年2月25日 02:57:35
  * @Purpose      : 为了让底层驱动在带RTOS和裸机情况下有更好的兼容
                  : 专门制作一个阻塞式的延迟函数
-                 : 在底层驱动中ms毫秒延迟主要用于初始化，并不会影响实时性
+                 : 在底层驱动中ms毫秒延迟主要用于初始化，并不会影响实时性??
  * @param        : 延迟长度 单位 ms
  * @return       : void
 */
@@ -103,7 +103,7 @@ void bsp_DelayUS(uint32_t _ulDelayTime)
 
     while(tCnt < tDelayCnt)
     {
-        tCnt = DWT_CYCCNT - tStart; /* 求减过程中，如果发生第一次32位计数器重新计数，依然可以正确计数 */
+        tCnt = DWT_CYCCNT - tStart; /* 求减过程中，如果发生第一次32位计数器重新计数，依然可以正确计 */
     }
 }
 
@@ -113,12 +113,12 @@ void bsp_DelayDWT(uint32_t _ulDelayTime)
     uint32_t tStart;
     
     tCnt = 0;
-    tDelayCnt = _ulDelayTime;    /* 需要的节拍 */
+    tDelayCnt = _ulDelayTime;     /* 需要的节拍 */
     tStart = DWT_CYCCNT;         /* 刚进入时的计数器 */
 
     while(tCnt < tDelayCnt)
     {
-        tCnt = DWT_CYCCNT - tStart; /* 求减过程中，如果发生第一次32位计数器重新计数，依然可以正确计数 */
+        tCnt = DWT_CYCCNT - tStart; /* 求减过程中，如果发生第一次32位计数器重新计数，依然可以正确计 */
     }
 }
 
@@ -129,7 +129,7 @@ void bsp_DelayDWT(uint32_t _ulDelayTime)
  * @Purpose      : 重定向毫秒延迟函数 替换HAL中的函数 
  *               : 因为HAL中的缺省函数依赖于Systick中断，如果在USB、SD 
  *               : 中断中有延迟函数 则会锁死 
- *               : 也可以通过函数HAL_NVIC_SetPriority提升Systick中断 
+ *               : 也可以通过函数HAL_NVIC_SetPriority提升Systick中断
  * @param        : void
  * @return       : void
 */

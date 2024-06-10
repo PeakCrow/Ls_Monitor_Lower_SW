@@ -10,7 +10,7 @@
 
 /* 使能GPIO时钟 */
 #define ALL_KEY_GPIO_CLK_ENABLE()    { \
-    __HAL_RCC_GPIOE_CLK_ENABLE();    \
+    __HAL_RCC_GPIOA_CLK_ENABLE();    \
     __HAL_RCC_GPIOE_CLK_ENABLE();    \
 };
 
@@ -24,8 +24,8 @@ typedef struct
 
 /* 定义结构体变??*/
 static const X_GPIO_T s_gpio_list[HARD_KEY_NUM] = {
-    {GPIOE, GPIO_PIN_2, 1},
-    {GPIOE,    GPIO_PIN_3, 1},
+    {GPIOE, GPIO_PIN_4, 1},
+    {GPIOA,    GPIO_PIN_0, 1},
     
 };
 
@@ -51,12 +51,12 @@ static uint8_t KeyPinActive(uint8_t _id)
 {
     uint8_t level;
     /* IDR寄存器用来读取IO引脚的输入，16位可读，A...I */
-    //高电平按下
-    //只有使用低电平作为激活信号的时候不必进行条件或运算，因为位与出来都为0 有效
+    //高电平按??
+    //只有使用低电平作为激活信号的时候不必进行条件或运算，因为位与出来都??
     //高电平的情况下只有第一个引脚是可用的，例如此时的PA0
     //麻了
-    if((s_gpio_list[_id].gpio->IDR & s_gpio_list[_id].pin) == 4
-        || (s_gpio_list[_id].gpio->IDR & s_gpio_list[_id].pin) == 8)
+    if((s_gpio_list[_id].gpio->IDR & s_gpio_list[_id].pin) == 1
+        || (s_gpio_list[_id].gpio->IDR & s_gpio_list[_id].pin) == 16)
     {
         level = 1;
     }
@@ -75,11 +75,11 @@ static uint8_t KeyPinActive(uint8_t _id)
     }
 }
 /*
-*   函 数 名: IsKeyDownFunc
-*   功能说明:判断按键是否按下，单键和组合键区??软件??
-*   形    参: _id:按键??
-*   返 回 值: 1：表示按键按下；0：表示按键释放
-*   时    间:2024年3月31日 15:05:32
+*    ?????? IsKeyDownFunc
+*    功能说明: 判断按键是否按下，单键和组合键区??软件??
+*    ??   ?? _id:按键??
+*    ?????? 1：表示按键按下；0：表示按键释??
+*    时间??022????9??2??8??
 */
 static uint8_t IsKeyDownFunc(uint8_t _id)
 {

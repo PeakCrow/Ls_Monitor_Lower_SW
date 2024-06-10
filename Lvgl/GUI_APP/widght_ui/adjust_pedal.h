@@ -4,10 +4,10 @@
 #include "monitor.h"
 
 typedef struct _driverx_pos {
-    float driver1_pos;
-    float driver2_pos;
-    float driver3_pos;
-    float current_pos;
+	float driver1_pos;
+	float driver2_pos;
+	float driver3_pos;
+	float current_pos;
 }st_driver_pos;
 
 extern st_driver_pos DriverX_Pos;

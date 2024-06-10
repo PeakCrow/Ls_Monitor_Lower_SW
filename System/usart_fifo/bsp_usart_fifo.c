@@ -246,7 +246,7 @@ void InitHardUart(void)
     HAL_NVIC_EnableIRQ(USART3_IRQn);
   
     /* 配置波特率、奇偶校??*/
-    bsp_SetUartParam(USART3,  UART3_BAUD, UART_PARITY_EVEN, UART_MODE_TX_RX);
+    bsp_SetUartParam(USART3,  UART3_BAUD, UART_PARITY_NONE, UART_MODE_TX_RX);
 
     CLEAR_BIT(USART3->SR, USART_SR_TC);   /* 清除TC发送完成标??*/
     CLEAR_BIT(USART3->SR, USART_SR_RXNE); /* 清除RXNE接收标志 */

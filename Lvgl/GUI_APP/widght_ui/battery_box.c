@@ -88,7 +88,7 @@ static void Battery_Box_In_Ui(lv_obj_t * parent)
     lv_obj_t * ui_Image_Particle3;
     lv_obj_t * ui_Image_Battery_BG;
 
-    lv_obj_t * ui_Wave2,* ui_Wave1;
+//    lv_obj_t * ui_Wave2,* ui_Wave1;
     lv_obj_t * break_led,* tsms_led;
     lv_obj_t * apps_slider1,* apps_slider2;
     lv_obj_t * current_bar,*voltage_bar;
