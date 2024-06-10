@@ -414,7 +414,7 @@
                 </option>
                 <option>
                     <name>CCOptLevel</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>CCOptStrategy</name>
@@ -423,7 +423,7 @@
                 </option>
                 <option>
                     <name>CCOptLevelSlave</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>CompilerMisraRules98</name>
@@ -580,7 +580,7 @@
                 </option>
                 <option>
                     <name>ADefines</name>
-                    <state></state>
+                    <state>TX_ENABLE_FPU_SUPPORT</state>
                 </option>
                 <option>
                     <name>AList</name>
@@ -1641,13 +1641,25 @@
     <group>
         <name>Lvgl/Ui</name>
         <file>
+            <name>$PROJ_DIR$\..\Lvgl\GUI_APP\widght_ui\about_phone_ui.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Lvgl\GUI_APP\widght_ui\adjust_pedal.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\Lvgl\GUI_APP\widght_ui\battery_box.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Lvgl\GUI_APP\widght_ui\cool_control.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\Lvgl\GUI_APP\Monitor.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\Lvgl\GUI_APP\widght_ui\motor_control_ui.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Lvgl\GUI_APP\widght_ui\sensor_ui.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Lvgl\GUI_APP\widght_ui\set_up.c</name>
@@ -1726,9 +1738,6 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\System\sd_card\bsp_sdio_sd.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\System\ads1256\bsp_spi_ads1256.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\System\spi\bsp_spi_bus.c</name>

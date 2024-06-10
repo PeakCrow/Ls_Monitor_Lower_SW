@@ -45,7 +45,7 @@ static void dma_config(void);
     #define LV_MEM_ADR  0x680bb800    
     #define LV_ATTRIBUTE_LARGE_RAM_ARRAY __attribute__ ((section (".EXTERN_SRAM")))
 */
-__attribute__((section(".EXTERN_SRAM")))   static lv_color_t buf_1[MY_DISP_HOR_RES * MY_DISP_VER_RES];  /*A buffer for 10 rows*/         
+static lv_color_t buf_1[MY_DISP_HOR_RES * MY_DISP_VER_RES] __attribute__((section(".EXTERN_SRAM")));  /*A buffer for 10 rows*/         
 /**********************
  *      MACROS
  **********************/

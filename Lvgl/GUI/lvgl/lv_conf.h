@@ -65,25 +65,23 @@
 #define LV_MEM_CUSTOM 0
 #if LV_MEM_CUSTOM == 0
     /*Size of the memory available for `lv_mem_alloc()` in bytes (>= 2kB)*/
-    /*可用于’lv_mem_alloc()'分配的内存大小，以字节为单位，大于等于2Kb*/
-    //#define LV_MEM_SIZE (128U * 1024U)          /*[bytes]*/
-    #define LV_MEM_SIZE (32U * 1024U)          /*[bytes]*/
+	/*可用于’lv_mem_alloc()'分配的内存大小，以字节为单位，大于等于2Kb*/
+    #define LV_MEM_SIZE (128U * 1024U)          /*[bytes]*/
 
     /*Set an address for the memory pool instead of allocating it as a normal array. Can be in external SRAM too.*/
-    /*设置内存池的地址，而不是将其分配为普通数组，也可以在外部sram中.*/
-    //#define LV_MEM_ADR  0x680bb800    /*0: unused*/
-    #define LV_MEM_ADR  0    /*0: unused*/
+	/*设置内存池的地址，而不是将其分配为普通数组，也可以在外部sram中.*/
+    #define LV_MEM_ADR  0x680bb800    /*0: unused*/
     /*Instead of an address give a memory allocator that will be called to get a memory pool for LVGL. E.g. my_malloc*/
-    /*代替地址给出一个内存分配器，他将被调用来获得LVGL的内存池，例如 my_malloc*/
+	/*代替地址给出一个内存分配器，他将被调用来获得LVGL的内存池，例如 my_malloc*/
     #if LV_MEM_ADR == 0
         #undef LV_MEM_POOL_INCLUDE 
         #undef LV_MEM_POOL_ALLOC   
     #endif
 
 #else       /*LV_MEM_CUSTOM*/
-    #define LV_MEM_CUSTOM_INCLUDE  <stdlib.h>    //<stdlib.h>    "malloc.h" /*Header for the dynamic memory function*/
-    #define LV_MEM_CUSTOM_ALLOC   malloc    //malloc  lv_mymalloc
-    #define LV_MEM_CUSTOM_FREE    free        //free  lv_myfree
+    #define LV_MEM_CUSTOM_INCLUDE  <stdlib.h>	//<stdlib.h>    "malloc.h" /*Header for the dynamic memory function*/
+    #define LV_MEM_CUSTOM_ALLOC   malloc	//malloc  lv_mymalloc
+    #define LV_MEM_CUSTOM_FREE    free		//free  lv_myfree
     #define LV_MEM_CUSTOM_REALLOC realloc//realloc  lv_myrealloc
 #endif     /*LV_MEM_CUSTOM*/
 
@@ -143,7 +141,7 @@
     /*Allow buffering some shadow calculation.
     *LV_SHADOW_CACHE_SIZE is the max. shadow size to buffer, where shadow size is `shadow_width + radius`
     *Caching has LV_SHADOW_CACHE_SIZE^2 RAM cost*/
-    /*允许缓冲一些阴影计算.
+	/*允许缓冲一些阴影计算.
     *LV_SHADOW_CACHE_SIZE 是缓冲区的最大阴影大小，其中阴影大小为‘阴影宽度+半径`
     *缓存具有LV_SHADOW_CACHE_SIZE^2 大小的RAM成本*/
     #define LV_SHADOW_CACHE_SIZE 0
@@ -152,7 +150,7 @@
     * The circumference of 1/4 circle are saved for anti-aliasing
     * radius * 4 bytes are used per circle (the most often used radiuses are saved)
     * 0: to disable caching */
-    /*设置最大缓存的圆圈数据数
+	/*设置最大缓存的圆圈数据数
     * 保存1/4的周长以进行抗锯齿
     * ”半径“每个圆圈使用4字节(保存最常用的半径)
     * 0：禁用缓冲*/
@@ -200,8 +198,8 @@
     /*Add support for error diffusion dithering.
      *Error diffusion dithering gets a much better visual result, but implies more CPU consumption and memory when drawing.
      *The increase in memory consumption is (24 bits * object's width)*/
-    /*添加对误差扩散抖动的支持
-    *错误扩散抖动以获得更好的视觉效果，但在绘制时意味着更多的CPU消耗和RAM
+	/*添加对误差扩散抖动的支持
+	*错误扩散抖动以获得更好的视觉效果，但在绘制时意味着更多的CPU消耗和RAM
      *内存消耗的增加是 (24 bits * 对象的宽度)*/
     #define LV_DITHER_ERROR_DIFFUSION   0
 #endif
@@ -221,7 +219,7 @@
 #if LV_USE_GPU_STM32_DMA2D
     /*Must be defined to include path of CMSIS header of target processor
     e.g. "stm32f769xx.h" or "stm32f429xx.h"*/
-    /*必须定义为包括目标处理器的CMSIS头文件的路径
+	/*必须定义为包括目标处理器的CMSIS头文件的路径
     例如. "stm32f769xx.h" or "stm32f429xx.h"*/
     #define LV_GPU_DMA2D_CMSIS_INCLUDE
 #endif
@@ -235,7 +233,7 @@
     *   has to be defined in order to use FreeRTOS OSA, otherwise bare-metal implementation is selected.
     *0: lv_gpu_nxp_pxp_init() has to be called manually before lv_init()
     */
-    /*1: 为PXP添加默认逻辑和FreeRTOS中断处理例程(lv_gpu_nxp_PXP_osa.c)
+	/*1: 为PXP添加默认逻辑和FreeRTOS中断处理例程(lv_gpu_nxp_PXP_osa.c)
     *  在lv_init()期间自动调用lv_gpu_nxp_pxp_init(). 请注意符号SDK_OS_FREE_RTOS
     *   必须定义才能使用FreeRTOS OSA, 否则选择逻辑实现。
     *0: lv_gpu_nxp_pxp_init() 必须在lv_init()之前手动调用
@@ -263,7 +261,7 @@
 
 /*Enable the log module*/
 /* 使能日志模型 */
-#define LV_USE_LOG 1
+#define LV_USE_LOG 0
 #if LV_USE_LOG
 
     /*How important log should be added:--应添加的日志的重要性
@@ -273,15 +271,15 @@
     *LV_LOG_LEVEL_ERROR       Only critical issue, when the system may fail--系统可能出现故障时的唯一关键问题
     *LV_LOG_LEVEL_USER        Only logs added by the user--仅用户添加的日志
     *LV_LOG_LEVEL_NONE        Do not log anything--不记录任何内容*/
-    #define LV_LOG_LEVEL      LV_LOG_LEVEL_INFO
+    #define LV_LOG_LEVEL      LV_LOG_LEVEL_TRACE
 
     /*1: Print the log with 'printf';打印日志使用printf
     *0: User need to register a callback with `lv_log_register_print_cb()`*/
-    /* 用户需要注册回调函数： lv_log_register_print_cb() */
+	/* 用户需要注册回调函数： lv_log_register_print_cb() */
     #define LV_LOG_PRINTF 1
 
     /*Enable/disable LV_LOG_TRACE in modules that produces a huge number of logs*/
-    /* 在产生大量日志的模块中启用/禁用LV_LOG_TRACE */
+	/* 在产生大量日志的模块中启用/禁用LV_LOG_TRACE */
     #define LV_LOG_TRACE_MEM        1
     #define LV_LOG_TRACE_TIMER      1
     #define LV_LOG_TRACE_INDEV      1
@@ -394,8 +392,7 @@
 
 /*Compiler prefix for a big array declaration in RAM*/
 /*RAM中大数组声明的编译器前缀*/
-//#define LV_ATTRIBUTE_LARGE_RAM_ARRAY __attribute__ ((section (".EXTERN_SRAM")))
-#define LV_ATTRIBUTE_LARGE_RAM_ARRAY 
+#define LV_ATTRIBUTE_LARGE_RAM_ARRAY __attribute__ ((section (".EXTERN_SRAM")))
 
 /*Place performance critical functions into a faster memory (e.g RAM)*/
 /*将性能关键功能放入速度更快的内存 (e.g RAM)*/
@@ -463,14 +460,13 @@
  /*可以选择在此处声明自定义字体
  *你也可以使用这些字体作为默认字体，他们将在全局可用
  *E.g. #define LV_FONT_CUSTOM_DECLARE   LV_FONT_DECLARE(my_font_1) LV_FONT_DECLARE(my_font_2)*/
-//#define LV_FONT_CUSTOM_DECLARE LV_FONT_DECLARE(myFont36) \
-//                               LV_FONT_DECLARE(myFont20)
-#define LV_FONT_CUSTOM_DECLARE   
-                                                               
+#define LV_FONT_CUSTOM_DECLARE LV_FONT_DECLARE(myFont36) \
+							   LV_FONT_DECLARE(myFont20)
+															   
 
 /*Always set a default font*/
 /*始终设置默认字体*/
-#define LV_FONT_DEFAULT &lv_font_montserrat_24
+#define LV_FONT_DEFAULT &myFont20
 
 /*Enable handling large font and/or fonts with a lot of characters.
  *The limit depends on the font size, font face and bpp.
@@ -489,7 +485,7 @@
 #define LV_USE_FONT_SUBPX 0
 #if LV_USE_FONT_SUBPX
     /*Set the pixel order of the display. Physical order of RGB channels. Doesn't matter with "normal" fonts.*/
-    /*设置显示器的像素顺序，RGB通道的物理顺序。普通字体没有关系.*/
+	/*设置显示器的像素顺序，RGB通道的物理顺序。普通字体没有关系.*/
     #define LV_FONT_SUBPX_BGR 0  /*0: RGB; 1:BGR order*/
 #endif
 
@@ -509,7 +505,7 @@
  * - LV_TXT_ENC_UTF8
  * - LV_TXT_ENC_ASCII
  */
-#define LV_TXT_ENC         LV_TXT_ENC_UTF8
+#define LV_TXT_ENC 		LV_TXT_ENC_UTF8
 
 /*Can break (wrap) texts on these chars*/
 /*可以在这些字符上断开(换行)文本*/
@@ -586,7 +582,7 @@
 #if LV_USE_LABEL
     #define LV_LABEL_TEXT_SELECTION 1 /*Enable selecting text of the label--启用选择标签的文本*/
     #define LV_LABEL_LONG_TXT_HINT 1  /*Store some extra info in labels to speed up drawing of very long texts*/
-                                      /*--在标签中存储一些额外信息，以加快绘制非常长的文本*/
+																	/*--在标签中存储一些额外信息，以加快绘制非常长的文本*/
 #endif
 
 #define LV_USE_LINE       1
@@ -674,11 +670,11 @@
     #define LV_THEME_DEFAULT_DARK 0
 
     /*1: Enable grow on press*/
-    /*1: 启用按需增长*/
+	/*1: 启用按需增长*/
     #define LV_THEME_DEFAULT_GROW 1
 
     /*Default transition time in [ms]*/
-    /*默认转换时间 [ms]*/
+	/*默认转换时间 [ms]*/
     #define LV_THEME_DEFAULT_TRANSITION_TIME 80
 #endif /*LV_USE_THEME_DEFAULT*/
 
@@ -734,7 +730,7 @@
 #endif
 
 /*API for FATFS (needs to be added separately). Uses f_open, f_read, etc*/
-#define LV_USE_FS_FATFS  0
+#define LV_USE_FS_FATFS  1
 #if LV_USE_FS_FATFS
 #define LV_FS_FATFS_LETTER '0'     /*Set an upper cased letter on which the drive will accessible (e.g. 'A')*/
     #define LV_FS_FATFS_CACHE_SIZE 4*1024    /*>0 to cache this number of bytes in lv_fs_read()*/
@@ -766,27 +762,27 @@
 #define LV_USE_FREETYPE 0
 #if LV_USE_FREETYPE
     /*Memoryused by FreeType to cache characters [bytes] (-1: no caching)*/
-    /* FreeType 用于缓存[bytes] (-1: 无缓存) 的内存 */
+	/* FreeType 用于缓存[bytes] (-1: 无缓存) 的内存 */
     #define LV_FREETYPE_CACHE_SIZE (16 * 1024)
     #if LV_FREETYPE_CACHE_SIZE >= 0
         /* 1: bitmap cache use the sbit cache, 0:bitmap cache use the image cache. */
         /* sbit cache:it is much more memory efficient for small bitmaps(font size < 256) */
         /* if font size >= 256, must be configured as image cache */
-        /* 1: 位图缓存使用sbit缓存，0:位图缓存使用图像缓存. */
+		/* 1: 位图缓存使用sbit缓存，0:位图缓存使用图像缓存. */
         /* sbit缓存，对于小位图(font size < 256)，他的内存效率更高 */
         /* 如果 font size >= 256, 则必须配置为图像缓存 */
         #define LV_FREETYPE_SBIT_CACHE 0
         /* Maximum number of opened FT_Face/FT_Size objects managed by this cache instance. */
         /* (0:use system defaults) */
         /* 此缓存实例管理的最大打开FT_Face/FT_Size 对象数. */
-        /* (0:使用系统默        �值) */		
+        /* (0:使用系统默认值) */		
         #define LV_FREETYPE_CACHE_FT_FACES 0
         #define LV_FREETYPE_CACHE_FT_SIZES 0
     #endif
 #endif
 
 /*Rlottie library*/
-/*Rlottie 库*/
+/*Rlottie 库*/	
 #define LV_USE_RLOTTIE 0
 
 /*FFmpeg library for image decoding and playing videos
@@ -796,7 +792,7 @@
 #define LV_USE_FFMPEG  0
 #if LV_USE_FFMPEG
     /*Dump input information to stderr*/
-    /*将输入信息转储到stderr*/
+	/*将输入信息转储到stderr*/
     #define LV_FFMPEG_AV_DUMP_FORMAT 0
 #endif
 

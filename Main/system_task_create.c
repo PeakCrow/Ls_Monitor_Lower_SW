@@ -6,8 +6,8 @@
 */
 #define  APP_CFG_TASK_COM_PRIO           7u
 #define  APP_CFG_TASK_COM_STK_SIZE       1024u
-#define  TASK_START_CREATE_PRIO          7u
-#define  TASK_START_CREATE_SIZE          1024u
+#define  TASK_START_CREATE_PRIO                  7u
+#define  TASK_START_CREATE_SIZE                  1024u
 /*
 *********************************************************************************************************
 *                                       静态全局变量
@@ -23,7 +23,7 @@ static  uint64_t    AppTaskStartStk[TASK_START_CREATE_SIZE/8];
 *********************************************************************************************************
 */
 TX_TIMER AppTimer; 
-TX_EVENT_FLAGS_GROUP  EventGroup;    /* 事件标志组 */
+TX_EVENT_FLAGS_GROUP  EventGroup;     /* 事件标志组 */
 /*
 *********************************************************************************************************
 *                                      函数声明
@@ -78,16 +78,16 @@ void  tx_application_define(void *first_unused_memory)
 static  void  AppTaskCreate (void)
 {
 #if 1
-    /**************创建MsgPro任务*********************/
-    tx_thread_create(&AppTaskMsgProTCB,"App Msp Pro",AppTaskMsgPro,0,&AppTaskMsgProStk[0],APP_CFG_TASK_MsgPro_STK_SIZE,
-                       APP_CFG_TASK_MsgPro_PRIO,APP_CFG_TASK_MsgPro_PRIO,TX_NO_TIME_SLICE,TX_AUTO_START);
-#endif    
-    /**************创建COM任务*********************/
-    tx_thread_create(&AppTaskCOMTCB,"App Task COM",AppTaskCOM,0,&AppTaskCOMStk[0],APP_CFG_TASK_COM_STK_SIZE,
-                       APP_CFG_TASK_COM_PRIO,APP_CFG_TASK_COM_PRIO,TX_NO_TIME_SLICE,TX_AUTO_START);
     /**************创建USER IF任务*********************/
     tx_thread_create(&AppTaskUserIFTCB,"App Task UserIF",AppTaskUserIF,0,&AppTaskUserIFStk[0],APP_CFG_TASK_USER_IF_STK_SIZE,
                        APP_CFG_TASK_USER_IF_PRIO,APP_CFG_TASK_USER_IF_PRIO,TX_NO_TIME_SLICE,TX_AUTO_START);
+    /**************创建MsgPro任务*********************/
+    tx_thread_create(&AppTaskMsgProTCB,"App Msp Pro",AppTaskMsgPro,0,&AppTaskMsgProStk[0],APP_CFG_TASK_MsgPro_STK_SIZE,
+                       APP_CFG_TASK_MsgPro_PRIO,APP_CFG_TASK_MsgPro_PRIO,TX_NO_TIME_SLICE,TX_AUTO_START);
+    /**************创建COM任务*********************/
+    tx_thread_create(&AppTaskCOMTCB,"App Task COM",AppTaskCOM,0,&AppTaskCOMStk[0],APP_CFG_TASK_COM_STK_SIZE,
+                       APP_CFG_TASK_COM_PRIO,APP_CFG_TASK_COM_PRIO,TX_NO_TIME_SLICE,TX_AUTO_START);
+#endif    
     /**************创建LCD DISP任务*********************/
     tx_thread_create(&AppTaskTFTLCDTCB,"App Task TFTLCD",AppTaskTFTLCD,0,&AppTaskTFTLCDStk[0],APP_CFG_TASK_TFTLCD_STK_SIZE,
                        APP_CFG_TASK_TFTLCD_PRIO,APP_CFG_TASK_TFTLCD_PRIO,TX_NO_TIME_SLICE,TX_AUTO_START);
@@ -102,11 +102,11 @@ static  void  AppTaskCreate (void)
 //}
 /*
 *********************************************************************************************************
-*   函 数 名: AppTaskStart
-*   功能说明: 启动任务。启动任务中包含有三个子任务
-*   形    参: thread_input 是在创建该任务时传递的形参
-*   返 回 值: 无
-*   优 先 级: 2
+*    函 数 名: AppTaskStart
+*    功能说明: 启动任务。启动任务中包含有三个子任务
+*    形    参: thread_input 是在创建该任务时传递的形参
+*    返 回 值: 无
+    优 先 级: 2
 *********************************************************************************************************
 */
 static  void  AppTaskStart (ULONG thread_input)
@@ -130,12 +130,10 @@ static  void  AppTaskStart (ULONG thread_input)
     bsp_SetTIMOutPWM(GPIOB,GPIO_PIN_6,TIM4,1,500,5000);/* 生成一个1k，50占空比的方波，用来验证脉冲计数 */
     bsp_InitSPI1Bus();                            /* SPI1总线初始化 */
     bsp_InitSFlash();                            /* 初始化SPI FLASH芯片 */
-//    bsp_InitSram();                             /* 外部sram初始化 */
-    bsp_Initlcd();
-    bsp_InitLcdTouch();
-//    lv_init();                                     /* lvgl 系统初始化 */
-//    lv_port_disp_init();                         /* lvgl 显示接口初始化,放在 lv_init()的后面 */
-//    lv_port_indev_init();                         /* lvgl 输入接口初始化,放在 lv_init()的后面 */
+    bsp_InitSram();                             /* 外部sram初始化 */
+    lv_init();                                     /* lvgl 系统初始化 */
+    lv_port_disp_init();                         /* lvgl 显示接口初始化,放在 lv_init()的后面 */
+    lv_port_indev_init();                         /* lvgl 输入接口初始化,放在 lv_init()的后面 */
     //test_master();
     /* 创建任务间通信机制,主要是各种任务间通讯函数 */
     AppSysObjCreate();
@@ -161,13 +159,11 @@ static  void  AppTaskStart (ULONG thread_input)
 static void AppTaskCOM(ULONG thread_input)
 {
     (void)thread_input;
-    uint8_t data[8] = {0};
     App_Printf("AppTaskCom任务开始运行!\n");
     while(1)
     {
         bsp_LedToggle(2);
         bsp_LedToggle(1);
-        bsp_Can1_Receive_buf(0x100,data);
         tx_thread_sleep(100);
     }
 }
@@ -204,8 +200,8 @@ static  void  AppSysObjCreate (void)
                     TimerCallback, 
                     0,                  /* 传递的参数 */
                     500,                /* 设置定时器时间溢出的初始延迟，单位ThreadX系统时间节拍数 */
-                    1,                  /* 设置初始延迟后的定时器运行周期，如果设置为0，表示单次定时器,单位ms */
-                    TX_AUTO_ACTIVATE);  /* 激活定时器 */
+                    1,                     /* 设置初始延迟后的定时器运行周期，如果设置为0，表示单次定时器,单位ms */
+                    TX_AUTO_ACTIVATE);    /* 激活定时器 */
     
     /* 创建事件标志组 */
     tx_event_flags_create(&EventGroup, "EventGroupName");
@@ -214,6 +210,7 @@ void bsp_RunPer10ms()
 {
     bsp_Key_Scan10ms();    /* 轻触按键扫描函数 */
 }
+    
 
 
 

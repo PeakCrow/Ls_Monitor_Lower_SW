@@ -1,5 +1,5 @@
-#ifndef        _SFDEMO_H
-#define        _SFDEMO_H
+#ifndef		_SFDEMO_H
+#define		_SFDEMO_H
 
 #include "stm32f4xx.h"
 #include "ticktim.h"

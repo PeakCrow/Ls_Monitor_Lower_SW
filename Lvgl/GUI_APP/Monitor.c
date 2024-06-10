@@ -300,7 +300,7 @@ lv_obj_t* App_Common_Init(const char *title,App_btn_Back_Cb_Ptr App_btn_Back_Cb)
 static const char *num_map[] = { "1", "2", "3", "\n",
                                  "4", "5", "6", "\n",
                                  "7", "8", "9", "\n",
-                                 "ok", "0", "no", "" };
+                                 "ok", "0", "x", "" };
 
 
 static lv_point_t points[] = {{0,0},{0,200}};       /* 线条坐标点数组 */
@@ -428,8 +428,8 @@ static void lv_example_btnmatrix(lv_obj_t *parent)
 * @param 无
 * @return 无
 */
-void bsp_RunPer1ms()
-{
-    lv_tick_inc(1);
-}
+//void bsp_RunPer1ms()
+//{
+//    lv_tick_inc(1);
+//}
 
