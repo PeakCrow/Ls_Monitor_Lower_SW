@@ -2,18 +2,19 @@
 #define _BSP_USART_FIFO_H_
 
 #include "sys.h"
-#define UART1_FIFO_EN 		1
-#define UART2_FIFO_EN		1
-#define UART3_FIFO_EN		1
-/* ¶¨Òå¶Ë¿Ú??*/
+#define UART1_FIFO_EN       1
+#define UART2_FIFO_EN       0
+#define UART3_FIFO_EN       0
+/* */
 typedef enum
 {
 	COM1 = 0,
-	COM2 = 1,	/* USART2 */
-	COM3 = 2,	/* USART3 */
+	COM2 = 1,    /* USART2 */
+	COM3 = 2,    /* USART3 */
 }COM_PORT_E;
 
-/* ¶¨Òå´®¿Ú²¨ÌØÂÊºÍFIFO»º³åÇøµÄ´óĞ¡£¬·ÖÎª·¢ËÍ»º³åÇøºÍ½ÓÊÕ»º³åÇø£¬Ö§³ÖÈ«Ë«¹¤ */
+/* å®šä¹‰ä¸²å£æ³¢ç‰¹ç‡å’ŒFIFOç¼“å†²åŒºå¤§å°
+    åˆ†ä¸ºå‘é€ç¼“å†²åŒºå’Œæ¥æ”¶ç¼“å†²åŒº æ”¯æŒå…¨åŒå·¥ */
 #if UART1_FIFO_EN == 1
 	#define UART1_BAUD 			115200
 	#define UART1_TX_BUF_SIZE	1*1024
@@ -33,23 +34,23 @@ typedef enum
 /* ´®¿ÚÉè±¸½á¹¹??*/
 typedef struct
 {
-	USART_TypeDef *uart;	/* STM32ÄÚ²¿´®¿ÚÉè±¸Ö¸Õë */
-	uint8_t *pTxBuf;		/* ·¢ËÍ»º³åÇø */
-	uint8_t *pRxBuf;		/* ½ÓÊÕ»º³å??*/
-	uint16_t usTxBufSize;	/* ·¢ËÍ»º³åÇø´óĞ¡ */
-	uint16_t usRxBufSize;	/* ½ÓÊÕ»º³åÇø´ó??*/
-	__IO uint16_t usTxWrite;/* ·¢ËÍ»º³åÇøĞ´Ö¸??*/
-	__IO uint16_t usTxRead;	/* ·¢ËÍ»º³åÇø¶ÁÖ¸??*/
-	__IO uint16_t usTxCount;/* µÈ´ı·¢ËÍµÄÊı¾İ¸öÊı */
-	
-	__IO uint16_t usRxWrite;/* ½ÓÊÕ»º³åÇøĞ´Ö¸Õë */
-	__IO uint16_t usRxRead;	/* ½ÓÊÕ»º³åÇø¶ÁÖ¸Õë */
-	__IO uint16_t usRxCount;/* »¹Î´¶ÁÈ¡µÄĞÂÊı¾İ¸öÊı */
-	
-	void (*SendBefor)(void);/* ¿ªÊ¼·¢ËÍÖ®Ç°µÄ»Øµ÷Ö¸Õëº¯Êı(Ö÷ÒªÓÃÓÚRS485ÇĞ»»µ½·¢ËÍÄ£?? */
-	void (*SendOver)(void);	/* ·¢ËÍÍê±ÏµÄ»Øµ÷º¯Êı(Ö÷ÒªÓÃÓÚRS485½«·¢ËÍÄ£Ê½ÇĞ»»Îª½ÓÊÕÄ£Ê½) */
-	void (*ReciveNew)(uint8_t _byte);	/* ´®¿ÚÊÕµ½Êı¾İµÄ»Øµ÷º¯ÊıÖ¸??*/
-	uint8_t Sending;		/* ÕıÔÚ·¢ËÍÖĞ */
+    USART_TypeDef *uart;         /* STM32å†…éƒ¨ä¸²å£è®¾å¤‡æŒ‡é’ˆ */
+    uint8_t *pTxBuf;            /* å‘é€ç¼“å†²åŒº */
+    uint8_t *pRxBuf;            /* æ¥æ”¶ç¼“å†²åŒº */
+    uint16_t usTxBufSize;       /* å‘é€ç¼“å†²åŒºå¤§å° */
+    uint16_t usRxBufSize;       /* æ¥æ”¶ç¼“å†²åŒºå¤§å° */
+    __IO uint16_t usTxWrite;    /* å‘é€ç¼“å†²åŒºå†™æŒ‡é’ˆ */
+    __IO uint16_t usTxRead;     /* å‘é€ç¼“å†²åŒºè¯»æŒ‡é’ˆ */
+    __IO uint16_t usTxCount;    /* ç­‰å¾…å‘é€çš„æ•°æ®ä¸ªæ•° */
+
+    __IO uint16_t usRxWrite;    /* æ¥æ”¶ç¼“å†²åŒºå†™æŒ‡é’ˆ */
+    __IO uint16_t usRxRead;     /* æ¥æ”¶ç¼“å†²åŒºè¯»æŒ‡é’ˆ */
+    __IO uint16_t usRxCount;    /* è¿˜æœªè¯»å–çš„æ–°æ•°æ®ä¸ªæ•° */
+
+    void (*SendBefor)(void);    /* å¼€å§‹å‘é€ä¹‹å‰çš„å›è°ƒå‡½æ•°æŒ‡é’ˆï¼ˆä¸»è¦ç”¨äºRS485åˆ‡æ¢åˆ°å‘é€æ¨¡å¼ï¼‰ */
+    void (*SendOver)(void);     /* å‘é€å®Œæ¯•çš„å›è°ƒå‡½æ•°æŒ‡é’ˆï¼ˆä¸»è¦ç”¨äºRS485å°†å‘é€æ¨¡å¼åˆ‡æ¢ä¸ºæ¥æ”¶æ¨¡å¼ï¼‰ */
+    void (*ReciveNew)(uint8_t _byte);   /* ä¸²å£æ”¶åˆ°æ•°æ®çš„å›è°ƒå‡½æ•°æŒ‡é’ˆ */
+    uint8_t Sending;            /* æ­£åœ¨å‘é€ä¸­ */
 }UART_T;
 
 void bsp_InitUart(void);

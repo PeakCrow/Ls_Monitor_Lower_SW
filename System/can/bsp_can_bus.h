@@ -8,12 +8,15 @@
 #define     CAN1_FPRCE_RESET()      __HAL_RCC_CAN1_FORCE_RESET()
 #define     CAN1_RELEASE_RESET()    __HAL_RCC_CAN1_RELEASE_RESET()
 
-#define     CAN1_GPIO_CLK_ENABLE()  {__HAL_RCC_GPIOA_CLK_ENABLE();__HAL_RCC_GPIOA_CLK_ENABLE();}
+#define     CAN1_GPIO_CLK_ENABLE()  {__HAL_RCC_GPIOA_CLK_ENABLE();__HAL_RCC_GPIOB_CLK_ENABLE();}
 #define     CAN1_TX_GPIO_PORT       GPIOA
 #define     CAN1_TX_PIN             GPIO_PIN_11
 
 #define     CAN1_RX_GPIO_PORT       GPIOA
 #define     CAN1_RX_PIN             GPIO_PIN_12
+
+#define     CAN_STB_GPIO_PORT       GPIOB
+#define     CAN_STB_PIN             GPIO_PIN_11
 
 #define     CAN1_RX_IRQN            CAN1_RX0_IRQn
 

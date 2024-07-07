@@ -19,14 +19,14 @@ static uint8_t buf[TEST_SIZE];
 
 
 
-/*******************************************************************************
+/**
   * @FunctionName: sfReadTest
   * @Author:       trx
   * @DateTime:     2022年4月25日21:57:20 
   * @Purpose:      测试串行flash读取速度，读取整个串行flash的数据，最后打印结果
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 void sfReadTest(void)
 {
     uint16_t i;
@@ -56,14 +56,14 @@ void sfReadTest(void)
     printf("数据长度:%d字节，读取耗时:%dms,读取速度:%d Bytes/s\r\n",TEST_SIZE,iTime2 - iTime1,(TEST_SIZE * 1000) / (iTime2 - iTime1));
 }
 
-/*******************************************************************************
+/**
   * @FunctionName: sfWriteTest
   * @Author:       trx
   * @DateTime:     2022年4月25日22:15:30 
   * @Purpose:      x写串行flash测试
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 static void sfWriteTest(void)
 {
     uint16_t i;
@@ -93,14 +93,14 @@ static void sfWriteTest(void)
 }
 
 
-/*******************************************************************************
+/**
   * @FunctionName: sfWriteAll
   * @Author:       trx
   * @DateTime:     2022年4月25日22:17:03 
   * @Purpose:      写串行flash全部数据
   * @param:        _ch：数据内容
   * @return:       none
-*******************************************************************************/
+*/
 void sfWriteAll(uint8_t _ch)
 {
     uint16_t i;
@@ -134,14 +134,14 @@ void sfWriteAll(uint8_t _ch)
     /* 打印读取速度 */
     printf("数据长度：%dK字节，写耗时：%dms,写速度：%dB/s\r\n",g_tSF.TotalSize / 1024,iTime2 - iTime1,(g_tSF.TotalSize * 1000) / (iTime2 - iTime1));
 }
-/*******************************************************************************
+/**
   * @FunctionName: sfErase
   * @Author:       trx
   * @DateTime:     2022年4月25日22:31:35 
   * @Purpose:      擦除串行flash测试
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 void sfErase(void)
 {
     int32_t iTime1,iTime2;
@@ -155,14 +155,14 @@ void sfErase(void)
     return;
 }
 
-/*******************************************************************************
+/**
   * @FunctionName: sfViewData
   * @Author:       trx
   * @DateTime:     2022年4月25日22:35:53 
   * @Purpose:      读取串行flash数据并显示，每次显示1K的内容
   * @param:        _uiAddr:串行flash读取数据地址
   * @return:       none
-*******************************************************************************/
+*/
 void sfViewData(uint32_t _uiAddr)
 {
     uint16_t i;
@@ -221,14 +221,14 @@ static void sfDispMenu(void)
     printf("其他任意键 - 显示命令提示\r\n");
     printf("\r\n");
 }
-/*******************************************************************************
+/**
   * @FunctionName: DemoSpiFlash
   * @Author:       trx
   * @DateTime:     2022骞?鏈?6鏃?1:24:26 
   * @Purpose:      
   * @param:        void               
   * @return:       none
-*******************************************************************************/
+*/
 void DemoSpiFlash(void)
 {
     uint8_t cmd;

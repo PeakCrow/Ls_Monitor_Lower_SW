@@ -9,14 +9,14 @@
 static TIM_HandleTypeDef     g_RotationTimeHandle;
 static uint8_t g_updatecounter = 0;
 
-/*******************************************************************************
+/**
   * @FunctionName: bsp_InitRotationSensor
   * @Author:       trx
   * @DateTime:     2022????5??22:13:00 
   * @Purpose:      轮速传感器初始化函数，主要初始化定时器ETR功能
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 void bsp_InitRotationSensor(void)
 {
     TIM_ClockConfigTypeDef sclocksourceconfig = {0};
@@ -69,28 +69,28 @@ void TIM2_IRQHandler(void)
     }
   }
 }
-/*******************************************************************************
+/**
   * @FunctionName: HAL_TIM_PeriodElapsedCallback
   * @Author:       trx
   * @DateTime:     2022????5??22:11:00 
   * @Purpose:      定时器溢出回调函??
   * @param:        _htim：定时器句柄
   * @return:       none
-*******************************************************************************/
+*/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *_htim)
 {
     (void)_htim;
     g_updatecounter++;                            /* 定时器每溢出依次，计数器?? */
 }
 
-/*******************************************************************************
+/**
   * @FunctionName: HAL_TIM_Base_MspInit
   * @Author:       trx
   * @DateTime:     2022????5??22:14:07 
   * @Purpose:      HAL_TIM_Base_Init函数回调函数，用来初始化引脚
   * @param:        htim：定时器句柄
   * @return:       none
-*******************************************************************************/
+*/
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef * htim)
 {
     GPIO_InitTypeDef gpio_initstruct = {0};
@@ -107,7 +107,7 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef * htim)
             HAL_GPIO_Init(ROTATION_SENSOR_PORT,&gpio_initstruct);
         }
 }
-/*******************************************************************************
+/**
   * @FunctionName: Rotation_Sensor_Get
   * @Author:       trx
   * @DateTime:     2022????5??22:05:34 
@@ -115,7 +115,7 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef * htim)
   * @param:        _gear_num    ：车轮齿??
   * @param:        _wheel_radius：车轮半径，单位m
   * @return:       轮速，单位m/s
-*******************************************************************************/
+*/
 float Rotation_Sensor_Get(uint8_t _gear_num,float _wheel_radius)
 {
     uint32_t pulse_num = 0;

@@ -6,14 +6,14 @@ CAN_HandleTypeDef hCAN;
 CAN_RxHeaderTypeDef can_rx_msg;
 uint8_t g_canrxbuf[8] = {0};        /* 不能做成全局变量，不然无法触发中断(?????) */
 
-/*******************************************************************************
+/**
   * @FunctionName: bsp_InitCan1Bus
   * @Author:       trx
   * @DateTime:     2022年5月22日 17:36:06 
   * @Purpose:      can1总线外设初始化
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 void bsp_InitCan1Bus(void)
 {
     CAN_FilterTypeDef  sFilterConfig;
@@ -32,7 +32,11 @@ void bsp_InitCan1Bus(void)
     hCAN.Init.AutoRetransmission        = DISABLE;                /* MCR-NART  禁止报文�    �动重传 	DISABLE-自动重传 */
     hCAN.Init.ReceiveFifoLocked         = DISABLE;                /* MCR-RFLM  接收FIFO 锁    ��模式	DISABLE-溢出时新报文会覆盖原有报文 */
     hCAN.Init.TransmitFifoPriority      = ENABLE;                 /* MCR-TXFP  发送FIFO优先级 DISABLE-优先级取决于报文标示符 */
-    HAL_CAN_Init(&hCAN);
+    HAL_StatusTypeDef ret = HAL_CAN_Init(&hCAN);
+    if(HAL_OK != ret)
+    {
+        printf("HAL_CAN_Init ret not ok %d !\n",ret);
+    }
     
     /*CAN过滤器初始化*/
     sFilterConfig.FilterMode            = CAN_FILTERMODE_IDMASK;  /* 工作在标识符屏蔽位模式 */
@@ -51,13 +55,13 @@ void bsp_InitCan1Bus(void)
     
     /*CAN过滤器初始化*/
     sFilterConfig2.FilterMode           = CAN_FILTERMODE_IDMASK;  /* 工作在标识符屏蔽位模式 */
-    sFilterConfig2.FilterScale          = CAN_FILTERSCALE_32BIT; /* 过滤器位宽为单个32位。*/
+    sFilterConfig2.FilterScale          = CAN_FILTERSCALE_32BIT;  /* 过滤器位宽为单个32位。*/
     sFilterConfig2.FilterIdHigh         = (((uint32_t)0x1315<<3)&0xFFFF0000)>>16;       /* 要过滤的ID高位 */
     sFilterConfig2.FilterIdLow          = (((uint32_t)0x1315<<3)|CAN_ID_EXT|CAN_RTR_DATA)&0xFFFF; /* 要过滤的ID低位 */
-    sFilterConfig2.FilterMaskIdHigh     = 0xFFFF;               /* 过滤器高16位每位必须匹配 */
-    sFilterConfig2.FilterMaskIdLow      = 0xFFFF;               /* 过滤器低16位每位必须匹配 */
-    sFilterConfig2.FilterFIFOAssignment = CAN_FILTER_FIFO1;     /* 过滤器被关联到FIFO 1 */
-    sFilterConfig2.FilterActivation     = ENABLE;               /* 使能过滤器 */
+    sFilterConfig2.FilterMaskIdHigh     = 0xFFFF;                 /* 过滤器高16位每位必须匹配 */
+    sFilterConfig2.FilterMaskIdLow      = 0xFFFF;                 /* 过滤器低16位每位必须匹配 */
+    sFilterConfig2.FilterFIFOAssignment = CAN_FILTER_FIFO1;       /* 过滤器被关联到FIFO 1 */
+    sFilterConfig2.FilterActivation     = ENABLE;                 /* 使能过滤器 */
     sFilterConfig2.FilterBank           = 10;
     HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig2);
 
@@ -74,22 +78,23 @@ void bsp_InitCan1Bus(void)
 
 
 
-/*******************************************************************************
+/**
   * @FunctionName: HAL_CAN_MspInit
   * @Author:       trx
   * @DateTime:     2022年5月25日22:14:29 
   * @Purpose:      can总线引脚初始化，包含有中断配置
   * @param:        hcan：can外设句柄(全局变量)
   * @return:       none
-*******************************************************************************/
+*/
 void HAL_CAN_MspInit(CAN_HandleTypeDef * hcan)
 {
     GPIO_InitTypeDef    gpio_init;
+    GPIO_InitTypeDef    gpio_init1;
     if(hcan->Instance == CANx_BUS_1)
     {
         CAN1_CLK_ENABLE();          /* can外设时钟使能 */
         CAN1_GPIO_CLK_ENABLE();     /* 引脚时钟使能 */
-
+        
         gpio_init.Pin       = CAN1_TX_PIN;
         gpio_init.Mode      = GPIO_MODE_AF_PP;
         gpio_init.Pull      = GPIO_NOPULL;
@@ -102,12 +107,27 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef * hcan)
         gpio_init.Alternate = GPIO_AF9_CAN1;
         HAL_GPIO_Init(CAN1_RX_GPIO_PORT,&gpio_init);
 
+        gpio_init1.Pin       = CAN_STB_PIN;
+        gpio_init1.Mode      = GPIO_MODE_OUTPUT_PP;
+        gpio_init1.Speed     = GPIO_SPEED_FREQ_LOW;
+        gpio_init1.Pull      = GPIO_NOPULL;
+        HAL_GPIO_Init(CAN_STB_GPIO_PORT,&gpio_init1);
+        PBout(11) = 1;
+        
+        gpio_init1.Pin       = GPIO_PIN_7;
+        gpio_init1.Mode      = GPIO_MODE_OUTPUT_PP;
+        gpio_init1.Speed     = GPIO_SPEED_FREQ_HIGH;
+        gpio_init1.Pull      = GPIO_NOPULL;
+        HAL_GPIO_Init(CAN_STB_GPIO_PORT,&gpio_init1);
+        CAN_STB_GPIO_PORT->BSRR = (uint32_t)GPIO_PIN_7;             /* 电平拉高 */
+        CAN_STB_GPIO_PORT->BSRR = (uint32_t)GPIO_PIN_7 << 16U;      /* 电平拉低 */
+
         HAL_NVIC_SetPriority(CAN1_RX_IRQN,0,0);/* 初始化中断优先级 */
         HAL_NVIC_EnableIRQ(CAN1_RX_IRQN);
     }
 }
 
-/*******************************************************************************
+/**
   * @FunctionName: bsp_Can1_Send_buf
   * @Author:       trx
   * @DateTime:     2022年5月25日 20:58:40 
@@ -116,7 +136,7 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef * hcan)
   * @param:        _buf[]             报文的数据
   * @param:        _dlc               报文数据的长度，0-8可选
   * @return:       HAL_OK:代表发送成功;HAL_ERROR:发送失败
-*******************************************************************************/
+*/
 HAL_StatusTypeDef bsp_Can1_Send_buf(uint32_t _id,uint8_t _buf[],uint8_t _dlc)
 {
     CAN_TxHeaderTypeDef can_tx_msg;
@@ -153,20 +173,20 @@ HAL_StatusTypeDef bsp_Can1_Send_buf(uint32_t _id,uint8_t _buf[],uint8_t _dlc)
         HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX2);
     else
         return HAL_ERROR;
-    while(HAL_CAN_GetTxMailboxesFreeLevel(&hCAN) == 0){}            /* 如果空闲发送邮箱为0，则死循环，等待发送邮箱不为空，有可用的邮箱 */
+    while(HAL_CAN_GetTxMailboxesFreeLevel(&hCAN) != 0){}            /* 如果空闲发送邮箱为0，则死循环，等待发送邮箱不为空，有可用的邮箱 */
                                                                     /* 添加一组大括号，避免报警告没有返回状态 */
     return HAL_OK;
 
 }
 
-/*******************************************************************************
+/**
   * @FunctionName: HAL_CAN_MspDeInit
   * @Author:       trx
   * @DateTime:     2022年5月25日23:55:24 
   * @Purpose:      can外设非初始化
   * @param:        hcan：can外设句柄
   * @return:       none
-*******************************************************************************/
+*/
 void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
 {
 
@@ -187,47 +207,48 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
   }
 } 
 
-/*******************************************************************************
+/**
   * @FunctionName: HAL_CAN_RxFifo0FullCallback
   * @Author:       trx
   * @DateTime:     2022年5月26日 20:07:04 
   * @Purpose:      can接收fifo0填满回调函数
   * @param:        hcan：can外设句柄
   * @return:       none
-*******************************************************************************/
+*/
 void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan)
 {
     printf("fifo0数据接收满\r\n");         /* 目前无法触发FIFO邮箱满的情况 */
 }
 
-/*******************************************************************************
+/**
   * @FunctionName: HAL_CAN_RxFifo0MsgPendingCallback
   * @Author:       trx
   * @DateTime:     2022年5月26日 20:07:03 
   * @Purpose:      can接收fifo0正在接收数据回调函数
   * @param:        hcan：can外设句柄
   * @return:       none
-*******************************************************************************/
+*/
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
     //App_Printf("持续接收数据fifo0\r\n");
 }
-/*******************************************************************************
+/**
   * @FunctionName: CAN1_RX0_IRQHandler
   * @Author:       trx
   * @DateTime:     2022年5月26日 18:15:34 
   * @Purpose:      can接收中断函数，底层库提供
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 void CAN1_RX0_IRQHandler(void)
 {
     HAL_CAN_IRQHandler(&hCAN);              /* 需要在中断函数中调用此函数来清除中断标志位 */
-    HAL_CAN_GetRxMessage(&hCAN, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
+    //HAL_CAN_GetRxMessage(&hCAN, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
+    App_Printf("CAN1 RX0 IRQ\n");
 }
 
 
-/*******************************************************************************
+/**
   * @FunctionName: bsp_Can1_Receive_buf
   * @Author:       trx
   * @DateTime:     2022年5月26日 20:37:22 
@@ -237,7 +258,7 @@ void CAN1_RX0_IRQHandler(void)
   * @param:        _id   ：要接收报文的id
   * @param:        _buf[]：报文数据数组
   * @return:       DLC:返回报文的数据长度
-*******************************************************************************/
+*/
 uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
 {
     uint8_t i;

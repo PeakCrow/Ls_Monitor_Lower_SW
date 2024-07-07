@@ -3,27 +3,27 @@
                 //GRB
 static uint16_t g_Ws_2812b_lamp_buf[RESET_WORD+24*LED_NUM]={0};
 
-/*******************************************************************************
+/**
   * @FunctionName: bsp_InitWs2812b
   * @Author:       trx
   * @DateTime:     2022年6月12日 18:45:41 
   * @Purpose:      可调灯ws2812b初始化
   * @param:        void               
   * @return:       none
-*******************************************************************************/
+*/
 void bsp_InitWs2812b(void)
 {   
     bsp_SetTIMOutPWM(GPIOA,GPIO_PIN_6,TIM3,1,800000,1000);
 }
 
-/*******************************************************************************
+/**
   * @FunctionName: Ws2812b_Set_resetdata
   * @Author:       trx
   * @DateTime:     2022年6月12日 16:45:37 
   * @Purpose:      将可调led灯的复位数据填充进去
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 void Ws2812b_Set_resetdata(void)
 {
     for(int j=0;j<RESET_WORD;j++)
@@ -35,20 +35,20 @@ void Ws2812b_Set_resetdata(void)
         g_Ws_2812b_lamp_buf[RESET_WORD+i] = 30;
     }
 }
-/*******************************************************************************
+/**
   * @FunctionName: Ws2812b_Set_Alloff
   * @Author:       trx
   * @DateTime:     2022年6月12日 17:17:09 
   * @Purpose:      将所有的可调灯关闭
   * @param:        void               
   * @return:       none
-*******************************************************************************/
+*/
 void Ws2812b_Set_Alloff(void)
 {   
     Ws2812b_Set_resetdata();
     HAL_TIM_PWM_Start_DMA(&g_TimHandle,TIM_CHANNEL_1,(uint32_t*)g_Ws_2812b_lamp_buf,sizeof(g_Ws_2812b_lamp_buf)/sizeof(g_Ws_2812b_lamp_buf[0]));
 }
-/*******************************************************************************
+/**
   * @FunctionName: Ws2812b_Rgb_SetColor
   * @Author:       trx
   * @DateTime:     2022年6月12日 16:47:24 
@@ -57,7 +57,7 @@ void Ws2812b_Set_Alloff(void)
   * @param:        _G：三原色中的绿色
   * @param:        _B：三原色中的蓝色
   * @return:       none
-*******************************************************************************/
+*/
 void Ws2812b_Rgb_SetColor(uint8_t _R,uint8_t _G,uint8_t _B)
 {
     int i;
@@ -78,7 +78,7 @@ void Ws2812b_Rgb_SetColor(uint8_t _R,uint8_t _G,uint8_t _B)
     }
     HAL_TIM_PWM_Start_DMA(&g_TimHandle,TIM_CHANNEL_1,(uint32_t*)g_Ws_2812b_lamp_buf,sizeof(g_Ws_2812b_lamp_buf)/sizeof(g_Ws_2812b_lamp_buf[0]));
 }
-/*******************************************************************************
+/**
   * @FunctionName: Ws2812b_Rgb_SetIndexColor
   * @Author:       trx
   * @DateTime:     2022年6月12日 17:18:52 
@@ -88,7 +88,7 @@ void Ws2812b_Rgb_SetColor(uint8_t _R,uint8_t _G,uint8_t _B)
   * @param:        _G：三原色中的绿色
   * @param:        _B：三原色中的蓝色
   * @return:       0：可调灯的索引号超限；1：未超限
-*******************************************************************************/
+*/
 uint8_t Ws2812b_Rgb_SetIndexColor(uint8_t _index,uint8_t _R,uint8_t _G,uint8_t _B)
 {
     int i;
@@ -110,7 +110,7 @@ uint8_t Ws2812b_Rgb_SetIndexColor(uint8_t _index,uint8_t _R,uint8_t _G,uint8_t _
     HAL_TIM_PWM_Start_DMA(&g_TimHandle,TIM_CHANNEL_1,(uint32_t*)g_Ws_2812b_lamp_buf,sizeof(g_Ws_2812b_lamp_buf)/sizeof(g_Ws_2812b_lamp_buf[0]));
     return 1;
 }
-/*******************************************************************************
+/**
   * @FunctionName: Ws2812b_Rgb_SetIndexPartColor
   * @Author:       trx
   * @DateTime:     2022年6月12日 17:31:51 
@@ -121,7 +121,7 @@ uint8_t Ws2812b_Rgb_SetIndexColor(uint8_t _index,uint8_t _R,uint8_t _G,uint8_t _
   * @param:        _G：三原色中的绿色
   * @param:        _B：三原色中的蓝色
   * @return:       0：可调灯的索引号超限；1：未超限
-*******************************************************************************/
+*/
 uint8_t Ws2812b_Rgb_SetIndexPartColor(uint8_t _start_index,uint8_t _end_index,uint8_t _R,uint8_t _G,uint8_t _B)
 {
     int i = 0;
@@ -148,7 +148,7 @@ uint8_t Ws2812b_Rgb_SetIndexPartColor(uint8_t _start_index,uint8_t _end_index,ui
 }
 
 
-/*******************************************************************************
+/**
   * @FunctionName: Ws2812b_Gradient_Lamp
   * @Author:       trx
   * @DateTime:     2022年6月12日 16:49:00 
@@ -157,7 +157,7 @@ uint8_t Ws2812b_Rgb_SetIndexPartColor(uint8_t _start_index,uint8_t _end_index,ui
   * @param:        _color1：渐变色过程的结束颜色
   * @param:        _speed：渐变色过程中的每个颜色的切换时间
   * @return:       none
-*******************************************************************************/
+*/
 void Ws2812b_Gradient_Lamp(unsigned long _color0, unsigned long _color1,uint16_t _speed)
 {
     unsigned char Red0, Green0, Blue0;  // 起始三原色
@@ -204,7 +204,7 @@ void Ws2812b_Gradient_Lamp(unsigned long _color0, unsigned long _color1,uint16_t
 }
 
 
-/*******************************************************************************
+/**
   * @FunctionName: Ws2812b_Run_Water_Lamp
   * @Author:       trx
   * @DateTime:     2022年6月12日 18:08:01 
@@ -215,7 +215,7 @@ void Ws2812b_Gradient_Lamp(unsigned long _color0, unsigned long _color1,uint16_t
   * @param:        _speed：依次点亮的时间间隔
   * @param:        _flag：流水灯点亮效果选择
   * @return:       none
-*******************************************************************************/
+*/
 void Ws2812b_Run_Water_Lamp(uint8_t _R,uint8_t _G,uint8_t _B,uint16_t _speed,run_lamp_state _flag)
 {
     for(int i = 1;i <= LED_NUM;i++)
