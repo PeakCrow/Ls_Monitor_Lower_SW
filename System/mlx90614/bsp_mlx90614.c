@@ -1,6 +1,6 @@
 #include "bsp_mlx90614.h"
 
-/*******************************************************************************
+/**
   * @FunctionName: bsp_Mlx90614_Write
   * @Author:       trx
   * @DateTime:     2022年7月2日23:01:18 
@@ -8,7 +8,7 @@
   * @param:        pBuffer：要写入数据的地址
   * @param:        WriteAddr：mlx90614红外温度传感器寄存器的地址
   * @return:       IIC总线的状态
-*******************************************************************************/
+*/
  uint32_t bsp_Mlx90614_Write(uint8_t * pBuffer, uint8_t WriteAddr)
  {
      HAL_StatusTypeDef     status = HAL_OK;
@@ -38,7 +38,7 @@
      
      return status;
  }
-/*******************************************************************************
+/**
   * @FunctionName: bsp_Mlx90614_ReadBuf
   * @Author:       trx
   * @DateTime:     2022年7月2日23:01:17 
@@ -47,7 +47,7 @@
   * @param:        ReadAdder：想要读取的mlx90614红外温度传感器寄存器地址
   * @param:        NumByteToRead：读取几个字节
   * @return:       IIC总线的状态
-*******************************************************************************/
+*/
  uint32_t bsp_Mlx90614_ReadBuf(uint8_t * pBuffer, uint8_t ReadAdder, uint16_t NumByteToRead)
 {
     HAL_StatusTypeDef status = HAL_OK;
@@ -57,14 +57,14 @@
     return status;
 }
 
-/*******************************************************************************
+/**
   * @FunctionName: bsp_MLX90614_ReadTemp
   * @Author:       trx
   * @DateTime:     2022年7月2日23:01:13 
   * @Purpose:      获取mlx90614红外温度传感器的温度
   * @param:        void
   * @return:       小数点1位的温度
-*******************************************************************************/
+*/
 float bsp_MLX90614_ReadTemp(void)
 {
     float temp = 0;

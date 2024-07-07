@@ -74,8 +74,6 @@ void Adjust_Pedal_Ui(lv_obj_t *parent)
     lv_obj_add_style(Imgbtn_MC,&style_pr,LV_STATE_PRESSED);
     /* 设置按钮回调 */
     lv_obj_add_event_cb(Imgbtn_MC,Imgbtn_MC_cb,LV_EVENT_ALL,NULL);
-
-
 }
 static void App_btn_Back_Cb(lv_event_t* e)
 {

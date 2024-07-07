@@ -5,14 +5,14 @@ TX_THREAD    AppTaskTFTLCDTCB;
 uint64_t    AppTaskTFTLCDStk[APP_CFG_TASK_TFTLCD_STK_SIZE/8];
 TX_MUTEX AppLCDSemp;                /* 用于LVGL互斥 */
 
-/*******************************************************************************
+/**
   * @FunctionName: AppTaskTFTLCD
   * @Author:       trx
   * @DateTime:     2022年6月23日21:03:00 
   * @Purpose:      lcd屏幕测试任务
   * @param:        thread_input
   * @return:       none
-*******************************************************************************/
+*/
 void AppTaskTFTLCD    (ULONG thread_input)
 {
     (VOID)thread_input;

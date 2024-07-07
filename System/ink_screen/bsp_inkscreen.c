@@ -7,14 +7,14 @@ static void inkscreen_sendcommand(uint8_t _reg);
 static void inkscreen_senddata(uint8_t _data);
 static uint8_t inkscreen_readbusy(void);
 
-/*******************************************************************************
+/**
   * @FunctionName: GPIO_INK_Init
   * @Author:       trx
   * @DateTime:     2022年5月10日 18:59:21 
   * @Purpose:      除去spi通讯以外的控制引脚的初始化
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 static void gpio_ink_init(void)
 {
     GPIO_InitTypeDef gpio_initstruct = {0};
@@ -54,14 +54,14 @@ static void gpio_ink_init(void)
     HAL_GPIO_Init(INK_BUSY_GPIO_PORT,&gpio_initstruct);
     
 }
-/*******************************************************************************
+/**
   * @FunctionName: bsp_Inkscreen_write_byte
   * @Author:       trx
   * @DateTime:     2023年4月22日22点44分 
   * @Purpose:      向墨水屏spi写一个字节
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 static void inkscreen_writebyte(uint8_t _value)
 {
     bsp_spi2Transfer(_value);
@@ -95,14 +95,14 @@ static uint8_t inkscreen_readbusy(void)
     inkscreen_delay_ms(200);
     return busy;
 }
-/*******************************************************************************
+/**
   * @FunctionName: bsp_InksreenExit
   * @Author:       trx
   * @DateTime:     2023年4月22日22点44分 
   * @Purpose:      墨水屏退出，主要是拉低5v引脚
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 void bsp_InkscreenExit(void)
 {
     PBout(12) = 0;
@@ -110,14 +110,14 @@ void bsp_InkscreenExit(void)
     PAout(7) = 0;        /* close 5v */
 }
 
-/*******************************************************************************
+/**
   * @FunctionName: bsp_InksreenInit
   * @Author:       trx
   * @DateTime:     2023年4月22日22点44分 
   * @Purpose:      墨水屏初始化-->应该将写图案函数也放过来
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 void bsp_InkscreenInit(void)
 {
     gpio_ink_init();
@@ -149,14 +149,14 @@ void bsp_InkscreenInit(void)
 
     bsp_InkscreeenClear();
 }
-/*******************************************************************************
+/**
   * @FunctionName: bsp_InkscreenReset
   * @Author:       trx
   * @DateTime:     2023年4月22日23点01分
   * @Purpose:      墨水屏复位
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 void bsp_InkscreenReset(void)
 {
     PAout(7) = 1;
@@ -166,14 +166,14 @@ void bsp_InkscreenReset(void)
     PAout(1) = 1;
     inkscreen_delay_ms(200);
 }
-/*******************************************************************************
+/**
   * @FunctionName: bsp_InkscreeenClear
   * @Author:       trx
   * @DateTime:     2023年4月23日22点39分
   * @Purpose:      墨水屏清屏
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 void bsp_InkscreeenClear(void)
 {
     uint8_t width = (INKSCREEN_WIDTH % 8 == 0) ? (INKSCREEN_WIDTH / 8) : (INKSCREEN_WIDTH / 8 + 1);
@@ -201,14 +201,14 @@ void bsp_InkscreeenClear(void)
     inkscreen_sendcommand(INKSCREEN_DRF);
     inkscreen_readbusy();
 }
-/*******************************************************************************
+/**
   * @FunctionName: bsp_InkscreeenSleep
   * @Author:       trx
   * @DateTime:     2023年4月23日22点47分
   * @Purpose:      墨水屏睡眠
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 void bsp_InkscreeenSleep(void)
 {
     /* 掉电 */
@@ -218,14 +218,14 @@ void bsp_InkscreeenSleep(void)
     inkscreen_sendcommand(INKSCREEN_DSLP);
     inkscreen_senddata(INKSCREEN_CHC);
 }
-/*******************************************************************************
+/**
   * @FunctionName: bsp_InkscreenDisplay
   * @Author:       trx
   * @DateTime:     2023年4月23日22点47分
   * @Purpose:      墨水屏显示
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 void bsp_InkscreenDisplay(const uint8_t *_blackimage,const uint8_t * _ryimage)
 {
     uint8_t width = (INKSCREEN_WIDTH % 8 == 0) ? (INKSCREEN_WIDTH / 8) : (INKSCREEN_WIDTH / 8 + 1);

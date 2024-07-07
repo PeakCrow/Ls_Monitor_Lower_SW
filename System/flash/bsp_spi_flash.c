@@ -1,4 +1,4 @@
-/*******************************************************************************
+/**
   * @file        bsp_spi_flash.c
   * @version     v1.0.0
   * @copyright   COPYRIGHT &copy; 2022 CSG
@@ -10,7 +10,7 @@
   * DATE         DESCRIPTION
   * ------------------------
   * - 2022-4-24  trx Created
-*******************************************************************************/
+*/
 #include "bsp_spi_flash.h"
 
 /* 芯片I     	0x5217   21015 */
@@ -47,14 +47,14 @@ uint8_t sf_AutoWriteSector(uint8_t *_ucpSrc, uint32_t _uiWrAddr, uint16_t _usWrL
 
 //static uint8_t g_spiTxBuf[4*1024];    /* 用于写函数，先读出整个扇区，修改缓冲区后，再整个扇区回写 */
 
-/*******************************************************************************
+/**
   * @FunctionName: sf_SetCS
   * @Author:       trx
   * @DateTime:     2022年4月29日 13:13:02 
   * @Purpose:      串行flash片选控制函数√√√
   * @param:        _Level：0：片选；1：禁止片选
   * @return:       none
-*******************************************************************************/
+*/
 void sf_SetCS(uint8_t _Level)
 {
     if (_Level == 0)
@@ -73,12 +73,12 @@ void sf_SetCS(uint8_t _Level)
 
 
 /*
-*********************************************************************************************************
+* 
 *    函 数 名: sf_WriteEnable
 *    功能说明: 向器件发送写使能命令√√√
 *    形    参: 无 
 *    返 回 值: 无
-*********************************************************************************************************
+* 
 */
 void sf_WriteEnable(void)
 {
@@ -89,12 +89,12 @@ void sf_WriteEnable(void)
     sf_SetCS(1);                                    /* 禁能片选 */
 }
 /*
-*********************************************************************************************************
+* 
 *    函 数 名: sf_WaitForWriteEnd
 *    功能说明: 采用循环查询的方式等待器件内部写操作完成
 *    形    参:    无	√√√
 *    返 回 值: 无
-*********************************************************************************************************
+* 
 */
 static void sf_WaitForWriteEnd(void)
 {
@@ -124,12 +124,12 @@ static void sf_WaitForWriteEnd(void)
 
 
 /*
-*********************************************************************************************************
+* 
 *    函 数 名: sf_ReadInfo
 *    功能说明: 读取器件ID,并填充器件参数
 *    形    参: 无
 *    返 回 值: 无
-*********************************************************************************************************
+* 
 */
 
 void sf_ReadInfo(void)
@@ -179,12 +179,12 @@ void sf_ReadInfo(void)
 
 
 /*
-*********************************************************************************************************
+* 
 *    函 数 名: sf_ReadID
 *    功能说明: 读取器件制造商ID
 *    形    参:  无
 *    返 回 值: 32bit的器件ID (最高8bit填0，有效ID位数为24bit）
-*********************************************************************************************************
+* 
 */
 uint32_t sf_ReadID(void)
 {
@@ -208,12 +208,12 @@ uint32_t sf_ReadID(void)
 
 
 /*
-*********************************************************************************************************
+* 
 *    函 数 名: sf_EraseChip
 *    功能说明: 擦除整个芯片√√√
 *    形    参:  无
 *    返 回 值: 无
-*********************************************************************************************************
+* 
 */
 void sf_EraseChip(void)
 {    
@@ -230,12 +230,12 @@ void sf_EraseChip(void)
 }
 
 /*
-*********************************************************************************************************
+* 
 *    函 数 名: bsp_InitSFlash
 *    功能说明: 串行falsh硬件初始化。 配置CS GPIO片选信号， 读取ID。
 *    形    参: 无
 *    返 回 值: 无
-*********************************************************************************************************
+* 
 */
 void bsp_InitSFlash(void)
 {
@@ -256,7 +256,7 @@ void bsp_InitSFlash(void)
     /* 读取芯片ID, 自动识别芯片型号 */
     sf_ReadInfo();
 }    
-/*******************************************************************************
+/**
   * @FunctionName: sf_NeedErase
   * @Author:       trx
   * @DateTime:     2022年4月25日 13:28:19 
@@ -265,7 +265,7 @@ void bsp_InitSFlash(void)
   * @param:        _ucpNewBuf：新数据
   * @param:        _usLen    ：数据个数
   * @return:        0；不需要擦除；1：需要擦除
-*******************************************************************************/
+*/
 static uint8_t sf_NeedErase(uint8_t * _ucpOldBuf, uint8_t * _ucpNewBuf, uint16_t _usLen)
 {
     uint16_t i;
@@ -296,7 +296,7 @@ static uint8_t sf_NeedErase(uint8_t * _ucpOldBuf, uint8_t * _ucpNewBuf, uint16_t
     return 0;
 }
 
-/*******************************************************************************
+/**
   * @FunctionName: sf_CmpData
   * @Author:       trx
   * @DateTime:     2022年4月25日 14:07:40 
@@ -305,7 +305,7 @@ static uint8_t sf_NeedErase(uint8_t * _ucpOldBuf, uint8_t * _ucpNewBuf, uint16_t
   * @param:        _ucpTar     falsh地址
   * @param:        _uiSize     数据个数，不能超出芯片总容量
   * @return:       0：相等；1；不相等；
-*******************************************************************************/
+*/
 static uint8_t sf_CmpData(uint32_t _uiSrcAddr, uint8_t * _ucpTar, uint32_t _uiSize)
 {
     uint16_t i,j;
@@ -367,7 +367,7 @@ NOTEQ:
 }
 
 
-/*******************************************************************************
+/**
   * @FunctionName: sf_ReadBuffer
   * @Author:       trx
   * @DateTime:     2022年4月25日 14:47:32 
@@ -375,7 +375,7 @@ NOTEQ:
   * @param:        _pBuf       数据源缓冲区
   * @param:        _uiReadAddr 首地址
   * @param:        _uiSize     数据个数，不能超出芯片总容量
-*******************************************************************************/
+*/
 void sf_ReadBuffer(uint8_t * _pBuf, uint32_t _uiReadAddr, uint32_t _uiSize)
 {
     uint16_t rem;
@@ -416,7 +416,7 @@ void sf_ReadBuffer(uint8_t * _pBuf, uint32_t _uiReadAddr, uint32_t _uiSize)
     }
     sf_SetCS(1);                                /* 禁止片选 */
 }
-/*******************************************************************************
+/**
   * @FunctionName: sf_AutoWriteSector
   * @Author:       trx
   * @DateTime:     2022年4月25日 15:47:44 
@@ -425,7 +425,7 @@ void sf_ReadBuffer(uint8_t * _pBuf, uint32_t _uiReadAddr, uint32_t _uiSize)
   * @param:        _uiWrAddr   目标区域首地址
   * @param:        _usWrLen    数据个数，不能超过扇区大小
   * @return:       0：错误；1：成功；
-*******************************************************************************/
+*/
 uint8_t sf_AutoWriteSector(uint8_t * _ucpSrc, uint32_t _uiWrAddr, uint16_t _usWrLen)
 {
     uint16_t i;
@@ -518,7 +518,7 @@ uint8_t sf_AutoWriteSector(uint8_t * _ucpSrc, uint32_t _uiWrAddr, uint16_t _usWr
     return cRet;
 }
 
-/*******************************************************************************
+/**
   * @FunctionName: sf_WriteBuffer
   * @Author:       trx
   * @DateTime:     2022年4月25日 17:59:58 
@@ -527,7 +527,7 @@ uint8_t sf_AutoWriteSector(uint8_t * _ucpSrc, uint32_t _uiWrAddr, uint16_t _usWr
   * @param:        _uiWriteAddr 目标区域首地址
   * @param:        _usWriteSize  数据个数，不允许超过芯片容量
   * @return:       1：成功；0：失败；
-*******************************************************************************/
+*/
 uint8_t sf_WriteBuffer(uint8_t * _pBuf, uint32_t _uiWriteAddr, uint32_t _usWriteSize)
 {
     uint32_t NumOfPage = 0,NumOfSingle = 0,Addr = 0,count = 0,temp = 0;
@@ -625,7 +625,7 @@ uint8_t sf_WriteBuffer(uint8_t * _pBuf, uint32_t _uiWriteAddr, uint32_t _usWrite
     return 1;            /* 成功 */
 }
 
-/*******************************************************************************
+/**
   * @FunctionName: sf_PageWrite
   * @Author:       trx
   * @DateTime:     2022年4月25日 17:03:59 
@@ -633,7 +633,7 @@ uint8_t sf_WriteBuffer(uint8_t * _pBuf, uint32_t _uiWriteAddr, uint32_t _usWrite
   * @param:        _pBuf        数据源缓冲区
   * @param:        _uiWriteAddr 目标区域首地址
   * @param:        _usSize       数据个数，页大小的整数倍(256字节的整数倍)
-*******************************************************************************/
+*/
 void sf_PageWrite(uint8_t * _pBuf, uint32_t _uiWriteAddr, uint16_t _usSize)
 {
     uint32_t i,j;
@@ -717,14 +717,14 @@ void sf_PageWrite(uint8_t * _pBuf, uint32_t _uiWriteAddr, uint16_t _usSize)
 }
 
 
-/*******************************************************************************
+/**
   * @FunctionName: sf_EraseSector
   * @Author:       trx
   * @DateTime:     2022年4月25日 17:21:35 
   * @Purpose:      擦除指定的扇区√√√
   * @param:        _uiSectorAddr      扇区地址
   * @return:       none
-*******************************************************************************/
+*/
 void sf_EraseSector(uint32_t _uiSectorAddr)
 {
     sf_WriteEnable();        /* 发送写使能命令 */

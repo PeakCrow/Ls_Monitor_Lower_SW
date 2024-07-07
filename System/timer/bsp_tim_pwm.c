@@ -1,5 +1,5 @@
 /*
-*********************************************************************************************************
+* 
 *
 *    Ä£¿éÃû³Æ : TIM»ù±¾¶¨Ê±ÖÐ¶ÏºÍPWMÇý¶¯Ä£¿é
 *    ÎÄ¼þÃû³Æ : bsp_tim_pwm.c
@@ -18,7 +18,7 @@
 *
 *    Copyright (C), 2018-2030, °²¸»À³µç×Ó www.armfly.com
 *
-*********************************************************************************************************
+* 
 */
 
 #include "bsp_tim_pwm.h"
@@ -83,12 +83,12 @@ static DMA_HandleTypeDef hdma_ch1 = {0};
 TIM_HandleTypeDef  g_TimHandle = {0};
 
 /*
-*********************************************************************************************************
+* 
 *    º¯ Êý Ãû: bsp_RCC_GPIO_Enable
 *    ¹¦ÄÜËµÃ÷: Ê¹ÄÜGPIOÊ±ÖÓ
 *    ÐÎ    ²Î: GPIOx GPIOA - GPIOI
 *    ·µ »Ø Öµ: ÎÞ
-*********************************************************************************************************
+* 
 */
 void bsp_RCC_GPIO_Enable(GPIO_TypeDef* GPIOx)
 {
@@ -104,12 +104,12 @@ void bsp_RCC_GPIO_Enable(GPIO_TypeDef* GPIOx)
 }
 
 /*
-*********************************************************************************************************
+* 
 *    º¯ Êý Ãû: bsp_RCC_TIM_Enable
 *    ¹¦ÄÜËµÃ÷: Ê¹ÄÜTIM RCC Ê±ÖÓ
 *    ÐÎ    ²Î: TIMx TIM1 - TIM14
 *    ·µ »Ø Öµ: ÎÞ
-*********************************************************************************************************
+* 
 */
 void bsp_RCC_TIM_Enable(TIM_TypeDef* TIMx)
 {
@@ -134,12 +134,12 @@ void bsp_RCC_TIM_Enable(TIM_TypeDef* TIMx)
 }
 
 /*
-*********************************************************************************************************
+* 
 *    º¯ Êý Ãû: bsp_RCC_TIM_Disable
 *    ¹¦ÄÜËµÃ÷: ¹Ø±ÕTIM RCC Ê±ÖÓ
 *    ÐÎ    ²Î: TIMx TIM1 - TIM14
 *    ·µ »Ø Öµ: TIMÍâÉèÊ±ÖÓÃû
-*********************************************************************************************************
+* 
 */
 void bsp_RCC_TIM_Disable(TIM_TypeDef* TIMx)
 {
@@ -168,12 +168,12 @@ void bsp_RCC_TIM_Disable(TIM_TypeDef* TIMx)
 }
 
 /*
-*********************************************************************************************************
+* 
 *    º¯ Êý Ãû: bsp_GetAFofTIM
 *    ¹¦ÄÜËµÃ÷: ¸ù¾ÝTIM µÃµ½AF¼Ä´æÆ÷ÅäÖÃ
 *    ÐÎ    ²Î: TIMx TIM1 - TIM14
 *    ·µ »Ø Öµ: AF¼Ä´æÆ÷ÅäÖÃ
-*********************************************************************************************************
+* 
 */
 uint8_t bsp_GetAFofTIM(TIM_TypeDef* TIMx)
 {
@@ -203,14 +203,14 @@ uint8_t bsp_GetAFofTIM(TIM_TypeDef* TIMx)
 }
 
 /*
-*********************************************************************************************************
+* 
 *    º¯ Êý Ãû: bsp_ConfigTimGpio
 *    ¹¦ÄÜËµÃ÷: ÅäÖÃGPIOºÍTIMÊ±ÖÓ£¬ GPIOÁ¬½Óµ½TIMÊä³öÍ¨µÀ
 *    ÐÎ    ²Î: GPIOx : GPIOA - GPIOK
 *              GPIO_PinX : GPIO_PIN_0 - GPIO__PIN_15
 *              TIMx : TIM1 - TIM14
 *    ·µ »Ø Öµ: ÎÞ
-*********************************************************************************************************
+* 
 */
 void bsp_ConfigTimGpio(GPIO_TypeDef* GPIOx, uint16_t GPIO_PinX, TIM_TypeDef* TIMx)
 {
@@ -231,13 +231,13 @@ void bsp_ConfigTimGpio(GPIO_TypeDef* GPIOx, uint16_t GPIO_PinX, TIM_TypeDef* TIM
 }
 
 /*
-*********************************************************************************************************
+* 
 *    º¯ Êý Ãû: bsp_ConfigGpioOut
 *    ¹¦ÄÜËµÃ÷: ÅäÖÃGPIOÎªÍÆÍìÊä³ö¡£Ö÷ÒªÓÃÓÚPWMÊä³ö£¬Õ¼¿Õ±ÈÎª0ºÍ100µÄÇé¿ö¡£
 *    ÐÎ    ²Î: GPIOx : GPIOA - GPIOK
 *              GPIO_PinX : GPIO_PIN_0 - GPIO__PIN_15
 *    ·µ »Ø Öµ: ÎÞ
-*********************************************************************************************************
+* 
 */
 void bsp_ConfigGpioOut(GPIO_TypeDef* GPIOx, uint16_t GPIO_PinX)
 {
@@ -312,18 +312,16 @@ void TIM3_IRQHandler(void)
 
 
 /*
-*********************************************************************************************************
-*    º¯ Êý Ãû: bsp_SetTIMOutPWM
-*    ¹¦ÄÜËµÃ÷: ÉèÖÃÒý½ÅÊä³öµÄPWMÐÅºÅµÄÆµÂÊºÍÕ¼¿Õ±È.  µ±ÆµÂÊÎª0£¬²¢ÇÒÕ¼¿ÕÎª0Ê±£¬¹Ø±Õ¶¨Ê±Æ÷£¬GPIOÊä³ö0£»
-*              µ±ÆµÂÊÎª0£¬Õ¼¿Õ±ÈÎª100%Ê±£¬GPIOÊä³ö1.
-*    ÐÎ    ²Î: GPIOx : GPIOA - GPIOK
-*              GPIO_Pin : GPIO_PIN_0 - GPIO__PIN_15
-*              TIMx : TIM1 - TIM14
-*             _ucChannel£ºÊ¹ÓÃµÄ¶¨Ê±Æ÷Í¨µÀ£¬·¶Î§1 - 4
-*              _ulFreq : PWMÐÅºÅÆµÂÊ£¬µ¥Î»Hz (Êµ¼Ê²âÊÔ£¬¿ÉÒÔÊä³ö100MHz£©£¬0 ±íÊ¾½ûÖ¹Êä³ö
-*              _ulDutyCycle : PWMÐÅºÅÕ¼¿Õ±È£¬µ¥Î»: Íò·ÖÖ®Ò»¡£Èç5000£¬±íÊ¾50.00%µÄÕ¼¿Õ±È
-*    ·µ »Ø Öµ: ÎÞ
-*********************************************************************************************************
+*   å‡½ æ•° å: bsp_SetTIMOutPWM
+*   åŠŸèƒ½è¯´æ˜Ž: è®¾ç½®å¼•è„šè¾“å‡ºçš„PWMä¿¡å·çš„é¢‘çŽ‡å’Œå ç©ºæ¯”.  å½“é¢‘çŽ‡ä¸º0ï¼Œå¹¶ä¸”å ç©ºä¸º0æ—¶ï¼Œå…³é—­å®šæ—¶å™¨ï¼ŒGPIOè¾“å‡º0ï¼›
+*             å½“é¢‘çŽ‡ä¸º0ï¼Œå ç©ºæ¯”ä¸º100%æ—¶ï¼ŒGPIOè¾“å‡º1.
+*   å½¢    å‚: GPIOx : GPIOA - GPIOK
+*             GPIO_Pin : GPIO_PIN_0 - GPIO__PIN_15
+*             TIMx : TIM1 - TIM14
+*             _ucChannelï¼šä½¿ç”¨çš„å®šæ—¶å™¨é€šé“ï¼ŒèŒƒå›´1 - 4
+*             _ulFreq : PWMä¿¡å·é¢‘çŽ‡ï¼Œå•ä½Hz (å®žé™…æµ‹è¯•ï¼Œå¯ä»¥è¾“å‡º100MHzï¼‰ï¼Œ0 è¡¨ç¤ºç¦æ­¢è¾“å‡º
+*             _ulDutyCycle : PWMä¿¡å·å ç©ºæ¯”ï¼Œå•ä½: ä¸‡åˆ†ä¹‹ä¸€ã€‚å¦‚5000ï¼Œè¡¨ç¤º50.00%çš„å ç©ºæ¯”
+*   è¿” å›ž å€¼: æ— 
 */
 void bsp_SetTIMOutPWM(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, TIM_TypeDef* TIMx, uint8_t _ucChannel,
      uint32_t _ulFreq, uint32_t _ulDutyCycle)
@@ -516,7 +514,7 @@ void bsp_SetTIMOutPWM(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, TIM_TypeDef* TIMx,
 
 
 /*
-*********************************************************************************************************
+* 
 *    º¯ Êý Ãû: bsp_SetTIMforInt
 *    ¹¦ÄÜËµÃ÷: ÅäÖÃTIMºÍNVIC£¬ÓÃÓÚ¼òµ¥µÄ¶¨Ê±ÖÐ¶Ï£¬¿ªÆô¶¨Ê±ÖÐ¶Ï¡£ÁíÍâ×¢ÒâÖÐ¶Ï·þÎñ³ÌÐòÐèÒªÓÉÓÃ»§Ó¦ÓÃ³ÌÐòÊµÏÖ¡£
 *    ÐÎ    ²Î: TIMx : ¶¨Ê±Æ÷
@@ -524,7 +522,7 @@ void bsp_SetTIMOutPWM(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, TIM_TypeDef* TIMx,
 *              _PreemptionPriority : ÇÀÕ¼ÓÅÏÈ¼¶
 *              _SubPriority : ×ÓÓÅÏÈ¼¶
 *    ·µ »Ø Öµ: ÎÞ
-*********************************************************************************************************
+* 
 */
 /*    
 TIM¶¨Ê±ÖÐ¶Ï·þÎñ³ÌÐò·¶Àý£¬±ØÐëÇåÖÐ¶Ï±êÖ¾

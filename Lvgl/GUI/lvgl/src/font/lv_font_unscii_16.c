@@ -1,4 +1,4 @@
-/*******************************************************************************
+/**
  * Size: 16 px
  * Bpp: 1
  * Opts: --no-compress --no-prefilter --bpp 1 --size 16 --font unscii-8.ttf -r 0x20-0x7F --format lvgl -o lv_font_unscii_16.c --force-fast-kern-format

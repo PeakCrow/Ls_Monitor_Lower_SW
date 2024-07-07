@@ -13,14 +13,14 @@ void bsp_I2C_EE_Init()
 
 
 
-/*******************************************************************************
+/**
   * @FunctionName: I2C_Mode_Config
   * @Author:       trx
   * @DateTime:     2022年5月5日 12:46:56 
   * @Purpose:      iic工作模式配置
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 static void I2C_Mode_Config(void)
 {
     iic_handle.Instance                 = I2Cx;
@@ -34,17 +34,17 @@ static void I2C_Mode_Config(void)
     iic_handle.Init.OwnAddress1         = I2C_OWN_ADDRESS7;
     iic_handle.Init.OwnAddress2         = 0;
 
-/* 初始化I2C */
-HAL_I2C_Init(&iic_handle);
+    /* 初始化I2C */
+    HAL_I2C_Init(&iic_handle);
 }
-/*******************************************************************************
+/**
   * @FunctionName: HAL_I2C_MspInit
   * @Author:       trx
   * @DateTime:     2022年5月7日 19:56:26 
   * @Purpose:      iic总线引脚初始化
   * @param:        hi2c：iic总线外设句柄
   * @return:       none
-*******************************************************************************/
+*/
 void HAL_I2C_MspInit(I2C_HandleTypeDef * hi2c)
 {
 GPIO_InitTypeDef    gpio_initstruct;
@@ -77,7 +77,7 @@ GPIO_InitTypeDef    gpio_initstruct;
 
 
 
-/*******************************************************************************
+/**
   * @FunctionName: I2C_EE_ByteWrite
   * @Author:       trx
   * @DateTime:     2022年5月7日 20:15:08 
@@ -85,7 +85,7 @@ GPIO_InitTypeDef    gpio_initstruct;
   * @param:        pBuffer  ：缓冲区写指针
   * @param:        WriteAddr：写地址
   * @return:       status   ：iic总线通讯状态
-*******************************************************************************/
+*/
 uint32_t I2C_EE_ByteWrite(uint8_t * pBuffer, uint8_t WriteAddr)
 {
     HAL_StatusTypeDef   status = HAL_OK;
@@ -112,7 +112,7 @@ uint32_t I2C_EE_ByteWrite(uint8_t * pBuffer, uint8_t WriteAddr)
 
 
 
-/*******************************************************************************
+/**
   * @FunctionName: I2C_EE_BufferRead
   * @Author:       trx
   * @DateTime:     2022年5月7日 20:22:07 
@@ -121,7 +121,7 @@ uint32_t I2C_EE_ByteWrite(uint8_t * pBuffer, uint8_t WriteAddr)
   * @param:        ReadAdder    ：读取数据eeporm芯片数据的地址
   * @param:        NumByteToRead：读取数据的字节个数
   * @return:       none
-*******************************************************************************/
+*/
 uint32_t I2C_EE_BufferRead(uint8_t * pBuffer, uint8_t ReadAdder, uint16_t NumByteToRead)
 {
     HAL_StatusTypeDef status = HAL_OK;
@@ -133,7 +133,7 @@ uint32_t I2C_EE_BufferRead(uint8_t * pBuffer, uint8_t ReadAdder, uint16_t NumByt
     return status;
 }
 
-/*******************************************************************************
+/**
   * @FunctionName: I2C_EE_PageWrite
   * @Author:       trx
   * @DateTime:     2022年5月7日 20:37:36 
@@ -142,7 +142,7 @@ uint32_t I2C_EE_BufferRead(uint8_t * pBuffer, uint8_t ReadAdder, uint16_t NumByt
   * @param:        WriteAddr     ：写地址
   * @param:        NumByteToWrite：写入的数据字数
   * @return:       status：iic总线通讯的状态
-*******************************************************************************/
+*/
 uint32_t I2C_EE_PageWrite(uint8_t * pBuffer, uint8_t WriteAddr, uint8_t NumByteToWrite)
 {
     HAL_StatusTypeDef status = HAL_OK;
@@ -244,14 +244,14 @@ void I2C_EE_BufferWrite(uint8_t * pBuffer, uint8_t WriteAddr, uint16_t NumByteTo
 uint8_t     I2Cx_BUFFER_WRITE[I2Cx_MAX_BYTE_NUM];
 uint8_t     I2Cx_BUFFER_READ[I2Cx_MAX_BYTE_NUM];
 
-/*******************************************************************************
+/**
   * @FunctionName: DemoIicEeprom
   * @Author:       trx
   * @DateTime:     2022年5月7日 21:13:33 
   * @Purpose:      eeprom芯片读写测试
   * @param:        none
   * @return:       none
-*******************************************************************************/
+*/
 void DemoIicEeprom()
 {
     uint16_t i;

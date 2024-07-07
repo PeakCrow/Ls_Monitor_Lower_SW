@@ -35,14 +35,14 @@
 static void GPIO_INK_Init(void);
 
 
-/*******************************************************************************
+/**
   * @FunctionName: GPIO_INK_Init
   * @Author:       trx
   * @DateTime:     2022年5月10日 18:59:21 
   * @Purpose:      除去spi通讯以外的控制引脚的初始化
   * @param:        void
   * @return:       none
-*******************************************************************************/
+*/
 static void GPIO_INK_Init(void)
 {
 	GPIO_InitTypeDef gpio_initstruct = {0};
