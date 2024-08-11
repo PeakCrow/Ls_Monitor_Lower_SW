@@ -299,13 +299,13 @@ UART_T *ComToUart(COM_PORT_E _ucPort)
 
 /*
 *   函 数 名: bsp_SetUartParam
-*   功能说明: 配置串口的硬件参数（波特率，数据位，停止位，
+*   功能说明: 配置串口的硬件参数（波特率，数据位，停止位
 *             起始位，校验位，中断使能）适合于STM32- H7开发板
 *   形    参: Instance   USART_TypeDef类型结构体
 *             BaudRate   波特率
 *             Parity     校验类型，奇校验或者偶校验
 *             Mode       发送和接收模式使能
-*	返 回 值: 无
+*   返 回 值: 无
 *   时    间: 2024年7月7日 15:55:53
 */
 void bsp_SetUartParam(USART_TypeDef *Instance,uint32_t BaudRate,

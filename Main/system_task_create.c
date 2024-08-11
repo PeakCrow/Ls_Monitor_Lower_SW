@@ -154,7 +154,8 @@ static void AppTaskCOM(ULONG thread_input)
     App_Printf("AppTaskCom任务开始运行!!\n");
     uint32_t id;
     uint8_t data[8] = {0x0,0x1,0x2,0x3,0x4,0x5,0x6,0x7};
-//    bsp_Can1_Send_buf(0x327,data,8);
+    bsp_Can1_Send_buf(0x327,data,8);
+//    bsp_Can1_Send_buf(0x1315,data,8);
     while(1)
     {
         bsp_LedToggle(2);

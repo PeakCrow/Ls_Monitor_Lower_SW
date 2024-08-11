@@ -4,7 +4,7 @@
 /* 此文件中没有使用互斥量App_Printf函数 */
 CAN_HandleTypeDef hCAN;
 CAN_RxHeaderTypeDef can_rx_msg;
-uint8_t g_canrxbuf[8] = {0};        /* 不能做成全局变量，不然无法触发中断(?????) */
+//uint8_t g_canrxbuf[8] = {0};        /* 不能做成全局变量，不然无法触发中断(?????) */
 
 /**
   * @FunctionName: bsp_InitCan1Bus
@@ -35,7 +35,7 @@ void bsp_InitCan1Bus(void)
     HAL_StatusTypeDef ret = HAL_CAN_Init(&hCAN);
     if(HAL_OK != ret)
     {
-        printf("HAL_CAN_Init ret not ok %d !\n",ret);
+        printf("HAL_CAN_Init CAN1 ret not ok %d !\n",ret);
     }
     
     /*CAN过滤器初始化*/
@@ -51,7 +51,11 @@ void bsp_InitCan1Bus(void)
     sFilterConfig.FilterFIFOAssignment  = CAN_FILTER_FIFO0;     /* 过滤器被关联到FIFO 0 */
     sFilterConfig.FilterActivation      = ENABLE;               /* 使能过滤器 */
     sFilterConfig.FilterBank            = 14;
-    HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig);
+    ret = HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig);
+    if(HAL_OK != ret)
+    {
+        printf("HAL_CAN_ConfigFilter0 CAN1 ret not ok %d !\n",ret);
+    }
     
     /*CAN过滤器初始化*/
     sFilterConfig2.FilterMode           = CAN_FILTERMODE_IDMASK;  /* 工作在标识符屏蔽位模式 */
@@ -63,8 +67,29 @@ void bsp_InitCan1Bus(void)
     sFilterConfig2.FilterFIFOAssignment = CAN_FILTER_FIFO1;       /* 过滤器被关联到FIFO 1 */
     sFilterConfig2.FilterActivation     = ENABLE;                 /* 使能过滤器 */
     sFilterConfig2.FilterBank           = 10;
-    HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig2);
+    ret = HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig2);
+    if(HAL_OK != ret)
+    {
+        printf("HAL_CAN_ConfigFilter1 CAN1 ret not ok %d !\n",ret);
+    }
 
+    /*CAN过滤器初始化*/
+    sFilterConfig2.FilterMode           = CAN_FILTERMODE_IDMASK;  /* 工作在标识符屏蔽位模式 */
+    sFilterConfig2.FilterScale          = CAN_FILTERSCALE_32BIT;  /* 过滤器位宽为单个32位。*/
+    sFilterConfig2.FilterIdHigh         = 0;       /* 要过滤的ID高位 */
+    sFilterConfig2.FilterIdLow          = 0; /* 要过滤的ID低位 */
+    sFilterConfig2.FilterMaskIdHigh     = 0;                 /* 过滤器高16位每位必须匹配 */
+    sFilterConfig2.FilterMaskIdLow      = 0;                 /* 过滤器低16位每位必须匹配 */
+    sFilterConfig2.FilterFIFOAssignment = CAN_FILTER_FIFO0;       /* 过滤器被关联到FIFO 1 */
+    sFilterConfig2.FilterActivation     = ENABLE;                 /* 使能过滤器 */
+    sFilterConfig2.FilterBank           = 0;
+    ret = HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig2);
+    if(HAL_OK != ret)
+    {
+        printf("HAL_CAN_ConfigFilter2 CAN1 ret not ok %d !\n",ret);
+    }
+    
+    
     HAL_CAN_Start(&hCAN);
     HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO0_MSG_PENDING);
     HAL_CAN_ActivateNotification(&hCAN,CAN_IT_RX_FIFO0_FULL);
@@ -89,15 +114,16 @@ void bsp_InitCan1Bus(void)
 void HAL_CAN_MspInit(CAN_HandleTypeDef * hcan)
 {
     GPIO_InitTypeDef    gpio_init;
-    GPIO_InitTypeDef    gpio_init1;
+
     if(hcan->Instance == CANx_BUS_1)
     {
         CAN1_CLK_ENABLE();          /* can外设时钟使能 */
+        __HAL_RCC_CAN2_CLK_ENABLE();
         CAN1_GPIO_CLK_ENABLE();     /* 引脚时钟使能 */
         
         gpio_init.Pin       = CAN1_TX_PIN;
         gpio_init.Mode      = GPIO_MODE_AF_PP;
-        gpio_init.Pull      = GPIO_NOPULL;
+        gpio_init.Pull      = GPIO_PULLDOWN;
         gpio_init.Alternate = GPIO_AF9_CAN1;
         HAL_GPIO_Init(CAN1_TX_GPIO_PORT,&gpio_init);
 
@@ -106,24 +132,18 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef * hcan)
         gpio_init.Speed     = GPIO_SPEED_FREQ_HIGH;
         gpio_init.Alternate = GPIO_AF9_CAN1;
         HAL_GPIO_Init(CAN1_RX_GPIO_PORT,&gpio_init);
-
-        gpio_init1.Pin       = CAN_STB_PIN;
-        gpio_init1.Mode      = GPIO_MODE_OUTPUT_PP;
-        gpio_init1.Speed     = GPIO_SPEED_FREQ_LOW;
-        gpio_init1.Pull      = GPIO_NOPULL;
-        HAL_GPIO_Init(CAN_STB_GPIO_PORT,&gpio_init1);
-        PBout(11) = 1;
         
-        gpio_init1.Pin       = GPIO_PIN_7;
-        gpio_init1.Mode      = GPIO_MODE_OUTPUT_PP;
-        gpio_init1.Speed     = GPIO_SPEED_FREQ_HIGH;
-        gpio_init1.Pull      = GPIO_NOPULL;
-        HAL_GPIO_Init(CAN_STB_GPIO_PORT,&gpio_init1);
-        CAN_STB_GPIO_PORT->BSRR = (uint32_t)GPIO_PIN_7;             /* 电平拉高 */
-        CAN_STB_GPIO_PORT->BSRR = (uint32_t)GPIO_PIN_7 << 16U;      /* 电平拉低 */
+        gpio_init.Pin       = CAN_STB_PIN;
+        gpio_init.Mode      = GPIO_MODE_OUTPUT_PP;
+        gpio_init.Speed     = GPIO_SPEED_FREQ_LOW;
+        gpio_init.Pull      = GPIO_NOPULL;
+        HAL_GPIO_Init(CAN_STB_GPIO_PORT,&gpio_init);
+        PBout(11) = 1;
 
         HAL_NVIC_SetPriority(CAN1_RX_IRQN,0,0);/* 初始化中断优先级 */
         HAL_NVIC_EnableIRQ(CAN1_RX_IRQN);
+        HAL_NVIC_SetPriority(CAN1_TX_IRQn,0,0);/* 初始化中断优先级 */
+        HAL_NVIC_EnableIRQ(CAN1_TX_IRQn);
     }
 }
 
@@ -173,7 +193,7 @@ HAL_StatusTypeDef bsp_Can1_Send_buf(uint32_t _id,uint8_t _buf[],uint8_t _dlc)
         HAL_CAN_AddTxMessage(&hCAN,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX2);
     else
         return HAL_ERROR;
-    while(HAL_CAN_GetTxMailboxesFreeLevel(&hCAN) != 0){}            /* 如果空闲发送邮箱为0，则死循环，等待发送邮箱不为空，有可用的邮箱 */
+//    while(HAL_CAN_GetTxMailboxesFreeLevel(&hCAN) != 0){}            /* 如果空闲发送邮箱为0，则死循环，等待发送邮箱不为空，有可用的邮箱 */
                                                                     /* 添加一组大括号，避免报警告没有返回状态 */
     return HAL_OK;
 
@@ -242,9 +262,10 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 */
 void CAN1_RX0_IRQHandler(void)
 {
+    uint8_t g_canrxbuf[8] = {0};
     HAL_CAN_IRQHandler(&hCAN);              /* 需要在中断函数中调用此函数来清除中断标志位 */
-    //HAL_CAN_GetRxMessage(&hCAN, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
-    App_Printf("CAN1 RX0 IRQ\n");
+    HAL_CAN_GetRxMessage(&hCAN, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
+    printf("CAN1 RX0 IRQ\n");
 }
 
 
@@ -262,28 +283,28 @@ void CAN1_RX0_IRQHandler(void)
 uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
 {
     uint8_t i;
-    if(IS_CAN_STDID(_id))
-    {
-        if(can_rx_msg.StdId == _id)
-        {
-            for(i = 0;i < can_rx_msg.DLC;i++)
-            _buf[i] = g_canrxbuf[i];
-        }
-        else
-            printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
-    }
-    else if(IS_CAN_EXTID(_id))
-    {
-    if(can_rx_msg.ExtId == _id)
-    {
-        for(i = 0;i < can_rx_msg.DLC;i++)
-        {
-            _buf[i] = g_canrxbuf[i];
-        }
-    }
-    else
-        printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
-    }
+//    if(IS_CAN_STDID(_id))
+//    {
+//        if(can_rx_msg.StdId == _id)
+//        {
+//            for(i = 0;i < can_rx_msg.DLC;i++)
+//            _buf[i] = g_canrxbuf[i];
+//        }
+//        else
+//            printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
+//    }
+//    else if(IS_CAN_EXTID(_id))
+//    {
+//    if(can_rx_msg.ExtId == _id)
+//    {
+//        for(i = 0;i < can_rx_msg.DLC;i++)
+//        {
+//            _buf[i] = g_canrxbuf[i];
+//        }
+//    }
+//    else
+//        printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
+//    }
     return can_rx_msg.DLC;
 }
 

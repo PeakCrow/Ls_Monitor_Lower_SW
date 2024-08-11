@@ -55,41 +55,47 @@ void AppTaskUserIF(ULONG thread_input)
     uint8_t ucKeyCode;    /* 按键代码 */
     (void)thread_input;
     App_Printf("按键驱动初始化!\n");
+    uint8_t data[8] = {0x0,0x1,0x2,0x3,0x4,0x5,0x6,0x7};
     while(1)
     {
-ucKeyCode = bsp_GetKey();
-if (ucKeyCode != KEY_NONE)
+        ucKeyCode = bsp_GetKey();
+        comGetChar(COM1,&ucKeyCode);
+        if (ucKeyCode != KEY_NONE)
         {
             switch(ucKeyCode)
             {
-                case KEY_0_UP:                  /* K1键按打印任务执行情况 */
-                    App_Printf("k0按键弹起\r\n");
-                    break;
-                case KEY_0_DOWN:                 /* k0按键按下 */
-                    App_Printf("k0按键按下\r\n");
-                    DispTaskInfo();
-                    break;
-                case KEY_UP_UP:
-                    App_Printf("kup按键弹起\r\n");
-                    break;
-                case KEY_UP_DOWN:               /* kup按键按下 */
-                    App_Printf("kup按键按下\r\n");
-                    break;
-                case KEY_0_LONG:
-                    App_Printf("k0按键长按\r\n");
-                    break;
-                case KEY_UP_LONG:
-                    App_Printf("kup按键长按\r\n");
-                    break;
-                case KEY_MULTI_DOWM:
-                    App_Printf("kmulti按键按下\r\n");
-                    break;
-                case KEY_MULTI_UP:
-                    App_Printf("kmulti按键弹起\r\n");
-                    break;
-                case KEY_MULTI_LONG:
-                    App_Printf("kmulti按键长按\r\n");
-                    break;
+            case KEY_0_UP:                  /* K1键按打印任务执行情况 */
+                App_Printf("k0按键弹起\r\n");
+                break;
+            case KEY_0_DOWN:                 /* k0按键按下 */
+                App_Printf("k0按键按下\r\n");
+                DispTaskInfo();
+                break;
+            case KEY_UP_UP:
+                App_Printf("kup按键弹起\r\n");
+                break;
+            case KEY_UP_DOWN:               /* kup按键按下 */
+                App_Printf("kup按键按下\r\n");
+                break;
+            case KEY_0_LONG:
+                App_Printf("k0按键长按\r\n");
+                break;
+            case KEY_UP_LONG:
+                App_Printf("kup按键长按\r\n");
+                break;
+            case KEY_MULTI_DOWM:
+                App_Printf("kmulti按键按下\r\n");
+                break;
+            case KEY_MULTI_UP:
+                App_Printf("kmulti按键弹起\r\n");
+                break;
+            case KEY_MULTI_LONG:
+                App_Printf("kmulti按键长按\r\n");
+                break;
+            case 's':
+                bsp_Can1_Send_buf(0x327,data,8);
+                App_Printf("0x327 发送\r\n");
+                break;
             }
         }
         tx_thread_sleep(20);
