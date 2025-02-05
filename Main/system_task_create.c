@@ -6,8 +6,8 @@
 */
 #define  APP_CFG_TASK_COM_PRIO           7u
 #define  APP_CFG_TASK_COM_STK_SIZE       1024u
-#define  TASK_START_CREATE_PRIO                  7u
-#define  TASK_START_CREATE_SIZE                  1024u
+#define  TASK_START_CREATE_PRIO          7u
+#define  TASK_START_CREATE_SIZE          1024u
 /*
 * 
 *                                       静态全局变量
@@ -82,7 +82,7 @@ static  void  AppTaskCreate (void)
     /**************创建COM任务*********************/
     tx_thread_create(&AppTaskCOMTCB,"App Task COM",AppTaskCOM,0,&AppTaskCOMStk[0],APP_CFG_TASK_COM_STK_SIZE,
                        APP_CFG_TASK_COM_PRIO,APP_CFG_TASK_COM_PRIO,TX_NO_TIME_SLICE,TX_AUTO_START);
-#if 0
+#if 1
     /**************创建LCD DISP任务*********************/
     tx_thread_create(&AppTaskTFTLCDTCB,"App Task TFTLCD",AppTaskTFTLCD,0,&AppTaskTFTLCDStk[0],APP_CFG_TASK_TFTLCD_STK_SIZE,
                        APP_CFG_TASK_TFTLCD_PRIO,APP_CFG_TASK_TFTLCD_PRIO,TX_NO_TIME_SLICE,TX_AUTO_START);
@@ -118,17 +118,18 @@ static  void  AppTaskStart (ULONG thread_input)
     bsp_InitSPI2Bus();                            /* 初始化SPI2总线，用来驱动墨水屏 */
     bsp_I2C_EE_Init();                            /* 初始化IIC总线，并且驱动eeprom芯片 */
     bsp_InitLed();                                /* 初始化板载LED灯 */
-    bsp_InitCan1Bus();                            /* 初始化CAN1 总线 */
+    //bsp_InitCan1Bus();                            /* 初始化CAN1 总线 */
     bsp_InitRotationSensor();                    /* 初始化轮速传感器 */
     bsp_InitWs2812b();                            /* 初始化ws2812b可调灯效 */
     bsp_SetTIMOutPWM(GPIOB,GPIO_PIN_6,TIM4,1,1000,5500);/* 生成一个1k，50占空比的方波，用来验证脉冲计数 */
     bsp_InitSPI1Bus();                            /* SPI1总线初始化 */
     bsp_InitSFlash();                            /* 初始化SPI FLASH芯片 */
-//    bsp_InitSram();                             /* 外部sram初始化 */
-//    lv_init();                                     /* lvgl 系统初始化 */
-//    lv_port_disp_init();                         /* lvgl 显示接口初始化,放在 lv_init()的后面 */
-//    lv_port_indev_init();                         /* lvgl 输入接口初始化,放在 lv_init()的后面 */
-    //test_master();
+    bsp_InitSram();                             /* 外部sram初始化 */
+    lv_init();                                     /* lvgl 系统初始化 */
+    lv_port_disp_init();                         /* lvgl 显示接口初始化,放在 lv_init()的后面 */
+    lv_port_indev_init();                         /* lvgl 输入接口初始化,放在 lv_init()的后面 */
+
+    shell_init();
     /* 创建任务间通信机制,主要是各种任务间通讯函数 */
     AppSysObjCreate();
     /* 创建任务，此函数中包含子任务-线程任务 */
@@ -152,7 +153,7 @@ static void AppTaskCOM(ULONG thread_input)
 {
     (void)thread_input;
     App_Printf("AppTaskCom任务开始运行!!\n");
-    uint32_t id;
+//    uint32_t id;
     uint8_t data[8] = {0x0,0x1,0x2,0x3,0x4,0x5,0x6,0x7};
     bsp_Can1_Send_buf(0x327,data,8);
 //    bsp_Can1_Send_buf(0x1315,data,8);

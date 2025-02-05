@@ -505,7 +505,7 @@
  * - LV_TXT_ENC_UTF8
  * - LV_TXT_ENC_ASCII
  */
-#define LV_TXT_ENC 		LV_TXT_ENC_UTF8
+#define LV_TXT_ENC      LV_TXT_ENC_UTF8
 
 /*Can break (wrap) texts on these chars*/
 /*可以在这些字符上断开(换行)文本*/
@@ -775,14 +775,14 @@
         /* Maximum number of opened FT_Face/FT_Size objects managed by this cache instance. */
         /* (0:use system defaults) */
         /* 此缓存实例管理的最大打开FT_Face/FT_Size 对象数. */
-        /* (0:使用系统默认值) */		
+        /* (0:使用系统默认值) */
         #define LV_FREETYPE_CACHE_FT_FACES 0
         #define LV_FREETYPE_CACHE_FT_SIZES 0
     #endif
 #endif
 
 /*Rlottie library*/
-/*Rlottie 库*/	
+/*Rlottie 库*/
 #define LV_USE_RLOTTIE 0
 
 /*FFmpeg library for image decoding and playing videos

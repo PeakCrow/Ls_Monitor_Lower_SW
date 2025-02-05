@@ -50,6 +50,14 @@ void DispTaskInfo(void)
     }
 }
 
+void DispTaskInfo_Cmd(char argc, char *argv)
+{
+    DispTaskInfo();
+}
+
+NR_SHELL_CMD_EXPORT(taskinfo, DispTaskInfo_Cmd,"wwww");
+
+
 /*
 * 
 *    函 数 名: AppTaskStatistic

@@ -337,9 +337,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>--diag_suppress=188 --diag_suppress=68 --diag_suppress=111 --diag_suppress=188 --diag_suppress=223 --diag_suppress=546 --diag_suppress=1295 --diag_suppress=870 --diag_suppress=550</MiscControls>
-              <Define>USE_HAL_DRIVER,STM32F407xx,USE_FULL_LL_DRIVER,TX_ENABLE_FPU_SUPPORT,TX_ENABLE_STACK_CHECKING</Define>
+              <Define>USE_HAL_DRIVER,STM32F407xx,USE_FULL_LL_DRIVER,TX_ENABLE_FPU_SUPPORT,TX_ENABLE_STACK_CHECKING,NR_SHELL_USING_EXPORT_CMD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Core;..\Obj;..\User;..\SYSTEM\sys;..\HAL_lib\Inc;..\HAL_lib\STM32F4xx_HAL_Driver\Inc;..\HAL_lib\CMSIS\Include;..\HAL_lib\STM32F4xx_HAL_Driver\Src;..\SYSTEM\ticktim;..\SYSTEM\usart_fifo;..\SYSTEM\key_fifo;..\SYSTEM\spi;..\SYSTEM\flash;..\SYSTEM\iic;..\SYSTEM\ink_screen;..\ThreadX\ports\cortex_m4\ac5\inc;..\ThreadX\common\inc;..\SYSTEM\led;..\SYSTEM\can;..\SYSTEM\timer;..\SYSTEM\ws2812b;..\SYSTEM\rotation;..\SYSTEM\ads1256;..\SYSTEM\lcd;..\SYSTEM\touch;..\SYSTEM\sram;..\SYSTEM\mlx90614;..\SYSTEM\sd_card;..\Lvgl\GUI\lvgl;..\Lvgl\GUI\lvgl\src;..\Lvgl\GUI\lvgl\examples\porting;..\Lvgl\GUI_APP;..\SYSTEM\fonts;..\FatFs\src;..\FatFs\doc;..\FatFs\src\drivers;..\Lvgl\GUI\lvgl\src\misc;..\Lvgl\GUI_APP\widght_ui;..\System\Iwdg;..\stm32f4_main;..\System\canfestival\dictionary;..\System\canfestival\inc;..\Main;..\LogicalApp\gui_task;..\LogicalApp\msg_task;..\LogicalApp\statistic_task</IncludePath>
+              <IncludePath>..\Core;..\Obj;..\User;..\SYSTEM\sys;..\HAL_libraries\Inc;..\HAL_libraries\STM32F4xx_HAL_Driver\Inc;..\HAL_libraries\CMSIS\Include;..\HAL_libraries\STM32F4xx_HAL_Driver\Src;..\SYSTEM\ticktim;..\SYSTEM\usart_fifo;..\SYSTEM\key_fifo;..\SYSTEM\spi;..\SYSTEM\flash;..\SYSTEM\iic;..\SYSTEM\ink_screen;..\Third_Libraries\ThreadX\ports\cortex_m4\ac5\inc;..\Third_Libraries\ThreadX\common\inc;..\SYSTEM\led;..\SYSTEM\can;..\SYSTEM\timer;..\SYSTEM\ws2812b;..\SYSTEM\rotation;..\SYSTEM\ads1256;..\SYSTEM\lcd;..\SYSTEM\touch;..\SYSTEM\sram;..\SYSTEM\mlx90614;..\SYSTEM\sd_card;..\Third_Libraries\Lvgl\GUI\lvgl;..\Third_Libraries\Lvgl\GUI\lvgl\src;..\Third_Libraries\Lvgl\GUI\lvgl\examples\porting;..\Third_Libraries\Lvgl\GUI_APP;..\SYSTEM\fonts;..\Third_Libraries\FatFs\src;..\Third_Libraries\FatFs\doc;..\Third_Libraries\FatFs\src\drivers;..\Third_Libraries\Lvgl\GUI\lvgl\src\misc;..\Third_Libraries\Lvgl\GUI_APP\widght_ui;..\System\Iwdg;..\stm32f4_main;..\System\canfestival\dictionary;..\System\canfestival\inc;..\Main;..\Third_Libraries\LogicalApp\gui_task;..\Third_Libraries\LogicalApp\msg_task;..\Third_Libraries\LogicalApp\statistic_task;..\Third_Libraries\Nr_Micro_Shell\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -536,437 +536,437 @@
             <File>
               <FileName>stm32f4xx_hal.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_adc_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_cec.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cec.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cec.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_cortex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_crc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_crc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_cryp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_cryp_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_dac.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_dac_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_dcmi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dcmi.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dcmi.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_dcmi_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dcmi_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dcmi_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_dfsdm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dfsdm.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dfsdm.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_dma_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_dma2d.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma2d.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma2d.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_dsi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dsi.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dsi.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_eth.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_eth.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_eth.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_exti.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_exti.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_exti.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_flash_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_flash_ramfunc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ramfunc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ramfunc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_fmpi2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_fmpi2c.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_fmpi2c.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_fmpi2c_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_fmpi2c_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_fmpi2c_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_hash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hash.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hash.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_hash_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hash_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hash_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_hcd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hcd.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hcd.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_i2c_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_i2s.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2s.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2s.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_i2s_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2s_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2s_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_irda.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_irda.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_irda.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_iwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_iwdg.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_iwdg.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_lptim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_lptim.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_lptim.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_ltdc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_ltdc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_ltdc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_ltdc_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_ltdc_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_ltdc_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_mmc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_mmc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_mmc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_nand.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nand.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nand.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_nor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_pccard.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pccard.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pccard.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_pcd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pcd.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pcd.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_pcd_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pcd_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pcd_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_pwr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_pwr_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_qspi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_qspi.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_qspi.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_rcc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_rcc_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_rng.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rng.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rng.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rtc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rtc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_rtc_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rtc_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rtc_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_sai.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sai.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sai.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_sai_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sai_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sai_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_sd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sd.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sd.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_sdram.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sdram.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sdram.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_smartcard.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_smartcard.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_smartcard.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_smbus.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_smbus.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_smbus.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_spdifrx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spdifrx.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spdifrx.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_sram.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sram.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sram.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_tim_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_usart.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_usart.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_wwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_wwdg.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_wwdg.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_adc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_adc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_crc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_crc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_dac.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_dac.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_dac.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_dma.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_dma.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_dma2d.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_dma2d.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_dma2d.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_exti.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_exti.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_exti.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_fmc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fmc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fmc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_fsmc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fsmc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fsmc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_gpio.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_gpio.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_i2c.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_i2c.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_lptim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_lptim.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_lptim.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_pwr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_pwr.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_pwr.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_rcc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_rcc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_rcc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_rng.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_rng.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_rng.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_rtc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_rtc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_sdmmc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_sdmmc.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_sdmmc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_spi.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_spi.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_tim.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_tim.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usart.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usart.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_usb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usb.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usb.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_ll_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_utils.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_utils.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_can.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hal_lib\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_can.c</FilePath>
+              <FilePath>..\Hal_libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_can.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -976,52 +976,52 @@
             <File>
               <FileName>tx_initialize_low_level.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\ThreadX\ports\cortex_m4\ac5\example_build\tx_initialize_low_level.s</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\ports\cortex_m4\ac5\example_build\tx_initialize_low_level.s</FilePath>
             </File>
             <File>
               <FileName>tx_thread_context_restore.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\ThreadX\ports\cortex_m4\ac5\src\tx_thread_context_restore.s</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\ports\cortex_m4\ac5\src\tx_thread_context_restore.s</FilePath>
             </File>
             <File>
               <FileName>tx_thread_context_save.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\ThreadX\ports\cortex_m4\ac5\src\tx_thread_context_save.s</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\ports\cortex_m4\ac5\src\tx_thread_context_save.s</FilePath>
             </File>
             <File>
               <FileName>tx_thread_interrupt_control.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\ThreadX\ports\cortex_m4\ac5\src\tx_thread_interrupt_control.s</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\ports\cortex_m4\ac5\src\tx_thread_interrupt_control.s</FilePath>
             </File>
             <File>
               <FileName>tx_thread_interrupt_disable.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\ThreadX\ports\cortex_m4\ac5\src\tx_thread_interrupt_disable.s</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\ports\cortex_m4\ac5\src\tx_thread_interrupt_disable.s</FilePath>
             </File>
             <File>
               <FileName>tx_thread_interrupt_restore.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\ThreadX\ports\cortex_m4\ac5\src\tx_thread_interrupt_restore.s</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\ports\cortex_m4\ac5\src\tx_thread_interrupt_restore.s</FilePath>
             </File>
             <File>
               <FileName>tx_thread_schedule.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\ThreadX\ports\cortex_m4\ac5\src\tx_thread_schedule.s</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\ports\cortex_m4\ac5\src\tx_thread_schedule.s</FilePath>
             </File>
             <File>
               <FileName>tx_thread_stack_build.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\ThreadX\ports\cortex_m4\ac5\src\tx_thread_stack_build.s</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\ports\cortex_m4\ac5\src\tx_thread_stack_build.s</FilePath>
             </File>
             <File>
               <FileName>tx_thread_system_return.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\ThreadX\ports\cortex_m4\ac5\src\tx_thread_system_return.s</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\ports\cortex_m4\ac5\src\tx_thread_system_return.s</FilePath>
             </File>
             <File>
               <FileName>tx_timer_interrupt.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\ThreadX\ports\cortex_m4\ac5\src\tx_timer_interrupt.s</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\ports\cortex_m4\ac5\src\tx_timer_interrupt.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -1031,997 +1031,997 @@
             <File>
               <FileName>tx_block_allocate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_block_allocate.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_block_allocate.c</FilePath>
             </File>
             <File>
               <FileName>tx_block_pool_cleanup.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_block_pool_cleanup.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_block_pool_cleanup.c</FilePath>
             </File>
             <File>
               <FileName>tx_block_pool_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_block_pool_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_block_pool_create.c</FilePath>
             </File>
             <File>
               <FileName>tx_block_pool_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_block_pool_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_block_pool_delete.c</FilePath>
             </File>
             <File>
               <FileName>tx_block_pool_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_block_pool_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_block_pool_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_block_pool_initialize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_block_pool_initialize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_block_pool_initialize.c</FilePath>
             </File>
             <File>
               <FileName>tx_block_pool_performance_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_block_pool_performance_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_block_pool_performance_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_block_pool_performance_system_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_block_pool_performance_system_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_block_pool_performance_system_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_block_pool_prioritize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_block_pool_prioritize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_block_pool_prioritize.c</FilePath>
             </File>
             <File>
               <FileName>tx_block_release.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_block_release.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_block_release.c</FilePath>
             </File>
             <File>
               <FileName>tx_byte_allocate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_byte_allocate.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_byte_allocate.c</FilePath>
             </File>
             <File>
               <FileName>tx_byte_pool_cleanup.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_byte_pool_cleanup.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_byte_pool_cleanup.c</FilePath>
             </File>
             <File>
               <FileName>tx_byte_pool_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_byte_pool_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_byte_pool_create.c</FilePath>
             </File>
             <File>
               <FileName>tx_byte_pool_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_byte_pool_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_byte_pool_delete.c</FilePath>
             </File>
             <File>
               <FileName>tx_byte_pool_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_byte_pool_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_byte_pool_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_byte_pool_initialize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_byte_pool_initialize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_byte_pool_initialize.c</FilePath>
             </File>
             <File>
               <FileName>tx_byte_pool_performance_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_byte_pool_performance_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_byte_pool_performance_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_byte_pool_performance_system_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_byte_pool_performance_system_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_byte_pool_performance_system_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_byte_pool_prioritize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_byte_pool_prioritize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_byte_pool_prioritize.c</FilePath>
             </File>
             <File>
               <FileName>tx_byte_pool_search.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_byte_pool_search.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_byte_pool_search.c</FilePath>
             </File>
             <File>
               <FileName>tx_byte_release.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_byte_release.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_byte_release.c</FilePath>
             </File>
             <File>
               <FileName>tx_event_flags_cleanup.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_event_flags_cleanup.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_event_flags_cleanup.c</FilePath>
             </File>
             <File>
               <FileName>tx_event_flags_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_event_flags_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_event_flags_create.c</FilePath>
             </File>
             <File>
               <FileName>tx_event_flags_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_event_flags_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_event_flags_delete.c</FilePath>
             </File>
             <File>
               <FileName>tx_event_flags_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_event_flags_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_event_flags_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_event_flags_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_event_flags_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_event_flags_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_event_flags_initialize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_event_flags_initialize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_event_flags_initialize.c</FilePath>
             </File>
             <File>
               <FileName>tx_event_flags_performance_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_event_flags_performance_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_event_flags_performance_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_event_flags_performance_system_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_event_flags_performance_system_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_event_flags_performance_system_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_event_flags_set.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_event_flags_set.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_event_flags_set.c</FilePath>
             </File>
             <File>
               <FileName>tx_event_flags_set_notify.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_event_flags_set_notify.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_event_flags_set_notify.c</FilePath>
             </File>
             <File>
               <FileName>tx_initialize_high_level.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_initialize_high_level.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_initialize_high_level.c</FilePath>
             </File>
             <File>
               <FileName>tx_initialize_kernel_enter.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_initialize_kernel_enter.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_initialize_kernel_enter.c</FilePath>
             </File>
             <File>
               <FileName>tx_initialize_kernel_setup.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_initialize_kernel_setup.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_initialize_kernel_setup.c</FilePath>
             </File>
             <File>
               <FileName>tx_misra.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_misra.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_misra.c</FilePath>
             </File>
             <File>
               <FileName>tx_mutex_cleanup.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_mutex_cleanup.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_mutex_cleanup.c</FilePath>
             </File>
             <File>
               <FileName>tx_mutex_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_mutex_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_mutex_create.c</FilePath>
             </File>
             <File>
               <FileName>tx_mutex_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_mutex_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_mutex_delete.c</FilePath>
             </File>
             <File>
               <FileName>tx_mutex_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_mutex_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_mutex_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_mutex_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_mutex_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_mutex_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_mutex_initialize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_mutex_initialize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_mutex_initialize.c</FilePath>
             </File>
             <File>
               <FileName>tx_mutex_performance_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_mutex_performance_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_mutex_performance_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_mutex_performance_system_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_mutex_performance_system_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_mutex_performance_system_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_mutex_prioritize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_mutex_prioritize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_mutex_prioritize.c</FilePath>
             </File>
             <File>
               <FileName>tx_mutex_priority_change.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_mutex_priority_change.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_mutex_priority_change.c</FilePath>
             </File>
             <File>
               <FileName>tx_mutex_put.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_mutex_put.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_mutex_put.c</FilePath>
             </File>
             <File>
               <FileName>tx_queue_cleanup.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_queue_cleanup.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_queue_cleanup.c</FilePath>
             </File>
             <File>
               <FileName>tx_queue_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_queue_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_queue_create.c</FilePath>
             </File>
             <File>
               <FileName>tx_queue_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_queue_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_queue_delete.c</FilePath>
             </File>
             <File>
               <FileName>tx_queue_flush.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_queue_flush.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_queue_flush.c</FilePath>
             </File>
             <File>
               <FileName>tx_queue_front_send.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_queue_front_send.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_queue_front_send.c</FilePath>
             </File>
             <File>
               <FileName>tx_queue_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_queue_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_queue_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_queue_initialize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_queue_initialize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_queue_initialize.c</FilePath>
             </File>
             <File>
               <FileName>tx_queue_performance_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_queue_performance_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_queue_performance_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_queue_performance_system_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_queue_performance_system_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_queue_performance_system_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_queue_prioritize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_queue_prioritize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_queue_prioritize.c</FilePath>
             </File>
             <File>
               <FileName>tx_queue_receive.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_queue_receive.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_queue_receive.c</FilePath>
             </File>
             <File>
               <FileName>tx_queue_send.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_queue_send.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_queue_send.c</FilePath>
             </File>
             <File>
               <FileName>tx_queue_send_notify.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_queue_send_notify.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_queue_send_notify.c</FilePath>
             </File>
             <File>
               <FileName>tx_semaphore_ceiling_put.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_semaphore_ceiling_put.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_semaphore_ceiling_put.c</FilePath>
             </File>
             <File>
               <FileName>tx_semaphore_cleanup.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_semaphore_cleanup.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_semaphore_cleanup.c</FilePath>
             </File>
             <File>
               <FileName>tx_semaphore_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_semaphore_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_semaphore_create.c</FilePath>
             </File>
             <File>
               <FileName>tx_semaphore_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_semaphore_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_semaphore_delete.c</FilePath>
             </File>
             <File>
               <FileName>tx_semaphore_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_semaphore_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_semaphore_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_semaphore_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_semaphore_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_semaphore_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_semaphore_initialize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_semaphore_initialize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_semaphore_initialize.c</FilePath>
             </File>
             <File>
               <FileName>tx_semaphore_performance_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_semaphore_performance_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_semaphore_performance_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_semaphore_performance_system_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_semaphore_performance_system_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_semaphore_performance_system_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_semaphore_prioritize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_semaphore_prioritize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_semaphore_prioritize.c</FilePath>
             </File>
             <File>
               <FileName>tx_semaphore_put.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_semaphore_put.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_semaphore_put.c</FilePath>
             </File>
             <File>
               <FileName>tx_semaphore_put_notify.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_semaphore_put_notify.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_semaphore_put_notify.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_create.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_delete.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_entry_exit_notify.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_entry_exit_notify.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_entry_exit_notify.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_identify.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_identify.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_identify.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_initialize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_initialize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_initialize.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_performance_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_performance_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_performance_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_performance_system_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_performance_system_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_performance_system_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_preemption_change.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_preemption_change.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_preemption_change.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_priority_change.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_priority_change.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_priority_change.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_relinquish.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_relinquish.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_relinquish.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_reset.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_reset.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_reset.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_resume.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_resume.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_resume.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_shell_entry.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_shell_entry.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_shell_entry.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_sleep.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_sleep.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_sleep.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_stack_analyze.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_stack_analyze.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_stack_analyze.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_stack_error_handler.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_stack_error_handler.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_stack_error_handler.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_stack_error_notify.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_stack_error_notify.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_stack_error_notify.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_suspend.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_suspend.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_suspend.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_system_preempt_check.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_system_preempt_check.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_system_preempt_check.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_system_resume.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_system_resume.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_system_resume.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_system_suspend.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_system_suspend.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_system_suspend.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_terminate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_terminate.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_terminate.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_time_slice.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_time_slice.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_time_slice.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_time_slice_change.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_time_slice_change.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_time_slice_change.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_timeout.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_timeout.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_timeout.c</FilePath>
             </File>
             <File>
               <FileName>tx_thread_wait_abort.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_thread_wait_abort.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_thread_wait_abort.c</FilePath>
             </File>
             <File>
               <FileName>tx_time_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_time_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_time_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_time_set.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_time_set.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_time_set.c</FilePath>
             </File>
             <File>
               <FileName>tx_timer_activate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_timer_activate.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_timer_activate.c</FilePath>
             </File>
             <File>
               <FileName>tx_timer_change.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_timer_change.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_timer_change.c</FilePath>
             </File>
             <File>
               <FileName>tx_timer_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_timer_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_timer_create.c</FilePath>
             </File>
             <File>
               <FileName>tx_timer_deactivate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_timer_deactivate.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_timer_deactivate.c</FilePath>
             </File>
             <File>
               <FileName>tx_timer_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_timer_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_timer_delete.c</FilePath>
             </File>
             <File>
               <FileName>tx_timer_expiration_process.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_timer_expiration_process.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_timer_expiration_process.c</FilePath>
             </File>
             <File>
               <FileName>tx_timer_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_timer_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_timer_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_timer_initialize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_timer_initialize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_timer_initialize.c</FilePath>
             </File>
             <File>
               <FileName>tx_timer_performance_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_timer_performance_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_timer_performance_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_timer_performance_system_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_timer_performance_system_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_timer_performance_system_info_get.c</FilePath>
             </File>
             <File>
               <FileName>tx_timer_system_activate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_timer_system_activate.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_timer_system_activate.c</FilePath>
             </File>
             <File>
               <FileName>tx_timer_system_deactivate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_timer_system_deactivate.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_timer_system_deactivate.c</FilePath>
             </File>
             <File>
               <FileName>tx_timer_thread_entry.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_timer_thread_entry.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_timer_thread_entry.c</FilePath>
             </File>
             <File>
               <FileName>tx_trace_buffer_full_notify.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_trace_buffer_full_notify.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_trace_buffer_full_notify.c</FilePath>
             </File>
             <File>
               <FileName>tx_trace_disable.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_trace_disable.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_trace_disable.c</FilePath>
             </File>
             <File>
               <FileName>tx_trace_enable.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_trace_enable.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_trace_enable.c</FilePath>
             </File>
             <File>
               <FileName>tx_trace_event_filter.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_trace_event_filter.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_trace_event_filter.c</FilePath>
             </File>
             <File>
               <FileName>tx_trace_event_unfilter.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_trace_event_unfilter.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_trace_event_unfilter.c</FilePath>
             </File>
             <File>
               <FileName>tx_trace_initialize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_trace_initialize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_trace_initialize.c</FilePath>
             </File>
             <File>
               <FileName>tx_trace_interrupt_control.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_trace_interrupt_control.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_trace_interrupt_control.c</FilePath>
             </File>
             <File>
               <FileName>tx_trace_isr_enter_insert.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_trace_isr_enter_insert.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_trace_isr_enter_insert.c</FilePath>
             </File>
             <File>
               <FileName>tx_trace_isr_exit_insert.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_trace_isr_exit_insert.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_trace_isr_exit_insert.c</FilePath>
             </File>
             <File>
               <FileName>tx_trace_object_register.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_trace_object_register.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_trace_object_register.c</FilePath>
             </File>
             <File>
               <FileName>tx_trace_object_unregister.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_trace_object_unregister.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_trace_object_unregister.c</FilePath>
             </File>
             <File>
               <FileName>tx_trace_user_event_insert.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\tx_trace_user_event_insert.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\tx_trace_user_event_insert.c</FilePath>
             </File>
             <File>
               <FileName>txe_block_allocate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_block_allocate.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_block_allocate.c</FilePath>
             </File>
             <File>
               <FileName>txe_block_pool_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_block_pool_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_block_pool_create.c</FilePath>
             </File>
             <File>
               <FileName>txe_block_pool_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_block_pool_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_block_pool_delete.c</FilePath>
             </File>
             <File>
               <FileName>txe_block_pool_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_block_pool_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_block_pool_info_get.c</FilePath>
             </File>
             <File>
               <FileName>txe_block_pool_prioritize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_block_pool_prioritize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_block_pool_prioritize.c</FilePath>
             </File>
             <File>
               <FileName>txe_block_release.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_block_release.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_block_release.c</FilePath>
             </File>
             <File>
               <FileName>txe_byte_allocate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_byte_allocate.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_byte_allocate.c</FilePath>
             </File>
             <File>
               <FileName>txe_byte_pool_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_byte_pool_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_byte_pool_create.c</FilePath>
             </File>
             <File>
               <FileName>txe_byte_pool_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_byte_pool_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_byte_pool_delete.c</FilePath>
             </File>
             <File>
               <FileName>txe_byte_pool_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_byte_pool_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_byte_pool_info_get.c</FilePath>
             </File>
             <File>
               <FileName>txe_byte_pool_prioritize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_byte_pool_prioritize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_byte_pool_prioritize.c</FilePath>
             </File>
             <File>
               <FileName>txe_byte_release.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_byte_release.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_byte_release.c</FilePath>
             </File>
             <File>
               <FileName>txe_event_flags_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_event_flags_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_event_flags_create.c</FilePath>
             </File>
             <File>
               <FileName>txe_event_flags_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_event_flags_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_event_flags_delete.c</FilePath>
             </File>
             <File>
               <FileName>txe_event_flags_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_event_flags_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_event_flags_get.c</FilePath>
             </File>
             <File>
               <FileName>txe_event_flags_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_event_flags_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_event_flags_info_get.c</FilePath>
             </File>
             <File>
               <FileName>txe_event_flags_set.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_event_flags_set.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_event_flags_set.c</FilePath>
             </File>
             <File>
               <FileName>txe_event_flags_set_notify.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_event_flags_set_notify.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_event_flags_set_notify.c</FilePath>
             </File>
             <File>
               <FileName>txe_mutex_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_mutex_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_mutex_create.c</FilePath>
             </File>
             <File>
               <FileName>txe_mutex_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_mutex_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_mutex_delete.c</FilePath>
             </File>
             <File>
               <FileName>txe_mutex_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_mutex_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_mutex_get.c</FilePath>
             </File>
             <File>
               <FileName>txe_mutex_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_mutex_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_mutex_info_get.c</FilePath>
             </File>
             <File>
               <FileName>txe_mutex_prioritize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_mutex_prioritize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_mutex_prioritize.c</FilePath>
             </File>
             <File>
               <FileName>txe_mutex_put.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_mutex_put.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_mutex_put.c</FilePath>
             </File>
             <File>
               <FileName>txe_queue_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_queue_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_queue_create.c</FilePath>
             </File>
             <File>
               <FileName>txe_queue_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_queue_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_queue_delete.c</FilePath>
             </File>
             <File>
               <FileName>txe_queue_flush.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_queue_flush.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_queue_flush.c</FilePath>
             </File>
             <File>
               <FileName>txe_queue_front_send.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_queue_front_send.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_queue_front_send.c</FilePath>
             </File>
             <File>
               <FileName>txe_queue_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_queue_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_queue_info_get.c</FilePath>
             </File>
             <File>
               <FileName>txe_queue_prioritize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_queue_prioritize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_queue_prioritize.c</FilePath>
             </File>
             <File>
               <FileName>txe_queue_receive.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_queue_receive.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_queue_receive.c</FilePath>
             </File>
             <File>
               <FileName>txe_queue_send.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_queue_send.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_queue_send.c</FilePath>
             </File>
             <File>
               <FileName>txe_queue_send_notify.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_queue_send_notify.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_queue_send_notify.c</FilePath>
             </File>
             <File>
               <FileName>txe_semaphore_ceiling_put.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_semaphore_ceiling_put.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_semaphore_ceiling_put.c</FilePath>
             </File>
             <File>
               <FileName>txe_semaphore_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_semaphore_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_semaphore_create.c</FilePath>
             </File>
             <File>
               <FileName>txe_semaphore_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_semaphore_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_semaphore_delete.c</FilePath>
             </File>
             <File>
               <FileName>txe_semaphore_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_semaphore_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_semaphore_get.c</FilePath>
             </File>
             <File>
               <FileName>txe_semaphore_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_semaphore_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_semaphore_info_get.c</FilePath>
             </File>
             <File>
               <FileName>txe_semaphore_prioritize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_semaphore_prioritize.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_semaphore_prioritize.c</FilePath>
             </File>
             <File>
               <FileName>txe_semaphore_put.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_semaphore_put.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_semaphore_put.c</FilePath>
             </File>
             <File>
               <FileName>txe_semaphore_put_notify.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_semaphore_put_notify.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_semaphore_put_notify.c</FilePath>
             </File>
             <File>
               <FileName>txe_thread_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_thread_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_thread_create.c</FilePath>
             </File>
             <File>
               <FileName>txe_thread_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_thread_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_thread_delete.c</FilePath>
             </File>
             <File>
               <FileName>txe_thread_entry_exit_notify.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_thread_entry_exit_notify.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_thread_entry_exit_notify.c</FilePath>
             </File>
             <File>
               <FileName>txe_thread_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_thread_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_thread_info_get.c</FilePath>
             </File>
             <File>
               <FileName>txe_thread_preemption_change.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_thread_preemption_change.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_thread_preemption_change.c</FilePath>
             </File>
             <File>
               <FileName>txe_thread_priority_change.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_thread_priority_change.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_thread_priority_change.c</FilePath>
             </File>
             <File>
               <FileName>txe_thread_relinquish.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_thread_relinquish.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_thread_relinquish.c</FilePath>
             </File>
             <File>
               <FileName>txe_thread_reset.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_thread_reset.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_thread_reset.c</FilePath>
             </File>
             <File>
               <FileName>txe_thread_resume.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_thread_resume.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_thread_resume.c</FilePath>
             </File>
             <File>
               <FileName>txe_thread_suspend.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_thread_suspend.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_thread_suspend.c</FilePath>
             </File>
             <File>
               <FileName>txe_thread_terminate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_thread_terminate.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_thread_terminate.c</FilePath>
             </File>
             <File>
               <FileName>txe_thread_time_slice_change.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_thread_time_slice_change.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_thread_time_slice_change.c</FilePath>
             </File>
             <File>
               <FileName>txe_thread_wait_abort.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_thread_wait_abort.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_thread_wait_abort.c</FilePath>
             </File>
             <File>
               <FileName>txe_timer_activate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_timer_activate.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_timer_activate.c</FilePath>
             </File>
             <File>
               <FileName>txe_timer_change.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_timer_change.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_timer_change.c</FilePath>
             </File>
             <File>
               <FileName>txe_timer_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_timer_create.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_timer_create.c</FilePath>
             </File>
             <File>
               <FileName>txe_timer_deactivate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_timer_deactivate.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_timer_deactivate.c</FilePath>
             </File>
             <File>
               <FileName>txe_timer_delete.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_timer_delete.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_timer_delete.c</FilePath>
             </File>
             <File>
               <FileName>txe_timer_info_get.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\ThreadX\common\src\txe_timer_info_get.c</FilePath>
+              <FilePath>..\Third_Libraries\ThreadX\common\src\txe_timer_info_get.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl_arc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_arc.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_arc.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl_bg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_bg.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_bg.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl_composite.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_composite.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_composite.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl_img.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_img.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_img.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl_label.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_label.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_label.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl_layer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_layer.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_layer.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl_line.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_line.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_line.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl_mask.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_mask.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_mask.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl_polygon.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_polygon.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_polygon.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl_rect.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_rect.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_rect.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl_stack_blur.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_stack_blur.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_stack_blur.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl_texture_cache.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_texture_cache.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_texture_cache.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sdl_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_utils.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sdl\lv_draw_sdl_utils.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2031,17 +2031,17 @@
             <File>
               <FileName>lv_fs_fatfs.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\libs\fsdrv\lv_fs_fatfs.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\libs\fsdrv\lv_fs_fatfs.c</FilePath>
             </File>
             <File>
               <FileName>lv_port_disp_template.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\examples\porting\lv_port_disp_template.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\examples\porting\lv_port_disp_template.c</FilePath>
             </File>
             <File>
               <FileName>lv_port_indev_template.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\examples\porting\lv_port_indev_template.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\examples\porting\lv_port_indev_template.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2051,632 +2051,632 @@
             <File>
               <FileName>lv_disp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_disp.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_disp.c</FilePath>
             </File>
             <File>
               <FileName>lv_event.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_event.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_event.c</FilePath>
             </File>
             <File>
               <FileName>lv_group.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_group.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_group.c</FilePath>
             </File>
             <File>
               <FileName>lv_indev.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_indev.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_indev.c</FilePath>
             </File>
             <File>
               <FileName>lv_indev_scroll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_indev_scroll.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_indev_scroll.c</FilePath>
             </File>
             <File>
               <FileName>lv_obj.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_obj.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_obj.c</FilePath>
             </File>
             <File>
               <FileName>lv_obj_class.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_obj_class.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_obj_class.c</FilePath>
             </File>
             <File>
               <FileName>lv_obj_draw.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_obj_draw.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_obj_draw.c</FilePath>
             </File>
             <File>
               <FileName>lv_obj_pos.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_obj_pos.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_obj_pos.c</FilePath>
             </File>
             <File>
               <FileName>lv_obj_scroll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_obj_scroll.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_obj_scroll.c</FilePath>
             </File>
             <File>
               <FileName>lv_obj_style.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_obj_style.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_obj_style.c</FilePath>
             </File>
             <File>
               <FileName>lv_obj_style_gen.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_obj_style_gen.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_obj_style_gen.c</FilePath>
             </File>
             <File>
               <FileName>lv_obj_tree.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_obj_tree.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_obj_tree.c</FilePath>
             </File>
             <File>
               <FileName>lv_refr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_refr.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_refr.c</FilePath>
             </File>
             <File>
               <FileName>lv_theme.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\core\lv_theme.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\core\lv_theme.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\lv_draw.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\lv_draw.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_arc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\lv_draw_arc.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\lv_draw_arc.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_img.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\lv_draw_img.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\lv_draw_img.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_label.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\lv_draw_label.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\lv_draw_label.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_layer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\lv_draw_layer.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\lv_draw_layer.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_line.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\lv_draw_line.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\lv_draw_line.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_mask.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\lv_draw_mask.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\lv_draw_mask.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_rect.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\lv_draw_rect.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\lv_draw_rect.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_transform.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\lv_draw_transform.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\lv_draw_transform.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_triangle.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\lv_draw_triangle.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\lv_draw_triangle.c</FilePath>
             </File>
             <File>
               <FileName>lv_img_buf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\lv_img_buf.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\lv_img_buf.c</FilePath>
             </File>
             <File>
               <FileName>lv_img_cache.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\lv_img_cache.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\lv_img_cache.c</FilePath>
             </File>
             <File>
               <FileName>lv_img_decoder.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\lv_img_decoder.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\lv_img_decoder.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sw.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sw_arc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_arc.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_arc.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sw_blend.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_blend.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_blend.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sw_dither.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_dither.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_dither.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sw_gradient.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_gradient.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_gradient.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sw_img.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_img.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_img.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sw_layer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_layer.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_layer.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sw_letter.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_letter.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_letter.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sw_line.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_line.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_line.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sw_polygon.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_polygon.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_polygon.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sw_rect.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_rect.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_rect.c</FilePath>
             </File>
             <File>
               <FileName>lv_draw_sw_transform.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_transform.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\draw\sw\lv_draw_sw_transform.c</FilePath>
             </File>
             <File>
               <FileName>lv_flex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\layouts\flex\lv_flex.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\layouts\flex\lv_flex.c</FilePath>
             </File>
             <File>
               <FileName>lv_grid.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\layouts\grid\lv_grid.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\layouts\grid\lv_grid.c</FilePath>
             </File>
             <File>
               <FileName>lv_theme_basic.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\themes\basic\lv_theme_basic.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\themes\basic\lv_theme_basic.c</FilePath>
             </File>
             <File>
               <FileName>lv_theme_default.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\themes\default\lv_theme_default.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\themes\default\lv_theme_default.c</FilePath>
             </File>
             <File>
               <FileName>lv_theme_mono.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\themes\mono\lv_theme_mono.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\themes\mono\lv_theme_mono.c</FilePath>
             </File>
             <File>
               <FileName>lv_extra.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\lv_extra.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\lv_extra.c</FilePath>
             </File>
             <File>
               <FileName>lv_animimg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\animimg\lv_animimg.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\animimg\lv_animimg.c</FilePath>
             </File>
             <File>
               <FileName>lv_calendar.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\calendar\lv_calendar.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\calendar\lv_calendar.c</FilePath>
             </File>
             <File>
               <FileName>lv_calendar_header_arrow.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\calendar\lv_calendar_header_arrow.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\calendar\lv_calendar_header_arrow.c</FilePath>
             </File>
             <File>
               <FileName>lv_calendar_header_dropdown.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\calendar\lv_calendar_header_dropdown.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\calendar\lv_calendar_header_dropdown.c</FilePath>
             </File>
             <File>
               <FileName>lv_chart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\chart\lv_chart.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\chart\lv_chart.c</FilePath>
             </File>
             <File>
               <FileName>lv_colorwheel.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\colorwheel\lv_colorwheel.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\colorwheel\lv_colorwheel.c</FilePath>
             </File>
             <File>
               <FileName>lv_imgbtn.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\imgbtn\lv_imgbtn.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\imgbtn\lv_imgbtn.c</FilePath>
             </File>
             <File>
               <FileName>lv_keyboard.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\keyboard\lv_keyboard.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\keyboard\lv_keyboard.c</FilePath>
             </File>
             <File>
               <FileName>lv_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\led\lv_led.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\led\lv_led.c</FilePath>
             </File>
             <File>
               <FileName>lv_list.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\list\lv_list.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\list\lv_list.c</FilePath>
             </File>
             <File>
               <FileName>lv_menu.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\menu\lv_menu.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\menu\lv_menu.c</FilePath>
             </File>
             <File>
               <FileName>lv_meter.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\meter\lv_meter.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\meter\lv_meter.c</FilePath>
             </File>
             <File>
               <FileName>lv_msgbox.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\msgbox\lv_msgbox.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\msgbox\lv_msgbox.c</FilePath>
             </File>
             <File>
               <FileName>lv_span.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\span\lv_span.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\span\lv_span.c</FilePath>
             </File>
             <File>
               <FileName>lv_spinbox.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\spinbox\lv_spinbox.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\spinbox\lv_spinbox.c</FilePath>
             </File>
             <File>
               <FileName>lv_spinner.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\spinner\lv_spinner.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\spinner\lv_spinner.c</FilePath>
             </File>
             <File>
               <FileName>lv_tabview.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\tabview\lv_tabview.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\tabview\lv_tabview.c</FilePath>
             </File>
             <File>
               <FileName>lv_tileview.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\tileview\lv_tileview.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\tileview\lv_tileview.c</FilePath>
             </File>
             <File>
               <FileName>lv_win.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\widgets\win\lv_win.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\widgets\win\lv_win.c</FilePath>
             </File>
             <File>
               <FileName>lv_snapshot.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\others\snapshot\lv_snapshot.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\others\snapshot\lv_snapshot.c</FilePath>
             </File>
             <File>
               <FileName>lv_msg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\others\msg\lv_msg.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\others\msg\lv_msg.c</FilePath>
             </File>
             <File>
               <FileName>lv_monkey.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\others\monkey\lv_monkey.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\others\monkey\lv_monkey.c</FilePath>
             </File>
             <File>
               <FileName>lv_imgfont.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\others\imgfont\lv_imgfont.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\others\imgfont\lv_imgfont.c</FilePath>
             </File>
             <File>
               <FileName>lv_ime_pinyin.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\others\ime\lv_ime_pinyin.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\others\ime\lv_ime_pinyin.c</FilePath>
             </File>
             <File>
               <FileName>lv_gridnav.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\others\gridnav\lv_gridnav.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\others\gridnav\lv_gridnav.c</FilePath>
             </File>
             <File>
               <FileName>lv_fragment.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\others\fragment\lv_fragment.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\others\fragment\lv_fragment.c</FilePath>
             </File>
             <File>
               <FileName>lv_fragment_manager.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\extra\others\fragment\lv_fragment_manager.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\extra\others\fragment\lv_fragment_manager.c</FilePath>
             </File>
             <File>
               <FileName>lv_font.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font.c</FilePath>
             </File>
             <File>
               <FileName>lv_font_dejavu_16_persian_hebrew.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font_dejavu_16_persian_hebrew.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font_dejavu_16_persian_hebrew.c</FilePath>
             </File>
             <File>
               <FileName>lv_font_fmt_txt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font_fmt_txt.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font_fmt_txt.c</FilePath>
             </File>
             <File>
               <FileName>lv_font_loader.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font_loader.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font_loader.c</FilePath>
             </File>
             <File>
               <FileName>lv_font_montserrat_8.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_8.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_8.c</FilePath>
             </File>
             <File>
               <FileName>lv_font_montserrat_10.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_10.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_10.c</FilePath>
             </File>
             <File>
               <FileName>lv_font_montserrat_12.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_12.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_12.c</FilePath>
             </File>
             <File>
               <FileName>lv_font_montserrat_12_subpx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_12_subpx.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_12_subpx.c</FilePath>
             </File>
             <File>
               <FileName>lv_font_montserrat_14.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_14.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_14.c</FilePath>
             </File>
             <File>
               <FileName>lv_font_montserrat_16.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_16.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_16.c</FilePath>
             </File>
             <File>
               <FileName>lv_font_montserrat_24.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_24.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font_montserrat_24.c</FilePath>
             </File>
             <File>
               <FileName>lv_font_simsun_16_cjk.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font_simsun_16_cjk.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font_simsun_16_cjk.c</FilePath>
             </File>
             <File>
               <FileName>lv_font_unscii_8.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font_unscii_8.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font_unscii_8.c</FilePath>
             </File>
             <File>
               <FileName>lv_font_unscii_16.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\font\lv_font_unscii_16.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\font\lv_font_unscii_16.c</FilePath>
             </File>
             <File>
               <FileName>lv_hal_disp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\hal\lv_hal_disp.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\hal\lv_hal_disp.c</FilePath>
             </File>
             <File>
               <FileName>lv_hal_indev.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\hal\lv_hal_indev.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\hal\lv_hal_indev.c</FilePath>
             </File>
             <File>
               <FileName>lv_hal_tick.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\hal\lv_hal_tick.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\hal\lv_hal_tick.c</FilePath>
             </File>
             <File>
               <FileName>lv_anim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_anim.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_anim.c</FilePath>
             </File>
             <File>
               <FileName>lv_anim_timeline.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_anim_timeline.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_anim_timeline.c</FilePath>
             </File>
             <File>
               <FileName>lv_area.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_area.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_area.c</FilePath>
             </File>
             <File>
               <FileName>lv_async.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_async.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_async.c</FilePath>
             </File>
             <File>
               <FileName>lv_bidi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_bidi.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_bidi.c</FilePath>
             </File>
             <File>
               <FileName>lv_color.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_color.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_color.c</FilePath>
             </File>
             <File>
               <FileName>lv_fs.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_fs.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_fs.c</FilePath>
             </File>
             <File>
               <FileName>lv_gc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_gc.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_gc.c</FilePath>
             </File>
             <File>
               <FileName>lv_ll.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_ll.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_ll.c</FilePath>
             </File>
             <File>
               <FileName>lv_log.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_log.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_log.c</FilePath>
             </File>
             <File>
               <FileName>lv_lru.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_lru.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_lru.c</FilePath>
             </File>
             <File>
               <FileName>lv_math.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_math.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_math.c</FilePath>
             </File>
             <File>
               <FileName>lv_mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_mem.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_mem.c</FilePath>
             </File>
             <File>
               <FileName>lv_printf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_printf.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_printf.c</FilePath>
             </File>
             <File>
               <FileName>lv_style.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_style.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_style.c</FilePath>
             </File>
             <File>
               <FileName>lv_style_gen.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_style_gen.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_style_gen.c</FilePath>
             </File>
             <File>
               <FileName>lv_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_timer.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_timer.c</FilePath>
             </File>
             <File>
               <FileName>lv_tlsf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_tlsf.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_tlsf.c</FilePath>
             </File>
             <File>
               <FileName>lv_txt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_txt.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_txt.c</FilePath>
             </File>
             <File>
               <FileName>lv_txt_ap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_txt_ap.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_txt_ap.c</FilePath>
             </File>
             <File>
               <FileName>lv_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\misc\lv_utils.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\misc\lv_utils.c</FilePath>
             </File>
             <File>
               <FileName>lv_img.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_img.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_img.c</FilePath>
             </File>
             <File>
               <FileName>lv_arc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_arc.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_arc.c</FilePath>
             </File>
             <File>
               <FileName>lv_bar.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_bar.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_bar.c</FilePath>
             </File>
             <File>
               <FileName>lv_btn.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_btn.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_btn.c</FilePath>
             </File>
             <File>
               <FileName>lv_btnmatrix.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_btnmatrix.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_btnmatrix.c</FilePath>
             </File>
             <File>
               <FileName>lv_canvas.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_canvas.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_canvas.c</FilePath>
             </File>
             <File>
               <FileName>lv_checkbox.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_checkbox.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_checkbox.c</FilePath>
             </File>
             <File>
               <FileName>lv_dropdown.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_dropdown.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_dropdown.c</FilePath>
             </File>
             <File>
               <FileName>lv_label.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_label.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_label.c</FilePath>
             </File>
             <File>
               <FileName>lv_line.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_line.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_line.c</FilePath>
             </File>
             <File>
               <FileName>lv_roller.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_roller.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_roller.c</FilePath>
             </File>
             <File>
               <FileName>lv_slider.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_slider.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_slider.c</FilePath>
             </File>
             <File>
               <FileName>lv_switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_switch.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_switch.c</FilePath>
             </File>
             <File>
               <FileName>lv_table.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_table.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_table.c</FilePath>
             </File>
             <File>
               <FileName>lv_textarea.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI\lvgl\src\widgets\lv_textarea.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI\lvgl\src\widgets\lv_textarea.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2686,47 +2686,47 @@
             <File>
               <FileName>about_phone_ui.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI_APP\widght_ui\about_phone_ui.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI_APP\widght_ui\about_phone_ui.c</FilePath>
             </File>
             <File>
               <FileName>adjust_pedal.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI_APP\widght_ui\adjust_pedal.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI_APP\widght_ui\adjust_pedal.c</FilePath>
             </File>
             <File>
               <FileName>battery_box.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI_APP\widght_ui\battery_box.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI_APP\widght_ui\battery_box.c</FilePath>
             </File>
             <File>
               <FileName>cool_control.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI_APP\widght_ui\cool_control.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI_APP\widght_ui\cool_control.c</FilePath>
             </File>
             <File>
               <FileName>motor_control_ui.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI_APP\widght_ui\motor_control_ui.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI_APP\widght_ui\motor_control_ui.c</FilePath>
             </File>
             <File>
               <FileName>sensor_ui.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI_APP\widght_ui\sensor_ui.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI_APP\widght_ui\sensor_ui.c</FilePath>
             </File>
             <File>
               <FileName>set_up.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI_APP\widght_ui\set_up.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI_APP\widght_ui\set_up.c</FilePath>
             </File>
             <File>
               <FileName>vehicle_status.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI_APP\widght_ui\vehicle_status.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI_APP\widght_ui\vehicle_status.c</FilePath>
             </File>
             <File>
-              <FileName>monitor.c</FileName>
+              <FileName>Monitor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Lvgl\GUI_APP\monitor.c</FilePath>
+              <FilePath>..\Third_Libraries\Lvgl\GUI_APP\Monitor.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2751,32 +2751,32 @@
             <File>
               <FileName>ff.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\FatFs\src\ff.c</FilePath>
+              <FilePath>..\Third_Libraries\FatFs\src\ff.c</FilePath>
             </File>
             <File>
               <FileName>diskio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\FatFs\src\diskio.c</FilePath>
+              <FilePath>..\Third_Libraries\FatFs\src\diskio.c</FilePath>
             </File>
             <File>
               <FileName>cc936.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\FatFs\src\option\cc936.c</FilePath>
+              <FilePath>..\Third_Libraries\FatFs\src\option\cc936.c</FilePath>
             </File>
             <File>
               <FileName>syscall.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\FatFs\src\option\syscall.c</FilePath>
+              <FilePath>..\Third_Libraries\FatFs\src\option\syscall.c</FilePath>
             </File>
             <File>
               <FileName>ff_gen_drv.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\FatFs\src\ff_gen_drv.c</FilePath>
+              <FilePath>..\Third_Libraries\FatFs\src\ff_gen_drv.c</FilePath>
             </File>
             <File>
               <FileName>sd_diskio_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\FatFs\src\drivers\sd_diskio_dma.c</FilePath>
+              <FilePath>..\Third_Libraries\FatFs\src\drivers\sd_diskio_dma.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2816,17 +2816,17 @@
             <File>
               <FileName>gui_task.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\LogicalApp\gui_task\gui_task.c</FilePath>
+              <FilePath>..\Third_Libraries\LogicalApp\gui_task\gui_task.c</FilePath>
             </File>
             <File>
               <FileName>msg_task.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\LogicalApp\msg_task\msg_task.c</FilePath>
+              <FilePath>..\Third_Libraries\LogicalApp\msg_task\msg_task.c</FilePath>
             </File>
             <File>
               <FileName>statistic_task.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\LogicalApp\statistic_task\statistic_task.c</FilePath>
+              <FilePath>..\Third_Libraries\LogicalApp\statistic_task\statistic_task.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2834,14 +2834,34 @@
           <GroupName>Segger/HardFault</GroupName>
           <Files>
             <File>
-              <FileName>SEGGER_HardFaultHandler.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Segger\HardFaultHandlerMDK\SEGGER_HardFaultHandler.c</FilePath>
-            </File>
-            <File>
               <FileName>HardFaultHandler.S</FileName>
               <FileType>2</FileType>
-              <FilePath>..\Segger\HardFaultHandlerMDK\HardFaultHandler.S</FilePath>
+              <FilePath>..\Third_Libraries\Segger\HardFaultHandlerMDK\HardFaultHandler.S</FilePath>
+            </File>
+            <File>
+              <FileName>SEGGER_HardFaultHandler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Third_Libraries\Segger\HardFaultHandlerMDK\SEGGER_HardFaultHandler.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>MicroShell</GroupName>
+          <Files>
+            <File>
+              <FileName>ansi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Third_Libraries\Nr_Micro_Shell\src\ansi.c</FilePath>
+            </File>
+            <File>
+              <FileName>ansi_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Third_Libraries\Nr_Micro_Shell\src\ansi_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>nr_micro_shell.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Third_Libraries\Nr_Micro_Shell\src\nr_micro_shell.c</FilePath>
             </File>
           </Files>
         </Group>

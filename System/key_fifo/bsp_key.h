@@ -1,74 +1,79 @@
-#ifndef	_BSP_KEY_H_
-#define	_BSP_KEY_H_
+#ifndef _BSP_KEY_H_
+#define _BSP_KEY_H_
 
 #include "sys.h"
 
 
-///* ¸ù¾İÓ¦ÓÃ³ÌĞòµÄ¹¦ÄÜÖØÃüÃû°´¼üºê */
-//#define KEY_DOWM_K0		KEY_0_DOWN
-//#define KEY_UP_K0		KEY_0_UP
-//#define KEY_LONG_K0		KEY_0_LONG
+/* æ ¹æ®åº”ç”¨ç¨‹åºçš„åŠŸèƒ½é‡å‘½åçš„æŒ‰é”®å® */
+//#define   KEY_DOWM_K0       KEY_0_DOWN
+//#define   KEY_UP_K0         KEY_0_UP
+//#define   KEY_LONG_K0       KEY_0_LONG
 
-//#define KEY_DOWN_Kup	KEY_up_DOWN
-//#define	KEY_UP_Kup		KEY_up_UP
-//#define	KEY_LONG_Kup	KEY_up_LONG
+//#define   KEY_DOWN_Kup      KEY_up_DOWN
+//#define   KEY_UP_Kup        KEY_up_UP
+//#define   KEY_LONG_Kup      KEY_up_LONG
 
-/* °´¼üID */
+/* æŒ‰é”®ID */
 typedef enum{
-	KID_K0 = 0,
-	KID_Kup
+    KID_K0 = 0,
+    KID_Kup
 }KEY_ID_E;
 
-/* °´¼üÂË²¨Ê±¼ä50ms£¬µ¥Î»10ms
-	Ö»ÓĞÁ¬Ğø¼ì²âµ½50ms×´Ì¬²»±ä²ÅÈÏÎªÓĞĞ§
+
+/*
+**æŒ‰é”®æ»¤æ³¢æ—¶é—´50ms å•ä½10ms
+**åªæœ‰è¿ç»­æ£€æµ‹åˆ°50msçŠ¶æ€ä¸å˜æ‰è®¤ä¸ºæœ‰æ•ˆï¼ŒåŒ…æ‹¬å¼¹èµ·å’ŒæŒ‰ä¸‹ä¸¤ç§äº‹ä»¶
+**å³ä½¿æŒ‰é”®ç”µè·¯ä¸åšç¡¬ä»¶æ»¤æ³¢ï¼Œè¯¥æ»¤æ³¢æœºåˆ¶ä¹Ÿå¯ä»¥ä¿è¯å¯é åœ°æ£€æµ‹åˆ°æŒ‰é”®äº‹ä»¶
 */
-#define KEY_FILTER_TIME	5
-#define KEY_LONG_TIME	100	/* µ¥Î»10ms£¬³ÖĞø1Ãë£¬ÈÏÎª³¤°´ */
-/* °´¼üFIFOÓÃµ½±äÁ¿ */
-#define KEY_FIFO_SIZE	10
-/* Ã¿¸ö°´¼ü¶ÔÓ¦1¸öÈ«¾ÖµÄ½á¹¹Ìå±äÁ¿ */
+#define KEY_FILTER_TIME 5
+#define KEY_LONG_TIME   100
+
+#define KEY_FIFO_SIZE   10
+
+/* æ¯ä¸ªæŒ‰é”®å¯¹åº”1ä¸ªå…¨å±€çš„ç»“æ„ä½“å˜é‡ */
 typedef struct
 {
-//	uint8_t (*IsKeyDownFunc)(void);/* °´¼ü°´ÏÂµÄÅĞ¶Ïº¯Êı£¬1±íÊ¾°´ÏÂ */
-	uint8_t 	Count;		/* ÂË²¨Æ÷¼ÆÊıÆ÷ */
-	uint16_t 	LongCount;	/* ³¤°´¼ÆÊıÆ÷ */
-	uint16_t 	LongTime;	/* °´¼ü°´ÏÂÊ±¼ä£¬0±íÊ¾²»¼ì²â³¤°´ */
-	uint8_t 	State;		/* °´¼üµ±Ç°×´Ì¬£¬°´ÏÂ£¬µ¯Æğ */
-	uint8_t		RepeatSpeed;/* Á¬Ğø°´¼üÖÜÆÚ */
-	uint8_t 	RepeatCount;/* Á¬Ğø°´¼ü¼ÆÊıÆ÷ */
+    /* ä¸‹é¢æ˜¯ä¸€ä¸ªå‡½æ•°æŒ‡é’ˆï¼ŒæŒ‡å‘åˆ¤æ–­æŒ‰é”®æ‰‹å¦æŒ‰ä¸‹çš„å‡½æ•° */
+    uint8_t (*IsKeyDownFunc)(void); /* æŒ‰é”®æŒ‰ä¸‹çš„åˆ¤æ–­å‡½æ•°,1è¡¨ç¤ºæŒ‰ä¸‹ */
+    uint8_t  Count;         /* æ»¤æ³¢å™¨è®¡æ•°å™¨ */
+    uint16_t LongCount;     /* é•¿æŒ‰è®¡æ•°å™¨ */
+    uint16_t LongTime;      /* æŒ‰é”®æŒ‰ä¸‹æŒç»­æ—¶é—´, 0è¡¨ç¤ºä¸æ£€æµ‹é•¿æŒ‰ */
+    uint8_t  State;         /* æŒ‰é”®å½“å‰çŠ¶æ€ï¼ˆæŒ‰ä¸‹è¿˜æ˜¯å¼¹èµ·ï¼‰ */
+    uint8_t  RepeatSpeed;   /* è¿ç»­æŒ‰é”®å‘¨æœŸ */
+    uint8_t  RepeatCount;   /* è¿ç»­æŒ‰é”®è®¡æ•°å™¨ */
 }KEY_T;
 
+/* æŒ‰é”®FIFOç”¨åˆ°å˜é‡ */
 typedef struct
 {
-	uint8_t Buf[KEY_FIFO_SIZE];	/* ¼üÖµ»º³åÇø */
-	uint8_t Read;				/* »º³åÇø¶ÁÖ¸Õë1 */
-	uint8_t Write;				/* »º³åÇøĞ´Ö¸Õë */
-	uint8_t Read2;				/* »º³åÇø¶ÁÖ¸Õë2 */
+    uint8_t Buf[KEY_FIFO_SIZE];     /* é”®å€¼ç¼“å†²åŒº */
+    uint8_t Read;                   /* ç¼“å†²åŒºè¯»æŒ‡é’ˆ1 */
+    uint8_t Write;                  /* ç¼“å†²åŒºå†™æŒ‡é’ˆ */
+    uint8_t Read2;                  /* ç¼“å†²åŒºè¯»æŒ‡é’ˆ2 */
 }KEY_FIFO_T;
 
-/* ¶¨Òå¼üÖµ´úÂë */
+/* æŒ‰é”®ID */
 typedef enum
 {
-	KEY_NONE = 0,			/* 0 ±íÊ¾°´¼üÊÂ¼ş */
+    KEY_NONE = 0,
 
-	KEY_0_DOWN,				/* 1¼ü°´ÏÂ */
-	KEY_0_UP,				/* 1¼üµ¯Æğ */
-	KEY_0_LONG,				/* 1¼ü³¤°´ */
+    KEY_0_DOWN,
+    KEY_0_UP,
+    KEY_0_LONG,
 
-	KEY_UP_DOWN,			/* 2¼ü°´ÏÂ */
-	KEY_UP_UP,				/* 2¼üµ¯Æğ */
-	KEY_UP_LONG,			/* 2¼ü³¤°´ */
+    KEY_UP_DOWN,
+    KEY_UP_UP,
+    KEY_UP_LONG,
 
-	/* ×éºÏ¼ü */
-	KEY_MULTI_DOWM,
-	KEY_MULTI_UP,
-	KEY_MULTI_LONG,
-	
-}KEY_ENUM;	
-
+    /* ç»„åˆé”® */
+    KEY_MULTI_DOWM,
+    KEY_MULTI_UP,
+    KEY_MULTI_LONG,
+}KEY_ENUM;
 
 
-/* ¹©Íâ²¿µ÷ÓÃµÄº¯ÊıÉùÃ÷ */
+
+/* ä¾›å¤–éƒ¨è°ƒç”¨çš„å‡½æ•°å£°æ˜ */
 void bsp_InitKey(void);
 void bsp_Key_Scan10ms(void);
 void bsp_PutKey(uint8_t _KeyCode);

@@ -12,7 +12,7 @@
 #include "ff_gen_drv.h"
 #include "sd_diskio_dma.h"
 
-#if LV_USE_FS_FATFS
+#if LV_USE_FS_FATFS == 1
 #include "ff.h"
 
 /*********************

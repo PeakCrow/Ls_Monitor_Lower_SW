@@ -1,53 +1,61 @@
 #include "ticktim.h"
-/*È«¾ÖÔËÐÐÊ±¼ä£¬µ¥Î»1ms,×î³¤¿ÉÒÔ±íÊ¾ 24.85Ìì£¬Èç¹ûÄãµÄ²úÆ·Á¬ÐøÔËÐÐÊ±¼ä³¬¹ýÕâ¸öÊý£¬Ôò±ØÐë¿¼ÂÇÒç³öÎÊÌâ*/
+/* 
+    å…¨å±€è¿è¡Œæ—¶é—´ å•ä½1ms
+    æœ€é•¿å¯ä»¥è¡¨ç¤º 24.85 å¤© å¦‚æžœä½ çš„äº§å“æŒç»­è¿è¡Œæ—¶é—´è¶…è¿‡è¿™ä¸ªæ•°å€¼
+    é‚£ä¹ˆå¿…é¡»è€ƒè™‘æº¢å‡ºé—®é¢˜
+*/
 __IO int32_t g_iRunTime = 0;
-/*¶¨ÒåÓÚÈí¼þ¶¨Ê±Æ÷½á¹¹Ìå±äÁ¿*/
+
+/* 
+    åŸºäºŽè½¯ä»¶å®šæ—¶å™¨çš„ç»“æž„ä½“å˜é‡
+*/
 static SOFT_TIM s_tTmr[TIM_TASK_COUNT] = {0};
-/*µÈ´ý±äÁ¿³õÊ¼»¯*/
+
+/* ç­‰å¾…å˜é‡åˆå§‹åŒ– */
 static __IO uint8_t g_ucEnableSystickISR = 0;
-/*µÎ´ð¶¨Ê±Æ÷¶¨Ê±¼õÐ¡¶¨Ê±Æ÷ÈÎÎñµÄÖÜÆÚÊýÖµ*/
+
+/* è½¯ä»¶å®šæ—¶å™¨åˆå§‹åŒ– */
 static void bsp_SoftTimerDec(SOFT_TIM *_tim);
-/*µÎ´ð¶¨Ê±Æ÷ÖÐ¶Ï·þÎñ³ÌÐò*/
+
+/* systick isr func */
 void SysTick_ISR(void);
 
-/************************************************
-*Function name    :bsp_InitTimer
-*Description    :ÅäÖÃsystickÖÐ¶Ï£¬²¢³õÊ¼»¯Èí¼þ¶¨Ê±Æ÷±äÁ¿;Ò»¶¨Òª³õÊ¼»¯£¬·ñÔò»áÎÞ·¨Õý³£µ÷ÓÃÑÓÊ±º¯Êý
-*Input            :none
-                :
-*Output            :none
+/**
+*Function name  :bsp_InitTimer
+*Description    :é…ç½® systick ä¸­æ–­ å¹¶åˆå§‹åŒ–è½¯ä»¶å®šæ—¶å™¨å˜é‡
+*Input          :none
+*Output         :none
 *Retrurn        :none
-*Author            :trx
-*Date            :2022Äê4ÔÂ5ÈÕ17µã14·Ö
-*************************************************/
+*Date           :2024å¹´8æœˆ31æ—¥ 18:03:54
+*/
 void bsp_InitTimer(void)
 {
     uint8_t i;
-    //ÇåÁãËùÓÐµÄÈí¼þ¶¨Ê±Æ÷
-    for(i = 0;i < TIM_TASK_COUNT;i++){    
-        s_tTmr[i].State = 0;        
-        s_tTmr[i].Count = 0;
-        s_tTmr[i].PreLoad = 0;
-        s_tTmr[i].Flag = 0;
-        s_tTmr[i].Mode = TIM_ONCE_MODE; //Ä¬ÈÏÊÇÒ»´ÎÐÔ¹¤×÷Ä£Ê½
-        s_tTmr[i].callfunc = 0;
+    /* æ¸…0æ‰€æœ‰çš„è½¯ä»¶å®šæ—¶å™¨ */
+    for(i = 0;i < TIM_TASK_COUNT;i++)
+    {    
+        s_tTmr[i].State     = 0;        
+        s_tTmr[i].Count     = 0;
+        s_tTmr[i].PreLoad   = 0;
+        s_tTmr[i].Flag      = 0;
+        s_tTmr[i].Mode      = TIM_ONCE_MODE;    /* é»˜è®¤æ˜¯å•æ¬¡å·¥ä½œæ¨¡å¼ */
+        s_tTmr[i].callfunc  = 0;
     }
     /*
-        ÅäÖÃsysticÖÐ¶ÏÖÜÆÚÎª1ms£¬²¢Æô¶¯systickÖÐ¶Ï¡£
+        é…ç½®systicä¸­æ–­å‘¨æœŸä¸º1msï¼Œå¹¶å¯åŠ¨systickä¸­æ–­ã€‚
 
-        SystemCoreClock ÊÇ¹Ì¼þÖÐ¶¨ÒåµÄÏµÍ³ÄÚºËÊ±ÖÓ£¬¶ÔÓÚSTM32H7,Ò»°ãÎª 400MHz
+        SystemCoreClock æ˜¯å›ºä»¶ä¸­å®šä¹‰çš„ç³»ç»Ÿå†…æ ¸æ—¶é’Ÿï¼Œå¯¹äºŽSTM32H7,ä¸€èˆ¬ä¸º 400MHz
 
-        SysTick_Config() º¯ÊýµÄÐÎ²Î±íÊ¾ÄÚºËÊ±ÖÓ¶àÉÙ¸öÖÜÆÚºó´¥·¢Ò»´ÎSystick¶¨Ê±ÖÐ¶Ï.
-            -- SystemCoreClock / 1000  ±íÊ¾¶¨Ê±ÆµÂÊÎª 1000Hz£¬ Ò²¾ÍÊÇ¶¨Ê±ÖÜÆÚÎª  1ms
-            -- SystemCoreClock / 500   ±íÊ¾¶¨Ê±ÆµÂÊÎª 500Hz£¬  Ò²¾ÍÊÇ¶¨Ê±ÖÜÆÚÎª  2ms
-            -- SystemCoreClock / 2000  ±íÊ¾¶¨Ê±ÆµÂÊÎª 2000Hz£¬ Ò²¾ÍÊÇ¶¨Ê±ÖÜÆÚÎª  500us
-
-        ¶ÔÓÚ³£¹æµÄÓ¦ÓÃ£¬ÎÒÃÇÒ»°ãÈ¡¶¨Ê±ÖÜÆÚ1ms¡£¶ÔÓÚµÍËÙCPU»òÕßµÍ¹¦ºÄÓ¦ÓÃ£¬¿ÉÒÔÉèÖÃ¶¨Ê±ÖÜÆÚÎª 10ms
+        SysTick_Config() å‡½æ•°çš„å½¢å‚è¡¨ç¤ºå†…æ ¸æ—¶é’Ÿå¤šå°‘ä¸ªå‘¨æœŸåŽè§¦å‘ä¸€æ¬¡Systickå®šæ—¶ä¸­æ–­.
+            -- SystemCoreClock / 1000  è¡¨ç¤ºå®šæ—¶é¢‘çŽ‡ä¸º 1000Hzï¼Œ ä¹Ÿå°±æ˜¯å®šæ—¶å‘¨æœŸä¸º  1ms
+            -- SystemCoreClock / 500   è¡¨ç¤ºå®šæ—¶é¢‘çŽ‡ä¸º 500Hzï¼Œ  ä¹Ÿå°±æ˜¯å®šæ—¶å‘¨æœŸä¸º  2ms
+            -- SystemCoreClock / 2000  è¡¨ç¤ºå®šæ—¶é¢‘çŽ‡ä¸º 2000Hzï¼Œ ä¹Ÿå°±æ˜¯å®šæ—¶å‘¨æœŸä¸º  500us
+        å¯¹äºŽå¸¸è§„çš„åº”ç”¨ æˆ‘ä»¬ä¸€èˆ¬å–å®šæ—¶å‘¨æœŸ1ms å¯¹äºŽä½Žé€ŸCPUæˆ–è€…ä½ŽåŠŸè€—åº”ç”¨ å¯ä»¥è®¾ç½®å®šæ—¶å‘¨æœŸä¸º 10ms
     */
 #if USE_THREADX     == 0
     SysTick_Config(SystemCoreClock / 1000);
 #endif
-    g_ucEnableSystickISR = 1;    //1±íÊ¾Ö´ÐÐsystickÖÐ¶Ï
+    g_ucEnableSystickISR = 1;    /* è¡¨ç¤ºæ‰§è¡Œ systick ä¸­æ–­ */
     
 }
 /************************************************

@@ -185,7 +185,9 @@ void InitHardUart(void)
     CLEAR_BIT(USART1->SR, USART_SR_TC);     /* 清除TC发送完成标志 */
     CLEAR_BIT(USART1->SR, USART_SR_RXNE);   /* 清除RXNE接收标志 */
     // USART_CR1_PEIE | USART_CR1_RXNEIE
-    SET_BIT(USART1->CR1, USART_CR1_RXNEIE); /* 使能PE. RX接受中断 */
+    SET_BIT(USART1->CR1, USART_CR1_RXNEIE); /* 使能PE.        RX接收中断 */
+    //SET_BIT(USART1->CR1, USART_CR1_TCIE);   /* 使能TCIE.      TC发送完成中断 */
+    //SET_BIT(USART1->CR1, USART_CR1_IDLEIE); /* 使能IDLEIE.    IDLE检查到空闲线路中断 */
 #endif
 
 #if UART2_FIFO_EN == 1        /* 串口2 */

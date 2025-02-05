@@ -84,6 +84,17 @@
 #include "msg_task.h"
 #include "statistic_task.h"
 
+/*
+* 
+*                                           MICRO_SHELL
+* 
+*/
+#include "ansi.h"
+#include "ansi_def.h"
+#include "ansi_port.h"
+#include "nr_micro_shell.h"
+#include "nr_micro_shell_config.h"
+
 
 /* 定义常用的数据类型短关键字 */
 typedef int16_t s16;

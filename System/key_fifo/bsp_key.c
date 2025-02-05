@@ -1,62 +1,70 @@
 #include "bsp_key.h"
-/*
-    °´¼ü½Ó¿Ú·ÖÅä??
-    K0¼ü    º	P    4	µÍµçÆ½±íÊ¾°´??
-    Kup¼ü    º	P    0	¸ßµçÆ½±íÊ¾°´??
-*/
 
-#define HARD_KEY_NUM    2    /* ÊµÌå°´¼ü¸öÊý */
-#define KEY_COUNT        3    /* Á½¸ö¶ÀÁ¢°´¼ü + 1¸ö×éºÏ¼ü */
+#define HARD_KEY_NUM    2   /* å®žä½“æŒ‰é”®ä¸ªæ•° */
+#define KEY_COUNT       3   /* 2ä¸ªç‹¬ç«‹æŒ‰é”® + 1ä¸ªç»„åˆæŒ‰é”® */
 
-/* Ê¹ÄÜGPIOÊ±ÖÓ */
+#ifdef BOARD_FOR_SELF
+/* ä½¿èƒ½GPIOæ—¶é’Ÿ */
+#define ALL_KEY_GPIO_CLK_ENABLE()    { \
+    __HAL_RCC_GPIOE_CLK_ENABLE();    \
+};
+#else
 #define ALL_KEY_GPIO_CLK_ENABLE()    { \
     __HAL_RCC_GPIOA_CLK_ENABLE();    \
     __HAL_RCC_GPIOE_CLK_ENABLE();    \
 };
+#endif
 
-/* ÒÀ´Î¶¨ÒåIOÒý½Å½á¹¹ÌåÖ¸Õë£¬IOÒý½ÅºÅ£¬¼¤»îµç??*/
+/* ä¾æ¬¡å®šä¹‰GPIO  */
 typedef struct
 {
     GPIO_TypeDef* gpio;
     uint16_t pin;
-    uint8_t ActiveLevel;
+    uint8_t ActiveLevel;    /* æ¿€æ´»ç”µå¹³ */
 }X_GPIO_T;
 
-/* ¶¨Òå½á¹¹Ìå±ä??*/
+#ifdef BOARD_FOR_SELF
+/* GPIO PIN DEF */
 static const X_GPIO_T s_gpio_list[HARD_KEY_NUM] = {
-    {GPIOE, GPIO_PIN_4, 1},
-    {GPIOA,    GPIO_PIN_0, 1},
+    {GPIOE, GPIO_PIN_2, 1},
+    {GPIOE, GPIO_PIN_3, 1},
     
 };
+#else
+static const X_GPIO_T s_gpio_list[HARD_KEY_NUM] = {
+    {GPIOE, GPIO_PIN_4, 1},
+    {GPIOA, GPIO_PIN_0, 1},
+    
+};
+#endif
 
-/*
-¶¨ÒåÒ»¸öºêº¯Êý¼ò»¯ºóÐø´ú??
-ÅÐ¶ÏGPIOÒý½ÅÊÇ·ñÓÐÐ§°´ÏÂ
+/* å®šä¹‰ä¸€ä¸ªå®å‡½æ•°ç®€åŒ–åŽç»­ä»£ç  
+    åˆ¤æ–­GPIOå¼•è„šæ˜¯å¦æœ‰æ•ˆæŒ‰ä¸‹
 */
 static KEY_T s_tBtn[KEY_COUNT] = {0};
-static KEY_FIFO_T s_tKey;    /* ????FIFO?????????? */
+static KEY_FIFO_T s_tKey;    /* æŒ‰é”®FIFOå˜é‡,ç»“æž„ä½“ */
 
 static void bsp_InitKeyVar(void);
 static void bsp_InitKeyHard(void);
 static void bsp_DetectKey(uint8_t i);
 static void bsp_SetKeyParam(uint8_t _ucKeyID,uint16_t _LongTime,uint8_t _RepeatSpeed);
 /*
-*    ?????? KeyPinActive
-*    ¹¦ÄÜËµÃ÷: ÅÐ¶Ï°´¼üÊÇ·ñ°´ÏÂ(Ó²¼þ??
-*    ??   ?? _id£º°´¼üºÅ
-*    ?????? 1£º±íÊ¾°´ÏÂ£»0±íÊ¾ÊÍ·Å
-*    Ê±¼ä??022????9??5??8??
+*   å‡½ æ•° å: KeyPinActive
+*   åŠŸèƒ½è¯´æ˜Ž: åˆ¤æ–­æŒ‰é”®æ˜¯å¦æŒ‰ä¸‹
+*   å½¢    å‚: æ— 
+*   è¿” å›ž å€¼: è¿”å›žå€¼1 è¡¨ç¤ºæŒ‰ä¸‹(å¯¼é€š)ï¼Œ0è¡¨ç¤ºæœªæŒ‰ä¸‹(é‡Šæ”¾)
+*   æ—¶    é—´:2025å¹´2æœˆ5æ—¥ 15:11:44
 */
 static uint8_t KeyPinActive(uint8_t _id)
 {
     uint8_t level;
-    /* IDR¼Ä´æÆ÷ÓÃÀ´¶ÁÈ¡IOÒý½ÅµÄÊäÈë£¬16Î»¿É¶Á£¬A...I */
-    //¸ßµçÆ½°´??
-    //Ö»ÓÐÊ¹ÓÃµÍµçÆ½×÷Îª¼¤»îÐÅºÅµÄÊ±ºò²»±Ø½øÐÐÌõ¼þ»òÔËËã£¬ÒòÎªÎ»Óë³öÀ´¶¼??
-    //¸ßµçÆ½µÄÇé¿öÏÂÖ»ÓÐµÚÒ»¸öÒý½ÅÊÇ¿ÉÓÃµÄ£¬ÀýÈç´ËÊ±µÄPA0
-    //ÂéÁË
-    if((s_gpio_list[_id].gpio->IDR & s_gpio_list[_id].pin) == 1
-        || (s_gpio_list[_id].gpio->IDR & s_gpio_list[_id].pin) == 16)
+#ifdef BOARD_FOR_SELF
+    if((s_gpio_list[_id].gpio->IDR & s_gpio_list[_id].pin) == 0x04u
+        || (s_gpio_list[_id].gpio->IDR & s_gpio_list[_id].pin) == 0x08u)
+#else
+    if((s_gpio_list[_id].gpio->IDR & s_gpio_list[_id].pin) == 0x01u
+        || (s_gpio_list[_id].gpio->IDR & s_gpio_list[_id].pin) == 0x10u)
+#endif
     {
         level = 1;
     }
@@ -75,21 +83,22 @@ static uint8_t KeyPinActive(uint8_t _id)
     }
 }
 /*
-*    ?????? IsKeyDownFunc
-*    ¹¦ÄÜËµÃ÷: ÅÐ¶Ï°´¼üÊÇ·ñ°´ÏÂ£¬µ¥¼üºÍ×éºÏ¼üÇø??Èí¼þ??
-*    ??   ?? _id:°´¼ü??
-*    ?????? 1£º±íÊ¾°´¼ü°´ÏÂ£»0£º±íÊ¾°´¼üÊÍ??
-*    Ê±¼ä??022????9??2??8??
+*   å‡½ æ•° å: IsKeyDownFunc
+*   åŠŸèƒ½è¯´æ˜Ž: åˆ¤æ–­æŒ‰é”®æ˜¯å¦æŒ‰ä¸‹ã€‚å•é”®å’Œç»„åˆé”®åŒºåˆ†ã€‚å•é”®äº‹ä»¶ä¸å…è®¸æœ‰å…¶ä»–é”®æŒ‰ä¸‹ã€‚
+*   å½¢    å‚: æ— 
+*   è¿” å›ž å€¼: è¿”å›žå€¼1 è¡¨ç¤ºæŒ‰ä¸‹(å¯¼é€š)ï¼Œ0è¡¨ç¤ºæœªæŒ‰ä¸‹(é‡Šæ”¾)
+*   æ—¶    é—´: 2025å¹´2æœˆ5æ—¥ 15:20:58
 */
 static uint8_t IsKeyDownFunc(uint8_t _id)
 {
-    /* ÊµÌåµ¥¼ü */
+    /* å®žä½“æŒ‰é”® å•é”® */
     if(_id < HARD_KEY_NUM)
     {
         uint8_t i;
         uint8_t count = 0;
         uint8_t save = 255;
-        /* ÅÐ¶ÏÓÐ¼¸¸ö¼ü°´ÏÂ */
+        
+        /* åˆ¤æ–­æœ‰å‡ ä¸ªæŒ‰é”®æŒ‰ä¸‹ */
         for(i = 0;i < HARD_KEY_NUM;i++)
         {
             if(KeyPinActive(i))
@@ -312,11 +321,11 @@ static void bsp_DetectKey(uint8_t i)
     }
 }
 /*
-*    ?????? bsp_KeyScan10ms
-*    ¹¦ÄÜËµÃ÷: É¨ÃèËùÓÐ°´¼ü£¬·Ç×èÈû£¬±»sustickÖÐ¶ÏÖÜÆÚÐÔµÄµ÷ÓÃ??0msÒ»??
-*    ??   ?? none
-*    ?????? none
-*    Ê±¼ä??022????0??1??3??
+*   å‡½ æ•° å: bsp_KeyScan1ms
+*   åŠŸèƒ½è¯´æ˜Ž: æ‰«ææ‰€æœ‰æŒ‰é”®ã€‚éžé˜»å¡žï¼Œè¢«systickä¸­æ–­å‘¨æœŸæ€§çš„è°ƒç”¨ï¼Œ1msä¸€æ¬¡.
+*   å½¢    å‚: æ— 
+*   è¿” å›ž å€¼: æ— 
+*   æ—¶    é—´: 2025å¹´2æœˆ5æ—¥ 15:30:25
 */
 void bsp_Key_Scan10ms(void)
 {

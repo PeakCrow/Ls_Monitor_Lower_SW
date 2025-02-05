@@ -55,11 +55,25 @@ void AppTaskUserIF(ULONG thread_input)
     uint8_t ucKeyCode;    /* 按键代码 */
     (void)thread_input;
     App_Printf("按键驱动初始化!\n");
-    uint8_t data[8] = {0x0,0x1,0x2,0x3,0x4,0x5,0x6,0x7};
+    
+    //匹配好结束符配置 NR_SHELL_END_OF_LINE 0
+    char test_line[] = "ls -v\n";
+    uint8_t _a = ' ';
+    uint8_t index = 0;
+    /* 初步测试代码 */
+    for(uint8_t i = 0; i < sizeof(test_line)-1; i++)
+    {
+        shell(test_line[i]);
+    }
     while(1)
     {
         ucKeyCode = bsp_GetKey();
-        comGetChar(COM1,&ucKeyCode);
+        index = comGetChar(COM1,&_a);
+        
+        if(0x0u != index)
+        {
+            shell((char)_a);
+        }
         if (ucKeyCode != KEY_NONE)
         {
             switch(ucKeyCode)
@@ -69,7 +83,6 @@ void AppTaskUserIF(ULONG thread_input)
                 break;
             case KEY_0_DOWN:                 /* k0按键按下 */
                 App_Printf("k0按键按下\r\n");
-                DispTaskInfo();
                 break;
             case KEY_UP_UP:
                 App_Printf("kup按键弹起\r\n");
@@ -92,15 +105,74 @@ void AppTaskUserIF(ULONG thread_input)
             case KEY_MULTI_LONG:
                 App_Printf("kmulti按键长按\r\n");
                 break;
-            case 's':
-                bsp_Can1_Send_buf(0x327,data,8);
-                App_Printf("0x327 发送\r\n");
-                break;
             }
         }
         tx_thread_sleep(20);
     }
 }
+
+/**
+ * @brief ls command
+ */
+void shell_ls_cmd(char argc, char *argv)
+{
+	unsigned int i = 0;
+	if (argc > 1)
+	{
+		if (!strcmp("cmd", &argv[argv[1]]))
+		{
+
+			for (i = 0; nr_shell.static_cmd[i].fp != NULL; i++)
+			{
+				shell_printf("%s",nr_shell.static_cmd[i].cmd);
+				shell_printf("\r\n");
+			}
+		}
+		else if (!strcmp("-v", &argv[argv[1]]))
+		{
+			shell_printf("ls version 1.0.\r\n");
+		}
+		else if (!strcmp("-h", &argv[argv[1]]))
+		{
+			shell_printf("useage: ls [options]\r\n");
+			shell_printf("options: \r\n");
+			shell_printf("\t -h \t: show help\r\n");
+			shell_printf("\t -v \t: show version\r\n");
+			shell_printf("\t cmd \t: show all commands\r\n");
+		}
+	}
+	else
+	{
+		shell_printf("ls need more arguments!\r\n");
+	}
+}
+
+/**
+ * @brief test command
+ */
+void shell_test_cmd(char argc, char *argv)
+{
+	unsigned int i;
+	shell_printf("test command:\r\n");
+	for (i = 0; i < argc; i++)
+	{
+		shell_printf("paras %d: %s\r\n", i, &(argv[argv[i]]));
+	}
+}
+
+NR_SHELL_CMD_EXPORT(ls, shell_ls_cmd,"xxx");
+NR_SHELL_CMD_EXPORT(test, shell_test_cmd,"yyyy");
+
+//#ifdef NR_SHELL_USING_EXPORT_CMD
+//NR_SHELL_CMD_EXPORT(ls, shell_ls_cmd);
+//NR_SHELL_CMD_EXPORT(test, shell_test_cmd);
+//#else
+//const static_cmd_st static_cmd[] =
+//	{
+//		{"ls", shell_ls_cmd},
+//		{"test", shell_test_cmd},
+//		{"\0", NULL}};
+//#endif
 
 /*
 * 
@@ -112,7 +184,7 @@ void AppTaskUserIF(ULONG thread_input)
 *    返 回 值: 无
 * 
 */
-void  App_Printf(const char *fmt, ...)
+void App_Printf(const char *fmt, ...)
 {
     char  buf_str[200 + 1];/* 特别注意，如果printf的变量较多，注意此局部变量的大小是否够用 */
     va_list   v_args;
@@ -135,7 +207,7 @@ void  App_Printf(const char *fmt, ...)
 *    返 回 值: 无
 * 
 */
-void    App_I2C_EE_BufferWrite(uint8_t* pBuffer, uint8_t WriteAddr,uint16_t NumByteToWrite)
+void App_I2C_EE_BufferWrite(uint8_t* pBuffer, uint8_t WriteAddr,uint16_t NumByteToWrite)
 {
     /* 互斥操作 */
     tx_mutex_get(&App_PowerDownSave, TX_WAIT_FOREVER);
