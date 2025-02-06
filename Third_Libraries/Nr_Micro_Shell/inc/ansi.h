@@ -43,11 +43,11 @@ extern "C"
 #include "ansi_port.h"
 #include "stdio.h"
 
-char ansi_get_char(char x, ansi_st *ansi);
-void ansi_init(ansi_st *ansi);
-void ansi_clear_current_line(ansi_st *ansi);
+    char ansi_get_char(char x, ansi_st *ansi);
+    void ansi_init(ansi_st *ansi);
+    void ansi_clear_current_line(ansi_st *ansi);
 
-extern ansi_st nr_ansi;
+    extern ansi_st nr_ansi;
 
 #ifdef __cplusplus
 }

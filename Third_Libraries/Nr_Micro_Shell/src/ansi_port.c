@@ -72,9 +72,9 @@ void nr_ansi_common_char_slover(ansi_st *ansi,char x)
             shell_printf("\033[1@");
         }
 
-        #ifndef NR_MICRO_SHELL_SIMULATOR
+        #ifndef NR_MICRO_SHELL_SIMULATOR	
         ansi_show_char(x);
-        #endif
+        #endif	
     }
     else
     {
@@ -118,7 +118,7 @@ void nr_ansi_in_newline(ansi_st *ansi)
     ansi->counter = 0;
 
     nr_shell.cmd_his.index = nr_shell.cmd_his.len;
-#ifndef NR_MICRO_SHELL_SIMULATOR
+#ifndef NR_MICRO_SHELL_SIMULATOR	
 #if NR_SHELL_END_OF_LINE != 1
     ansi_show_char('\r');
     ansi_show_char('\n');
@@ -156,8 +156,9 @@ void nr_ansi_in_up(ansi_st *ansi)
     if (nr_shell.cmd_his.index > 0)
     {
 #if NR_SHLL_FULL_ANSI == 1
-        shell_printf("\033[%dD", ansi->p + 1);
-        shell_printf(NR_ANSI_CLEAR_RIGHT);
+        shell_printf("\033[2K\r");
+        shell_printf(nr_shell.user_name);
+
 #else
         shell_printf("\r\n");
         shell_printf(nr_shell.user_name);
@@ -180,8 +181,8 @@ void nr_ansi_in_down(ansi_st *ansi)
     if (nr_shell.cmd_his.index > 0)
     {
 #if NR_SHLL_FULL_ANSI == 1
-        shell_printf("\033[%dD", ansi->p + 1);
-        shell_printf(NR_ANSI_CLEAR_RIGHT);
+        shell_printf("\033[2K\r");
+        shell_printf(nr_shell.user_name);
 #else
         shell_printf("\r\n");
         shell_printf(nr_shell.user_name);
@@ -245,8 +246,8 @@ void nr_ansi_in_tab(ansi_st *ansi)
         else
         {
 #if NR_SHLL_FULL_ANSI == 1
-            shell_printf("\033[%dD", ansi->p + 1);
-            shell_printf(NR_ANSI_CLEAR_RIGHT);
+            shell_printf("\033[2K\r");
+            shell_printf(nr_shell.user_name);
 #else
             shell_printf("\r\n");
             shell_printf("%s",nr_shell.user_name);

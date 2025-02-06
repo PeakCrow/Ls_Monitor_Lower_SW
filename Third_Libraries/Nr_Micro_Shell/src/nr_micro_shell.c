@@ -97,13 +97,11 @@ void _shell_init(shell_st *shell)
 {
 
 #ifdef NR_SHELL_SHOW_LOG
-    shell_printf("                                                              \r\n");
     shell_printf(" _   _ ____    __  __ _                  ____  _          _ _ \r\n");
     shell_printf("| \\ | |  _ \\  |  \\/  (_) ___ _ __ ___   / ___|| |__   ___| | |\r\n");
     shell_printf("|  \\| | |_) | | |\\/| | |/ __| '__/ _ \\  \\___ \\| '_ \\ / _ \\ | |\r\n");
     shell_printf("| |\\  |  _ <  | |  | | | (__| | | (_) |  ___) | | | |  __/ | |\r\n");
     shell_printf("|_| \\_|_| \\_\\ |_|  |_|_|\\___|_|  \\___/  |____/|_| |_|\\___|_|_|\r\n");
-    shell_printf("                                                              \r\n");
     shell_printf("                                                              \r\n");
 #endif
 
@@ -164,7 +162,7 @@ void shell_parser(shell_st *shell, char *str)
         strcpy(argv + index, str);
         index += strlen(str) + 1;
         argc++;
-    
+
         token = nr_shell_strtok(NULL, " ");
         while (token != NULL)
         {
@@ -175,7 +173,7 @@ void shell_parser(shell_st *shell, char *str)
             token = nr_shell_strtok(NULL, " ");
         }
     }
-    
+
     if (fp != NULL)
     {
         fp(argc, argv);
@@ -205,7 +203,7 @@ char *shell_cmd_complete(shell_st *shell, char *str)
             }
         }
     }
-
+    
     return best_matched;
 }
 
@@ -290,7 +288,7 @@ unsigned short int shell_his_queue_search_cmd(shell_his_queue_st *queue, char *s
             index_temp++;
             index_temp = (index_temp > NR_SHELL_MAX_CMD_HISTORY_NUM) ? 0 : index_temp;
             end = queue->queue[index_temp];
-            
+    
             if (start <= end)
             {
                 cmd_len = end - start;
@@ -299,7 +297,7 @@ unsigned short int shell_his_queue_search_cmd(shell_his_queue_st *queue, char *s
             {
                 cmd_len = NR_SHELL_CMD_HISTORY_BUF_LENGTH + 1 - start + end;
             }
-            
+    
             if (cmd_len == str_len)
             {
                 matched_id = i + 1;
@@ -311,17 +309,18 @@ unsigned short int shell_his_queue_search_cmd(shell_his_queue_st *queue, char *s
                         matched_id = 0;
                         break;
                     }
+    
                     buf_index++;
                     buf_index = (buf_index > NR_SHELL_CMD_HISTORY_BUF_LENGTH) ? 0 : buf_index;
                 }
-                
+    
                 if (matched_id != 0)
                 {
                     return matched_id;
                 }
             }
         }
-    
+
         return 0;
     }
 }
@@ -349,7 +348,7 @@ void shell_his_copy_queue_item(shell_his_queue_st *queue, unsigned short i, char
             {
                 str_buf[j - start] = queue->buf[j];
             }
-        
+
             str_buf[j - start] = '\0';
         }
         else
@@ -358,7 +357,7 @@ void shell_his_copy_queue_item(shell_his_queue_st *queue, unsigned short i, char
             {
                 str_buf[j - start] = queue->buf[j];
             }
-        
+    
             for (j = 0; j < end; j++)
             {
                 str_buf[j + NR_SHELL_CMD_HISTORY_BUF_LENGTH + 1 - start] = queue->buf[j];

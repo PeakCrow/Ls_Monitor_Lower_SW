@@ -39,7 +39,7 @@ extern "C"
 {
 #endif
 
-/* Includes ------------------------------------------------------------------*/
+    /* Includes ------------------------------------------------------------------*/
 //#ifndef NR_MICRO_SHELL_SIMULATOR
 //#include <rtconfig.h>
 //#include <rtthread.h>
@@ -66,12 +66,7 @@ extern "C"
 /* The maximum number of parameters in the command. */
 #define NR_SHELL_CMD_PARAS_MAX_NUM RT_NR_SHELL_CMD_PARAS_MAX_NUM
 
-/* 
-    Command stores the most history commands (the maximum number here refers 
-    to the maximum number of commands that can be stored. When the history 
-    command line cache is full, it will automatically release the earliest 
-    command record) 
-*/
+/* Command stores the most history commands (the maximum number here refers to the maximum number of commands that can be stored. When the history command line cache is full, it will automatically release the earliest command record) */
 #define NR_SHELL_MAX_CMD_HISTORY_NUM RT_NR_SHELL_MAX_CMD_HISTORY_NUM
 
 /* History command cache length */
@@ -127,15 +122,14 @@ The end of line.
 #define NR_SHELL_CMD_HISTORY_BUF_LENGTH 253
 
 /* The user's name. */
-//#define NR_SHELL_USER_NAME "nr@root:"
-#define NR_SHELL_USER_NAME "nr_user@xian:"
+#define NR_SHELL_USER_NAME "nr@root:"
 
 /*
 0: \n
 1: \r
 2: \r\n
 */
-#define NR_SHELL_END_OF_LINE 2
+#define NR_SHELL_END_OF_LINE 1
 
 /* Weather the terminal support all ANSI codes. */
 #define NR_SHLL_FULL_ANSI 1
