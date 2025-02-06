@@ -49,9 +49,9 @@ void ansi_show_str(char *str, unsigned int len)
 
 void nr_ansi_common_char_slover(ansi_st *ansi,char x)
 {
-	unsigned int i;
-	
-	if (ansi->counter < NR_ANSI_LINE_SIZE - 2)
+    unsigned int i;
+    
+    if (ansi->counter < NR_ANSI_LINE_SIZE - 2)
     {
         if (ansi->p < ansi->counter)
         {
@@ -67,14 +67,14 @@ void nr_ansi_common_char_slover(ansi_st *ansi,char x)
         ansi->current_line[ansi->p] = x;
 
         ansi->current_line[ansi->counter] = '\0';
-		if(ansi->p+1 < ansi->counter)
-		{
-			shell_printf("\033[1@");
-		}
+        if(ansi->p+1 < ansi->counter)
+        {
+            shell_printf("\033[1@");
+        }
 
-        #ifndef NR_MICRO_SHELL_SIMULATOR	
+        #ifndef NR_MICRO_SHELL_SIMULATOR
         ansi_show_char(x);
-        #endif	
+        #endif
     }
     else
     {
@@ -100,7 +100,7 @@ void nr_ansi_ctrl_common_slover(ansi_st *ansi)
 void nr_ansi_in_enter(ansi_st *ansi)
 {
 #if NR_SHELL_END_OF_LINE == 1
-	ansi->p = -1;
+    ansi->p = -1;
     ansi->counter = 0;
 
     nr_shell.cmd_his.index = nr_shell.cmd_his.len;
@@ -114,11 +114,11 @@ void nr_ansi_in_enter(ansi_st *ansi)
 // line break '\n' processing
 void nr_ansi_in_newline(ansi_st *ansi)
 {
-	ansi->p = -1;
+    ansi->p = -1;
     ansi->counter = 0;
 
     nr_shell.cmd_his.index = nr_shell.cmd_his.len;
-#ifndef NR_MICRO_SHELL_SIMULATOR	
+#ifndef NR_MICRO_SHELL_SIMULATOR
 #if NR_SHELL_END_OF_LINE != 1
     ansi_show_char('\r');
     ansi_show_char('\n');
@@ -168,8 +168,8 @@ void nr_ansi_in_up(ansi_st *ansi)
         ansi->p = ansi->counter - 1;
 
         ansi_show_str(ansi->current_line, ansi->counter);
-		
-		nr_shell.cmd_his.index--;
+        
+        nr_shell.cmd_his.index--;
         nr_shell.cmd_his.index = (nr_shell.cmd_his.index == 0) ? nr_shell.cmd_his.len : nr_shell.cmd_his.index;
     }
 }
@@ -192,8 +192,8 @@ void nr_ansi_in_down(ansi_st *ansi)
         ansi->p = ansi->counter - 1;
 
         ansi_show_str(ansi->current_line, ansi->counter);
-		
-		nr_shell.cmd_his.index++;
+        
+        nr_shell.cmd_his.index++;
         nr_shell.cmd_his.index = (nr_shell.cmd_his.index > nr_shell.cmd_his.len) ? 1 : nr_shell.cmd_his.index;
     }
 }
@@ -263,22 +263,22 @@ void nr_ansi_in_tab(ansi_st *ansi)
 /*ansi delete*/
 void nr_ansi_in__(ansi_st *ansi)
 {
-	unsigned int i;
-	if(ansi->combine_buf[2] == '3')
-	{
-		for(i = ansi->p+1;i<ansi->counter;i++)
-		{
-			ansi->current_line[i] = ansi->current_line[i+1];
-		}
-		if((short)ansi->counter > ansi->p)
-		{
-			ansi->counter--;
+    unsigned int i;
+    if(ansi->combine_buf[2] == '3')
+    {
+        for(i = ansi->p+1;i<ansi->counter;i++)
+        {
+            ansi->current_line[i] = ansi->current_line[i+1];
+        }
+        if((short)ansi->counter > ansi->p)
+        {
+            ansi->counter--;
 #if NR_SHLL_FULL_ANSI == 1
-			ansi_show_str("\033[1P",4);
+            ansi_show_str("\033[1P",4);
 #endif
-		}
-		
-	}
+        }
+        
+    }
 }
 
 /******************* (C) COPYRIGHT 2019 Ji Youzhou *****END OF FILE*****************/

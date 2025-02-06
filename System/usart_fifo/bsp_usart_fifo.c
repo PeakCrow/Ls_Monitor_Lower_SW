@@ -3,7 +3,7 @@
 
 
 /* 串口1的GPIO  PA9, PA10   串口log接口 */
-#define USART1_CLK_ENABLE()                __HAL_RCC_USART1_CLK_ENABLE()
+#define USART1_CLK_ENABLE()             __HAL_RCC_USART1_CLK_ENABLE()
 
 #define USART1_TX_GPIO_CLK_ENABLE()     __HAL_RCC_GPIOA_CLK_ENABLE()
 #define USART1_TX_GPIO_PORT              GPIOA

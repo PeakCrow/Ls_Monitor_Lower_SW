@@ -58,8 +58,8 @@ void (*const nr_ansi_in_cmd_fun[])(ansi_st *) =
         nr_ansi_in_H_function,
         nr_ansi_in_s_function,
         nr_ansi_in_u_function,
-		nr_ansi_in___function,
-	};
+        nr_ansi_in___function,
+    };
 
 const char nr_ansi_in_special_symbol[] = {'\b', '\n', '\r', '\t', '\0'};
 void (*const nr_ansi_in_special_symbol_fun[])(ansi_st *) =
@@ -87,7 +87,7 @@ int ansi_search_char(char x, const char *buf)
 enum
 {
     ANSI_NO_CTRL_CHAR,
-	ANSI_MAYBE_CTRL_CHAR,
+    ANSI_MAYBE_CTRL_CHAR,
     ANSI_WAIT_CTRL_CHAR_END,
 };
 
@@ -128,11 +128,11 @@ char ansi_get_char(char x, ansi_st *ansi)
         {
             ansi->combine_state = ANSI_WAIT_CTRL_CHAR_END;
             ansi->combine_buf[ansi->cmd_num] = x;
-			ansi->cmd_num++;
+            ansi->cmd_num++;
         }
         else
         {
-			nr_ansi_common_char_slover(ansi,x);
+            nr_ansi_common_char_slover(ansi,x);
         }
     }
     else if (ansi->combine_state == ANSI_WAIT_CTRL_CHAR_END)

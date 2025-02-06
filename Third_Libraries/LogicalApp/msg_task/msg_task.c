@@ -42,13 +42,11 @@ void AppTaskMsgPro(ULONG thread_input)
     }   
 }
 /*
-********************************************
 *    函 数 名: AppTaskUserIF
 *    功能说明: 按键消息处理
 *    形    参 : thread_input 创建该任务时传递的形参
 *    返 回 值: 无
 *    优 先 级: 4
-********************************************
 */
 void AppTaskUserIF(ULONG thread_input)
 {

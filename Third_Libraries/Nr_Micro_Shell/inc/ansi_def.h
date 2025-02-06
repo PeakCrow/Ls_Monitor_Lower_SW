@@ -51,24 +51,24 @@ extern "C"
 #define NR_ANSI_CTRL_MAX_LEN 20
 #define NR_ANSI_MAX_EX_DATA_NUM 1
 
-    enum
-    {
-        ANSI_ENABLE_SHOW,
-        ANSI_DISABLE_SHOW
-    };
+enum
+{
+    ANSI_ENABLE_SHOW,
+    ANSI_DISABLE_SHOW
+};
 
-    typedef struct nr_ansi_struct
-    {
-        short p;
-        unsigned int counter;
-        char current_line[NR_ANSI_LINE_SIZE];
+typedef struct nr_ansi_struct
+{
+    short p;
+    unsigned int counter;
+    char current_line[NR_ANSI_LINE_SIZE];
 
-        char combine_buf[NR_ANSI_CTRL_MAX_LEN];
-        char cmd_num;
-        char combine_state;
-    } ansi_st;
+    char combine_buf[NR_ANSI_CTRL_MAX_LEN];
+    char cmd_num;
+    char combine_state;
+} ansi_st;
 
-    typedef void (*ansi_fun_t)(ansi_st *);
+typedef void (*ansi_fun_t)(ansi_st *);
 
 #define NR_ANSI_SET_TEXT(cmd) ((const char *)"\033["##cmd##"m") /** the form of set text font */
 
