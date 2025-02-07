@@ -123,7 +123,7 @@ The end of line.
 
 /* The user's name. */
 //#define NR_SHELL_USER_NAME "nr@root:"
-#define NR_SHELL_USER_NAME "nr@xian_user:"
+#define NR_SHELL_USER_NAME "nr@xian_user#/>"
 
 /*
 0: \n

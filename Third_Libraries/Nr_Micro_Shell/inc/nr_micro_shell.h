@@ -39,7 +39,7 @@ extern "C"
 {
 #endif
 
-    /* Includes ------------------------------------------------------------------*/
+/* Includes ------------------------------------------------------------------*/
 #include "stdio.h"
 #include "nr_micro_shell_config.h"
 #include "ansi.h"
@@ -132,15 +132,14 @@ extern shell_st nr_shell;
 #if defined (__ICCARM__)    /* for IAR Compiler v8.4*/
     #define NR_SECTION(x) @ x
     #define NR_USED __root
-#define NR_SHELL_CMD_EXPORT_START(cmd, func) \
-        NR_USED const static_cmd_st _nr_cmd_start_ NR_SECTION(".rodata.nr_shell_cmd0.end") = {#cmd, NULL} 
-#define NR_SHELL_CMD_EXPORT(cmd, func, desc) \
-        NR_USED const static_cmd_st _nr_cmd_##cmd NR_SECTION(".rodata.nr_shell_cmd1") = {#cmd, func, desc}; 
-#define NR_SHELL_CMD_EXPORT_END(cmd, func)\
-        NR_USED const static_cmd_st _nr_cmd_end_ NR_SECTION(".rodata.nr_shell_cmd1.end")={#cmd,NULL}
+    #define NR_SHELL_CMD_EXPORT_START(cmd, func) \
+            NR_USED const static_cmd_st _nr_cmd_start_ NR_SECTION(".rodata.nr_shell_cmd0.end") = {#cmd, NULL} 
+    #define NR_SHELL_CMD_EXPORT(cmd, func, desc) \
+            NR_USED const static_cmd_st _nr_cmd_##cmd NR_SECTION(".rodata.nr_shell_cmd1") = {#cmd, func, desc}; 
+    #define NR_SHELL_CMD_EXPORT_END(cmd, func)\
+            NR_USED const static_cmd_st _nr_cmd_end_ NR_SECTION(".rodata.nr_shell_cmd1.end")={#cmd,NULL}
         
 #else //defined (__GNUC__) && !defined (__CC_ARM) /* nr_micro_shell 源码 */
-        
 #define NR_USED __attribute__((used))
     #define NR_SECTION(x) __attribute__((section(".rodata.nr_shell_cmd" x)))
     #define NR_SHELL_CMD_EXPORT_START(cmd, func) \

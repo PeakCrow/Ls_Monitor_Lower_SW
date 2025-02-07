@@ -2,6 +2,15 @@
 #define MONITOR_H
 
 #include "sys.h"
+/* separate ui display for c code */
+#include "widght_ui/motor_control_ui.h"
+#include "widght_ui/about_phone_ui.h"
+#include "widght_ui/set_up.h"
+#include "widght_ui/vehicle_status.h"
+#include "widght_ui/battery_box.h"
+#include "widght_ui/sensor_ui.h"
+#include "widght_ui/adjust_pedal.h"
+#include "widght_ui/cool_control.h"
 
 #ifdef __cplusplus
 extern "C"
