@@ -383,7 +383,7 @@ void shell_help_cmd(char argc, char *argv)
         {
             shell_printf("%s",nr_shell.static_cmd[i].cmd);
             /* NR_SHELL_CMD_NAME_MAX_LENGTH is 10 ,so \t\t is ok */
-            shell_printf("\t\t%s",nr_shell.static_cmd[i].description);
+            shell_printf("\r\t\t%s",nr_shell.static_cmd[i].description);
             shell_printf("\r\n");
         }
     }

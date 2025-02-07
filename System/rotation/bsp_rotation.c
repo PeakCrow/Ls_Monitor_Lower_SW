@@ -33,7 +33,7 @@ void bsp_InitRotationSensor(void)
     
     if(HAL_TIM_Base_Init(&g_RotationTimeHandle) != HAL_OK)
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
     }
     sclocksourceconfig.ClockSource                 = TIM_CLOCKSOURCE_ETRMODE2;
     sclocksourceconfig.ClockPolarity             = TIM_CLOCKPOLARITY_RISING;
@@ -41,13 +41,13 @@ void bsp_InitRotationSensor(void)
     sclocksourceconfig.ClockFilter                 = 0;
     if(HAL_TIM_ConfigClockSource(&g_RotationTimeHandle,&sclocksourceconfig) != HAL_OK)
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
     }
     smasterconfig.MasterOutputTrigger             = TIM_TRGO_RESET;
     smasterconfig.MasterSlaveMode                 = TIM_MASTERSLAVEMODE_DISABLE;
     if(HAL_TIMEx_MasterConfigSynchronization(&g_RotationTimeHandle,&smasterconfig) != HAL_OK)
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
     }
 
     HAL_NVIC_SetPriority(TIM2_IRQn,1,0);

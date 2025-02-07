@@ -147,6 +147,9 @@ typedef __I uint8_t vuc8;
 #define FALSE     0
 #define TRUE      1
 
+
+#define PRINT(fmt, args...)  (void)mini_printf(fmt, ##args);
+
 /* 方便RTOS里面使用 */
 extern void SysTick_ISR(void);      /* 滴答定时器中断外部文件声明*/
 

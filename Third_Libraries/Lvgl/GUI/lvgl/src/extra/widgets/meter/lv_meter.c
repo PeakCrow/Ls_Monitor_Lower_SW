@@ -505,7 +505,7 @@ static void draw_ticks_and_labels(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx, cons
                 part_draw_dsc.label_dsc = &label_dsc_tmp;
                 char buf[16];
 
-                lv_snprintf(buf, sizeof(buf), "%" LV_PRId32, value_of_line);
+                lv_snPRINT(buf, sizeof(buf), "%" LV_PRId32, value_of_line);
                 part_draw_dsc.text = buf;
 
                 lv_event_send(obj, LV_EVENT_DRAW_PART_BEGIN, &part_draw_dsc);

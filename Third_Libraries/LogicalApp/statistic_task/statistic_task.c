@@ -27,16 +27,16 @@ void DispTaskInfo(void)
     p_tcb = &AppTaskStartTCB;
     
     /* 打印标题 */
-    App_Printf("===============================================================\r\n");
-    App_Printf("OS CPU Usage = %5.2f%%\r\n", OSCPUUsage);
-    App_Printf("===============================================================\r\n");
-    App_Printf(" 任务优先级 任务栈大小 当前使用栈  最大栈使用   任务名\r\n");
-    App_Printf("   Prio     StackSize   CurStack    MaxStack   Taskname\r\n");
+    App_printf("===============================================================\r\n");
+    App_printf("OS CPU Usage = %5.2f%%\r\n", OSCPUUsage);
+    App_printf("===============================================================\r\n");
+    App_printf(" 任务优先级 任务栈大小 当前使用栈  最大栈使用   任务名\r\n");
+    App_printf("   Prio     StackSize   CurStack    MaxStack   Taskname\r\n");
 
     /* 遍历任务控制块列?TCB list)，打印所有的任务的优先级和名?*/
     while (p_tcb != (TX_THREAD *)0) 
     {
-        App_Printf("   %2d        %5d      %5d       %5d      %s\r\n", 
+        App_printf("   %2d        %5d      %5d       %5d      %s\r\n", 
                     p_tcb->tx_thread_priority,
                     p_tcb->tx_thread_stack_size,
                     (int)p_tcb->tx_thread_stack_end - (int)p_tcb->tx_thread_stack_ptr,

@@ -96,7 +96,7 @@ static void event_chart_cb(lv_event_t* e)
             lv_coord_t value = y_array[id];
 
             char buf[16];
-            lv_snprintf(buf, sizeof(buf), LV_SYMBOL_DUMMY"%d", value);
+            lv_snPRINT(buf, sizeof(buf), LV_SYMBOL_DUMMY"%d", value);
 
             lv_draw_rect_dsc_t draw_rect_dsc;
             lv_draw_rect_dsc_init(&draw_rect_dsc);
@@ -283,8 +283,8 @@ static void event_cb(lv_event_t * e)
     label_dsc.font = &myFont20;
 
     char buf[16];
-    lv_snprintf(buf, sizeof(buf), "%d", (int)lv_bar_get_value(obj));
-//    lv_snprintf(buf, sizeof(buf), "%d", (int)9);
+    lv_snPRINT(buf, sizeof(buf), "%d", (int)lv_bar_get_value(obj));
+//    lv_snPRINT(buf, sizeof(buf), "%d", (int)9);
 
     lv_point_t txt_size;
 

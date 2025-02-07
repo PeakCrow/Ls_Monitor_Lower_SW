@@ -273,7 +273,7 @@ static void Three_Circular_Ui(lv_obj_t *parent,
                         LV_ALIGN_CENTER,-30,0);
     }else
     {
-        printf("invalid label pos!!\n");
+        PRINT("invalid label pos!!\n");
     }
 }
 

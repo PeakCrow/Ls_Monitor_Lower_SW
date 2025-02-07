@@ -7,8 +7,8 @@
 #include "lv_log.h"
 #include "lv_assert.h"
 
-#undef  printf
-#define printf LV_LOG_ERROR
+#undef  PRINT
+#define PRINT LV_LOG_ERROR
 
 #define TLSF_MAX_POOL_SIZE LV_MEM_SIZE
 
@@ -888,7 +888,7 @@ int lv_tlsf_check(lv_tlsf_t tlsf)
 static void default_walker(void * ptr, size_t size, int used, void * user)
 {
     LV_UNUSED(user);
-    printf("\t%p %s size: %x (%p)\n", ptr, used ? "used" : "free", (unsigned int)size, (void *)block_from_ptr(ptr));
+    PRINT("\t%p %s size: %x (%p)\n", ptr, used ? "used" : "free", (unsigned int)size, (void *)block_from_ptr(ptr));
 }
 
 void lv_tlsf_walk_pool(lv_pool_t pool, lv_tlsf_walker walker, void * user)
@@ -974,18 +974,18 @@ lv_pool_t lv_tlsf_add_pool(lv_tlsf_t tlsf, void * mem, size_t bytes)
     const size_t pool_bytes = align_down(bytes - pool_overhead, ALIGN_SIZE);
 
     if(((ptrdiff_t)mem % ALIGN_SIZE) != 0) {
-        printf("lv_tlsf_add_pool: Memory must be aligned by %u bytes.\n",
+        PRINT("lv_tlsf_add_pool: Memory must be aligned by %u bytes.\n",
                (unsigned int)ALIGN_SIZE);
         return 0;
     }
 
     if(pool_bytes < block_size_min || pool_bytes > block_size_max) {
 #if defined (TLSF_64BIT)
-        printf("lv_tlsf_add_pool: Memory size must be between 0x%x and 0x%x00 bytes.\n",
+        PRINT("lv_tlsf_add_pool: Memory size must be between 0x%x and 0x%x00 bytes.\n",
                (unsigned int)(pool_overhead + block_size_min),
                (unsigned int)((pool_overhead + block_size_max) / 256));
 #else
-        printf("lv_tlsf_add_pool: Memory size must be between %u and %u bytes.\n",
+        PRINT("lv_tlsf_add_pool: Memory size must be between %u and %u bytes.\n",
                (unsigned int)(pool_overhead + block_size_min),
                (unsigned int)(pool_overhead + block_size_max));
 #endif
@@ -1052,7 +1052,7 @@ int test_ffs_fls()
 #endif
 
     if(rv) {
-        printf("test_ffs_fls: %x ffs/fls tests failed.\n", rv);
+        PRINT("test_ffs_fls: %x ffs/fls tests failed.\n", rv);
     }
     return rv;
 }
@@ -1067,7 +1067,7 @@ lv_tlsf_t lv_tlsf_create(void * mem)
 #endif
 
     if(((tlsfptr_t)mem % ALIGN_SIZE) != 0) {
-        printf("lv_tlsf_create: Memory must be aligned to %u bytes.\n",
+        PRINT("lv_tlsf_create: Memory must be aligned to %u bytes.\n",
                (unsigned int)ALIGN_SIZE);
         return 0;
     }

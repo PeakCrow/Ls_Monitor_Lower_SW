@@ -139,7 +139,7 @@ The end of line.
 #define NR_SHELL_SHOW_LOG
 
 /* If you use RTOS, you may need to do some special processing for printf(). */
-#define shell_printf(fmt, args...) printf(fmt, ##args);
+#define shell_printf(fmt, args...) mini_printf(fmt, ##args);
 #define ansi_show_char(x) putchar(x)
 
 #endif

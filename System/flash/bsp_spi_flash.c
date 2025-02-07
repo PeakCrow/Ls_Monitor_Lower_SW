@@ -119,7 +119,7 @@ static void sf_WaitForWriteEnd(void)
             break;
         }        
     }
-    //printf("器件内部操作完成\r\n");
+    //PRINT("器件内部操作完成\r\n");
 }
 
 

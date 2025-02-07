@@ -212,7 +212,7 @@ static struct {
 void HardFaultHandler(unsigned int* pStack) {
   //
   // In case we received a hard fault because of a breakpoint instruction, we return.
-  // This may happen when using semihosting for printf outputs and no debugger is connected,
+  // This may happen when using semihosting for PRINT outputs and no debugger is connected,
   // i.e. when running a "Debug" configuration in release mode.
   //
   if (NVIC_HFSR & (1u << 31)) {

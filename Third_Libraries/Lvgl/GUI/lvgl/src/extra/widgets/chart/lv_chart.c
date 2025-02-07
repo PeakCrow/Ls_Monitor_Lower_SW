@@ -1461,7 +1461,7 @@ static void draw_y_ticks(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx, lv_chart_axis
         /*add text only to major tick*/
         if(major && t->label_en)  {
             char buf[LV_CHART_LABEL_MAX_TEXT_LENGTH];
-            lv_snprintf(buf, sizeof(buf), "%" LV_PRId32, tick_value);
+            lv_snPRINT(buf, sizeof(buf), "%" LV_PRId32, tick_value);
             part_draw_dsc.label_dsc = &label_dsc;
             part_draw_dsc.text = buf;
             part_draw_dsc.text_length = LV_CHART_LABEL_MAX_TEXT_LENGTH;
@@ -1597,7 +1597,7 @@ static void draw_x_ticks(lv_obj_t * obj, lv_draw_ctx_t * draw_ctx, lv_chart_axis
 
         if(major && t->label_en) {
             char buf[LV_CHART_LABEL_MAX_TEXT_LENGTH];
-            lv_snprintf(buf, sizeof(buf), "%" LV_PRId32, tick_value);
+            lv_snPRINT(buf, sizeof(buf), "%" LV_PRId32, tick_value);
             part_draw_dsc.label_dsc = &label_dsc;
             part_draw_dsc.text = buf;
             part_draw_dsc.text_length = LV_CHART_LABEL_MAX_TEXT_LENGTH;

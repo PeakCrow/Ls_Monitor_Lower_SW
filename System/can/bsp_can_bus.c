@@ -1,7 +1,7 @@
 #include "bsp_can_bus.h"
 
 /* 使用最新的hal库提供的can外设文件 */
-/* 此文件中没有使用互斥量App_Printf函数 */
+/* 此文件中没有�App_printf�量App_Printf函数 */
 CAN_HandleTypeDef hCAN;
 CAN_RxHeaderTypeDef can_rx_msg;
 //uint8_t g_canrxbuf[8] = {0};        /* 不能做成全局变量，不然无法触发中断(?????) */
@@ -35,7 +35,7 @@ void bsp_InitCan1Bus(void)
     HAL_StatusTypeDef ret = HAL_CAN_Init(&hCAN);
     if(HAL_OK != ret)
     {
-        printf("HAL_CAN_Init CAN1 ret not ok %d !\n",ret);
+        PRINT("HAL_CAN_Init CAN1 ret not ok %d !\n",ret);
     }
     
     /*CAN过滤器初始化*/
@@ -54,7 +54,7 @@ void bsp_InitCan1Bus(void)
     ret = HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig);
     if(HAL_OK != ret)
     {
-        printf("HAL_CAN_ConfigFilter0 CAN1 ret not ok %d !\n",ret);
+        PRINT("HAL_CAN_ConfigFilter0 CAN1 ret not ok %d !\n",ret);
     }
     
     /*CAN过滤器初始化*/
@@ -70,7 +70,7 @@ void bsp_InitCan1Bus(void)
     ret = HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig2);
     if(HAL_OK != ret)
     {
-        printf("HAL_CAN_ConfigFilter1 CAN1 ret not ok %d !\n",ret);
+        PRINT("HAL_CAN_ConfigFilter1 CAN1 ret not ok %d !\n",ret);
     }
 
     /*CAN过滤器初始化*/
@@ -86,7 +86,7 @@ void bsp_InitCan1Bus(void)
     ret = HAL_CAN_ConfigFilter(&hCAN, &sFilterConfig2);
     if(HAL_OK != ret)
     {
-        printf("HAL_CAN_ConfigFilter2 CAN1 ret not ok %d !\n",ret);
+        PRINT("HAL_CAN_ConfigFilter2 CAN1 ret not ok %d !\n",ret);
     }
     
     
@@ -172,7 +172,7 @@ HAL_StatusTypeDef bsp_Can1_Send_buf(uint32_t _id,uint8_t _buf[],uint8_t _dlc)
     }
     else
     {
-        printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
     }
     if (_dlc >8)
     {
@@ -237,7 +237,7 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
 */
 void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan)
 {
-    printf("fifo0数据接收满\r\n");         /* 目前无法触发FIFO邮箱满的情况 */
+    PRINT("fifo0数据接收满\r\n");         /* 目前无法触发FIFO邮箱满的情况 */
 }
 
 /**
@@ -250,7 +250,7 @@ void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan)
 */
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
-    //App_Printf("持续接收数据fifo0\r\n");
+    //App_printf("持续接收数据fifo0\r\n");
 }
 /**
   * @FunctionName: CAN1_RX0_IRQHandler
@@ -265,7 +265,7 @@ void CAN1_RX0_IRQHandler(void)
     uint8_t g_canrxbuf[8] = {0};
     HAL_CAN_IRQHandler(&hCAN);              /* 需要在中断函数中调用此函数来清除中断标志位 */
     HAL_CAN_GetRxMessage(&hCAN, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
-    printf("CAN1 RX0 IRQ\n");
+    PRINT("CAN1 RX0 IRQ\n");
 }
 
 
@@ -291,7 +291,7 @@ uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
 //            _buf[i] = g_canrxbuf[i];
 //        }
 //        else
-//            printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
+//            PRINT("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
 //    }
 //    else if(IS_CAN_EXTID(_id))
 //    {
@@ -303,7 +303,7 @@ uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
 //        }
 //    }
 //    else
-//        printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
+//        PRINT("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
 //    }
     return can_rx_msg.DLC;
 }

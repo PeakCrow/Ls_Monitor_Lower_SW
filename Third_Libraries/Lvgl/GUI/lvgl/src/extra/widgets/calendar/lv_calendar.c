@@ -132,17 +132,17 @@ void lv_calendar_set_showed_date(lv_obj_t * obj, uint32_t year, uint32_t month)
     uint8_t day_first = get_day_of_week(d.year, d.month, 1);
     uint8_t c;
     for(i = day_first, c = 1; i < act_mo_len + day_first; i++, c++) {
-        lv_snprintf(calendar->nums[i], sizeof(calendar->nums[0]), "%d", c);
+        lv_snPRINT(calendar->nums[i], sizeof(calendar->nums[0]), "%d", c);
     }
 
     uint8_t prev_mo_len = get_month_length(d.year, d.month - 1);
     for(i = 0, c = prev_mo_len - day_first + 1; i < day_first; i++, c++) {
-        lv_snprintf(calendar->nums[i], sizeof(calendar->nums[0]), "%d", c);
+        lv_snPRINT(calendar->nums[i], sizeof(calendar->nums[0]), "%d", c);
         lv_btnmatrix_set_btn_ctrl(calendar->btnm, i + 7, LV_BTNMATRIX_CTRL_DISABLED);
     }
 
     for(i = day_first + act_mo_len, c = 1; i < 6 * 7; i++, c++) {
-        lv_snprintf(calendar->nums[i], sizeof(calendar->nums[0]), "%d", c);
+        lv_snPRINT(calendar->nums[i], sizeof(calendar->nums[0]), "%d", c);
         lv_btnmatrix_set_btn_ctrl(calendar->btnm, i + 7, LV_BTNMATRIX_CTRL_DISABLED);
     }
 

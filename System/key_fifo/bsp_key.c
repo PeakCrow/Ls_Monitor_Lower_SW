@@ -72,7 +72,7 @@ static uint8_t KeyPinActive(uint8_t _id)
     {
         level = 0;
     }
-    //printf("%d %d\r\n",(s_gpio_list[_id].gpio->IDR & s_gpio_list[_id].pin),level);
+    //PRINT("%d %d\r\n",(s_gpio_list[_id].gpio->IDR & s_gpio_list[_id].pin),level);
     if(level == s_gpio_list[_id].ActiveLevel)
     {
         return 1;
@@ -107,7 +107,7 @@ static uint8_t IsKeyDownFunc(uint8_t _id)
                 save = i;
             }
         }
-        //printf("%d %d %d\r\n",count,save,_id);
+        //PRINT("%d %d %d\r\n",count,save,_id);
         if(count == 1 && save == _id)
         {
             return 1;/* 单个按键按下有效 */

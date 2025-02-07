@@ -220,13 +220,13 @@ void bsp_Initlcd(void)
     LCD_WR_REG(0XDB00);    
     lcddev.id=LCD_RD_DATA();        //读回0X80
     lcddev.id<<=8;    
-    //printf("%d",lcddev.id);
+    //PRINT("%d",lcddev.id);
     LCD_WR_REG(0XDC00);    
     lcddev.id|=LCD_RD_DATA();        //读回0X00
-    //printf("%d",lcddev.id);
+    //PRINT("%d",lcddev.id);
     if(lcddev.id == 0x8000)
         lcddev.id = 0x5510;//NT35510读回的ID是8000H,为方便区分,我们强制设置为5510
-    printf("lcd id:%x\r\n",lcddev.id);//打印LCD ID
+    PRINT("lcd id:%x\r\n",lcddev.id);//打印LCD ID
     if(lcddev.id == 0x5510)
     {
         LCD_WriteReg(0xF000,0x55);

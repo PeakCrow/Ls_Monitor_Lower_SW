@@ -81,13 +81,13 @@ void bsp_InitSPI1Param(uint32_t _BaudRatePrescaler,uint32_t _CLKPhase,uint32_t _
     /* 复位SPI */
     if(HAL_SPI_DeInit(&hspi) != HAL_OK)
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
     }
     
     /* 初始化SPI */
     if(HAL_SPI_Init(&hspi) != HAL_OK)
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
     }
     
     __HAL_SPI_ENABLE(&hspi);
@@ -186,13 +186,13 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef *_hspi)
         /* 复位DMA */
         if(HAL_DMA_DeInit(&hdma_tx) != HAL_OK)
         {
-            printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+            PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
         }
         
         /* 初始化DMA */
         if(HAL_DMA_Init(&hdma_tx) != HAL_OK)
         {
-            printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+            PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
         }
         
         /* 关联DMA句柄到SPI */
@@ -216,13 +216,13 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef *_hspi)
         /* 复位DMA */
         if(HAL_DMA_DeInit(&hdma_rx) != HAL_OK)
         {
-            printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+            PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
         }
         
         /* 初始化DMA */
         if(HAL_DMA_Init(&hdma_rx) != HAL_OK)
         {
-            printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+            PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
         }
         
         /* 关联DMA句柄到SPI */
@@ -270,7 +270,7 @@ void bsp_spi1Transfer(void)
     wTransferState = TRANSFER_WAIT;
     if(HAL_SPI_TransmitReceive_DMA(&hspi,(uint8_t*)g_spiTxBuf,(uint8_t*)g_spiRxBuf,g_spiLen) != HAL_OK)
     {
-        printf("Wrong parameters value: file %s on line %d,spi state %d\r\n", __FILE__,__LINE__,HAL_SPI_GetState(&hspi));
+        PRINT("Wrong parameters value: file %s on line %d,spi state %d\r\n", __FILE__,__LINE__,HAL_SPI_GetState(&hspi));
     }
     while(wTransferState  == TRANSFER_WAIT)
     {
@@ -283,7 +283,7 @@ void bsp_spi1Transfer(void)
     //SET_BIT(hspi.Instance->CR2,SPI_IT_TXE);
     if(HAL_SPI_TransmitReceive_IT(&hspi,(uint8_t*)g_spiTxBuf,(uint8_t*)g_spiRxBuf,g_spiLen) != HAL_OK)
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
     }
     while(wTransferState == TRANSFER_WAIT)
     {
@@ -295,7 +295,7 @@ void bsp_spi1Transfer(void)
 #ifdef  USE_SPI_POLL
     if(HAL_SPI_TransmitReceive(&hspi,(uint8_t*)g_spiTxBuf,(uint8_t*)g_spiRxBuf,g_spiLen,1000) != HAL_OK)
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
     }
 #endif
 }
@@ -418,13 +418,13 @@ void bsp_InitSPI2Param(uint32_t _BaudRatePrescaler, uint32_t _CLKPhase, uint32_t
     /* ��λSPI */
     if (HAL_SPI_DeInit(&ink_spi) != HAL_OK)
         {
-            printf("Wrong parameters value:file %s on line %d\r\n", __FILE__,__LINE__);
+            PRINT("Wrong parameters value:file %s on line %d\r\n", __FILE__,__LINE__);
         }
 
     /* ��ʼ��SPI */
     if (HAL_SPI_Init(&ink_spi) != HAL_OK)
         {
-            printf("Wrong parameters value:file %s on line %d\r\n", __FILE__,__LINE__);
+            PRINT("Wrong parameters value:file %s on line %d\r\n", __FILE__,__LINE__);
             
         }
 
@@ -436,10 +436,10 @@ void bsp_spi2Transfer(uint8_t _value)
 {
     if (HAL_SPI_Transmit(&ink_spi,&_value,1,1000) != HAL_OK)
         {
-            printf("Wrong parameters valude: file %s on line %d\r\n",__FILE__,__LINE__);
+            PRINT("Wrong parameters valude: file %s on line %d\r\n",__FILE__,__LINE__);
         }
-    //printf("%d\r\n",HAL_SPI_Transmit(&ink_spi,&_value,1,1000));
-    //printf("%d\r\n",_value);
+    //PRINT("%d\r\n",HAL_SPI_Transmit(&ink_spi,&_value,1,1000));
+    //PRINT("%d\r\n",_value);
 }
 
 

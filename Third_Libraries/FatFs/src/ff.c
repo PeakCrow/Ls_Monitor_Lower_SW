@@ -6024,7 +6024,7 @@ int f_puts (
 /* Put a formatted string to the file                                    */
 /*-----------------------------------------------------------------------*/
 
-int f_printf (
+int f_PRINT (
     FIL* fp,            /* Pointer to the file object */
     const TCHAR* fmt,    /* Pointer to the format string */
     ...                    /* Optional arguments... */

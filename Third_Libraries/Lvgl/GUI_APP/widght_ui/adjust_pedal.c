@@ -216,7 +216,7 @@ static void Adjust_Pedal_In_Ui(lv_obj_t* parent)
     lv_obj_add_event_cb(cont2, Radio_Btn_Cb, LV_EVENT_CLICKED, &active_index_2);
 
     for(uint8_t i = 0; i < 3; i++) {
-        lv_snprintf(buf, sizeof(buf), "Driver %d", (int)i + 1);
+        lv_snPRINT(buf, sizeof(buf), "Driver %d", (int)i + 1);
 
         lv_obj_t * obj = lv_checkbox_create(cont2);
         lv_checkbox_set_text(obj, buf);
@@ -337,7 +337,7 @@ static void Pos_Label_Cb(lv_event_t *e)
         lv_label_set_text_fmt(pos_label,"Pedal_Pos : %.2f",NumberConuts);
 
     }else if(code == LV_EVENT_RELEASED){
-        App_Printf("%d ",PosQueue);
+        App_printf("%d ",PosQueue);
         App_I2C_EE_BufferWrite(Pos,0x00,5);
     }
 }
@@ -424,12 +424,12 @@ static void Radio_Btn_Cb(lv_event_t * e)
 
     *active_id = lv_obj_get_index(act_cb);
 
-    App_Printf("select radio buttons:%d \n",(int)active_index_2+1);
+    App_printf("select radio buttons:%d \n",(int)active_index_2+1);
     if(active_index_2+1 == 1){
-            App_Printf("车手1位置：%.2f 车手上电位置：%.2f\r\n",DriverX_Pos.driver1_pos,DriverX_Pos.current_pos);
+            App_printf("车手1位置：%.2f 车手上电位置：%.2f\r\n",DriverX_Pos.driver1_pos,DriverX_Pos.current_pos);
             if(DriverX_Pos.current_pos < DriverX_Pos.driver1_pos){
                     comSendBuf(COM3,Reverse_rotation,3);
-                    App_Printf("车手1位置选择成功\n");
+                    App_printf("车手1位置选择成功\n");
                 }
             else{
                     comSendBuf(COM3,Forward_rotation,3);
@@ -437,10 +437,10 @@ static void Radio_Btn_Cb(lv_event_t * e)
             tx_event_flags_set(&EventGroup, DRIVER1_POS, TX_OR);
         }
     else if(active_index_2+1 == 2){
-            App_Printf("车手2位置：%.2f 车手上电位置：%.2f\r\n",DriverX_Pos.driver2_pos,DriverX_Pos.current_pos);
+            App_printf("车手2位置：%.2f 车手上电位置：%.2f\r\n",DriverX_Pos.driver2_pos,DriverX_Pos.current_pos);
             if(DriverX_Pos.current_pos < DriverX_Pos.driver2_pos){
                     comSendBuf(COM3,Reverse_rotation,3);
-                    App_Printf("车手2位置选择成功\n");
+                    App_printf("车手2位置选择成功\n");
                 }
             else{
                     comSendBuf(COM3,Forward_rotation,3);
@@ -448,10 +448,10 @@ static void Radio_Btn_Cb(lv_event_t * e)
             tx_event_flags_set(&EventGroup, DRIVER2_POS, TX_OR);
         }
     else if(active_index_2+1 == 3){
-            App_Printf("车手3位置：%.2f 车手上电位置：%.2f\r\n",DriverX_Pos.driver3_pos,DriverX_Pos.current_pos);
+            App_printf("车手3位置：%.2f 车手上电位置：%.2f\r\n",DriverX_Pos.driver3_pos,DriverX_Pos.current_pos);
             if(DriverX_Pos.current_pos < DriverX_Pos.driver3_pos){
                     comSendBuf(COM3,Reverse_rotation,3);
-                    App_Printf("车手3位置选择成功\n");
+                    App_printf("车手3位置选择成功\n");
                 }
             else{
                     comSendBuf(COM3,Forward_rotation,3);
@@ -486,7 +486,7 @@ static void Record_Btn_Cb(lv_event_t *e)
 static void Zero_Btn_Cb(lv_event_t * e)
 {
     (void)e;
-    App_Printf("Driver 0 Pos is Cal\n");
+    App_printf("Driver 0 Pos is Cal\n");
 }
 /* 车手位置label显示 */
 static void Driverpos1_Label_Cb(lv_event_t * e)
@@ -569,7 +569,7 @@ static void Realtime_MotorPos_Cb(lv_timer_t * e)
                 comSendBuf(COM3,stop_motor,2);
             }
     
-    App_Printf("lvgl timer pos is %.2f,%.2f\r\n",NumberConuts,DriverX_Pos.current_pos);
+    App_printf("lvgl timer pos is %.2f,%.2f\r\n",NumberConuts,DriverX_Pos.current_pos);
 }
 
 

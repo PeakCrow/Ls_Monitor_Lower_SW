@@ -82,7 +82,7 @@ static void inkscreen_senddata(uint8_t _data)
 }
 static uint8_t inkscreen_readbusy(void)
 {
-    App_Printf("ink screen is busying \r\n");
+    App_printf("ink screen is busying \r\n");
     uint8_t busy;
     do 
     {
@@ -91,7 +91,7 @@ static uint8_t inkscreen_readbusy(void)
         busy = !(busy & 0x01);
     }
     while(busy);
-    App_Printf("ink screen is release \r\n");
+    App_printf("ink screen is release \r\n");
     inkscreen_delay_ms(200);
     return busy;
 }

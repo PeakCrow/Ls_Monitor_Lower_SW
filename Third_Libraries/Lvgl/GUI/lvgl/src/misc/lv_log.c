@@ -11,10 +11,10 @@
 
 #include <stdarg.h>
 #include <string.h>
-#include "lv_printf.h"
+#include "lv_PRINT.h"
 #include "../hal/lv_hal_tick.h"
 
-#if LV_LOG_PRINTF
+#if LV_LOG_PRINT
     #include <stdio.h>
 #endif
 
@@ -60,7 +60,7 @@ void lv_log_register_print_cb(lv_log_print_g_cb_t print_cb)
  * @param file name of the file when the log added
  * @param line line number in the source code where the log added
  * @param func name of the function when the log added
- * @param format printf-like format string
+ * @param format PRINT-like format string
  * @param ... parameters for `format`
  */
 void _lv_log_add(lv_log_level_t level, const char * file, int line, const char * func, const char * format, ...)
@@ -85,22 +85,22 @@ void _lv_log_add(lv_log_level_t level, const char * file, int line, const char *
         uint32_t t = lv_tick_get();
         static const char * lvl_prefix[] = {"Trace", "Info", "Warn", "Error", "User"};
 
-#if LV_LOG_PRINTF
-        printf("[%s]\t(%" LV_PRId32 ".%03" LV_PRId32 ", +%" LV_PRId32 ")\t %s: ",
+#if LV_LOG_PRINT
+        PRINT("[%s]\t(%" LV_PRId32 ".%03" LV_PRId32 ", +%" LV_PRId32 ")\t %s: ",
                lvl_prefix[level], t / 1000, t % 1000, t - last_log_time, func);
-        vprintf(format, args);
-        printf(" \t(in %s line #%d)\n", &file[p], line);
+        vPRINT(format, args);
+        PRINT(" \t(in %s line #%d)\n", &file[p], line);
 #else
         if(custom_print_cb) {
             char buf[512];
-#if LV_SPRINTF_CUSTOM
+#if LV_SPRINT_CUSTOM
             char msg[256];
             lv_vsnprintf(msg, sizeof(msg), format, args);
-            lv_snprintf(buf, sizeof(buf), "[%s]\t(%" LV_PRId32 ".%03" LV_PRId32 ", +%" LV_PRId32 ")\t %s: %s \t(in %s line #%d)\n",
+            lv_snPRINT(buf, sizeof(buf), "[%s]\t(%" LV_PRId32 ".%03" LV_PRId32 ", +%" LV_PRId32 ")\t %s: %s \t(in %s line #%d)\n",
                         lvl_prefix[level], t / 1000, t % 1000, t - last_log_time, func, msg, &file[p], line);
 #else
             lv_vaformat_t vaf = {format, &args};
-            lv_snprintf(buf, sizeof(buf), "[%s]\t(%" LV_PRId32 ".%03" LV_PRId32 ", +%" LV_PRId32 ")\t %s: %pV \t(in %s line #%d)\n",
+            lv_snPRINT(buf, sizeof(buf), "[%s]\t(%" LV_PRId32 ".%03" LV_PRId32 ", +%" LV_PRId32 ")\t %s: %pV \t(in %s line #%d)\n",
                         lvl_prefix[level], t / 1000, t % 1000, t - last_log_time, func, (void *)&vaf, &file[p], line);
 #endif
             custom_print_cb(buf);
@@ -119,16 +119,16 @@ void lv_log(const char * format, ...)
     va_list args;
     va_start(args, format);
 
-#if LV_LOG_PRINTF
-    vprintf(format, args);
+#if LV_LOG_PRINT
+    vPRINT(format, args);
 #else
     if(custom_print_cb) {
         char buf[512];
-#if LV_SPRINTF_CUSTOM
+#if LV_SPRINT_CUSTOM
         lv_vsnprintf(buf, sizeof(buf), format, args);
 #else
         lv_vaformat_t vaf = {format, &args};
-        lv_snprintf(buf, sizeof(buf), "%pV", (void *)&vaf);
+        lv_snPRINT(buf, sizeof(buf), "%pV", (void *)&vaf);
 #endif
         custom_print_cb(buf);
     }

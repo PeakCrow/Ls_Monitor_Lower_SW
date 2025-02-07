@@ -152,20 +152,20 @@ uint32_t I2C_EE_PageWrite(uint8_t * pBuffer, uint8_t WriteAddr, uint8_t NumByteT
 
     while (HAL_I2C_GetState(&iic_handle) != HAL_I2C_STATE_READY)
     {
-        //printf("iic总线发生错误");
+        //PRINT("iic总线发生错误");
     }
 
     /* 检查eeprom芯片是否准备好下一次新操作 */
     while (HAL_I2C_IsDeviceReady(&iic_handle,EEPROM_ADDRESS,
                                 I2Cx_MAX_TRIALS,I2Cx_TIMEOUT_MAX) == HAL_TIMEOUT)
     {
-        //printf("iic总线没有准备好");
+        //PRINT("iic总线没有准备好");
     }
 
     /* 等待数据传输结束 */
     while (HAL_I2C_GetState(&iic_handle) != HAL_I2C_STATE_READY)
     {
-        //printf("iic总线数据传输未结束");
+        //PRINT("iic总线数据传输未结束");
     }
 
     return status;
@@ -253,15 +253,15 @@ uint8_t     I2Cx_BUFFER_READ[I2Cx_MAX_BYTE_NUM];
 void DemoIicEeprom()
 {
     uint16_t i;
-    printf("写入数据\r\n");
+    PRINT("写入数据\r\n");
 
     for (i = 0; i < I2Cx_MAX_BYTE_NUM; ++i)
     {
         I2Cx_BUFFER_WRITE[i] = i;
-        printf("0x%02x ",I2Cx_BUFFER_WRITE[i]);
+        PRINT("0x%02x ",I2Cx_BUFFER_WRITE[i]);
         if (i % 16 == 15)
         {
-            printf("\r\n");
+            PRINT("\r\n");
         }
     }
 
@@ -269,7 +269,7 @@ void DemoIicEeprom()
     /* 死循环到此函数中 */
     I2C_EE_BufferWrite(I2Cx_BUFFER_WRITE,EEP_Firstpage,I2Cx_MAX_BYTE_NUM);
 
-    printf("读出的数据\r\n");
+    PRINT("读出的数据\r\n");
 
     /* 将eeprim中读出的数据按照顺序放入到iicx_buffer_read中 */
     I2C_EE_BufferRead(I2Cx_BUFFER_READ,EEP_Firstpage,I2Cx_MAX_BYTE_NUM);
@@ -279,17 +279,17 @@ void DemoIicEeprom()
     {
         if (I2Cx_BUFFER_READ[i] != I2Cx_BUFFER_WRITE[i])
         {
-            printf("0x%02x ",I2Cx_BUFFER_READ[i]);
-            printf("错误：eeprom芯片写入的数据与读出的数据不一致!");
+            PRINT("0x%02x ",I2Cx_BUFFER_READ[i]);
+            PRINT("错误：eeprom芯片写入的数据与读出的数据不一致!");
             break;
         }
-    printf("0x%02x ",I2Cx_BUFFER_READ[i]);
+    PRINT("0x%02x ",I2Cx_BUFFER_READ[i]);
     if (i % 16 == 15)
     {
-        printf("\r\n");
+        PRINT("\r\n");
     }
     }
-    printf("AT24C02读写测试成功\r\n");
+    PRINT("AT24C02读写测试成功\r\n");
 }
 
 #endif

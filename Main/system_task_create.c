@@ -152,7 +152,7 @@ static  void  AppTaskStart (ULONG thread_input)
 static void AppTaskCOM(ULONG thread_input)
 {
     (void)thread_input;
-    App_Printf("AppTaskCom任务开始运行!!\n");
+    App_printf("AppTaskCom任务开始运行!!\n");
 //    uint32_t id;
     uint8_t data[8] = {0x0,0x1,0x2,0x3,0x4,0x5,0x6,0x7};
     bsp_Can1_Send_buf(0x327,data,8);
@@ -164,10 +164,10 @@ static void AppTaskCOM(ULONG thread_input)
 //        bsp_Can1_Send_buf(0x327,data,8);
 //        if(0U != bsp_Can1_Receive_buf(id,data))
 //        {
-//            App_Printf("Receive ID is 0x%x\n",id);
+//            App_printf("Receive ID is 0x%x\n",id);
 //            for(uint8_t i = 0;i < 8;i++)
 //            {
-//                App_Printf("Data[i] = %d\t",data[i]);
+//                App_printf("Data[i] = %d\t",data[i]);
 //            }
 //        }
         tx_thread_sleep(100);
@@ -184,7 +184,7 @@ static void AppTaskCOM(ULONG thread_input)
 void TimerCallback(ULONG thread_input)
 {
     /* 带延迟参数，且设置大于0，都不要在定时组的回调函数里面调用 */
-    //App_Printf("%.1fm/s\r\n",Rotation_Sensor_Get(24,0.464));/* 1000HZ方波下应该121.41m/s */
+    //App_printf("%.1fm/s\r\n",Rotation_Sensor_Get(24,0.464));/* 1000HZ方波下应该121.41m/s */
 }
 /**
 *    函 数 名: AppObjCreate

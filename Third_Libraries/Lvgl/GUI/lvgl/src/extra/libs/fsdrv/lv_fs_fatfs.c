@@ -126,7 +126,7 @@ static void fs_init(void)
     /* 注册SD卡驱动 */
     if(FATFS_LinkDriver(&SD_Driver, "0:/")!=0)
     {
-        printf("注册SD卡失败!\r\n");
+        PRINT("注册SD卡失败!\r\n");
     }        
     //fs = (FATFS*)lv_mem_alloc(sizeof(FATFS));
     
@@ -134,7 +134,7 @@ static void fs_init(void)
     result = f_mount(&fs,"0:/" , 1);    /* Mount a logical drive */
     if (result != FR_OK)
     {
-        printf("挂载文件系统失败 (%s)\r\n", FR_Table[result]);
+        PRINT("挂载文件系统失败 (%s)\r\n", FR_Table[result]);
     }
 }
 

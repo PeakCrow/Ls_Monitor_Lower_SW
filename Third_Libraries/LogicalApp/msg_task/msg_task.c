@@ -4,8 +4,11 @@ TX_THREAD   AppTaskUserIFTCB;
 uint64_t    AppTaskUserIFStk[APP_CFG_TASK_USER_IF_STK_SIZE/8];
 TX_THREAD   AppTaskMsgProTCB;
 uint64_t    AppTaskMsgProStk[APP_CFG_TASK_MsgPro_STK_SIZE/8];
-TX_MUTEX    AppPrintfSemp;              /* 用于printf互斥 */
+TX_MUTEX    AppPrintfSemp;              /* 用PRINTntf互斥 */
 TX_MUTEX    App_PowerDownSave;          /* 用于掉电保存 */
+
+void App_printf(const char *fmt, ...);
+int mini_printf(const char *fmt, ...);
 
 
 void AppTaskMsgPro(ULONG thread_input)
@@ -51,7 +54,7 @@ void AppTaskMsgPro(ULONG thread_input)
 void AppTaskUserIF(ULONG thread_input)
 {
     (void)thread_input;
-    App_Printf("按键驱动初始化!\n");
+    App_printf("按键驱动初始化!\n");
     
     uint8_t _shell_get = ' ';
     uint8_t _comchar_status = 0;
@@ -75,31 +78,31 @@ void AppTaskUserIF(ULONG thread_input)
             switch(ucKeyCode)
             {
             case KEY_0_UP:
-                App_Printf("k0按键弹起\r\n");
+                App_printf("k0按键弹起\r\n");
                 break;
             case KEY_0_DOWN:
-                App_Printf("k0按键按下\r\n");
+                App_printf("k0按键按下\r\n");
                 break;
             case KEY_UP_UP:
-                App_Printf("kup按键弹起\r\n");
+                App_printf("kup按键弹起\r\n");
                 break;
             case KEY_UP_DOWN:
-                App_Printf("kup按键按下\r\n");
+                App_printf("kup按键按下\r\n");
                 break;
             case KEY_0_LONG:
-                App_Printf("k0按键长按\r\n");
+                App_printf("k0按键长按\r\n");
                 break;
             case KEY_UP_LONG:
-                App_Printf("kup按键长按\r\n");
+                App_printf("kup按键长按\r\n");
                 break;
             case KEY_MULTI_DOWM:
-                App_Printf("kmulti按键按下\r\n");
+                App_printf("kmulti按键按下\r\n");
                 break;
             case KEY_MULTI_UP:
-                App_Printf("kmulti按键弹起\r\n");
+                App_printf("kmulti按键弹起\r\n");
                 break;
             case KEY_MULTI_LONG:
-                App_Printf("kmulti按键长按\r\n");
+                App_printf("kmulti按键长按\r\n");
                 break;
             }
         }
@@ -170,17 +173,17 @@ NR_SHELL_CMD_EXPORT(test, shell_test_cmd,"shell demo cmd for test,traverse all p
 
 /*
 * 
-*    函 数 名: App_Printf
-*    功能说明: 线程安全的printf方式
-*    形    参 : 同printf的参数。
+*    函 数 名: APRINTntf
+*    功能说明: �PRINT�全的printf方式
+*    形    参 : PRINTntf的参数。
 *             在C中，当无法列出传递函数的所有实参的类型和数目时,
 *             可以用省略号指定参数表
 *    返 回 值: 无
 * 
 */
-void App_Printf(const char *fmt, ...)
+void App_printf(const char *fmt, ...)
 {
-    char  buf_str[200 + 1];/* 特别注意，如果printf的变量较多，注意此局部变量的大小是否够用 */
+    char  buf_str[200 + 1];/* 特别注�PRINT�果printf的变量较多，注意此局部变量的大小是否够用 */
     va_list   v_args;
     va_start(v_args, fmt);
    (void)vsnprintf((char       *)&buf_str[0],
@@ -190,7 +193,7 @@ void App_Printf(const char *fmt, ...)
     va_end(v_args);
     /* 互斥操作 */
     tx_mutex_get(&AppPrintfSemp, TX_WAIT_FOREVER);
-    printf("%s", buf_str);
+    PRINT("%s", buf_str);
     tx_mutex_put(&AppPrintfSemp);
 }
 /*
@@ -253,7 +256,7 @@ int mini_printf(const char *fmt, ...)
 #endif
 //    for (scan = fmt; *scan; scan++) {
 //        if (*scan == '\n') {
-//            printf_core();
+//            PRINT_core();
 //            break;
 //        }
 //    }
@@ -394,13 +397,13 @@ int mini_printf(const char *fmt, ...)
 }
 
 /**
- * @brief m_printf command
+ * @brief m_PRINT command
  */
 void shell_mini_printf_cmd(char argc, char *argv)
 {
-    mini_printf("test for mini printf !\r\n");
-    mini_printf("the %s value is %d !\n\n","mini",99);
+    mini_printf("test for mini PRINT !\r\n");
+    mini_printf("the %s value is %d !\r\n","mini",99);
     mini_printf("the %s value is 0x%x !\r\n","float",0x10);
 }
-NR_SHELL_CMD_EXPORT(m_printf, shell_mini_printf_cmd,"for practice mini printf")
+NR_SHELL_CMD_EXPORT(m_printf, shell_mini_printf_cmd,"for practice mini PRINT")
 

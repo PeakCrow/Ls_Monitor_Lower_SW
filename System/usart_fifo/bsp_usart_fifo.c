@@ -292,7 +292,7 @@ UART_T *ComToUart(COM_PORT_E _ucPort)
     }
     else
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
         return 0;
     }
 }
@@ -332,7 +332,7 @@ void bsp_SetUartParam(USART_TypeDef *Instance,uint32_t BaudRate,
     
     if(HAL_UART_Init(&UartHandle) != HAL_OK)
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__); 
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__); 
     }
     
 }
@@ -614,7 +614,7 @@ uint8_t comGetChar(COM_PORT_E _usPort,uint8_t *_pByte)
 /*
 *   函 数 名: fputc
 *   功能说明: 重定义putc函数
-*               这样可以使用printf函数从串口1打印输出
+*               这样可PRINT用printf函数从串口1打印输出
 *   形    参: 无
 *   返 回 值: 无
 *   时    间: 2024年7月7日 16:18:56

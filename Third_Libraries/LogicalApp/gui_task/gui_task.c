@@ -16,7 +16,7 @@ void AppTaskTFTLCD    (ULONG thread_input)
 {
     (VOID)thread_input;
     uint8_t lcd_id[12];                /* 存放LCD ID字符串 */
-    App_Printf((char*)lcd_id,"LCD ID:%04X\n",lcddev.id);
+    App_printf((char*)lcd_id,"LCD ID:%04X\n",lcddev.id);
     #if 1
     tx_mutex_get(&AppLCDSemp, TX_WAIT_FOREVER);
     Gui_Monitor_App();    /* 运行lvgl例程 */

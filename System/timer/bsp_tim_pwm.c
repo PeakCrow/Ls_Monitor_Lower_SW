@@ -129,7 +129,7 @@ void bsp_RCC_TIM_Enable(TIM_TypeDef* TIMx)
     else if (TIMx == TIM14) __HAL_RCC_TIM14_CLK_ENABLE();
     else
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
     }    
 }
 
@@ -163,7 +163,7 @@ void bsp_RCC_TIM_Disable(TIM_TypeDef* TIMx)
     else if (TIMx == TIM14) __HAL_RCC_TIM14_CLK_DISABLE();
     else
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
     }
 }
 
@@ -196,7 +196,7 @@ uint8_t bsp_GetAFofTIM(TIM_TypeDef* TIMx)
     else if (TIMx == TIM14) ret = GPIO_AF9_TIM14;
     else
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
     }
     
     return ret;
@@ -282,11 +282,11 @@ void MX_DMA_Init(void)
         
         if(HAL_DMA_DeInit(&hdma_ch1) != HAL_OK)
             {
-                printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+                PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
             }
         if(HAL_DMA_Init((&g_TimHandle)->hdma[TIM_DMA_ID_CC1]) != HAL_OK)//4--
             {
-                printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+                PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
             }
         
         HAL_NVIC_SetPriority(DMA1_Stream4_IRQn, 0, 0);//6--
@@ -360,7 +360,7 @@ void bsp_SetTIMOutPWM(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, TIM_TypeDef* TIMx,
 
     if (_ucChannel > 6)
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
     }
     
     if (_ulDutyCycle == 0)
@@ -456,7 +456,7 @@ void bsp_SetTIMOutPWM(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, TIM_TypeDef* TIMx,
             
             if (HAL_TIM_PWM_Init(&g_TimHandle) != HAL_OK)
                 {
-                    printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+                    PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
                 }
             
         }
@@ -464,7 +464,7 @@ void bsp_SetTIMOutPWM(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, TIM_TypeDef* TIMx,
         {
             if (HAL_TIM_PWM_Init(&TimHandle) != HAL_OK)
                 {
-                    printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+                    PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
                 }
         }
 
@@ -483,14 +483,14 @@ void bsp_SetTIMOutPWM(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, TIM_TypeDef* TIMx,
         {
             if (HAL_TIM_PWM_ConfigChannel(&g_TimHandle, &sConfig, TimChannel[_ucChannel]) != HAL_OK)
                 {
-                    printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+                    PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
                 }
         }
     else
         {
             if (HAL_TIM_PWM_ConfigChannel(&TimHandle, &sConfig, TimChannel[_ucChannel]) != HAL_OK)
                 {
-                    printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+                    PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
                 }
         }
 
@@ -500,14 +500,14 @@ void bsp_SetTIMOutPWM(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, TIM_TypeDef* TIMx,
         {
             if (HAL_TIM_PWM_Start_DMA(&g_TimHandle,TimChannel[_ucChannel],(uint32_t*)pwm_led4,sizeof(pwm_led4)/sizeof(pwm_led4[0])) != HAL_OK)//以DMA模式开启PWM生成
                 {
-                    printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+                    PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
                 }
         }
     else
         {
             if (HAL_TIM_PWM_Start(&TimHandle, TimChannel[_ucChannel]) != HAL_OK)
                 {
-                    printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+                    PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
                 }
         }
 }
@@ -598,7 +598,7 @@ void bsp_SetTIMforInt(TIM_TypeDef* TIMx, uint32_t _ulFreq, uint8_t _PreemptionPr
     TimHandle.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
     if (HAL_TIM_Base_Init(&TimHandle) != HAL_OK)
     {
-        printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+        PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
     }
 
     /* 使能定时器中断  */
@@ -625,7 +625,7 @@ void bsp_SetTIMforInt(TIM_TypeDef* TIMx, uint32_t _ulFreq, uint8_t _PreemptionPr
         else if (TIMx == TIM14) irq = TIM8_TRG_COM_TIM14_IRQn;
         else
         {
-            printf("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
+            PRINT("Wrong parameters value: file %s on line %d\r\n", __FILE__,__LINE__);
         }    
         HAL_NVIC_SetPriority((IRQn_Type)irq, _PreemptionPriority, _SubPriority);
         HAL_NVIC_EnableIRQ((IRQn_Type)irq);        

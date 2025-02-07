@@ -72,7 +72,7 @@ void bsp_StartOnceTimer(uint8_t _id,uint32_t _period,void (*callfunc) (void))
 {
     if(_id >= TIM_TASK_COUNT){
         /*打印出错的源代码文件名，函数名称*/
-        printf("Error: file %s,function %s()\r\n", __FILE__,__FUNCTION__);
+        PRINT("Error: file %s,function %s()\r\n", __FILE__,__FUNCTION__);
         while(1);    /*参数异常，死机等待看门狗复位*/
     }
     __set_PRIMASK(1);    /*禁止全局中断*/
@@ -98,7 +98,7 @@ void bsp_StartAutoTimer(uint8_t _id,uint32_t _period,void (*callfunc) (void))
 {
     if(_id >= TIM_TASK_COUNT){
         /*打印出错的源代码文件名，函数名称*/
-        printf("Error: file %s,function %s()\r\n", __FILE__,__FUNCTION__);
+        PRINT("Error: file %s,function %s()\r\n", __FILE__,__FUNCTION__);
         while(1);/*参数异常，死机等待看门狗复位*/
     }
     __set_PRIMASK(1);    /*禁止全局中断*/

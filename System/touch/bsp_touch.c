@@ -497,7 +497,7 @@ uint8_t GT9147_Init(void)
     bsp_DelayMS(100);  
     GT9147_RD_Reg(GT_PID_REG,temp,4);//读取产品ID
     temp[4]=0;
-    printf("CTP ID2:%s\r\n",temp);    //打印ID
+    PRINT("CTP ID2:%s\r\n",temp);    //打印ID
     if(strcmp((char*)temp,"9147")==0)//ID==9147
     {
         temp[0]=0X02;            
@@ -505,7 +505,7 @@ uint8_t GT9147_Init(void)
         GT9147_RD_Reg(GT_CFGS_REG,temp,1);//读取GT_CFGS_REG寄存器
         if(temp[0]<0X60)//默认版本比较低,需要更新flash配置
         {
-            printf("Default Ver:%d\r\n",temp[0]);
+            PRINT("Default Ver:%d\r\n",temp[0]);
             GT9147_Send_Cfg(1);//更新并保存配置
         }
         bsp_DelayMS(10);
@@ -561,7 +561,7 @@ uint8_t GT9147_Scan(uint8_t mode)
                         tp_dev.x[i]=((uint16_t)buf[1]<<8)+buf[0];
                         tp_dev.y[i]=((uint16_t)buf[3]<<8)+buf[2];
                     }  
-                    printf("Touch area : [%d]\r\n",temp_area3);
+                    PRINT("Touch area : [%d]\r\n",temp_area3);
                     
                 }            
             } 
@@ -755,7 +755,7 @@ void ctp_test(void)
         {
             if((tp_dev.sta)&(1<<t))
             {
-                //printf("X坐标:%d,Y坐标:%d\r\n",tp_dev.x[0],tp_dev.y[0]);
+                //PRINT("X坐标:%d,Y坐标:%d\r\n",tp_dev.x[0],tp_dev.y[0]);
                 if(tp_dev.x[t]<lcddev.width&&tp_dev.y[t]<lcddev.height)
                 {
                     if(lastpos[t][0]==0XFFFF)
