@@ -8,8 +8,8 @@ uint64_t    AppTaskStatStk[APP_CFG_TASK_STAT_STK_SIZE/8];
 
 
 __IO float     OSCPUUsage;           /* CPU百分比 */
-__IO uint8_t   OSStatRdy;              /* 统计任务就绪标志 */
-__IO uint32_t  OSIdleCtr;             /* 空闲任务计数 */
+__IO uint8_t   OSStatRdy;            /* 统计任务就绪标志 */
+__IO uint32_t  OSIdleCtr;            /* 空闲任务计数 */
 uint32_t       OSIdleCtrMax;         /* 1秒内最大的空闲计数 */
 uint32_t       OSIdleCtrRun;         /* 1秒内空闲任务当前计数 */
 /*
@@ -43,7 +43,6 @@ void DispTaskInfo(void)
                     (int)p_tcb->tx_thread_stack_end - (int)p_tcb->tx_thread_stack_highest_ptr,
                     p_tcb->tx_thread_name);
 
-
         p_tcb = p_tcb->tx_thread_created_next;
 
         if(p_tcb == &AppTaskStartTCB) break;
@@ -55,7 +54,7 @@ void DispTaskInfo_Cmd(char argc, char *argv)
     DispTaskInfo();
 }
 
-NR_SHELL_CMD_EXPORT(taskinfo, DispTaskInfo_Cmd,"wwww");
+NR_SHELL_CMD_EXPORT(taskinfo, DispTaskInfo_Cmd,"display all threadx task info,result to be fixed");
 
 
 /*

@@ -1,7 +1,5 @@
 #include "bsp_usart_fifo.h"
-
-
-
+    
 /* 串口1的GPIO  PA9, PA10   串口log接口 */
 #define USART1_CLK_ENABLE()             __HAL_RCC_USART1_CLK_ENABLE()
 

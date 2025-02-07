@@ -10,8 +10,8 @@ static uint8_t inkscreen_readbusy(void);
 /**
   * @FunctionName: GPIO_INK_Init
   * @Author:       trx
-  * @DateTime:     2022Äê5ÔÂ10ÈÕ 18:59:21 
-  * @Purpose:      ³ıÈ¥spiÍ¨Ñ¶ÒÔÍâµÄ¿ØÖÆÒı½ÅµÄ³õÊ¼»¯
+  * @DateTime:     2022å¹´5æœˆ10æ—¥ 18:59:21 
+  * @Purpose:      é™¤å»spié€šè®¯ä»¥å¤–çš„æ§åˆ¶å¼•è„šçš„åˆå§‹åŒ–
   * @param:        void
   * @return:       none
 */
@@ -19,20 +19,20 @@ static void gpio_ink_init(void)
 {
     GPIO_InitTypeDef gpio_initstruct = {0};
 
-    /* Ê¹ÄÜÒı½ÅÊ±ÖÓ */
+    /* ä½¿èƒ½å¼•è„šæ—¶é’Ÿ */
     INK_BUSY_CLK_ENABLE();
     INK_RST_CLK_ENABLE();
     INK_DC_CLK_ENABLE();
     INK_CS_CLK_ENABLE();
 
-    /* ÅäÖÃÒı½ÅµÄÊä³öµÈ¼¶ */
+    /* é…ç½®å¼•è„šçš„è¾“å‡ºç­‰çº§ */
     //HAL_GPIO_WritePin(INK_BUSY_GPIO_PORT,INK_BUSY_GPIO_PIN,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(INK_RST_GPIO_PORT,INK_RST_GPIO_PIN,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(INK_DC_GPIO_PORT,INK_DC_GPIO_PIN,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(INK_CS_GPIO_PORT,INK_CS_GPIO_PIN,GPIO_PIN_RESET);
     
 
-    /* ÅäÖÃÒı½ÅÄ£Ê½ */
+    /* é…ç½®å¼•è„šæ¨¡å¼ */
     /* RST PIN */
     gpio_initstruct.Pin         = INK_RST_GPIO_PIN;
     gpio_initstruct.Mode     = GPIO_MODE_OUTPUT_PP;
@@ -57,8 +57,8 @@ static void gpio_ink_init(void)
 /**
   * @FunctionName: bsp_Inkscreen_write_byte
   * @Author:       trx
-  * @DateTime:     2023Äê4ÔÂ22ÈÕ22µã44·Ö 
-  * @Purpose:      ÏòÄ«Ë®ÆÁspiĞ´Ò»¸ö×Ö½Ú
+  * @DateTime:     2023å¹´4æœˆ22æ—¥22ç‚¹44åˆ† 
+  * @Purpose:      å‘å¢¨æ°´å±spiå†™ä¸€ä¸ªå­—èŠ‚
   * @param:        void
   * @return:       none
 */
@@ -98,8 +98,8 @@ static uint8_t inkscreen_readbusy(void)
 /**
   * @FunctionName: bsp_InksreenExit
   * @Author:       trx
-  * @DateTime:     2023Äê4ÔÂ22ÈÕ22µã44·Ö 
-  * @Purpose:      Ä«Ë®ÆÁÍË³ö£¬Ö÷ÒªÊÇÀ­µÍ5vÒı½Å
+  * @DateTime:     2023å¹´4æœˆ22æ—¥22ç‚¹44åˆ† 
+  * @Purpose:      å¢¨æ°´å±é€€å‡ºï¼Œä¸»è¦æ˜¯æ‹‰ä½5vå¼•è„š
   * @param:        void
   * @return:       none
 */
@@ -113,8 +113,8 @@ void bsp_InkscreenExit(void)
 /**
   * @FunctionName: bsp_InksreenInit
   * @Author:       trx
-  * @DateTime:     2023Äê4ÔÂ22ÈÕ22µã44·Ö 
-  * @Purpose:      Ä«Ë®ÆÁ³õÊ¼»¯-->Ó¦¸Ã½«Ğ´Í¼°¸º¯ÊıÒ²·Å¹ıÀ´
+  * @DateTime:     2023å¹´4æœˆ22æ—¥22ç‚¹44åˆ† 
+  * @Purpose:      å¢¨æ°´å±åˆå§‹åŒ–-->åº”è¯¥å°†å†™å›¾æ¡ˆå‡½æ•°ä¹Ÿæ”¾è¿‡æ¥
   * @param:        void
   * @return:       none
 */
@@ -127,24 +127,24 @@ void bsp_InkscreenInit(void)
 
     bsp_InkscreenReset();
 
-    /* ´ò¿ªµçÔ     */	
+    /* æ‰“å¼€ç”µ?    */	
     inkscreen_sendcommand(0x04);  
     inkscreen_readbusy();
-    /* panel setting ÒÇ±íÉèÖÃ */
+    /* panel setting ä»ªè¡¨è®¾ç½® */
     inkscreen_sendcommand(0x00);
-    /* 0x0f 0x89 È«¶¼ÊÇ0x00¼Ä´æÆ÷µÄÄ¬ÈÏÅäÖÃ */
+    /* 0x0f 0x89 å…¨éƒ½æ˜¯0x00å¯„å­˜å™¨çš„é»˜è®¤é…ç½® */
     inkscreen_senddata(0x0f);
     inkscreen_senddata(0x89);
-    /* resolution setting ·Ö±æÂÊÉèÖÃ */
+    /* resolution setting åˆ†è¾¨ç‡è®¾ç½® */
     inkscreen_sendcommand(0x61);
-    /* Ë®Æ½·½Ïò128 -   1 = 127 */
+    /* æ°´å¹³æ–¹å‘128 -   1 = 127 */
     inkscreen_senddata (0x80);
-    /* ÊúÖ±·½Ïò296 -     1 = 295£¬ĞèÒª1¸ö×Ö½Ú¼Ó1Î»À´±íÊ¾ */
+    /* ç«–ç›´æ–¹å‘296 -     1 = 295ï¼Œéœ€è¦1ä¸ªå­—èŠ‚åŠ 1ä½æ¥è¡¨ç¤º */
     inkscreen_senddata (0x01);
     inkscreen_senddata (0x28);
-    /* vcom and data interval setting vcomºÍÊı¾İ¼ä¸ôÉèÖÃ */
+    /* vcom and data interval setting vcomå’Œæ•°æ®é—´éš”è®¾ç½® */
     inkscreen_sendcommand(0X50);
-    /* ÅäÖÃÆÁÄ»ÑÕÉ«Êı¾İ°üº¬ÓĞºìÉ«¡¢ºÚÉ«ºÍ°×É« */
+    /* é…ç½®å±å¹•é¢œè‰²æ•°æ®åŒ…å«æœ‰çº¢è‰²ã€é»‘è‰²å’Œç™½è‰² */
     inkscreen_senddata(0x77);
 
     bsp_InkscreeenClear();
@@ -152,8 +152,8 @@ void bsp_InkscreenInit(void)
 /**
   * @FunctionName: bsp_InkscreenReset
   * @Author:       trx
-  * @DateTime:     2023Äê4ÔÂ22ÈÕ23µã01·Ö
-  * @Purpose:      Ä«Ë®ÆÁ¸´Î»
+  * @DateTime:     2023å¹´4æœˆ22æ—¥23ç‚¹01åˆ†
+  * @Purpose:      å¢¨æ°´å±å¤ä½
   * @param:        void
   * @return:       none
 */
@@ -169,8 +169,8 @@ void bsp_InkscreenReset(void)
 /**
   * @FunctionName: bsp_InkscreeenClear
   * @Author:       trx
-  * @DateTime:     2023Äê4ÔÂ23ÈÕ22µã39·Ö
-  * @Purpose:      Ä«Ë®ÆÁÇåÆÁ
+  * @DateTime:     2023å¹´4æœˆ23æ—¥22ç‚¹39åˆ†
+  * @Purpose:      å¢¨æ°´å±æ¸…å±
   * @param:        void
   * @return:       none
 */
@@ -179,7 +179,7 @@ void bsp_InkscreeenClear(void)
     uint8_t width = (INKSCREEN_WIDTH % 8 == 0) ? (INKSCREEN_WIDTH / 8) : (INKSCREEN_WIDTH / 8 + 1);
     uint16_t height = INKSCREEN_HEIGHT;
 
-    /* ·¢ËÍºÚ/°×É«Êı¾İ */
+    /* å‘é€é»‘/ç™½è‰²æ•°æ® */
     inkscreen_sendcommand(INKSCREEN_BW);
     for(uint8_t i = 0;i < height;i++)
     {
@@ -188,7 +188,7 @@ void bsp_InkscreeenClear(void)
             inkscreen_senddata(0xff);
         }
     }
-    /* ·¢ËÍºìÉ«Êı¾İ */
+    /* å‘é€çº¢è‰²æ•°æ® */
     inkscreen_sendcommand(INKSCREEN_RED);
     for(uint8_t i = 0;i < height;i++)
     {
@@ -197,32 +197,32 @@ void bsp_InkscreeenClear(void)
             inkscreen_senddata(0xff);
         }
     }
-    /* ÏÔÊ¾Ë¢ĞÂÖ¸Áî */
+    /* æ˜¾ç¤ºåˆ·æ–°æŒ‡ä»¤ */
     inkscreen_sendcommand(INKSCREEN_DRF);
     inkscreen_readbusy();
 }
 /**
   * @FunctionName: bsp_InkscreeenSleep
   * @Author:       trx
-  * @DateTime:     2023Äê4ÔÂ23ÈÕ22µã47·Ö
-  * @Purpose:      Ä«Ë®ÆÁË¯Ãß
+  * @DateTime:     2023å¹´4æœˆ23æ—¥22ç‚¹47åˆ†
+  * @Purpose:      å¢¨æ°´å±ç¡çœ 
   * @param:        void
   * @return:       none
 */
 void bsp_InkscreeenSleep(void)
 {
-    /* µôµç */
+    /* æ‰ç”µ */
     inkscreen_sendcommand(INKSCREEN_POF);
     inkscreen_readbusy();
-    /* Éî¶ÈË¯Ãß */
+    /* æ·±åº¦ç¡çœ  */
     inkscreen_sendcommand(INKSCREEN_DSLP);
     inkscreen_senddata(INKSCREEN_CHC);
 }
 /**
   * @FunctionName: bsp_InkscreenDisplay
   * @Author:       trx
-  * @DateTime:     2023Äê4ÔÂ23ÈÕ22µã47·Ö
-  * @Purpose:      Ä«Ë®ÆÁÏÔÊ¾
+  * @DateTime:     2023å¹´4æœˆ23æ—¥22ç‚¹47åˆ†
+  * @Purpose:      å¢¨æ°´å±æ˜¾ç¤º
   * @param:        void
   * @return:       none
 */
@@ -231,7 +231,7 @@ void bsp_InkscreenDisplay(const uint8_t *_blackimage,const uint8_t * _ryimage)
     uint8_t width = (INKSCREEN_WIDTH % 8 == 0) ? (INKSCREEN_WIDTH / 8) : (INKSCREEN_WIDTH / 8 + 1);
     uint16_t height = INKSCREEN_HEIGHT;
 
-    /* ·¢ËÍºÚÉ«Êı¾İ */
+    /* å‘é€é»‘è‰²æ•°æ® */
     inkscreen_sendcommand(INKSCREEN_BW);
     for(uint8_t i = 0;i < height;i++)
     {
@@ -240,10 +240,10 @@ void bsp_InkscreenDisplay(const uint8_t *_blackimage,const uint8_t * _ryimage)
             inkscreen_senddata(_blackimage[i + j * width]);
         }
     }
-    /* partial out ÅÅ³ıÓ°Ïì£¿ */
+    /* partial out æ’é™¤å½±å“ï¼Ÿ */
     inkscreen_sendcommand(INKSCREEN_PTOUT);
 
-    /* ·¢ËÍºìÉ«Êı¾İ */
+    /* å‘é€çº¢è‰²æ•°æ® */
     inkscreen_sendcommand(INKSCREEN_RED);
     for(uint8_t i = 0;i < height;i++)
     {
@@ -252,10 +252,10 @@ void bsp_InkscreenDisplay(const uint8_t *_blackimage,const uint8_t * _ryimage)
             inkscreen_senddata(_ryimage[i + j * width]);
         }
     }
-    /* partial out ÅÅ³ıÓ°Ïì£¿ */
+    /* partial out æ’é™¤å½±å“ï¼Ÿ */
     inkscreen_sendcommand(INKSCREEN_PTOUT);
 
-    /* ÏÔÊ¾Ë¢ĞÂ */
+    /* æ˜¾ç¤ºåˆ·æ–° */
     inkscreen_sendcommand(INKSCREEN_DRF);
     inkscreen_readbusy();
 }

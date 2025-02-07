@@ -1,8 +1,6 @@
 #include "sensor_ui.h"
 #include "monitor.h"
 
-
-
 static void Imgbtn_MC_cb(lv_event_t * e);
 static lv_style_t style_indic;
 static void Sensor_In_Ui(lv_obj_t * parent);
@@ -13,9 +11,6 @@ static lv_timer_t * Realtime_Sensor_timer;
 static void Realtime_Sensor_Cb(lv_timer_t * e);
 lv_obj_t * analog1,*analog2,*analog3,*analog4;
 lv_chart_series_t * ser,*ser1,*ser2,*ser3;
-
-
-
 
 void Sensor_Ui(lv_obj_t *parent)
 {

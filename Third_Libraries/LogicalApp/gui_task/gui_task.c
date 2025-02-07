@@ -1,6 +1,5 @@
 #include "gui_task.h"
 
-
 TX_THREAD    AppTaskTFTLCDTCB;
 uint64_t    AppTaskTFTLCDStk[APP_CFG_TASK_TFTLCD_STK_SIZE/8];
 TX_MUTEX AppLCDSemp;                /* 用于LVGL互斥 */

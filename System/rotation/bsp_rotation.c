@@ -13,7 +13,7 @@ static uint8_t g_updatecounter = 0;
   * @FunctionName: bsp_InitRotationSensor
   * @Author:       trx
   * @DateTime:     2022????5??22:13:00 
-  * @Purpose:      ÂÖËÙ´«¸ĞÆ÷³õÊ¼»¯º¯Êı£¬Ö÷Òª³õÊ¼»¯¶¨Ê±Æ÷ETR¹¦ÄÜ
+  * @Purpose:      è½®é€Ÿä¼ æ„Ÿå™¨åˆå§‹åŒ–å‡½æ•°ï¼Œä¸»è¦åˆå§‹åŒ–å®šæ—¶å™¨ETRåŠŸèƒ½
   * @param:        void
   * @return:       none
 */
@@ -24,12 +24,12 @@ void bsp_InitRotationSensor(void)
 
     g_RotationTimeHandle.Instance                 = ROTATION_SENSOR_TIM;
     g_RotationTimeHandle.Init.Prescaler         = 0;
-    g_RotationTimeHandle.Init.CounterMode         = TIM_COUNTERMODE_UP;                /* ÏòÉÏ¼ÆÊıÄ£Ê½ */
-    g_RotationTimeHandle.Init.Period             = ROTATION_SENSOR_TIM_PERIOD;        /* ¶¨Ê±????2Î»¶¨Ê±Æ÷ */
-    g_RotationTimeHandle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;            /* ¶¨Ê±??·ÖÆµ */
-    g_RotationTimeHandle.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;    /* ¶¨Ê±Æ÷ÖØ×°ÔØÖµÊ§??*/
+    g_RotationTimeHandle.Init.CounterMode         = TIM_COUNTERMODE_UP;                /* å‘ä¸Šè®¡æ•°æ¨¡å¼ */
+    g_RotationTimeHandle.Init.Period             = ROTATION_SENSOR_TIM_PERIOD;        /* å®šæ—¶????2ä½å®šæ—¶å™¨ */
+    g_RotationTimeHandle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;            /* å®šæ—¶??åˆ†é¢‘ */
+    g_RotationTimeHandle.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;    /* å®šæ—¶å™¨é‡è£…è½½å€¼å¤±??*/
 
-    __HAL_TIM_ENABLE_IT(&g_RotationTimeHandle, TIM_IT_UPDATE);                        /* Ê¹ÄÜ¶¨Ê±Æ÷Òç³ö¸üĞÂÖĞ??*/
+    __HAL_TIM_ENABLE_IT(&g_RotationTimeHandle, TIM_IT_UPDATE);                        /* ä½¿èƒ½å®šæ—¶å™¨æº¢å‡ºæ›´æ–°ä¸­??*/
     
     if(HAL_TIM_Base_Init(&g_RotationTimeHandle) != HAL_OK)
     {
@@ -51,7 +51,7 @@ void bsp_InitRotationSensor(void)
     }
 
     HAL_NVIC_SetPriority(TIM2_IRQn,1,0);
-    HAL_NVIC_EnableIRQ(TIM2_IRQn);                /* ÅäÖÃÖĞ¶ÏÓÅÏÈ?? */
+    HAL_NVIC_EnableIRQ(TIM2_IRQn);                /* é…ç½®ä¸­æ–­ä¼˜å…ˆ?? */
     
     HAL_TIM_Base_Start(&g_RotationTimeHandle);
 }
@@ -73,22 +73,22 @@ void TIM2_IRQHandler(void)
   * @FunctionName: HAL_TIM_PeriodElapsedCallback
   * @Author:       trx
   * @DateTime:     2022????5??22:11:00 
-  * @Purpose:      ¶¨Ê±Æ÷Òç³ö»Øµ÷º¯??
-  * @param:        _htim£º¶¨Ê±Æ÷¾ä±ú
+  * @Purpose:      å®šæ—¶å™¨æº¢å‡ºå›è°ƒå‡½??
+  * @param:        _htimï¼šå®šæ—¶å™¨å¥æŸ„
   * @return:       none
 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *_htim)
 {
     (void)_htim;
-    g_updatecounter++;                            /* ¶¨Ê±Æ÷Ã¿Òç³öÒÀ´Î£¬¼ÆÊıÆ÷?? */
+    g_updatecounter++;                            /* å®šæ—¶å™¨æ¯æº¢å‡ºä¾æ¬¡ï¼Œè®¡æ•°å™¨?? */
 }
 
 /**
   * @FunctionName: HAL_TIM_Base_MspInit
   * @Author:       trx
   * @DateTime:     2022????5??22:14:07 
-  * @Purpose:      HAL_TIM_Base_Initº¯Êı»Øµ÷º¯Êı£¬ÓÃÀ´³õÊ¼»¯Òı½Å
-  * @param:        htim£º¶¨Ê±Æ÷¾ä±ú
+  * @Purpose:      HAL_TIM_Base_Initå‡½æ•°å›è°ƒå‡½æ•°ï¼Œç”¨æ¥åˆå§‹åŒ–å¼•è„š
+  * @param:        htimï¼šå®šæ—¶å™¨å¥æŸ„
   * @return:       none
 */
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef * htim)
@@ -111,20 +111,20 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef * htim)
   * @FunctionName: Rotation_Sensor_Get
   * @Author:       trx
   * @DateTime:     2022????5??22:05:34 
-  * @Purpose:      ÂÖËÙ¼Æ??0.5s²É¼¯¼ÆËãÒ»??
-  * @param:        _gear_num    £º³µÂÖ³İ??
-  * @param:        _wheel_radius£º³µÂÖ°ë¾¶£¬µ¥Î»m
-  * @return:       ÂÖËÙ£¬µ¥Î»m/s
+  * @Purpose:      è½®é€Ÿè®¡??0.5sé‡‡é›†è®¡ç®—ä¸€??
+  * @param:        _gear_num    ï¼šè½¦è½®é½¿??
+  * @param:        _wheel_radiusï¼šè½¦è½®åŠå¾„ï¼Œå•ä½m
+  * @return:       è½®é€Ÿï¼Œå•ä½m/s
 */
 float Rotation_Sensor_Get(uint8_t _gear_num,float _wheel_radius)
 {
     uint32_t pulse_num = 0;
     float rotation = 0;
-    pulse_num =(__HAL_TIM_GET_COUNTER(&g_RotationTimeHandle) + (g_updatecounter * ROTATION_SENSOR_TIM_PERIOD));/* µÃµ½Âö³åÊı??*/
-    /* ÔÚÕâÀïµÃµ½µÄÂö³å??º¬ÓĞÉÏÉıÑØºÍÏÂ½µÑØ£¬µ«ÊÇÔÚ³ı??.5sµÄÊ±¼äºóÕıºÃÈ¥µôÁËÒ»°ëÂö??*/
-    __HAL_TIM_SET_COUNTER(&g_RotationTimeHandle,0);/* ½«¼ÆÊı¼Ä´æÆ÷?? */
-    g_updatecounter = 0;//¶¨Ê±Æ÷Òç³ö±êÖ¾Çå0
-    rotation = (pulse_num/_gear_num * _wheel_radius * 3.14f / 0.5f);    /* ¸ù¾İÂÖÌ¥µÄÖÜ³¤ºÍ³İÂÖµÄ³İÊıÀ´¼ÆËãÂÖËÙ£¬µ¥Î»m/s */
+    pulse_num =(__HAL_TIM_GET_COUNTER(&g_RotationTimeHandle) + (g_updatecounter * ROTATION_SENSOR_TIM_PERIOD));/* å¾—åˆ°è„‰å†²æ•°??*/
+    /* åœ¨è¿™é‡Œå¾—åˆ°çš„è„‰å†²??å«æœ‰ä¸Šå‡æ²¿å’Œä¸‹é™æ²¿ï¼Œä½†æ˜¯åœ¨é™¤??.5sçš„æ—¶é—´åæ­£å¥½å»æ‰äº†ä¸€åŠè„‰??*/
+    __HAL_TIM_SET_COUNTER(&g_RotationTimeHandle,0);/* å°†è®¡æ•°å¯„å­˜å™¨?? */
+    g_updatecounter = 0;//å®šæ—¶å™¨æº¢å‡ºæ ‡å¿—æ¸…0
+    rotation = (pulse_num/_gear_num * _wheel_radius * 3.14f / 0.5f);    /* æ ¹æ®è½®èƒçš„å‘¨é•¿å’Œé½¿è½®çš„é½¿æ•°æ¥è®¡ç®—è½®é€Ÿï¼Œå•ä½m/s */
     return rotation;
 }
 

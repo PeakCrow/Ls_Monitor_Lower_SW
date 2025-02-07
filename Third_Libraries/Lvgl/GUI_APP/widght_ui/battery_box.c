@@ -1,9 +1,6 @@
 #include "battery_box.h"
 #include "monitor.h"
 
-
-
-
 static void Imgbtn_MC_cb(lv_event_t * e);
 static lv_style_t s_style_common;
 static void Battery_Box_In_Ui(lv_obj_t * parent);

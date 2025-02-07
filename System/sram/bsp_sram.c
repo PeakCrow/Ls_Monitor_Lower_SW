@@ -1,9 +1,9 @@
 #include "bsp_sram.h"
 
 
-SRAM_HandleTypeDef SRAM_Handler;    //SRAM¾ä±ú
+SRAM_HandleTypeDef SRAM_Handler;    //SRAMå¥æŸ„
 
-//SRAM³õÊ¼??
+//SRAMåˆå§‹åŒ–
 void bsp_InitSram(void)
 {    
     GPIO_InitTypeDef GPIO_Initure;
@@ -19,10 +19,10 @@ void bsp_InitSram(void)
     GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_8|\
                      GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|\
                      GPIO_PIN_14|GPIO_PIN_15;              
-    GPIO_Initure.Mode=GPIO_MODE_AF_PP;          //ÍÆÍì¸´ÓÃ
-    GPIO_Initure.Pull=GPIO_PULLUP;              //ÉÏÀ­
-    GPIO_Initure.Speed=GPIO_SPEED_HIGH;         //¸ß??
-    GPIO_Initure.Alternate=GPIO_AF12_FSMC;         //¸´ÓÃÎªFSMC    
+    GPIO_Initure.Mode=GPIO_MODE_AF_PP;          //æ¨æŒ½å¤ç”¨
+    GPIO_Initure.Pull=GPIO_PULLUP;              //ä¸Šæ‹‰
+    GPIO_Initure.Speed=GPIO_SPEED_HIGH;         //é«˜??
+    GPIO_Initure.Alternate=GPIO_AF12_FSMC;         //å¤ç”¨ä¸ºFSMC    
     HAL_GPIO_Init(GPIOD,&GPIO_Initure);         
     
     //PE0,1,7~15
@@ -43,34 +43,34 @@ void bsp_InitSram(void)
     SRAM_Handler.Instance=FSMC_NORSRAM_DEVICE;                
     SRAM_Handler.Extended=FSMC_NORSRAM_EXTENDED_DEVICE;    
     
-    SRAM_Handler.Init.NSBank=FSMC_NORSRAM_BANK3;                         //Ê¹ÓÃNE3
-    SRAM_Handler.Init.DataAddressMux=FSMC_DATA_ADDRESS_MUX_DISABLE;     //µØÖ·/Êı¾İÏß²»¸´ÓÃ
+    SRAM_Handler.Init.NSBank=FSMC_NORSRAM_BANK3;                         //ä½¿ç”¨NE3
+    SRAM_Handler.Init.DataAddressMux=FSMC_DATA_ADDRESS_MUX_DISABLE;     //åœ°å€/æ•°æ®çº¿ä¸å¤ç”¨
     SRAM_Handler.Init.MemoryType=FSMC_MEMORY_TYPE_SRAM;                   //SRAM
-    SRAM_Handler.Init.MemoryDataWidth=FSMC_NORSRAM_MEM_BUS_WIDTH_16;     //16Î»Êı¾İ¿í??
-    SRAM_Handler.Init.BurstAccessMode=FSMC_BURST_ACCESS_MODE_DISABLE;     //ÊÇ·ñÊ¹ÄÜÍ»·¢·ÃÎÊ,½ö¶ÔÍ¬²½Í»·¢´æ´¢Æ÷ÓĞ??´Ë´¦Î´ÓÃ??
-    SRAM_Handler.Init.WaitSignalPolarity=FSMC_WAIT_SIGNAL_POLARITY_LOW;    //µÈ´ıĞÅºÅµÄ¼«??½öÔÚÍ»·¢Ä£Ê½·ÃÎÊÏÂÓĞ??
-    SRAM_Handler.Init.WaitSignalActive=FSMC_WAIT_TIMING_BEFORE_WS;       //´æ´¢Æ÷ÊÇÔÚµÈ´ıÖÜÆÚÖ®Ç°µÄÒ»¸öÊ±ÖÓÖÜÆÚ»¹ÊÇµÈ´ıÖÜÆÚÆÚ¼äÊ¹ÄÜNWAIT
-    SRAM_Handler.Init.WriteOperation=FSMC_WRITE_OPERATION_ENABLE;        //´æ´¢Æ÷Ğ´Ê¹ÄÜ
-    SRAM_Handler.Init.WaitSignal=FSMC_WAIT_SIGNAL_DISABLE;               //µÈ´ıÊ¹ÄÜ??´Ë´¦Î´ÓÃ??
-    SRAM_Handler.Init.ExtendedMode=FSMC_EXTENDED_MODE_DISABLE;            //¶ÁĞ´Ê¹ÓÃÏàÍ¬µÄÊ±??
-    SRAM_Handler.Init.AsynchronousWait=FSMC_ASYNCHRONOUS_WAIT_DISABLE;    //ÊÇ·ñÊ¹ÄÜÍ¬²½´«ÊäÄ£Ê½ÏÂµÄµÈ´ıĞÅºÅ,´Ë´¦Î´ÓÃ??
-    SRAM_Handler.Init.WriteBurst=FSMC_WRITE_BURST_DISABLE;               //½ûÖ¹Í»·¢??
+    SRAM_Handler.Init.MemoryDataWidth=FSMC_NORSRAM_MEM_BUS_WIDTH_16;     //16ä½æ•°æ®å®½??
+    SRAM_Handler.Init.BurstAccessMode=FSMC_BURST_ACCESS_MODE_DISABLE;     //æ˜¯å¦ä½¿èƒ½çªå‘è®¿é—®,ä»…å¯¹åŒæ­¥çªå‘å­˜å‚¨å™¨æœ‰??æ­¤å¤„æœªç”¨??
+    SRAM_Handler.Init.WaitSignalPolarity=FSMC_WAIT_SIGNAL_POLARITY_LOW;    //ç­‰å¾…ä¿¡å·çš„æ??ä»…åœ¨çªå‘æ¨¡å¼è®¿é—®ä¸‹æœ‰??
+    SRAM_Handler.Init.WaitSignalActive=FSMC_WAIT_TIMING_BEFORE_WS;       //å­˜å‚¨å™¨æ˜¯åœ¨ç­‰å¾…å‘¨æœŸä¹‹å‰çš„ä¸€ä¸ªæ—¶é’Ÿå‘¨æœŸè¿˜æ˜¯ç­‰å¾…å‘¨æœŸæœŸé—´ä½¿èƒ½NWAIT
+    SRAM_Handler.Init.WriteOperation=FSMC_WRITE_OPERATION_ENABLE;        //å­˜å‚¨å™¨å†™ä½¿èƒ½
+    SRAM_Handler.Init.WaitSignal=FSMC_WAIT_SIGNAL_DISABLE;               //ç­‰å¾…ä½¿èƒ½??æ­¤å¤„æœªç”¨??
+    SRAM_Handler.Init.ExtendedMode=FSMC_EXTENDED_MODE_DISABLE;            //è¯»å†™ä½¿ç”¨ç›¸åŒçš„æ—¶??
+    SRAM_Handler.Init.AsynchronousWait=FSMC_ASYNCHRONOUS_WAIT_DISABLE;    //æ˜¯å¦ä½¿èƒ½åŒæ­¥ä¼ è¾“æ¨¡å¼ä¸‹çš„ç­‰å¾…ä¿¡å·,æ­¤å¤„æœªç”¨??
+    SRAM_Handler.Init.WriteBurst=FSMC_WRITE_BURST_DISABLE;               //ç¦æ­¢çªå‘??
     SRAM_Handler.Init.ContinuousClock=FSMC_CONTINUOUS_CLOCK_SYNC_ASYNC;
     
-    //FMC¶ÁÊ±Ğò¿ØÖÆ¼Ä´æÆ÷
-    FSMC_ReadWriteTim.AddressSetupTime=0x00;           //µØÖ·½¨Á¢Ê±¼ä£¨ADDSET£©Îª1¸öHCLK 1/168M=6ns*16=96ns
-    FSMC_ReadWriteTim.AddressHoldTime=0x00;            //µØÖ·±£³ÖÊ±¼ä£¨ADDHLD£©Ä£Ê½AÎ´ÓÃ??
-    FSMC_ReadWriteTim.DataSetupTime=0x06;            //Êı¾İ±£´æÊ±¼ä?    ¸öHCLK	=6*1=6ns
+    //FMCè¯»æ—¶åºæ§åˆ¶å¯„å­˜å™¨
+    FSMC_ReadWriteTim.AddressSetupTime=0x00;           //åœ°å€å»ºç«‹æ—¶é—´ï¼ˆADDSETï¼‰ä¸º1ä¸ªHCLK 1/168M=6ns*16=96ns
+    FSMC_ReadWriteTim.AddressHoldTime=0x00;            //åœ°å€ä¿æŒæ—¶é—´ï¼ˆADDHLDï¼‰æ¨¡å¼Aæœªç”¨??
+    FSMC_ReadWriteTim.DataSetupTime=0x06;            //æ•°æ®ä¿å­˜æ—¶é—´?    ä¸ªHCLK	=6*1=6ns
     FSMC_ReadWriteTim.BusTurnAroundDuration=0X00;
-    FSMC_ReadWriteTim.AccessMode=FSMC_ACCESS_MODE_A;//Ä£Ê½A
+    FSMC_ReadWriteTim.AccessMode=FSMC_ACCESS_MODE_A;//æ¨¡å¼A
     HAL_SRAM_Init(&SRAM_Handler,&FSMC_ReadWriteTim,&FSMC_ReadWriteTim);    
 
 }
 
-//ÔÚÖ¸¶¨µØÖ·(WriteAddr+Bank1_SRAM3_ADDR)¿ª??Á¬ĞøĞ´Èën¸ö×Ö??
-//pBuffer:×Ö½ÚÖ¸Õë
-//WriteAddr:ÒªĞ´ÈëµÄµØÖ·
-//n:ÒªĞ´ÈëµÄ×Ö½Ú??
+//åœ¨æŒ‡å®šåœ°å€(WriteAddr+Bank1_SRAM3_ADDR)å¼€??è¿ç»­å†™å…¥nä¸ªå­—??
+//pBuffer:å­—èŠ‚æŒ‡é’ˆ
+//WriteAddr:è¦å†™å…¥çš„åœ°å€
+//n:è¦å†™å…¥çš„å­—èŠ‚??
 void FSMC_SRAM_WriteBuffer(uint8_t *pBuffer,uint32_t WriteAddr,uint32_t n)
 {
     for(;n!=0;n--)
@@ -81,10 +81,10 @@ void FSMC_SRAM_WriteBuffer(uint8_t *pBuffer,uint32_t WriteAddr,uint32_t n)
     }
 }
 
-//ÔÚÖ¸¶¨µØÖ·((WriteAddr+Bank1_SRAM3_ADDR))¿ª??Á¬Ğø¶Á³ön¸ö×Ö??
-//pBuffer:×Ö½ÚÖ¸Õë
-//ReadAddr:Òª¶Á³öµÄÆğÊ¼µØÖ·
-//n:ÒªĞ´ÈëµÄ×Ö½Ú??
+//åœ¨æŒ‡å®šåœ°å€((WriteAddr+Bank1_SRAM3_ADDR))å¼€??è¿ç»­è¯»å‡ºnä¸ªå­—??
+//pBuffer:å­—èŠ‚æŒ‡é’ˆ
+//ReadAddr:è¦è¯»å‡ºçš„èµ·å§‹åœ°å€
+//n:è¦å†™å…¥çš„å­—èŠ‚??
 void FSMC_SRAM_ReadBuffer(u8 *pBuffer,u32 ReadAddr,u32 n)
 {
     for(;n!=0;n--)

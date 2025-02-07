@@ -39,7 +39,7 @@ extern "C"
 {
 #endif
 
-    /* Includes ------------------------------------------------------------------*/
+/* Includes ------------------------------------------------------------------*/
 //#ifndef NR_MICRO_SHELL_SIMULATOR
 //#include <rtconfig.h>
 //#include <rtthread.h>
@@ -122,7 +122,8 @@ The end of line.
 #define NR_SHELL_CMD_HISTORY_BUF_LENGTH 253
 
 /* The user's name. */
-#define NR_SHELL_USER_NAME "nr@root:"
+//#define NR_SHELL_USER_NAME "nr@root:"
+#define NR_SHELL_USER_NAME "nr@xian_user:"
 
 /*
 0: \n

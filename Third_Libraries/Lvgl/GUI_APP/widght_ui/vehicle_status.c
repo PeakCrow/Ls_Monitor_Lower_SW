@@ -1,13 +1,9 @@
 #include "vehicle_status.h"
 #include "monitor.h"
 
-
-
 static void Imgbtn_MC_cb(lv_event_t * e);
 static lv_style_t s_style_common;
 static void App_btn_Back_Cb(lv_event_t* e);
-
-
 
 void Vehicle_Status_Ui(lv_obj_t *parent)
 {

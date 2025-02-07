@@ -2,39 +2,45 @@
 #define _BSP_USART_FIFO_H_
 
 #include "sys.h"
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+    
 #define UART1_FIFO_EN       1
 #define UART2_FIFO_EN       0
 #define UART3_FIFO_EN       0
 /* */
 typedef enum
 {
-	COM1 = 0,
-	COM2 = 1,    /* USART2 */
-	COM3 = 2,    /* USART3 */
+    COM1 = 0,
+    COM2 = 1,    /* USART2 */
+    COM3 = 2,    /* USART3 */
 }COM_PORT_E;
 
 /* 定义串口波特率和FIFO缓冲区大小
     分为发送缓冲区和接收缓冲区 支持全双工 */
 #if UART1_FIFO_EN == 1
-	#define UART1_BAUD 			115200
-	#define UART1_TX_BUF_SIZE	1*1024
-	#define UART1_RX_BUF_SIZE	1*1024
-#endif
-#if UART2_FIFO_EN == 1
-	#define UART2_BAUD			115200
-	#define UART2_TX_BUF_SIZE	1*1024
-	#define UART2_RX_BUF_SIZE	1*1024
-#endif
-
-#if UART3_FIFO_EN == 1
-	#define UART3_BAUD			115200
-	#define UART3_TX_BUF_SIZE	1*1024
-	#define UART3_RX_BUF_SIZE	1*1024
+    #define UART1_BAUD          115200
+    #define UART1_TX_BUF_SIZE   1*1024
+    #define UART1_RX_BUF_SIZE   1*1024
+#endif  
+#if UART2_FIFO_EN == 1  
+    #define UART2_BAUD          115200
+    #define UART2_TX_BUF_SIZE   1*1024
+    #define UART2_RX_BUF_SIZE   1*1024
+#endif  
+    
+#if UART3_FIFO_EN == 1  
+    #define UART3_BAUD          115200
+    #define UART3_TX_BUF_SIZE   1*1024
+    #define UART3_RX_BUF_SIZE   1*1024
 #endif
 /* �����豸�ṹ??*/
 typedef struct
 {
-    USART_TypeDef *uart;         /* STM32内部串口设备指针 */
+    USART_TypeDef *uart;        /* STM32内部串口设备指针 */
     uint8_t *pTxBuf;            /* 发送缓冲区 */
     uint8_t *pRxBuf;            /* 接收缓冲区 */
     uint16_t usTxBufSize;       /* 发送缓冲区大小 */
@@ -59,5 +65,8 @@ void comSendBuf(COM_PORT_E _ucPort,uint8_t *_ucaBuf,uint16_t _usLen);
 void comSendChar(COM_PORT_E _ucPort,uint8_t _ucByte);
 uint8_t comGetChar(COM_PORT_E _ucPort,uint8_t *_pByte);
 
+#ifdef __cplusplus
+}
 #endif
+#endif  // BSP_USART_FIFO_H
 

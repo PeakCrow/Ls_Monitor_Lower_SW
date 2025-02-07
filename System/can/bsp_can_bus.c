@@ -282,7 +282,7 @@ void CAN1_RX0_IRQHandler(void)
 */
 uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
 {
-    uint8_t i;
+//    uint8_t i;
 //    if(IS_CAN_STDID(_id))
 //    {
 //        if(can_rx_msg.StdId == _id)

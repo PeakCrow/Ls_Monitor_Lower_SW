@@ -1,33 +1,33 @@
 #include "sys.h"
 //////////////////////////////////////////////////////////////////////////////////     
-//±¾³ÌĞòÖ»¹©Ñ§Ï°Ê¹ÓÃ£¬Î´¾­×÷ÕßĞí¿É£¬²»µÃÓÃÓÚÆäËüÈÎºÎÓÃÍ¾
-//ALIENTEK STM32F407¿ª·¢°å
-//¶ÀÁ¢¿´ÃÅ¹    Çı¶¯´úÂë	   
-//ÕıµãÔ­×Ó@ALIENTEK
-//¼¼ÊõÂÛÌ³:www.openedv.com
-//´´½¨ÈÕÆÚ:2017/4/7
-//°æ±¾£ºV1.0
-//°æÈ¨ËùÓĞ£¬µÁ°æ±Ø¾¿¡£
-//Copyright(C) ¹ãÖİÊĞĞÇÒíµç×Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾ 2014-2024
+//æœ¬ç¨‹åºåªä¾›å­¦ä¹ ä½¿ç”¨ï¼Œæœªç»ä½œè€…è®¸å¯ï¼Œä¸å¾—ç”¨äºå…¶å®ƒä»»ä½•ç”¨é€”
+//ALIENTEK STM32F407å¼€å‘æ¿
+//ç‹¬ç«‹çœ‹é—¨?   é©±åŠ¨ä»£ç 	   
+//æ­£ç‚¹åŸå­@ALIENTEK
+//æŠ€æœ¯è®ºå›:www.openedv.com
+//åˆ›å»ºæ—¥æœŸ:2017/4/7
+//ç‰ˆæœ¬ï¼šV1.0
+//ç‰ˆæƒæ‰€æœ‰ï¼Œç›—ç‰ˆå¿…ç©¶ã€‚
+//Copyright(C) å¹¿å·å¸‚æ˜Ÿç¿¼ç”µå­ç§‘æŠ€æœ‰é™å…¬å¸ 2014-2024
 //All rights reserved                                      
 ////////////////////////////////////////////////////////////////////////////////// 
 
-IWDG_HandleTypeDef IWDG_Handler; //¶ÀÁ¢¿´ÃÅ¹·¾ä±ú
+IWDG_HandleTypeDef IWDG_Handler; //ç‹¬ç«‹çœ‹é—¨ç‹—å¥æŸ„
 
-//³õÊ¼»¯¶ÀÁ¢¿´ÃÅ¹·
-//prer:·ÖÆµÊı:IWDG_PRESCALER_4~IWDG_PRESCALER_256
-//rlr:×Ô¶¯ÖØ×°ÔØÖµ,0~0XFFF.
-//Ê±¼ä¼ÆËã(´ó¸Å):Tout=((4*2^prer)*rlr)/32 (ms).
+//åˆå§‹åŒ–ç‹¬ç«‹çœ‹é—¨ç‹—
+//prer:åˆ†é¢‘æ•°:IWDG_PRESCALER_4~IWDG_PRESCALER_256
+//rlr:è‡ªåŠ¨é‡è£…è½½å€¼,0~0XFFF.
+//æ—¶é—´è®¡ç®—(å¤§æ¦‚):Tout=((4*2^prer)*rlr)/32 (ms).
 void IWDG_Init(u8 prer,u16 rlr)
 {
     IWDG_Handler.Instance=IWDG;
-    IWDG_Handler.Init.Prescaler=prer;    //ÉèÖÃIWDG·ÖÆµÏµÊı
-    IWDG_Handler.Init.Reload=rlr;        //ÖØ×°ÔØÖµ
-    HAL_IWDG_Init(&IWDG_Handler);        //³õÊ¼»¯IWDG,Ä¬ÈÏ»á¿    Æô¶ÀÁ¢¿´ÃÅ¹·	
+    IWDG_Handler.Init.Prescaler=prer;    //è®¾ç½®IWDGåˆ†é¢‘ç³»æ•°
+    IWDG_Handler.Init.Reload=rlr;        //é‡è£…è½½å€¼
+    HAL_IWDG_Init(&IWDG_Handler);        //åˆå§‹åŒ–IWDG,é»˜è®¤ä¼š?   å¯ç‹¬ç«‹çœ‹é—¨ç‹—	
 }
     
-//Î¹¶ÀÁ¢¿´ÃÅ¹·
+//å–‚ç‹¬ç«‹çœ‹é—¨ç‹—
 void IWDG_Feed(void)
 {   
-    HAL_IWDG_Refresh(&IWDG_Handler);     //Î¹¹·
+    HAL_IWDG_Refresh(&IWDG_Handler);     //å–‚ç‹—
 }

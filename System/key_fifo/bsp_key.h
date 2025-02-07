@@ -3,6 +3,10 @@
 
 #include "sys.h"
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 /* 根据应用程序的功能重命名的按键宏 */
 //#define   KEY_DOWM_K0       KEY_0_DOWN
@@ -81,8 +85,9 @@ uint8_t bsp_GetKey(void);
 uint8_t bsp_GetKey2(void);
 uint8_t bsp_GetKeyState(KEY_ID_E _ucKeyID);
 
-
-
+#ifdef __cplusplus
+}
 #endif
+#endif  // BSP_KEY_H
 
 

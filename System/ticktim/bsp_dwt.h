@@ -19,6 +19,10 @@
 
 #include "sys.h"
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 /*
 * 
@@ -43,6 +47,9 @@ void bsp_InitDWT(void);
 void bsp_DelayUS(uint32_t _ulDelayTime);
 void bsp_DelayMS(uint32_t _ulDelayTime);
 
+#ifdef __cplusplus
+}
 #endif
+#endif  //BSP_DWT_H
 
 /***************************** 安富莱电子 www.armfly.com (END OF FILE) *********************************/

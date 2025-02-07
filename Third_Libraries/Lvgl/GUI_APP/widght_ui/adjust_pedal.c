@@ -464,7 +464,7 @@ static void Record_Btn_Cb(lv_event_t *e)
 {
     (void)e;    
     /* 将.2f浮点数扩大100倍 */
-    uint16_t driver_pos = NumberConuts * 100;
+    uint16_t driver_pos = (uint16_t)(NumberConuts * 100);
     uint8_t pos[] = {(driver_pos / 100),(driver_pos % 100)};
     if((active_index_2+1) == 1){
         App_I2C_EE_BufferWrite(pos,0x05,2);    

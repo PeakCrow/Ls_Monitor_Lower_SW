@@ -50,42 +50,40 @@ void AppTaskMsgPro(ULONG thread_input)
 */
 void AppTaskUserIF(ULONG thread_input)
 {
-    uint8_t ucKeyCode;    /* 按键代码 */
     (void)thread_input;
     App_Printf("按键驱动初始化!\n");
     
-    //匹配好结束符配置 NR_SHELL_END_OF_LINE 0
-    char test_line[] = "ls -v\n";
-    uint8_t _a = ' ';
-    uint8_t index = 0;
-    /* 初步测试代码 */
-    for(uint8_t i = 0; i < sizeof(test_line)-1; i++)
-    {
-        shell(test_line[i]);
-    }
+    uint8_t _shell_get = ' ';
+    uint8_t _comchar_status = 0;
+    uint8_t ucKeyCode;
+    
     while(1)
     {
+        /* 拿到按键数值 */
         ucKeyCode = bsp_GetKey();
-        index = comGetChar(COM1,&_a);
         
-        if(0x0u != index)
+        /* 拿到串口的单个字符串 并交给 shell 终端进行处理 */
+        _comchar_status = comGetChar(COM1,&_shell_get);
+        
+        if(0x0u != _comchar_status)
         {
-            shell((char)_a);
+            shell((char)_shell_get);
         }
+        
         if (ucKeyCode != KEY_NONE)
         {
             switch(ucKeyCode)
             {
-            case KEY_0_UP:                  /* K1键按打印任务执行情况 */
+            case KEY_0_UP:
                 App_Printf("k0按键弹起\r\n");
                 break;
-            case KEY_0_DOWN:                 /* k0按键按下 */
+            case KEY_0_DOWN:
                 App_Printf("k0按键按下\r\n");
                 break;
             case KEY_UP_UP:
                 App_Printf("kup按键弹起\r\n");
                 break;
-            case KEY_UP_DOWN:               /* kup按键按下 */
+            case KEY_UP_DOWN:
                 App_Printf("kup按键按下\r\n");
                 break;
             case KEY_0_LONG:
@@ -114,52 +112,50 @@ void AppTaskUserIF(ULONG thread_input)
  */
 void shell_ls_cmd(char argc, char *argv)
 {
-	unsigned int i = 0;
-	if (argc > 1)
-	{
-		if (!strcmp("cmd", &argv[argv[1]]))
-		{
-
-			for (i = 0; nr_shell.static_cmd[i].fp != NULL; i++)
-			{
-				shell_printf("%s",nr_shell.static_cmd[i].cmd);
-				shell_printf("\r\n");
-			}
-		}
-		else if (!strcmp("-v", &argv[argv[1]]))
-		{
-			shell_printf("ls version 1.0.\r\n");
-		}
-		else if (!strcmp("-h", &argv[argv[1]]))
-		{
-			shell_printf("useage: ls [options]\r\n");
-			shell_printf("options: \r\n");
-			shell_printf("\t -h \t: show help\r\n");
-			shell_printf("\t -v \t: show version\r\n");
-			shell_printf("\t cmd \t: show all commands\r\n");
-		}
-	}
-	else
-	{
-		shell_printf("ls need more arguments!\r\n");
-	}
+    unsigned int i = 0;
+    if (argc > 1)
+    {
+        if (!strcmp("cmd", &argv[argv[1]]))
+        {
+            for (i = 0; nr_shell.static_cmd[i].fp != NULL; i++)
+            {
+                shell_printf("%s",nr_shell.static_cmd[i].cmd);
+                shell_printf("\r\n");
+            }
+        }
+        else if (!strcmp("-v", &argv[argv[1]]))
+        {
+            shell_printf("ls version 1.0.\r\n");
+        }
+        else if (!strcmp("-h", &argv[argv[1]]))
+        {
+            shell_printf("useage: ls [options]\r\n");
+            shell_printf("options: \r\n");
+            shell_printf("\t -h \t: show help\r\n");
+            shell_printf("\t -v \t: show version\r\n");
+            shell_printf("\t cmd \t: show all commands\r\n");
+        }
+    }
+    else
+    {
+        shell_printf("ls need more arguments!\r\n");
+    }
 }
+NR_SHELL_CMD_EXPORT(ls, shell_ls_cmd,"shell demo cmd for ls,paras [cmd][-v][-h]")
 
 /**
  * @brief test command
  */
 void shell_test_cmd(char argc, char *argv)
 {
-	unsigned int i;
-	shell_printf("test command:\r\n");
-	for (i = 0; i < argc; i++)
-	{
-		shell_printf("paras %d: %s\r\n", i, &(argv[argv[i]]));
-	}
+    unsigned int i;
+    shell_printf("test command:\r\n");
+    for (i = 0; i < argc; i++)
+    {
+        shell_printf("paras %d: %s\r\n", i, &(argv[argv[i]]));
+    }
 }
-
-NR_SHELL_CMD_EXPORT(ls, shell_ls_cmd,"xxx");
-NR_SHELL_CMD_EXPORT(test, shell_test_cmd,"yyyy");
+NR_SHELL_CMD_EXPORT(test, shell_test_cmd,"shell demo cmd for test,traverse all paras")
 
 //#ifdef NR_SHELL_USING_EXPORT_CMD
 //NR_SHELL_CMD_EXPORT(ls, shell_ls_cmd);

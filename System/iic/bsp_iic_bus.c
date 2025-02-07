@@ -4,8 +4,6 @@ I2C_HandleTypeDef    iic_handle;
 
 static void I2C_Mode_Config(void);
 
-
-
 void bsp_I2C_EE_Init()
 {
     I2C_Mode_Config();

@@ -3,6 +3,11 @@
 
 #include "sys.h"
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+    
 #define  APP_CFG_TASK_IDLE_PRIO          31u
 #define  APP_CFG_TASK_IDLE_STK_SIZE      1024u
 
@@ -16,8 +21,12 @@ extern uint64_t    AppTaskIdleStk[APP_CFG_TASK_IDLE_STK_SIZE/8];
 extern uint64_t    AppTaskStatStk[APP_CFG_TASK_STAT_STK_SIZE/8];
 
 void  DispTaskInfo          (void);
-void  AppTaskIDLE			(ULONG thread_input);
-void  AppTaskStat			(ULONG thread_input);
-void  OSStatInit 			(void);
+void  AppTaskIDLE           (ULONG thread_input);
+void  AppTaskStat           (ULONG thread_input);
+void  OSStatInit            (void);
+
+#ifdef __cplusplus
+}
+#endif
 #endif
 

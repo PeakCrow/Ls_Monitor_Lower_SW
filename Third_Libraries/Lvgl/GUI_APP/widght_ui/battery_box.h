@@ -3,6 +3,14 @@
 #include "lvgl.h"
 #include "monitor.h"
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+    
 void Battery_Box_Ui(lv_obj_t *parent);
 
-#endif // MOTOR_CONTROL_H
+#ifdef __cplusplus
+}
+#endif
+#endif // BATTERY_BOX-H

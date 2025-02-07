@@ -1,7 +1,11 @@
 #ifndef _SYS_H_
 #define _SYS_H_
 
-
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+    
 /*
 * 
 *                                           C Library
@@ -353,7 +357,8 @@ void MSR_MSP(uint32_t addr);         /* 设置堆栈地址 */
 //#define TX_TIMER_ENABLE_PERFORMANCE_INFO
 
 
-
-
+#ifdef __cplusplus
+}
 #endif
+#endif  // SYS_H
 

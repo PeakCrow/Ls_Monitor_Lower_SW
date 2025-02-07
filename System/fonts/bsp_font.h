@@ -1,6 +1,11 @@
 #ifndef __BSP_FONT_H_
 #define __BSP_FONT_H_
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+    
 //常用ASCII表
 //偏移量32 
 //ASCII字符集: !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
@@ -18,4 +23,7 @@ extern const unsigned char asc2_2412_lcd[95][36];
 extern const unsigned char asc2_3216_lcd[95][128];
 
 
+#ifdef __cplusplus
+}
 #endif
+#endif  // BSP_FONT_H

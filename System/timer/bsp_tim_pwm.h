@@ -1,12 +1,12 @@
 /*
 * 
 *
-*	Ä£¿éÃû³Æ : ÀûÓÃSTM32F4ÄÚ²¿TIMÊä³öPWMĞÅºÅ£¬Ë³±ãÊµÏÖ
-*	ÎÄ¼şÃû³Æ : bsp_tim_pwm.h
-*	°æ    ±¾ : V1.0
-*	Ëµ    Ã÷ : Í·ÎÄ¼ş
-*
-*	Copyright (C), 2012-2013, °²¸»À³µç×Ó www.armfly.com
+*   æ¨¡å—åç§° : åˆ©ç”¨STM32F4å†…éƒ¨TIMè¾“å‡ºPWMä¿¡å·ï¼Œé¡ºä¾¿å®ç°
+*   æ–‡ä»¶åç§° : bsp_tim_pwm.h
+*   ç‰ˆ    æœ¬ : V1.0
+*   è¯´    æ˜ : å¤´æ–‡ä»¶
+*   
+*   Copyright (C), 2012-2013, å®‰å¯Œè±ç”µå­ www.armfly.com
 *
 * 
 */
@@ -14,16 +14,25 @@
 #ifndef __BSP_TIM_PWM_H__
 #define __BSP_TIM_PWM_H__
 #include "sys.h"
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+    
 extern TIM_HandleTypeDef  g_TimHandle;
 
 void bsp_SetTIMOutPWM(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, TIM_TypeDef* TIMx, uint8_t _ucChannel,
-	 uint32_t _ulFreq, uint32_t _ulDutyCycle);
+uint32_t _ulFreq, uint32_t _ulDutyCycle);
 
 void bsp_SetTIMOutPWM_N(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, TIM_TypeDef* TIMx, uint8_t _ucChannel,
-	 uint32_t _ulFreq, uint32_t _ulDutyCycle);	 
+uint32_t _ulFreq, uint32_t _ulDutyCycle);
 
 void bsp_SetTIMforInt(TIM_TypeDef* TIMx, uint32_t _ulFreq, uint8_t _PreemptionPriority, uint8_t _SubPriority);
 
+#ifdef __cplusplus
+}
 #endif
+#endif  // BSP_TIM_PWM_H
 
-/***************************** °²¸»À³µç×Ó www.armfly.com (END OF FILE) *********************************/
+/***************************** å®‰å¯Œè±ç”µå­ www.armfly.com (END OF FILE) *********************************/

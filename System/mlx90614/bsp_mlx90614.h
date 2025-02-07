@@ -2,6 +2,10 @@
 #define __BSP_MLX90614_H_
 #include "sys.h"
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 #define SA            0x00 //Slave address 单个MLX90614时地址为0x00,多个时地址默认为0x5a
 #define EEPROM_ACCESS 0x20 //EEPROM access command
@@ -11,10 +15,10 @@ uint32_t bsp_Mlx90614_Write(uint8_t * pBuffer, uint8_t WriteAddr);
 uint32_t bsp_Mlx90614_ReadBuf(uint8_t * pBuffer, uint8_t ReadAdder, uint16_t NumByteToRead);
 float    bsp_MLX90614_ReadTemp(void);
 
-
-
-
+#ifdef __cplusplus
+}
 #endif
+#endif  // BSP_MLX90614_H
 
 
 

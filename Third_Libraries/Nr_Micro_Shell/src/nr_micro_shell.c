@@ -40,9 +40,9 @@ NR_SHELL_CMD_EXPORT_START(0,NULL);
 NR_SHELL_CMD_EXPORT_END(n,NULL);
 
 shell_st nr_shell =
-    {
-        .user_name = NR_SHELL_USER_NAME,
-        .static_cmd = nr_cmd_start_add,
+{
+    .user_name = NR_SHELL_USER_NAME,
+    .static_cmd = nr_cmd_start_add,
 };
 
 static char *nr_shell_strtok(char *string_org, const char *demial)
@@ -367,5 +367,27 @@ void shell_his_copy_queue_item(shell_his_queue_st *queue, unsigned short i, char
         }
     }
 }
+
+/**
+ * @brief help command
+ */
+void shell_help_cmd(char argc, char *argv)
+{
+    unsigned int i = 0;
+    if (argc > 1)
+    {
+        shell_printf("Do not need parm!\r\n");
+    }else
+    {
+        for (i = 0; nr_shell.static_cmd[i].fp != NULL; i++)
+        {
+            shell_printf("%s",nr_shell.static_cmd[i].cmd);
+            /* NR_SHELL_CMD_NAME_MAX_LENGTH is 10 ,so \t\t is ok */
+            shell_printf("\t\t%s",nr_shell.static_cmd[i].description);
+            shell_printf("\r\n");
+        }
+    }
+}
+NR_SHELL_CMD_EXPORT(help, shell_help_cmd,"To display all cmd list and description")
 
 /******************* (C) COPYRIGHT 2019 Ji Youzhou *****END OF FILE*****************/

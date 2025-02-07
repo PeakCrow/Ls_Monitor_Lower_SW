@@ -3,6 +3,11 @@
 
 #include "sys.h"
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+    
 #define     CANx_BUS_1              CAN1
 #define     CAN1_CLK_ENABLE()       __HAL_RCC_CAN1_CLK_ENABLE()
 #define     CAN1_FPRCE_RESET()      __HAL_RCC_CAN1_FORCE_RESET()
@@ -35,5 +40,8 @@ HAL_StatusTypeDef bsp_Can1_Send_buf(uint32_t _id,uint8_t _buf[],
                                             uint8_t _dlc);
 uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[]);
 
+#ifdef __cplusplus
+}
 #endif
+#endif  //BSP_CAN_BUS_H
 

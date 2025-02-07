@@ -17,11 +17,16 @@
 
 #include "sys.h"
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 void bsp_InitRotationSensor(void);
 float Rotation_Sensor_Get(uint8_t _gear_num,float _wheel_radius);
 
-
-
+#ifdef __cplusplus
+}
 #endif
+#endif  // BSP_ROTATION_H
 

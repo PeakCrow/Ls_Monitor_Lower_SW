@@ -3,6 +3,10 @@
 
 #include "sys.h"
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 #define    APP_CFG_TASK_USER_IF_PRIO       4u
 #define    APP_CFG_TASK_USER_IF_STK_SIZE   1024u
@@ -34,5 +38,8 @@ void  AppTaskUserIF             (ULONG thread_input);
 void  App_Printf                (const char *fmt, ...);
 void  App_I2C_EE_ByteWrite  (uint8_t * pBuffer, uint8_t WriteAddr);
 
+#ifdef __cplusplus
+}
+#endif
 #endif
 

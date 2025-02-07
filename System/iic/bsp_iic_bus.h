@@ -16,6 +16,11 @@
 
 #include "sys.h"
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+    
 #define     I2C_OWN_ADDRESS7            0x0A    /* stm32自身的IIC器件地址 */
 #define     EEP_Firstpage               0x00    /* eeprom芯片数据起始地址 */
 
@@ -76,8 +81,9 @@ void I2C_EE_BufferWrite(uint8_t * pBuffer,uint8_t WriteAddr,
                                     uint16_t NumByteToWrite);
 void DemoIicEeprom(void);
 
-
-
+#ifdef __cplusplus
+}
 #endif
+#endif  // BSP_IIC_BUS_H
 
 
