@@ -388,6 +388,6 @@ void shell_help_cmd(char argc, char *argv)
         }
     }
 }
-NR_SHELL_CMD_EXPORT(help, shell_help_cmd,"To display all cmd list and description")
+NR_SHELL_CMD_EXPORT(listcase, shell_help_cmd,"To display all cmd list and description")
 
 /******************* (C) COPYRIGHT 2019 Ji Youzhou *****END OF FILE*****************/

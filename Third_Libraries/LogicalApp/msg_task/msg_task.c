@@ -54,8 +54,6 @@ void AppTaskMsgPro(ULONG thread_input)
 void AppTaskUserIF(ULONG thread_input)
 {
     (void)thread_input;
-    App_printf("按键驱动初始化!\n");
-    
     uint8_t _shell_get = ' ';
     uint8_t _comchar_status = 0;
     uint8_t ucKeyCode;
@@ -160,6 +158,24 @@ void shell_test_cmd(char argc, char *argv)
 }
 NR_SHELL_CMD_EXPORT(test, shell_test_cmd,"shell demo cmd for test,traverse all paras")
 
+/**
+ * @brief ls command
+ */
+void can1_sent_demo(char argc, char *argv)
+{
+    uint32_t _id = 0x55;
+    uint8_t _buf[8] = {0x55,0x55,0x55,0x55,0x55,0x55,0x55,0x55};
+    bsp_Can1_Send_buf(_id,_buf,8);
+}
+NR_SHELL_CMD_EXPORT(can1_send, can1_sent_demo,"can1 to send once!")
+
+void can2_sent_demo(char argc, char *argv)
+{
+    uint32_t _id = 0x77;
+    uint8_t _buf[8] = {0x77,0x77,0x77,0x77,0x77,0x77,0x77,0x77};
+    bsp_Can2_Send_buf(_id,_buf,8);
+}
+NR_SHELL_CMD_EXPORT(can2_send, can2_sent_demo,"can2 to send once!")
 //#ifdef NR_SHELL_USING_EXPORT_CMD
 //NR_SHELL_CMD_EXPORT(ls, shell_ls_cmd);
 //NR_SHELL_CMD_EXPORT(test, shell_test_cmd);
@@ -244,7 +260,7 @@ void send_char(uint8_t c)
 int mini_printf(const char *fmt, ...)
 {
     va_list args;
-    const char *p = NULL, *str = NULL,*scan = NULL;
+    const char *p = NULL, *str = NULL;//*scan = NULL;
     int ival = 0, i = 0;
     unsigned int digit = 0, msb_processed = 0, index = 0, width = 8;
     float fv;
