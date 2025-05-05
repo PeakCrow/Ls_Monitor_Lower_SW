@@ -1,11 +1,11 @@
 #include "bsp_can_bus.h"
 
 /* 使用最新的hal库提供的can外设文件 */
-/* 此文件中没有�App_printf�量App_Printf函数 */
 CAN_HandleTypeDef hCAN1;
+CAN_HandleTypeDef hCAN2;
 
 CAN_RxHeaderTypeDef can_rx_msg;
-//uint8_t g_canrxbuf[8] = {0};        /* 不能做成全局变量，不然无法触发中断(?????) */
+
 
 /**
   * @FunctionName: bsp_InitCan1Bus
@@ -22,17 +22,17 @@ void bsp_InitCan1Bus(void)
     
     /*CAN单元初始化*/
     hCAN1.Instance                       = CANx_BUS_1;             /* CAN外设 */
-    hCAN1.Init.Prescaler                 = CAN1_BUS_BUUDE_RATE;    /* BTR-BRP 波特率分频器  定义了时间单元的时间长度 42/(1+6+7)/6=500kbps */
+    hCAN1.Init.Prescaler                 = CAN1_BUS_BAUDE_RATE;    /* BTR-BRP 波特率分频器  定义了时间单元的时间长度 42/(1+6+7)/6=500kbps */
     hCAN1.Init.Mode                      = CAN_MODE_NORMAL;        /* 正常工作模式 */
     hCAN1.Init.SyncJumpWidth             = CAN_SJW_1TQ;            /* BTR-SJW 重新同步跳跃宽度 1个时间单元 */
     hCAN1.Init.TimeSeg1                  = CAN_BS1_6TQ;            /* BTR-TS1 时间段1 占用了6个时间单元 */
     hCAN1.Init.TimeSeg2                  = CAN_BS2_7TQ;            /* BTR-TS1 时间段2 占用了7个时间单元 */
     hCAN1.Init.TimeTriggeredMode         = DISABLE;                /* MCR-TTCM  关闭时间触发通信模式使能 */
-    hCAN1.Init.AutoBusOff                = ENABLE;                 /* MCR-ABOM  自动离线管理 */
-    hCAN1.Init.AutoWakeUp                = ENABLE;                 /* MCR-AWUM  使用自动唤醒模式 */
-    hCAN1.Init.AutoRetransmission        = DISABLE;                /* MCR-NART  禁止报文�    �动重传 	DISABLE-自动重传 */
+    hCAN1.Init.AutoBusOff                = DISABLE;                /* MCR-ABOM  自动离线管理 */
+    hCAN1.Init.AutoWakeUp                = DISABLE;                /* MCR-AWUM  使用自动唤醒模式 */
+    hCAN1.Init.AutoRetransmission        = ENABLE;                 /* MCR-NART  禁止报文�    �动重传 	DISABLE-自动重传 */
     hCAN1.Init.ReceiveFifoLocked         = DISABLE;                /* MCR-RFLM  接收FIFO 锁    ��模式	DISABLE-溢出时新报文会覆盖原有报文 */
-    hCAN1.Init.TransmitFifoPriority      = ENABLE;                 /* MCR-TXFP  发送FIFO优先级 DISABLE-优先级取决于报文标示符 */
+    hCAN1.Init.TransmitFifoPriority      = DISABLE;                /* MCR-TXFP  发送FIFO优先级 DISABLE-优先级取决于报文标示符 */
     
     HAL_StatusTypeDef ret = HAL_CAN_Init(&hCAN1);
     if(HAL_OK != ret)
@@ -50,7 +50,7 @@ void bsp_InitCan1Bus(void)
     sFilterConfig.FilterIdLow           = (((uint32_t)0x1314<<3)|CAN_ID_EXT|CAN_RTR_DATA)&0xFFFF; /* 要过滤的ID低位 */
     sFilterConfig.FilterMaskIdHigh      = 0xFFFF;               /* 过滤器高16位每位必须匹配 */
     sFilterConfig.FilterMaskIdLow       = 0xFFFF;               /* 过滤器低16位每位必须匹配 */
-    sFilterConfig.FilterFIFOAssignment  = CAN_FILTER_FIFO0;     /* 过滤器被关联到FIFO 0 */
+    sFilterConfig.FilterFIFOAssignment  = CAN_RX_FIFO0;         /* 过滤器被关联到FIFO 0 */
     sFilterConfig.FilterActivation      = ENABLE;               /* 使能过滤器 */
     sFilterConfig.FilterBank            = 14;
     ret = HAL_CAN_ConfigFilter(&hCAN1, &sFilterConfig);
@@ -78,10 +78,10 @@ void bsp_InitCan1Bus(void)
     /*CAN过滤器初始化*/
     sFilterConfig2.FilterMode           = CAN_FILTERMODE_IDMASK;  /* 工作在标识符屏蔽位模式 */
     sFilterConfig2.FilterScale          = CAN_FILTERSCALE_32BIT;  /* 过滤器位宽为单个32位。*/
-    sFilterConfig2.FilterIdHigh         = 0;       /* 要过滤的ID高位 */
-    sFilterConfig2.FilterIdLow          = 0; /* 要过滤的ID低位 */
-    sFilterConfig2.FilterMaskIdHigh     = 0;                 /* 过滤器高16位每位必须匹配 */
-    sFilterConfig2.FilterMaskIdLow      = 0;                 /* 过滤器低16位每位必须匹配 */
+    sFilterConfig2.FilterIdHigh         = 0;                      /* 要过滤的ID高位 */
+    sFilterConfig2.FilterIdLow          = 0;                      /* 要过滤的ID低位 */
+    sFilterConfig2.FilterMaskIdHigh     = 0;                      /* 过滤器高16位每位必须匹配 */
+    sFilterConfig2.FilterMaskIdLow      = 0;                      /* 过滤器低16位每位必须匹配 */
     sFilterConfig2.FilterFIFOAssignment = CAN_FILTER_FIFO0;       /* 过滤器被关联到FIFO 1 */
     sFilterConfig2.FilterActivation     = ENABLE;                 /* 使能过滤器 */
     sFilterConfig2.FilterBank           = 0;
@@ -94,17 +94,48 @@ void bsp_InitCan1Bus(void)
     
     HAL_CAN_Start(&hCAN1);
     
-    hCAN1.Instance->MCR &= ~(0x01 << 16u);
-    HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO0_MSG_PENDING);
-    HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO0_FULL);
-    HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO0_OVERRUN);
+    /* 配置邮箱0接收过程中断 */
+    if(HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+    {
+        mini_printf("CAN1 CAN_IT_RX_FIFO0_MSG_PENDING config error!\r\n");
+    }
 
+    /* 配置邮箱0接收完全中断 */
+    if(HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO0_FULL) != HAL_OK)
+    {
+        mini_printf("CAN1 CAN_IT_RX_FIFO0_FULL config error!\r\n");
+    }
+
+    /* 配置邮箱接0收溢出中断 */
+    if(HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO0_OVERRUN) != HAL_OK)
+    {
+        mini_printf("CAN1 CAN_IT_RX_FIFO0_OVERRUN config error!\r\n");
+    }
+
+    /* 配置邮箱接收过程中断 */
+    if(HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO1_MSG_PENDING) != HAL_OK)
+    {
+        mini_printf("CAN1 CAN_IT_RX_FIFO1_MSG_PENDING config error!\r\n");
+    }
+
+    /* 配置邮箱接收完全中断 */
+    if(HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO1_FULL) != HAL_OK)
+    {
+        mini_printf("CAN1 CAN_IT_RX_FIFO1_FULL config error!\r\n");
+    }
+
+    /* 配置邮箱1接收溢出中断 */
+    if(HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO1_OVERRUN) != HAL_OK)
+    {
+        mini_printf("CAN1 CAN_IT_RX_FIFO1_OVERRUN config error!\r\n");
+    }
     
-    HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO1_MSG_PENDING);
-    HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO1_FULL);
-    HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO1_OVERRUN);
+    /* 配置邮箱发送空中断 */
+    if (HAL_CAN_ActivateNotification(&hCAN1, CAN_IT_TX_MAILBOX_EMPTY) != HAL_OK)
+    {
+        mini_printf("CAN1 CAN_IT_TX_MAILBOX_EMPTY config error!\r\n");
+    }
 }
-
 
 /**
   * @FunctionName: bsp_Can1_Send_buf
@@ -145,44 +176,37 @@ HAL_StatusTypeDef bsp_Can1_Send_buf(uint32_t _id,uint8_t _buf[],uint8_t _dlc)
     can_tx_msg.TransmitGlobalTime = DISABLE;
     
     if(HAL_CAN_IsTxMessagePending(&hCAN1,CAN_TX_MAILBOX0) == HAL_OK)/* 代表没有挂起的发送报文  */
+    {
         HAL_CAN_AddTxMessage(&hCAN1,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX0);
+    }
     else if(HAL_CAN_IsTxMessagePending(&hCAN1,CAN_TX_MAILBOX0) != HAL_OK)
+    {
         HAL_CAN_AddTxMessage(&hCAN1,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX1);
+    }
     else if(HAL_CAN_IsTxMessagePending(&hCAN1,CAN_TX_MAILBOX0) != HAL_OK)
+    {
         HAL_CAN_AddTxMessage(&hCAN1,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX2);
+    }
     else
+    {
         return HAL_ERROR;
-//    while(HAL_CAN_GetTxMailboxesFreeLevel(&hCAN1) != 0){}            /* 如果空闲发送邮箱为0，则死循环，等待发送邮箱不为空，有可用的邮箱 */
-                                                                    /* 添加一组大括号，避免报警告没有返回状态 */
+    }
     return HAL_OK;
-
 }
 
 /**
-  * @FunctionName: HAL_CAN_RxFifo0FullCallback
+  * @FunctionName: CAN1_TX_IRQHandler
   * @Author:       trx
-  * @DateTime:     2022年5月26日 20:07:04 
-  * @Purpose:      can接收fifo0填满回调函数
-  * @param:        hCAN1：can外设句柄
+  * @DateTime:     2025年5月5日 21:19:29
+  * @Purpose:      can 报文发送 中断
+  * @param:        none
   * @return:       none
 */
-void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hCAN1)
+void CAN1_TX_IRQHandler(void)
 {
-    PRINT("fifo0数据接收满\r\n");         /* 目前无法触发FIFO邮箱满的情况 */
+    HAL_CAN_IRQHandler(&hCAN1);
 }
 
-/**
-  * @FunctionName: HAL_CAN_RxFifo0MsgPendingCallback
-  * @Author:       trx
-  * @DateTime:     2022年5月26日 20:07:03 
-  * @Purpose:      can接收fifo0正在接收数据回调函数
-  * @param:        hCAN1：can外设句柄
-  * @return:       none
-*/
-void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hCAN1)
-{
-    PRINT("持续接收数据fifo0\r\n");
-}
 /**
   * @FunctionName: CAN1_RX0_IRQHandler
   * @Author:       trx
@@ -196,7 +220,7 @@ void CAN1_RX0_IRQHandler(void)
     uint8_t g_canrxbuf[8] = {0};
     HAL_CAN_IRQHandler(&hCAN1);              /* 需要在中断函数中调用此函数来清除中断标志位 */
     HAL_CAN_GetRxMessage(&hCAN1, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
-    PRINT("CAN1 RX0 IRQ\n");
+    PRINT("CAN1 RX0 IRQ\r\n");
 }
 
 
@@ -240,7 +264,7 @@ uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
     return can_rx_msg.DLC;
 }
 
-CAN_HandleTypeDef hCAN2;
+
 /**
   * @FunctionName: bsp_InitCan1Bus
   * @Author:       trx
@@ -256,7 +280,7 @@ void bsp_InitCan2Bus(void)
     
     /*CAN单元初始化*/
     hCAN2.Instance                       = CANx_BUS_2;             /* CAN外设 */
-    hCAN2.Init.Prescaler                 = CAN2_BUS_BUUDE_RATE;    /* BTR-BRP 波特率分频器  定义了时间单元的时间长度 42/(1+6+7)/6=500kbps */
+    hCAN2.Init.Prescaler                 = CAN2_BUS_BAUDE_RATE;    /* BTR-BRP 波特率分频器  定义了时间单元的时间长度 42/(1+6+7)/6=500kbps */
     hCAN2.Init.Mode                      = CAN_MODE_NORMAL;        /* 正常工作模式 */
     hCAN2.Init.SyncJumpWidth             = CAN_SJW_1TQ;            /* BTR-SJW 重新同步跳跃宽度 1个时间单元 */
     hCAN2.Init.TimeSeg1                  = CAN_BS1_6TQ;            /* BTR-TS1 时间段1 占用了6个时间单元 */
@@ -328,15 +352,47 @@ void bsp_InitCan2Bus(void)
     
     HAL_CAN_Start(&hCAN2);
     
-    hCAN2.Instance->MCR &= ~(0x01 << 16u);
-    HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO0_MSG_PENDING);
-    HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO0_FULL);
-    HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO0_OVERRUN);
+    /* 配置邮箱0接收过程中断 */
+    if(HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+    {
+        mini_printf("CAN2 CAN_IT_RX_FIFO0_MSG_PENDING config error!\r\n");
+    }
 
+    /* 配置邮箱0接收完全中断 */
+    if(HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO0_FULL) != HAL_OK)
+    {
+        mini_printf("CAN2 CAN_IT_RX_FIFO0_FULL config error!\r\n");
+    }
+
+    /* 配置邮箱接0收溢出中断 */
+    if(HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO0_OVERRUN) != HAL_OK)
+    {
+        mini_printf("CAN2 CAN_IT_RX_FIFO0_OVERRUN config error!\r\n");
+    }
+
+    /* 配置邮箱接收过程中断 */
+    if(HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO1_MSG_PENDING) != HAL_OK)
+    {
+        mini_printf("CAN2 CAN_IT_RX_FIFO1_MSG_PENDING config error!\r\n");
+    }
+
+    /* 配置邮箱接收完全中断 */
+    if(HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO1_FULL) != HAL_OK)
+    {
+        mini_printf("CAN2 CAN_IT_RX_FIFO1_FULL config error!\r\n");
+    }
+
+    /* 配置邮箱1接收溢出中断 */
+    if(HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO1_OVERRUN) != HAL_OK)
+    {
+        mini_printf("CAN2 CAN_IT_RX_FIFO1_OVERRUN config error!\r\n");
+    }
     
-    HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO1_MSG_PENDING);
-    HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO1_FULL);
-    HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO1_OVERRUN);
+    /* 配置邮箱发送空中断 */
+    if (HAL_CAN_ActivateNotification(&hCAN2, CAN_IT_TX_MAILBOX_EMPTY) != HAL_OK)
+    {
+        mini_printf("CAN2 CAN_IT_TX_MAILBOX_EMPTY config error!\r\n");
+    }
 }
 /**
   * @FunctionName: bsp_Can2_Send_buf
@@ -375,19 +431,39 @@ HAL_StatusTypeDef bsp_Can2_Send_buf(uint32_t _id,uint8_t _buf[],uint8_t _dlc)
     }
     can_tx_msg.RTR = CAN_RTR_DATA;          /* 默认都是数据帧 */
     can_tx_msg.TransmitGlobalTime = DISABLE;
-    
-    if(HAL_CAN_IsTxMessagePending(&hCAN2,CAN_TX_MAILBOX0) == HAL_OK)/* 代表没有挂起的发送报文  */
+
+    /* 代表没有挂起的发送报文  */
+    if(HAL_CAN_IsTxMessagePending(&hCAN2,CAN_TX_MAILBOX0) == HAL_OK)
+    {
         HAL_CAN_AddTxMessage(&hCAN2,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX0);
+    }
     else if(HAL_CAN_IsTxMessagePending(&hCAN2,CAN_TX_MAILBOX0) != HAL_OK)
+    {
         HAL_CAN_AddTxMessage(&hCAN2,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX1);
+    }
     else if(HAL_CAN_IsTxMessagePending(&hCAN2,CAN_TX_MAILBOX0) != HAL_OK)
+    {
         HAL_CAN_AddTxMessage(&hCAN2,&can_tx_msg,_buf,(uint32_t*)CAN_TX_MAILBOX2);
+    }
     else
+    {
         return HAL_ERROR;
-//    while(HAL_CAN_GetTxMailboxesFreeLevel(&hCAN2) != 0){}            /* 如果空闲发送邮箱为0，则死循环，等待发送邮箱不为空，有可用的邮箱 */
-                                                                    /* 添加一组大括号，避免报警告没有返回状态 */
+    }
     return HAL_OK;
 
+}
+
+/**
+  * @FunctionName: CAN2_TX_IRQHandler
+  * @Author:       trx
+  * @DateTime:     2025年5月5日 22:00:01
+  * @Purpose:      can 报文发送 中断
+  * @param:        none
+  * @return:       none
+*/
+void CAN2_TX_IRQHandler(void)
+{
+    HAL_CAN_IRQHandler(&hCAN2);
 }
 
 /**
@@ -566,3 +642,129 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hCAN1)
         /* do nothing */
     }
 } 
+
+/**
+  * @FunctionName: HAL_CAN_RxFifo0FullCallback
+  * @Author:       trx
+  * @DateTime:     2022年5月26日 20:07:04 
+  * @Purpose:      can接收fifo0填满回调函数
+  * @param:        hCAN1：can外设句柄
+  * @return:       none
+*/
+void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan)
+{
+    if(hcan == &hCAN1)
+    {
+        mini_printf("CAN1 fifo0数据接收满\r\n");
+    }
+    
+    if(hcan == &hCAN2)
+    {
+        mini_printf("CAN2 fifo0数据接收满\r\n");
+    }
+}
+
+/**
+  * @FunctionName: HAL_CAN_RxFifo0MsgPendingCallback
+  * @Author:       trx
+  * @DateTime:     2022年5月26日 20:07:03 
+  * @Purpose:      can接收fifo0正在接收数据回调函数
+  * @param:        hCAN1：can外设句柄
+  * @return:       none
+*/
+void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+{
+    if(hcan == &hCAN1)
+    {
+        mini_printf("CAN1 持续接收数据fifo0\r\n");
+    }
+    
+    if(hcan == &hCAN2)
+    {
+        mini_printf("CAN2 持续接收数据fifo0\r\n");
+    }
+}
+
+/**
+  * @FunctionName: HAL_CAN_RxFifo1MsgPendingCallback
+  * @Author:       trx
+  * @DateTime:     2025年5月5日 21:21:32
+  * @Purpose:      can接收fifo0正在接收数据回调函数
+  * @param:        hCAN1：can外设句柄
+  * @return:       none
+*/
+void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan)
+{
+    if(hcan == &hCAN1)
+    {
+        mini_printf("CAN1 持续接收数据fifo1\r\n");
+    }
+    
+    if(hcan == &hCAN2)
+    {
+        mini_printf("CAN2 持续接收数据fifo1\r\n");
+    }
+}
+
+/**
+  * @FunctionName: HAL_CAN_TxMailbox0CompleteCallback
+  * @Author:       trx
+  * @DateTime:     2025年5月5日 21:21:32
+  * @Purpose:      fifo0 发送完成 数据回调函数
+  * @param:        hCAN1：can外设句柄
+  * @return:       none
+*/
+void HAL_CAN_TxMailbox0CompleteCallback(CAN_HandleTypeDef *hcan)
+{
+    if(hcan == &hCAN1)
+    {
+        mini_printf("CAN1 HAL_CAN_TxMailbox0CompleteCallback\r\n");
+    }
+    
+    if(hcan == &hCAN2)
+    {
+        mini_printf("CAN2 HAL_CAN_TxMailbox0CompleteCallback\r\n");
+    }
+}
+
+/**
+  * @FunctionName: HAL_CAN_TxMailbox0CompleteCallback
+  * @Author:       trx
+  * @DateTime:     2025年5月5日 21:21:32
+  * @Purpose:      fifo1 发送完成 数据回调函数
+  * @param:        hCAN1：can外设句柄
+  * @return:       none
+*/
+void HAL_CAN_TxMailbox1CompleteCallback(CAN_HandleTypeDef *hcan)
+{
+    if(hcan == &hCAN1)
+    {
+        mini_printf("CAN1 HAL_CAN_TxMailbox1CompleteCallback\r\n");
+    }
+    
+    if(hcan == &hCAN2)
+    {
+        mini_printf("CAN2 HAL_CAN_TxMailbox1CompleteCallback\r\n");
+    }
+}
+
+/**
+  * @FunctionName: HAL_CAN_TxMailbox2CompleteCallback
+  * @Author:       trx
+  * @DateTime:     2025年5月5日 21:21:32
+  * @Purpose:      fifo2 发送完成 数据回调函数
+  * @param:        hCAN1：can外设句柄
+  * @return:       none
+*/
+void HAL_CAN_TxMailbox2CompleteCallback(CAN_HandleTypeDef *hcan)
+{
+    if(hcan == &hCAN1)
+    {
+        mini_printf("CAN1 HAL_CAN_TxMailbox2CompleteCallback\r\n");
+    }
+    
+    if(hcan == &hCAN2)
+    {
+        mini_printf("CAN2 HAL_CAN_TxMailbox2CompleteCallback\r\n");
+    }
+}

@@ -165,7 +165,11 @@ void can1_sent_demo(char argc, char *argv)
 {
     uint32_t _id = 0x55;
     uint8_t _buf[8] = {0x55,0x55,0x55,0x55,0x55,0x55,0x55,0x55};
-    bsp_Can1_Send_buf(_id,_buf,8);
+    for(uint8_t i = 0;i < 8;i++)
+    {
+        bsp_Can1_Send_buf(_id,_buf,8);
+        tx_thread_sleep(20);
+    }
 }
 NR_SHELL_CMD_EXPORT(can1_send, can1_sent_demo,"can1 to send once!")
 
@@ -173,7 +177,11 @@ void can2_sent_demo(char argc, char *argv)
 {
     uint32_t _id = 0x77;
     uint8_t _buf[8] = {0x77,0x77,0x77,0x77,0x77,0x77,0x77,0x77};
-    bsp_Can2_Send_buf(_id,_buf,8);
+    for(uint8_t i = 0;i < 8;i++)
+    {
+        bsp_Can2_Send_buf(_id,_buf,8);
+        tx_thread_sleep(20);
+    }
 }
 NR_SHELL_CMD_EXPORT(can2_send, can2_sent_demo,"can2 to send once!")
 //#ifdef NR_SHELL_USING_EXPORT_CMD

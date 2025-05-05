@@ -112,15 +112,15 @@ static  void  AppTaskStart (ULONG thread_input)
     HAL_ResumeTick();
     /* 外设初始化 */
     bsp_InitDWT();                                /* 初始化DWT */
-    bsp_InitTimer();                            /* 初始化滴答定时器 */
-    bsp_InitUart();                                /* 初始化串口1 2 3外设 */
+    bsp_InitTimer();                              /* 初始化滴答定时器 */
+    bsp_InitUart();                               /* 初始化串口1 2 3外设 */
     bsp_InitKey();                                /* 初始化轻触按键 */
     bsp_InitSPI2Bus();                            /* 初始化SPI2总线，用来驱动墨水屏 */
     bsp_I2C_EE_Init();                            /* 初始化IIC总线，并且驱动eeprom芯片 */
     bsp_InitLed();                                /* 初始化板载LED灯 */
     bsp_InitCan1Bus();                            /* 初始化CAN1 总线 */
     bsp_InitCan2Bus();                            /* 初始化CAN2 总线 */
-    bsp_InitRotationSensor();                    /* 初始化轮速传感器 */
+    bsp_InitRotationSensor();                     /* 初始化轮速传感器 */
     bsp_InitWs2812b();                            /* 初始化ws2812b可调灯效 */
     bsp_SetTIMOutPWM(GPIOB,GPIO_PIN_6,TIM4,1,1000,5500);/* 生成一个1k，50占空比的方波，用来验证脉冲计数 */
     bsp_InitSPI1Bus();                            /* SPI1总线初始化 */
@@ -154,23 +154,10 @@ static  void  AppTaskStart (ULONG thread_input)
 static void AppTaskCOM(ULONG thread_input)
 {
     (void)thread_input;
-//    uint32_t id;
-    uint8_t data[8] = {0x0,0x1,0x2,0x3,0x4,0x5,0x6,0x7};
-    bsp_Can1_Send_buf(0x327,data,8);
-//    bsp_Can1_Send_buf(0x1315,data,8);
     while(1)
     {
         bsp_LedToggle(2);
         bsp_LedToggle(1);
-//        bsp_Can1_Send_buf(0x327,data,8);
-//        if(0U != bsp_Can1_Receive_buf(id,data))
-//        {
-//            App_printf("Receive ID is 0x%x\n",id);
-//            for(uint8_t i = 0;i < 8;i++)
-//            {
-//                App_printf("Data[i] = %d\t",data[i]);
-//            }
-//        }
         tx_thread_sleep(100);
     }
 }
