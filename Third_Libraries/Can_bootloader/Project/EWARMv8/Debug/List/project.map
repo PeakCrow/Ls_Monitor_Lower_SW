@@ -1,0 +1,613 @@
+###############################################################################
+#
+# IAR ELF Linker V8.50.9.278/W32 for ARM                  24/Mar/2025  22:58:46
+# Copyright 2007-2020 IAR Systems AB.
+#
+#    Output file  =
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Exe\project.out
+#    Map file     =
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\List\project.map
+#    Command line =
+#        -f C:\Users\ADMINI~1\AppData\Local\Temp\EW6377.tmp
+#        (K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\bsp.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\bsp_key.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\bsp_led.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\bsp_timer.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\bsp_uart_fifo.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\HardFaultHandler.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\main.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\SEGGER_HardFaultHandler.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\startup_stm32f407xx.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\stm32f4xx_hal.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\stm32f4xx_hal_cortex.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\stm32f4xx_hal_dma.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\stm32f4xx_hal_flash.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\stm32f4xx_hal_flash_ex.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\stm32f4xx_hal_gpio.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\stm32f4xx_hal_rcc.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\stm32f4xx_hal_tim.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\stm32f4xx_hal_tim_ex.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\stm32f4xx_hal_uart.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\stm32f4xx_it.o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj\system_stm32f4xx.o
+#        --redirect _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb
+#        --no_out_extension -o
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Exe\project.out
+#        --map
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\List\project.map
+#        --config
+#        K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\stm32f407xx_flash.icf
+#        --semihosting --entry __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x800'0000 { ro section .intvec };
+"P1":  place in [from 0x800'0000 to 0x80f'ffff] { ro };
+define block CSTACK with size = 2K, alignment = 8 { };
+define block HEAP with size = 1K, alignment = 8 { };
+"P2":  place in [from 0x2000'0000 to 0x2001'ffff] {
+          rw, block CSTACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind         Address    Size  Object
+  -------            ----         -------    ----  ------
+"A0":                                       0x188
+  .intvec            ro code   0x800'0000   0x188  startup_stm32f407xx.o [1]
+                             - 0x800'0188   0x188
+
+"P1":                                      0x4372
+  .text              ro code   0x800'0188   0xfc2  xprintffull_nomb.o [2]
+  .text              ro code   0x800'114a    0x3a  zero_init3.o [4]
+  .text              ro code   0x800'1184    0x16  strchr.o [4]
+  .text              ro code   0x800'119a     0xe  stm32f4xx_it.o [1]
+  .text              ro code   0x800'11a8    0x40  xfail_s.o [2]
+  .text              ro code   0x800'11e8    0x36  strlen.o [4]
+  .rodata            const     0x800'121e     0x2  xlocale_c.o [2]
+  .text              ro code   0x800'1220    0x58  memchr.o [4]
+  .text              ro code   0x800'1278    0xa6  ABImemcpy.o [4]
+  .rodata            const     0x800'131e     0x1  xlocale_c.o [2]
+  .text              ro code   0x800'1320    0x70  frexp.o [3]
+  .text              ro code   0x800'1390    0x2e  DblCmpLe.o [3]
+  .text              ro code   0x800'13c0    0x2e  DblCmpGe.o [3]
+  .text              ro code   0x800'13f0   0x13a  ldexp.o [3]
+  .text              ro code   0x800'152c    0x3a  DblToS32.o [3]
+  .text              ro code   0x800'1568    0x22  S32ToDbl.o [3]
+  .text              ro code   0x800'158c    0xe2  DblSub.o [3]
+  .text              ro code   0x800'1670   0x246  DblDiv.o [3]
+  .text              ro code   0x800'18b8    0x28  DblToU32.o [3]
+  .text              ro code   0x800'18e0    0x1a  U32ToDbl.o [3]
+  .text              ro code   0x800'18fc   0x1a2  DblMul.o [3]
+  .text              ro code   0x800'1aa0     0x8  xlocale_c.o [2]
+  .text              ro code   0x800'1aa8   0x230  I64DivMod.o [4]
+  .text              ro code   0x800'1cd8     0x6  abort.o [2]
+  .text              ro code   0x800'1ce0   0x16a  DblAdd.o [3]
+  .text              ro code   0x800'1e4c     0x2  I64DivZer.o [4]
+  .text              ro code   0x800'1e50    0x14  exit.o [5]
+  .text              ro code   0x800'1e64   0x3d0  bsp_uart_fifo.o [1]
+  .text              ro code   0x800'2234    0xf8  bsp.o [1]
+  .text              ro code   0x800'232c   0x230  stm32f4xx_hal_gpio.o [1]
+  .text              ro code   0x800'255c   0x386  stm32f4xx_hal_uart.o [1]
+  .text              ro code   0x800'28e4   0x12c  stm32f4xx_hal_cortex.o [1]
+  .text              ro code   0x800'2a10    0x42  stm32f4xx_hal.o [1]
+  .text              ro code   0x800'2a54   0x36e  bsp_key.o [1]
+  .text              ro code   0x800'2dc4   0x3bc  bsp_timer.o [1]
+  .text              ro code   0x800'3180   0x1a8  bsp_led.o [1]
+  .text              ro code   0x800'3328   0x36c  stm32f4xx_hal_rcc.o [1]
+  .text              ro code   0x800'3694   0x204  stm32f4xx_hal_rcc.o [1]
+  .text              ro code   0x800'3898    0x4c  stm32f4xx_hal.o [1]
+  .text              ro code   0x800'38e4    0x28  printf.o [2]
+  .text              ro code   0x800'390c    0x18  stm32f4xx_hal.o [1]
+  .text              ro code   0x800'3924     0x6  ABImemclr4.o [4]
+  .text              ro code   0x800'392c   0x14a  stm32f4xx_hal_tim.o [1]
+  .text              ro code   0x800'3a78     0xc  stm32f4xx_hal.o [1]
+  .text              ro code   0x800'3a84    0x32  ABImemset48.o [4]
+  .text              ro code   0x800'3ab8   0x178  main.o [1]
+  .rodata            const     0x800'3c30    0xc4  bsp_uart_fifo.o [1]
+  .rodata            const     0x800'3cf4    0xc0  bsp_timer.o [1]
+  .rodata            const     0x800'3db4    0xb8  bsp.o [1]
+  .text              ro code   0x800'3e6c    0x60  system_stm32f4xx.o [1]
+  .rodata            const     0x800'3ecc    0x54  main.o [1]
+  .rodata            const     0x800'3f20    0x50  main.o [1]
+  .rodata            const     0x800'3f70    0x40  bsp_key.o [1]
+  .rodata            const     0x800'3fb0    0x40  main.o [1]
+  .text              ro code   0x800'3ff0    0x38  packbits_init_single.o [4]
+  .rodata            const     0x800'4028    0x34  main.o [1]
+  .rodata            const     0x800'405c    0x30  main.o [1]
+  .rodata            const     0x800'408c    0x30  main.o [1]
+  .text              ro code   0x800'40bc    0x28  data_init.o [4]
+  .rodata            const     0x800'40e4    0x24  main.o [1]
+  .rodata            const     0x800'4108    0x24  main.o [1]
+  .text              ro code   0x800'412c    0x22  fpinit_M.o [3]
+  .iar.init_table    const     0x800'4150    0x20  - Linker created -
+  .rodata            const     0x800'4170    0x20  bsp_timer.o [1]
+  .text              ro code   0x800'4190    0x20  SEGGER_HardFaultHandler.o [1]
+  .text              ro code   0x800'41b0    0x1e  cmain.o [4]
+  .text              ro code   0x800'41ce     0x4  low_level_init.o [2]
+  .text              ro code   0x800'41d2     0x4  exit.o [2]
+  .text              ro code   0x800'41d8     0xa  cexit.o [4]
+  .rodata            const     0x800'41e4    0x1c  main.o [1]
+  .text              ro code   0x800'4200    0x1c  cstartup_M.o [4]
+  .rodata            const     0x800'421c    0x18  main.o [1]
+  .rodata            const     0x800'4234    0x18  main.o [1]
+  .rodata            const     0x800'424c    0x18  main.o [1]
+  .rodata            const     0x800'4264    0x18  main.o [1]
+  .rodata            const     0x800'427c    0x18  main.o [1]
+  .rodata            const     0x800'4294    0x18  main.o [1]
+  .text              ro code   0x800'42ac    0x16  xprout.o [2]
+  .text              ro code   0x800'42c4     0xc  putchar.o [2]
+  .rodata            const     0x800'42d0    0x14  bsp_timer.o [1]
+  .text              ro code   0x800'42e4    0x12  HardFaultHandler.o [1]
+  .rodata            const     0x800'42f8    0x10  main.o [1]
+  .rodata            const     0x800'4308    0x10  main.o [1]
+  .rodata            const     0x800'4318    0x10  system_stm32f4xx.o [1]
+  .text              ro code   0x800'4328    0x10  startup_stm32f407xx.o [1]
+  .rodata            const     0x800'4338     0xc  main.o [1]
+  .rodata            const     0x800'4344     0x8  main.o [1]
+  .rodata            const     0x800'434c     0x8  system_stm32f4xx.o [1]
+  .rodata            const     0x800'4354     0x8  xprintffull_nomb.o [2]
+  .text              ro code   0x800'435c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4360     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4364     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4368     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'436c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4370     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4374     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4378     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'437c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4380     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4384     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4388     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'438c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4390     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4394     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4398     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'439c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43a0     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43a4     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43a8     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43ac     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43b0     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43b4     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43b8     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43bc     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43c0     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43c4     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43c8     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43cc     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43d0     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43d4     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43d8     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43dc     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43e0     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43e4     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43e8     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43ec     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43f0     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43f4     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43f8     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'43fc     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4400     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4404     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4408     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'440c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4410     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4414     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4418     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'441c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4420     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4424     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4428     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'442c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4430     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4434     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4438     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'443c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4440     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4444     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4448     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'444c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4450     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4454     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4458     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'445c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4460     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4464     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4468     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'446c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4470     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4474     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4478     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'447c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4480     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4484     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4488     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'448c     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4490     0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x800'4494     0x4  startup_stm32f407xx.o [1]
+  .rodata            const     0x800'4498     0x0  zero_init3.o [4]
+  .rodata            const     0x800'4498     0x0  packbits_init_single.o [4]
+  Initializer bytes  const     0x800'4498    0x62  <for P2-1>
+                             - 0x800'44fa  0x4372
+
+"P2", part 1 of 3:                           0x89
+  P2-1                        0x2000'0000    0x89  <Init block>
+    .data            inited   0x2000'0000     0x4  stm32f4xx_hal.o [1]
+    .data            inited   0x2000'0004     0x4  system_stm32f4xx.o [1]
+    .data            inited   0x2000'0008    0x38  xlocale_c.o [2]
+    .data            inited   0x2000'0040    0x48  xfiles.o [2]
+    .data            inited   0x2000'0088     0x1  stm32f4xx_hal.o [1]
+                            - 0x2000'0089    0x89
+
+"P2", part 2 of 3:                          0x980
+  .bss               zero     0x2000'008c   0x400  bsp_uart_fifo.o [1]
+  .bss               zero     0x2000'048c   0x400  bsp_uart_fifo.o [1]
+  .bss               zero     0x2000'088c    0xa0  bsp_key.o [1]
+  .bss               zero     0x2000'092c    0x50  xfiles.o [2]
+  .bss               zero     0x2000'097c    0x30  bsp_timer.o [1]
+  .bss               zero     0x2000'09ac    0x2c  bsp_uart_fifo.o [1]
+  .bss               zero     0x2000'09d8    0x10  bsp_key.o [1]
+  .bss               zero     0x2000'09e8     0x4  bsp_timer.o [1]
+  .bss               zero     0x2000'09ec     0x4  bsp_timer.o [1]
+  .bss               zero     0x2000'09f0     0x4  bsp_timer.o [1]
+  .bss               zero     0x2000'09f4     0x4  bsp_timer.o [1]
+  .bss               zero     0x2000'09f8     0x4  bsp_timer.o [1]
+  .bss               zero     0x2000'09fc     0x4  bsp_timer.o [1]
+  .bss               zero     0x2000'0a00     0x4  stm32f4xx_hal.o [1]
+  .bss               zero     0x2000'0a04     0x4  xfail_s.o [2]
+  .bss               zero     0x2000'0a08     0x1  bsp_timer.o [1]
+  .bss               zero     0x2000'0a09     0x1  bsp_timer.o [1]
+  .bss               zero     0x2000'0a0a     0x1  bsp_timer.o [1]
+                            - 0x2000'0a0b   0x97f
+
+"P2", part 3 of 3:                          0x800
+  CSTACK                      0x2000'0a10   0x800  <Block>
+    CSTACK           uninit   0x2000'0a10   0x800  <Block tail>
+                            - 0x2000'1210   0x800
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+   0x800'44fa   0x80f'ffff  0xf'bb06
+  0x2000'0089  0x2000'008b       0x3
+  0x2000'0a0c  0x2000'0a0f       0x4
+  0x2000'1210  0x2001'ffff  0x1'edf0
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x97f:
+          0x2000'008c  0x97f
+
+Copy/packbits (__iar_packbits_init_single3)
+    1 source range, total size 0x62 (71% of destination):
+           0x800'4498   0x62
+    1 destination range, total size 0x89:
+          0x2000'0000   0x89
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                     ro code  ro data  rw data
+    ------                     -------  -------  -------
+command line/config:
+    ----------------------------------------------------
+    Total:
+
+K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj: [1]
+    HardFaultHandler.o              18
+    SEGGER_HardFaultHandler.o       32
+    bsp.o                          248      184
+    bsp_key.o                      878       64      176
+    bsp_led.o                      424
+    bsp_timer.o                    956      244       75
+    bsp_uart_fifo.o                976      196    2'092
+    main.o                         376      672
+    startup_stm32f407xx.o          724
+    stm32f4xx_hal.o                178        3        9
+    stm32f4xx_hal_cortex.o         300
+    stm32f4xx_hal_gpio.o           560
+    stm32f4xx_hal_rcc.o          1'392
+    stm32f4xx_hal_tim.o            330
+    stm32f4xx_hal_uart.o           902
+    stm32f4xx_it.o                  14
+    system_stm32f4xx.o              96       27        4
+    ----------------------------------------------------
+    Total:                       8'404    1'390    2'356
+
+dl7M_tlf.a: [2]
+    abort.o                          6
+    exit.o                           4
+    low_level_init.o                 4
+    printf.o                        40
+    putchar.o                       12
+    xfail_s.o                       64                 4
+    xfiles.o                                 52      152
+    xlocale_c.o                      8       43       56
+    xprintffull_nomb.o           4'034        8
+    xprout.o                        22
+    ----------------------------------------------------
+    Total:                       4'194      103      212
+
+m7M_tls.a: [3]
+    DblAdd.o                       362
+    DblCmpGe.o                      46
+    DblCmpLe.o                      46
+    DblDiv.o                       582
+    DblMul.o                       418
+    DblSub.o                       226
+    DblToS32.o                      58
+    DblToU32.o                      40
+    S32ToDbl.o                      34
+    U32ToDbl.o                      26
+    fpinit_M.o                      34
+    frexp.o                        112
+    ldexp.o                        314
+    ----------------------------------------------------
+    Total:                       2'298
+
+rt7M_tl.a: [4]
+    ABImemclr4.o                     6
+    ABImemcpy.o                    166
+    ABImemset48.o                   50
+    I64DivMod.o                    560
+    I64DivZer.o                      2
+    cexit.o                         10
+    cmain.o                         30
+    cstartup_M.o                    28
+    data_init.o                     40
+    memchr.o                        88
+    packbits_init_single.o          56
+    strchr.o                        22
+    strlen.o                        54
+    zero_init3.o                    58
+    ----------------------------------------------------
+    Total:                       1'170
+
+shb_l.a: [5]
+    exit.o                          20
+    ----------------------------------------------------
+    Total:                          20
+
+    Gaps                            41        6
+    Linker created                           32    2'048
+--------------------------------------------------------
+    Grand Total:                16'127    1'531    4'616
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base    0x800'4150          --   Gb  - Linker created -
+.iar.init_table$$Limit   0x800'4170          --   Gb  - Linker created -
+?main                    0x800'41b1         Code  Gb  cmain.o [4]
+AHBPrescTable            0x800'4318   0x10  Data  Gb  system_stm32f4xx.o [1]
+APBPrescTable            0x800'434c    0x8  Data  Gb  system_stm32f4xx.o [1]
+BusFault_Handler         0x800'119f    0x2  Code  Gb  stm32f4xx_it.o [1]
+CSTACK$$Base            0x2000'0a10          --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'1210          --   Gb  - Linker created -
+ComToUart                0x800'1e75   0x58  Code  Gb  bsp_uart_fifo.o [1]
+DebugMon_Handler         0x800'11a5    0x2  Code  Gb  stm32f4xx_it.o [1]
+Error_Handler            0x800'2319    0x8  Code  Gb  bsp.o [1]
+HAL_EnableCompensationCell
+                         0x800'2a41    0x8  Code  Gb  stm32f4xx_hal.o [1]
+HAL_GPIO_Init            0x800'232d  0x1f0  Code  Gb  stm32f4xx_hal_gpio.o [1]
+HAL_GetTick              0x800'3a79    0xc  Code  Wk  stm32f4xx_hal.o [1]
+HAL_IncTick              0x800'390d   0x18  Code  Wk  stm32f4xx_hal.o [1]
+HAL_Init                 0x800'2a11   0x30  Code  Gb  stm32f4xx_hal.o [1]
+HAL_InitTick             0x800'3899   0x4c  Code  Wk  stm32f4xx_hal.o [1]
+HAL_NVIC_EnableIRQ       0x800'29dd    0xa  Code  Gb  stm32f4xx_hal_cortex.o [1]
+HAL_NVIC_SetPriority     0x800'29bb   0x22  Code  Gb  stm32f4xx_hal_cortex.o [1]
+HAL_NVIC_SetPriorityGrouping
+                         0x800'29b3    0x8  Code  Gb  stm32f4xx_hal_cortex.o [1]
+HAL_RCC_ClockConfig      0x800'3695  0x138  Code  Gb  stm32f4xx_hal_rcc.o [1]
+HAL_RCC_GetHCLKFreq      0x800'37cd    0x6  Code  Gb  stm32f4xx_hal_rcc.o [1]
+HAL_RCC_GetPCLK1Freq     0x800'37d3   0x16  Code  Gb  stm32f4xx_hal_rcc.o [1]
+HAL_RCC_GetPCLK2Freq     0x800'37e9   0x16  Code  Gb  stm32f4xx_hal_rcc.o [1]
+HAL_RCC_OscConfig        0x800'3329  0x36c  Code  Wk  stm32f4xx_hal_rcc.o [1]
+HAL_SYSTICK_Config       0x800'29e7    0x8  Code  Gb  stm32f4xx_hal_cortex.o [1]
+HAL_TIM_Base_Init        0x800'392d   0x38  Code  Gb  stm32f4xx_hal_tim.o [1]
+HAL_TIM_Base_Start       0x800'3965   0x28  Code  Gb  stm32f4xx_hal_tim.o [1]
+HAL_UART_Init            0x800'255d   0x76  Code  Gb  stm32f4xx_hal_uart.o [1]
+HardFaultHandler         0x800'4191   0x20  Code  Gb  SEGGER_HardFaultHandler.o [1]
+HardFault_Handler        0x800'42e5         Code  Gb  HardFaultHandler.o [1]
+InitHardUart             0x800'1fb7   0xba  Code  Lc  bsp_uart_fifo.o [1]
+IsKeyDownFunc            0x800'2a8d   0x8e  Code  Lc  bsp_key.o [1]
+KeyPinActive             0x800'2a55   0x38  Code  Lc  bsp_key.o [1]
+MemManage_Handler        0x800'119d    0x2  Code  Gb  stm32f4xx_it.o [1]
+NMI_Handler              0x800'119b    0x2  Code  Gb  stm32f4xx_it.o [1]
+NVIC_EncodePriority      0x800'2949   0x3c  Code  Lc  stm32f4xx_hal_cortex.o [1]
+PendSV_Handler           0x800'11a7    0x2  Code  Gb  stm32f4xx_it.o [1]
+PrintfHelp               0x800'3b23   0x16  Code  Lc  main.o [1]
+PrintfLogo               0x800'3b39   0x8e  Code  Lc  main.o [1]
+RS485_InitTXE            0x800'1f05   0x3c  Code  Gb  bsp_uart_fifo.o [1]
+Region$$Table$$Base      0x800'4150          --   Gb  - Linker created -
+Region$$Table$$Limit     0x800'4170          --   Gb  - Linker created -
+SVC_Handler              0x800'11a3    0x2  Code  Gb  stm32f4xx_it.o [1]
+SysTick_Config           0x800'2ded   0x34  Code  Lc  bsp_timer.o [1]
+SysTick_Config           0x800'2985   0x2e  Code  Lc  stm32f4xx_hal_cortex.o [1]
+SysTick_Handler          0x800'2fcf   0x14  Code  Gb  bsp_timer.o [1]
+SysTick_ISR              0x800'2e87   0x76  Code  Gb  bsp_timer.o [1]
+SysTick_ISR::s_count    0x2000'0a0a    0x1  Data  Lc  bsp_timer.o [1]
+SystemClock_Config       0x800'2251   0xb8  Code  Lc  bsp.o [1]
+SystemCoreClock         0x2000'0004    0x4  Data  Gb  system_stm32f4xx.o [1]
+SystemInit               0x800'3e6d   0x40  Code  Gb  system_stm32f4xx.o [1]
+TIM2_IRQHandler          0x800'3075   0xb4  Code  Gb  bsp_timer.o [1]
+TIM_Base_SetConfig       0x800'398d   0xba  Code  Gb  stm32f4xx_hal_tim.o [1]
+UART_SetConfig           0x800'25d3  0x302  Code  Lc  stm32f4xx_hal_uart.o [1]
+USART1_IRQHandler        0x800'21eb    0xa  Code  Gb  bsp_uart_fifo.o [1]
+UartIRQ                  0x800'20ff   0xec  Code  Lc  bsp_uart_fifo.o [1]
+UartSend                 0x800'2071   0x8e  Code  Lc  bsp_uart_fifo.o [1]
+UartVarInit              0x800'1f41   0x42  Code  Lc  bsp_uart_fifo.o [1]
+UsageFault_Handler       0x800'11a1    0x2  Code  Gb  stm32f4xx_it.o [1]
+_LitobFullNoMb           0x800'0f45  0x10a  Code  Lc  xprintffull_nomb.o [2]
+_Locale_lconv           0x2000'0008   0x38  Data  Lc  xlocale_c.o [2]
+_PrintfFullNoMb          0x800'0189  0xd98  Code  Gb  xprintffull_nomb.o [2]
+_Prout                   0x800'42ad   0x16  Code  Gb  xprout.o [2]
+_PutcharFullNoMb         0x800'10b5   0x20  Code  Lc  xprintffull_nomb.o [2]
+_PutcharsFullNoMb        0x800'10d5   0x2e  Code  Lc  xprintffull_nomb.o [2]
+__NVIC_EnableIRQ         0x800'2909   0x1c  Code  Lc  stm32f4xx_hal_cortex.o [1]
+__NVIC_GetPriorityGrouping
+                         0x800'28ff    0xa  Code  Lc  stm32f4xx_hal_cortex.o [1]
+__NVIC_SetPriority       0x800'2dc5   0x28  Code  Lc  bsp_timer.o [1]
+__NVIC_SetPriority       0x800'2925   0x24  Code  Lc  stm32f4xx_hal_cortex.o [1]
+__NVIC_SetPriorityGrouping
+                         0x800'28e5   0x1a  Code  Lc  stm32f4xx_hal_cortex.o [1]
+__aeabi_cdcmple          0x800'1391         Code  Gb  DblCmpLe.o [3]
+__aeabi_cdrcmple         0x800'13c1         Code  Gb  DblCmpGe.o [3]
+__aeabi_d2iz             0x800'152d         Code  Gb  DblToS32.o [3]
+__aeabi_d2uiz            0x800'18b9         Code  Gb  DblToU32.o [3]
+__aeabi_ddiv             0x800'1671         Code  Gb  DblDiv.o [3]
+__aeabi_dmul             0x800'18fd         Code  Gb  DblMul.o [3]
+__aeabi_dsub             0x800'158d         Code  Gb  DblSub.o [3]
+__aeabi_i2d              0x800'1569         Code  Gb  S32ToDbl.o [3]
+__aeabi_ldiv0            0x800'1e4d         Code  Gb  I64DivZer.o [4]
+__aeabi_memclr4          0x800'3925         Code  Gb  ABImemclr4.o [4]
+__aeabi_memcpy           0x800'1279         Code  Gb  ABImemcpy.o [4]
+__aeabi_memcpy4          0x800'1299         Code  Gb  ABImemcpy.o [4]
+__aeabi_memcpy8          0x800'1299         Code  Gb  ABImemcpy.o [4]
+__aeabi_ui2d             0x800'18e1         Code  Gb  U32ToDbl.o [3]
+__aeabi_uldivmod         0x800'1aa9         Code  Gb  I64DivMod.o [4]
+__cmain                  0x800'41b1         Code  Gb  cmain.o [4]
+__exit                   0x800'1e51   0x14  Code  Gb  exit.o [5]
+__iar_Fail_s             0x800'11a9   0x1c  Code  Gb  xfail_s.o [2]
+__iar_Memchr             0x800'1221         Code  Gb  memchr.o [4]
+__iar_Memset4_word       0x800'3a85         Code  Gb  ABImemset48.o [4]
+__iar_Memset8_word       0x800'3a85         Code  Gb  ABImemset48.o [4]
+__iar_Stdout            0x2000'0040   0x48  Data  Gb  xfiles.o [2]
+__iar_Strchr             0x800'1185         Code  Gb  strchr.o [4]
+__iar_dadd               0x800'159d         Code  Gb  DblSub.o [3]
+__iar_data_init3         0x800'40bd   0x28  Code  Gb  data_init.o [4]
+__iar_dsub               0x800'1ce1         Code  Gb  DblAdd.o [3]
+__iar_dsubStart          0x800'1cf3         Code  Gb  DblAdd.o [3]
+__iar_frexp              0x800'132d         Code  Gb  frexp.o [3]
+__iar_frexpl             0x800'132d         Code  Gb  frexp.o [3]
+__iar_init_vfp           0x800'412d         Code  Gb  fpinit_M.o [3]
+__iar_ldexp64            0x800'13f1         Code  Gb  ldexp.o [3]
+__iar_packbits_init_single3
+                         0x800'3ff1   0x38  Code  Gb  packbits_init_single.o [4]
+__iar_program_start      0x800'4201         Code  Gb  cstartup_M.o [4]
+__iar_scalbln64          0x800'13f1         Code  Gb  ldexp.o [3]
+__iar_scalbn64           0x800'13f1         Code  Gb  ldexp.o [3]
+__iar_softfp___iar_frexp64
+                         0x800'1321         Code  Gb  frexp.o [3]
+__iar_softfp_frexp       0x800'1321         Code  Gb  frexp.o [3]
+__iar_softfp_frexpl      0x800'1321         Code  Gb  frexp.o [3]
+__iar_zero_init3         0x800'114b   0x3a  Code  Gb  zero_init3.o [4]
+__low_level_init         0x800'41cf    0x4  Code  Gb  low_level_init.o [2]
+__vector_table           0x800'0000         Data  Gb  startup_stm32f407xx.o [1]
+_call_main               0x800'41bd         Code  Gb  cmain.o [4]
+_exit                    0x800'41d9         Code  Gb  cexit.o [4]
+_main                    0x800'41c7         Code  Gb  cmain.o [4]
+abort                    0x800'1cd9    0x6  Code  Gb  abort.o [2]
+bsp_CheckTimer           0x800'2f9f   0x30  Code  Gb  bsp_timer.o [1]
+bsp_DelayMS              0x800'2f1d   0x32  Code  Gb  bsp_timer.o [1]
+bsp_DetectKey            0x800'2cb1   0xe8  Code  Lc  bsp_key.o [1]
+bsp_Idle                 0x800'232b    0x2  Code  Gb  bsp.o [1]
+bsp_Init                 0x800'2235   0x1c  Code  Gb  bsp.o [1]
+bsp_InitHardTimer        0x800'2fe3   0x92  Code  Gb  bsp_timer.o [1]
+bsp_InitKey              0x800'2b1b    0xc  Code  Gb  bsp_key.o [1]
+bsp_InitKeyHard          0x800'2b27   0xc6  Code  Lc  bsp_key.o [1]
+bsp_InitKeyVar           0x800'2bed   0x86  Code  Lc  bsp_key.o [1]
+bsp_InitLed              0x800'3181   0xa6  Code  Gb  bsp_led.o [1]
+bsp_InitTimer            0x800'2e21   0x66  Code  Gb  bsp_timer.o [1]
+bsp_InitUart             0x800'1e65   0x10  Code  Gb  bsp_uart_fifo.o [1]
+bsp_KeyScan10ms          0x800'2da9   0x1a  Code  Gb  bsp_key.o [1]
+bsp_LedOff               0x800'326b   0x48  Code  Gb  bsp_led.o [1]
+bsp_LedOn                0x800'3227   0x44  Code  Gb  bsp_led.o [1]
+bsp_LedToggle            0x800'32b3   0x4e  Code  Gb  bsp_led.o [1]
+bsp_PutKey               0x800'2c73   0x18  Code  Gb  bsp_key.o [1]
+bsp_RunPer10ms           0x800'2321    0x8  Code  Gb  bsp.o [1]
+bsp_RunPer1ms            0x800'2329    0x2  Code  Gb  bsp.o [1]
+bsp_SetKeyParam          0x800'2c8b   0x26  Code  Gb  bsp_key.o [1]
+bsp_SetUartParam         0x800'1f83   0x34  Code  Gb  bsp_uart_fifo.o [1]
+bsp_SoftTimerDec         0x800'2efd   0x20  Code  Lc  bsp_timer.o [1]
+bsp_StartAutoTimer       0x800'2f4f   0x50  Code  Gb  bsp_timer.o [1]
+bsp_StartAutoTimer::__FUNCTION__
+                         0x800'42d0   0x14  Data  Lc  bsp_timer.o [1]
+comSendBuf               0x800'1ecd   0x2a  Code  Gb  bsp_uart_fifo.o [1]
+comSendChar              0x800'1ef7    0xe  Code  Gb  bsp_uart_fifo.o [1]
+exit                     0x800'41d3    0x4  Code  Gb  exit.o [2]
+fputc                    0x800'2221   0x14  Code  Gb  bsp_uart_fifo.o [1]
+g_RxBuf1                0x2000'048c  0x400  Data  Lc  bsp_uart_fifo.o [1]
+g_TxBuf1                0x2000'008c  0x400  Data  Lc  bsp_uart_fifo.o [1]
+g_iRunTime              0x2000'09fc    0x4  Data  Gb  bsp_timer.o [1]
+g_tUart1                0x2000'09ac   0x2c  Data  Lc  bsp_uart_fifo.o [1]
+g_ucEnableSystickISR    0x2000'0a09    0x1  Data  Lc  bsp_timer.o [1]
+ldexp                    0x800'13f1         Code  Gb  ldexp.o [3]
+ldexpl                   0x800'13f1         Code  Gb  ldexp.o [3]
+localeconv               0x800'1aa1    0x4  Code  Gb  xlocale_c.o [2]
+main                     0x800'3ab9   0x6a  Code  Gb  main.o [1]
+memchr                   0x800'1221         Code  Gb  memchr.o [4]
+obuf                    0x2000'092c   0x50  Data  Lc  xfiles.o [2]
+printf                   0x800'38e5   0x28  Code  Gb  printf.o [2]
+putchar                  0x800'42c5    0xc  Code  Gb  putchar.o [2]
+s_TIM_CallBack1         0x2000'09e8    0x4  Data  Lc  bsp_timer.o [1]
+s_TIM_CallBack2         0x2000'09ec    0x4  Data  Lc  bsp_timer.o [1]
+s_TIM_CallBack3         0x2000'09f0    0x4  Data  Lc  bsp_timer.o [1]
+s_TIM_CallBack4         0x2000'09f4    0x4  Data  Lc  bsp_timer.o [1]
+s_gpio_list              0x800'3f70   0x40  Data  Lc  bsp_key.o [1]
+s_tBtn                  0x2000'088c   0xa0  Data  Lc  bsp_key.o [1]
+s_tKey                  0x2000'09d8   0x10  Data  Lc  bsp_key.o [1]
+s_tTmr                  0x2000'097c   0x30  Data  Lc  bsp_timer.o [1]
+s_ucTimeOutFlag         0x2000'0a08    0x1  Data  Lc  bsp_timer.o [1]
+s_uiDelayCount          0x2000'09f8    0x4  Data  Lc  bsp_timer.o [1]
+scalbln                  0x800'13f1         Code  Gb  ldexp.o [3]
+scalblnl                 0x800'13f1         Code  Gb  ldexp.o [3]
+scalbn                   0x800'13f1         Code  Gb  ldexp.o [3]
+scalbnl                  0x800'13f1         Code  Gb  ldexp.o [3]
+scale                    0x800'104f   0x46  Code  Lc  xprintffull_nomb.o [2]
+sec_hand                0x2000'0a04    0x4  Data  Lc  xfail_s.o [2]
+strchr                   0x800'1185         Code  Gb  strchr.o [4]
+strlen                   0x800'11e9         Code  Gb  strlen.o [4]
+uwTick                  0x2000'0a00    0x4  Data  Gb  stm32f4xx_hal.o [1]
+uwTickFreq              0x2000'0088    0x1  Data  Gb  stm32f4xx_hal.o [1]
+uwTickPrio              0x2000'0000    0x4  Data  Gb  stm32f4xx_hal.o [1]
+
+
+[1] = K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Obj
+[2] = dl7M_tlf.a
+[3] = m7M_tls.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
+
+  16'127 bytes of readonly  code memory
+   1'531 bytes of readonly  data memory
+   4'616 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

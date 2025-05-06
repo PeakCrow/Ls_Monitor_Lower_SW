@@ -1,0 +1,84 @@
+bsp.pbi: \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\User\bsp\inc\bsp_fmc_io.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\User\bsp\inc\bsp_uart_fifo.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\User\bsp\inc\bsp_key.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\User\bsp\inc\bsp_led.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\User\bsp\inc\bsp_timer.h \
+  E:\IAR\arm\inc\c\DLib_Product_stdlib.h E:\IAR\arm\inc\c\ycheck.h \
+  E:\IAR\arm\inc\c\stdlib.h E:\IAR\arm\inc\c\DLib_Product_string.h \
+  E:\IAR\arm\inc\c\string.h E:\IAR\arm\inc\c\stdio.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_wwdg.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_smartcard.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_irda.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_usart.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_sdmmc.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sd.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sai_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sai.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rtc_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rtc.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rng.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_ltdc_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_ltdc.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_iwdg.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2s_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2s.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hash.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pccard.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_nand.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_nor.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sram.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_eth.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dcmi_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dcmi.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dac_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dac.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma2d.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cryp.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_crc.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_can.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h \
+  E:\IAR\arm\inc\c\ysizet.h E:\IAR\arm\inc\c\stddef.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\CMSIS\Include\mpu_armv7.h \
+  E:\IAR\arm\inc\c\iccarm_builtin.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\CMSIS\Include\cmsis_iccarm.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\CMSIS\Include\cmsis_compiler.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\CMSIS\Include\cmsis_version.h \
+  E:\IAR\arm\inc\c\DLib_Product.h E:\IAR\arm\inc\c\DLib_Config_Full.h \
+  E:\IAR\arm\inc\c\DLib_Defaults.h E:\IAR\arm\inc\c\yvals.h \
+  E:\IAR\arm\inc\c\stdint.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\CMSIS\Include\core_cm4.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\Project\EWARMv8\..\..\Libraries\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
+  K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\\V5开发板HAL库版教程\\1、用户手册，含BSP驱动包设计\\V5-000_程序模板\\User\bsp\stm32f4xx_hal_conf.h \
+  K:\BaiduNetdiskDownload\銆愬畨瀵岃幈鐢靛瓙銆慡TM32-V5寮�鍙戞澘HAL搴撶増鏁欑▼\V5寮�鍙戞澘HAL搴撶増鏁欑▼\1銆佺敤鎴锋墜鍐岋紝鍚獴SP椹卞姩鍖呰璁V5-000_绋嬪簭妯℃澘\User\bsp\bsp.h \
+  K:\BaiduNetdiskDownload\銆愬畨瀵岃幈鐢靛瓙銆慡TM32-V5寮�鍙戞澘HAL搴撶増鏁欑▼\V5寮�鍙戞澘HAL搴撶増鏁欑▼\1銆佺敤鎴锋墜鍐岋紝鍚獴SP椹卞姩鍖呰璁V5-000_绋嬪簭妯℃澘\User\bsp\bsp.c

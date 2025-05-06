@@ -1,0 +1,15 @@
+"E:\IAR\arm\bin\armproc.dll" 
+
+"E:\IAR\arm\bin\armJET.dll" 
+
+"K:\BaiduNetdiskDownload\【安富莱电子】STM32-V5开发板HAL库版教程\V5开发板HAL库版教程\1、用户手册，含BSP驱动包设计\V5-000_程序模板\Project\EWARMv8\Debug\Exe\project.out" 
+
+--plugin="E:\IAR\arm\bin\armbat.dll" 
+
+--device_macro="E:\IAR\arm\config\debugger\ST\STM32F4xx.dmac" 
+
+--flash_loader="E:\IAR\arm\config\flashloader\ST\FlashSTM32F4xxx.board" 
+
+
+
+

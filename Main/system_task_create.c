@@ -130,6 +130,9 @@ static  void  AppTaskStart (ULONG thread_input)
 //    lv_port_disp_init();                         /* lvgl 显示接口初始化,放在 lv_init()的后面 */
 //    lv_port_indev_init();                         /* lvgl 输入接口初始化,放在 lv_init()的后面 */
 
+#define AppAddr  0x0800f000    /* APP地址 */
+    SCB->VTOR = AppAddr;
+    
     shell_init();
     PRINT("Rebuild time is %s and date is %s !",__TIME__,__DATE__);
     /* 创建任务间通信机制,主要是各种任务间通讯函数 */
