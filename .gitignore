@@ -9,6 +9,11 @@ DebugConfig/
 EW-ARM(v8x)/Flash/Obj
 EW-ARM(v8x)/settings
 MDK-ARM(uV5)/Listings
+Third_Libraries/Can_bootloader/Project/EWARMv8/Debug
+Third_Libraries/Can_bootloader/Project/EWARMv8/settings
+Third_Libraries/Can_bootloader/Project/MDK-ARM(uV5)/DebugCOnfig
+Third_Libraries/Can_bootloader/Project/MDK-ARM(uV5)/Listings
+Third_Libraries/Can_bootloader/Project/MDK-ARM(uV5)/Objects
 #lvgl组件内的obj对象文件需要提交
 !lvgl/examples/widgets/obj
 #IAR 集成环境中的.hex文件需要提交
