@@ -12,6 +12,7 @@
   * - 2022-4-25  TRX Created
 *********************************************/
 #include "sys.h"
+
 /*
  * @FunctionName : main
  * @DateTime     : 2024年2月25日 02:57:35
@@ -23,7 +24,7 @@ int main(void)
 {
     HAL_Init();                         /* HAL库初始化 */
     Stm32_Clock_Init(336,8,2,7);        /* system tick,168Mhz */
-
+    
     /* 关闭HAL库 systick */
     HAL_SuspendTick();
     
@@ -31,7 +32,6 @@ int main(void)
     tx_kernel_enter();
     while(1);
 }
-
 
 
 

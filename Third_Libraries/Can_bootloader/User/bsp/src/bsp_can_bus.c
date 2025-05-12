@@ -690,6 +690,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
             
             //if (g_Can1RxHeader.Identifier == 0x111 && g_Can1RxHeader.IdType == FDCAN_STANDARD_ID)
             if (g_Can1RxHeader.StdId == 0x111 && g_Can1RxHeader.IDE == CAN_ID_STD)
+            //if (g_Can1RxHeader.StdId == 0x111 )
             {
                 bsp_PutMsg(MSG_CAN1_RX, 0);	/* 发消息收到数据包，结果在g_Can1RxHeader， g_Can1RxData */
             }

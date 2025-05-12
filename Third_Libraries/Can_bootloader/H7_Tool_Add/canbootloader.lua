@@ -15,7 +15,7 @@ local byte0
 local byte1
 local byte2
 local byte3
-local filepath = "0:/H7-TOOL/Lua/CAN脱机烧录/app.bin" -- 表示CAN脱机烧录文件夹下存的文件
+local filepath = "0:/H7-TOOL/Lua/CAN脱机烧录/Run_Xian.bin" -- 表示CAN脱机烧录文件夹下存的文件
 local filepath1 = "0:/H7-TOOL/Lua/CAN脱机烧录"        -- 浏览CAN脱机烧录文件下存的文件
 local can_id = 0x111  -- 目标板的ID
 local str_offset
@@ -64,7 +64,7 @@ byte3 = ((filesize >> 24) & 0xFF)
 --发送*号表示固件大小命令
 --发送固件大小
 --固定发送64字节
-str_offset = string.format("%02d", 8 - 5)
+str_offset = string.format("%02d", 64 - 5)
 str= string.format("%c%c%c%c%c".."%"..str_offset.."s", 42, byte0, byte1, byte2, byte3, "A")
 
 print(str)

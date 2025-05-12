@@ -184,6 +184,110 @@ void can2_sent_demo(char argc, char *argv)
     }
 }
 NR_SHELL_CMD_EXPORT(can2_send, can2_sent_demo,"can2 to send once!")
+
+static void JumpToApp(char argc, char *argv)
+{
+    uint32_t i=0;
+    
+    /* 声明一个函数指针 */
+    void (*SysMemBootJump)(void);
+    
+    /* 配置app地址 */
+    __IO uint32_t BootAddr = 0x08014000;
+    
+    /* 关闭全局中断 */
+    __set_PRIMASK(1);
+    
+    /* 关闭嘀嗒定时器 复位到默认状态 */
+    SysTick->CTRL = 0;
+    SysTick->LOAD = 0;
+    SysTick->VAL = 0;
+    
+    /* 配置所有时钟到默认状态 使用 HSI 时钟 */
+    HAL_RCC_DeInit();
+    
+    /* 关闭所有中断 清除所有中断挂起标志 */
+    for (i = 0; i < 8; i++)
+    {
+        NVIC->ICER[i]=0xFFFFFFFF;
+        NVIC->ICPR[i]=0xFFFFFFFF;
+    }
+    
+    /* 使能全局中断 */
+    __set_PRIMASK(0);
+    
+    /* 跳转到系统 bootloader 首地址是 MSP 地址加 4 是复位中断服务程序地址 */
+    SysMemBootJump = (void (*)(void)) (*((uint32_t *) (BootAddr + 4)));
+    
+    /* 配置主堆栈指针 */
+    __set_MSP(*(uint32_t *)BootAddr);
+    
+    /* 在 RTOS 工程 这条语句很重要 设置为特权模式 使用 MSP 指针 */
+    __set_CONTROL(0);
+    
+    /* 跳转到系统 bootloader */
+    SysMemBootJump(); 
+    
+    /* 跳转成功的话 不会执行到这里 用户可以在这里添加代码 */
+    while (1)
+    {
+    
+    }
+}
+NR_SHELL_CMD_EXPORT(jumptoapp, JumpToApp,"JumpToApp!")
+
+static void JumpToBoot(char argc, char *argv)
+{
+    uint32_t i=0;
+    
+    /* 声明一个函数指针 */
+    void (*SysMemBootJump)(void);
+    
+    /* 配置app地址 */
+    __IO uint32_t BootAddr = 0x08000000;
+    
+    /* 关闭全局中断 */
+    __set_PRIMASK(1);
+    
+    /* 关闭嘀嗒定时器 复位到默认状态 */
+    SysTick->CTRL = 0;
+    SysTick->LOAD = 0;
+    SysTick->VAL = 0;
+    
+    /* 配置所有时钟到默认状态 使用 HSI 时钟 */
+    HAL_RCC_DeInit();
+    
+    /* 关闭所有中断 清除所有中断挂起标志 */
+    for (i = 0; i < 8; i++)
+    {
+        NVIC->ICER[i]=0xFFFFFFFF;
+        NVIC->ICPR[i]=0xFFFFFFFF;
+    }
+    
+    /* 使能全局中断 */
+    __set_PRIMASK(0);
+    
+    /* 跳转到系统 bootloader 首地址是 MSP 地址加 4 是复位中断服务程序地址 */
+    SysMemBootJump = (void (*)(void)) (*((uint32_t *) (BootAddr + 4)));
+    
+    /* 配置主堆栈指针 */
+    __set_MSP(*(uint32_t *)BootAddr);
+    
+    /* 在 RTOS 工程 这条语句很重要 设置为特权模式 使用 MSP 指针 */
+    __set_CONTROL(0);
+    
+    /* 跳转到系统 bootloader */
+    SysMemBootJump(); 
+    
+    /* 跳转成功的话 不会执行到这里 用户可以在这里添加代码 */
+    while (1)
+    {
+    
+    }
+}
+NR_SHELL_CMD_EXPORT(jumptoboot, JumpToBoot,"JumpToBoot!")
+
+
 //#ifdef NR_SHELL_USING_EXPORT_CMD
 //NR_SHELL_CMD_EXPORT(ls, shell_ls_cmd);
 //NR_SHELL_CMD_EXPORT(test, shell_test_cmd);
