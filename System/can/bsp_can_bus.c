@@ -5,7 +5,9 @@ CAN_HandleTypeDef hCAN1;
 CAN_HandleTypeDef hCAN2;
 
 CAN_RxHeaderTypeDef can_rx_msg;
+uint8_t g_canrxbuf[8] = {0};
 
+#define BSP_CAN_LOG_ECHO TRUE
 
 /**
   * @FunctionName: bsp_InitCan1Bus
@@ -217,10 +219,25 @@ void CAN1_TX_IRQHandler(void)
 */
 void CAN1_RX0_IRQHandler(void)
 {
-    uint8_t g_canrxbuf[8] = {0};
+    memset(&can_rx_msg,0,sizeof(can_rx_msg));
+    memset(&g_canrxbuf,0,sizeof(g_canrxbuf));
+    
     HAL_CAN_IRQHandler(&hCAN1);              /* 需要在中断函数中调用此函数来清除中断标志位 */
     HAL_CAN_GetRxMessage(&hCAN1, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
-    PRINT("CAN1 RX0 IRQ\r\n");
+#if TRUE == BSP_CAN_LOG_ECHO
+    mini_printf("\r\n");
+    mini_printf("can1 rx0 receive blow: \r\n");
+    mini_printf("CAN_RxHeaderTypeDef.StdId is           0x%x\r\n",can_rx_msg.StdId);
+    mini_printf("CAN_RxHeaderTypeDef.ExtId is           0x%x\r\n",can_rx_msg.ExtId);
+    mini_printf("CAN_RxHeaderTypeDef.IDE is             %d\r\n",can_rx_msg.IDE);
+    mini_printf("CAN_RxHeaderTypeDef.RTR is             %d\r\n",can_rx_msg.RTR);
+    mini_printf("CAN_RxHeaderTypeDef.DLC is             %d\r\n",can_rx_msg.DLC);
+    mini_printf("CAN_RxHeaderTypeDef.Timestamp is       %d\r\n",can_rx_msg.Timestamp);
+    for(uint8_t i = 0;i < can_rx_msg.DLC;i++)
+    {
+        mini_printf("CAN_Infomation[%d] = 0x%02x\r\n",i,g_canrxbuf[i]);
+    }
+#endif
 }
 
 
@@ -266,7 +283,7 @@ uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
 
 
 /**
-  * @FunctionName: bsp_InitCan1Bus
+  * @FunctionName: bsp_InitCan2Bus
   * @Author:       trx
   * @DateTime:     2022年5月22日 17:36:06 
   * @Purpose:      can1总线外设初始化
@@ -508,7 +525,7 @@ uint8_t bsp_Can2_Receive_buf(uint32_t _id,uint8_t _buf[])
 
 
 /**
-  * @FunctionName: CAN1_RX0_IRQHandler
+  * @FunctionName: CAN2_RX0_IRQHandler
   * @Author:       trx
   * @DateTime:     2022年5月26日 18:15:34 
   * @Purpose:      can接收中断函数，底层库提供
@@ -517,10 +534,25 @@ uint8_t bsp_Can2_Receive_buf(uint32_t _id,uint8_t _buf[])
 */
 void CAN2_RX0_IRQHandler(void)
 {
-    uint8_t g_canrxbuf[8] = {0};
+    memset(&can_rx_msg,0,sizeof(can_rx_msg));
+    memset(&g_canrxbuf,0,sizeof(g_canrxbuf));
+    
     HAL_CAN_IRQHandler(&hCAN2);              /* 需要在中断函数中调用此函数来清除中断标志位 */
     HAL_CAN_GetRxMessage(&hCAN2, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
-    PRINT("CAN2 RX0 IRQ\n");
+#if TRUE == BSP_CAN_LOG_ECHO
+    mini_printf("\r\n");
+    mini_printf("can2 rx0 receive blow: \r\n");
+    mini_printf("CAN_RxHeaderTypeDef.StdId is           0x%x\r\n",can_rx_msg.StdId);
+    mini_printf("CAN_RxHeaderTypeDef.ExtId is           0x%x\r\n",can_rx_msg.ExtId);
+    mini_printf("CAN_RxHeaderTypeDef.IDE is             %d\r\n",can_rx_msg.IDE);
+    mini_printf("CAN_RxHeaderTypeDef.RTR is             %d\r\n",can_rx_msg.RTR);
+    mini_printf("CAN_RxHeaderTypeDef.DLC is             %d\r\n",can_rx_msg.DLC);
+    mini_printf("CAN_RxHeaderTypeDef.Timestamp is       %d\r\n",can_rx_msg.Timestamp);
+    for(uint8_t i = 0;i < can_rx_msg.DLC;i++)
+    {
+        mini_printf("CAN_Infomation[%d] = 0x%02x\r\n",i,g_canrxbuf[i]);
+    }
+#endif
 }
 
 /**
@@ -653,6 +685,7 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hCAN1)
 */
 void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan)
 {
+#if TRUE == BSP_CAN_LOG_ECHO
     if(hcan == &hCAN1)
     {
         mini_printf("CAN1 fifo0数据接收满\r\n");
@@ -662,6 +695,7 @@ void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan)
     {
         mini_printf("CAN2 fifo0数据接收满\r\n");
     }
+#endif
 }
 
 /**
@@ -674,6 +708,7 @@ void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan)
 */
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
+#if TRUE == BSP_CAN_LOG_ECHO
     if(hcan == &hCAN1)
     {
         mini_printf("CAN1 持续接收数据fifo0\r\n");
@@ -683,6 +718,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
     {
         mini_printf("CAN2 持续接收数据fifo0\r\n");
     }
+#endif
 }
 
 /**
@@ -695,6 +731,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 */
 void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
+#if TRUE == BSP_CAN_LOG_ECHO
     if(hcan == &hCAN1)
     {
         mini_printf("CAN1 持续接收数据fifo1\r\n");
@@ -704,6 +741,7 @@ void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan)
     {
         mini_printf("CAN2 持续接收数据fifo1\r\n");
     }
+#endif
 }
 
 /**
@@ -716,6 +754,7 @@ void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan)
 */
 void HAL_CAN_TxMailbox0CompleteCallback(CAN_HandleTypeDef *hcan)
 {
+#if TRUE == BSP_CAN_LOG_ECHO
     if(hcan == &hCAN1)
     {
         mini_printf("CAN1 HAL_CAN_TxMailbox0CompleteCallback\r\n");
@@ -725,6 +764,7 @@ void HAL_CAN_TxMailbox0CompleteCallback(CAN_HandleTypeDef *hcan)
     {
         mini_printf("CAN2 HAL_CAN_TxMailbox0CompleteCallback\r\n");
     }
+#endif
 }
 
 /**
@@ -737,6 +777,7 @@ void HAL_CAN_TxMailbox0CompleteCallback(CAN_HandleTypeDef *hcan)
 */
 void HAL_CAN_TxMailbox1CompleteCallback(CAN_HandleTypeDef *hcan)
 {
+#if TRUE == BSP_CAN_LOG_ECHO
     if(hcan == &hCAN1)
     {
         mini_printf("CAN1 HAL_CAN_TxMailbox1CompleteCallback\r\n");
@@ -746,6 +787,7 @@ void HAL_CAN_TxMailbox1CompleteCallback(CAN_HandleTypeDef *hcan)
     {
         mini_printf("CAN2 HAL_CAN_TxMailbox1CompleteCallback\r\n");
     }
+#endif
 }
 
 /**
@@ -758,6 +800,7 @@ void HAL_CAN_TxMailbox1CompleteCallback(CAN_HandleTypeDef *hcan)
 */
 void HAL_CAN_TxMailbox2CompleteCallback(CAN_HandleTypeDef *hcan)
 {
+#if TRUE == BSP_CAN_LOG_ECHO
     if(hcan == &hCAN1)
     {
         mini_printf("CAN1 HAL_CAN_TxMailbox2CompleteCallback\r\n");
@@ -767,4 +810,5 @@ void HAL_CAN_TxMailbox2CompleteCallback(CAN_HandleTypeDef *hcan)
     {
         mini_printf("CAN2 HAL_CAN_TxMailbox2CompleteCallback\r\n");
     }
+#endif
 }

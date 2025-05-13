@@ -97,6 +97,7 @@ void _shell_init(shell_st *shell)
 {
 
 #ifdef NR_SHELL_SHOW_LOG
+    shell_printf("                                                              \r\n");
     shell_printf(" _   _ ____    __  __ _                  ____  _          _ _ \r\n");
     shell_printf("| \\ | |  _ \\  |  \\/  (_) ___ _ __ ___   / ___|| |__   ___| | |\r\n");
     shell_printf("|  \\| | |_) | | |\\/| | |/ __| '__/ _ \\  \\___ \\| '_ \\ / _ \\ | |\r\n");

@@ -31,7 +31,7 @@ extern "C"
 #define     CAN1_BUS_BAUDE_RATE     CAN1_BUS_BAUDE_500k /* 默认波特率 */
 
 extern CAN_RxHeaderTypeDef can_rx_msg;
-extern uint8_t g_canrxbuf[8];       /* 不能做成全局变量，不然无法触发中断(?????) */
+extern uint8_t g_canrxbuf[8];
 
 #define     CANx_BUS_2              CAN2
 #define     CAN2_CLK_ENABLE()       __HAL_RCC_CAN2_CLK_ENABLE()

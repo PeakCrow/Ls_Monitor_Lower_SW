@@ -243,7 +243,7 @@ static void JumpToBoot(char argc, char *argv)
     /* 声明一个函数指针 */
     void (*SysMemBootJump)(void);
     
-    /* 配置app地址 */
+    /* 配置boot地址 */
     __IO uint32_t BootAddr = 0x08000000;
     
     /* 关闭全局中断 */
