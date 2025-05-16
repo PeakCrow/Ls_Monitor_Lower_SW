@@ -219,25 +219,7 @@ void CAN1_TX_IRQHandler(void)
 */
 void CAN1_RX0_IRQHandler(void)
 {
-    memset(&can_rx_msg,0,sizeof(can_rx_msg));
-    memset(&g_canrxbuf,0,sizeof(g_canrxbuf));
-    
-    HAL_CAN_IRQHandler(&hCAN1);              /* 需要在中断函数中调用此函数来清除中断标志位 */
-    HAL_CAN_GetRxMessage(&hCAN1, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
-#if TRUE == BSP_CAN_LOG_ECHO
-    mini_printf("\r\n");
-    mini_printf("can1 rx0 receive blow: \r\n");
-    mini_printf("CAN_RxHeaderTypeDef.StdId is           0x%x\r\n",can_rx_msg.StdId);
-    mini_printf("CAN_RxHeaderTypeDef.ExtId is           0x%x\r\n",can_rx_msg.ExtId);
-    mini_printf("CAN_RxHeaderTypeDef.IDE is             %d\r\n",can_rx_msg.IDE);
-    mini_printf("CAN_RxHeaderTypeDef.RTR is             %d\r\n",can_rx_msg.RTR);
-    mini_printf("CAN_RxHeaderTypeDef.DLC is             %d\r\n",can_rx_msg.DLC);
-    mini_printf("CAN_RxHeaderTypeDef.Timestamp is       %d\r\n",can_rx_msg.Timestamp);
-    for(uint8_t i = 0;i < can_rx_msg.DLC;i++)
-    {
-        mini_printf("CAN_Infomation[%d] = 0x%02x\r\n",i,g_canrxbuf[i]);
-    }
-#endif
+    HAL_CAN_IRQHandler(&hCAN1);
 }
 
 
@@ -534,25 +516,7 @@ uint8_t bsp_Can2_Receive_buf(uint32_t _id,uint8_t _buf[])
 */
 void CAN2_RX0_IRQHandler(void)
 {
-    memset(&can_rx_msg,0,sizeof(can_rx_msg));
-    memset(&g_canrxbuf,0,sizeof(g_canrxbuf));
-    
-    HAL_CAN_IRQHandler(&hCAN2);              /* 需要在中断函数中调用此函数来清除中断标志位 */
-    HAL_CAN_GetRxMessage(&hCAN2, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
-#if TRUE == BSP_CAN_LOG_ECHO
-    mini_printf("\r\n");
-    mini_printf("can2 rx0 receive blow: \r\n");
-    mini_printf("CAN_RxHeaderTypeDef.StdId is           0x%x\r\n",can_rx_msg.StdId);
-    mini_printf("CAN_RxHeaderTypeDef.ExtId is           0x%x\r\n",can_rx_msg.ExtId);
-    mini_printf("CAN_RxHeaderTypeDef.IDE is             %d\r\n",can_rx_msg.IDE);
-    mini_printf("CAN_RxHeaderTypeDef.RTR is             %d\r\n",can_rx_msg.RTR);
-    mini_printf("CAN_RxHeaderTypeDef.DLC is             %d\r\n",can_rx_msg.DLC);
-    mini_printf("CAN_RxHeaderTypeDef.Timestamp is       %d\r\n",can_rx_msg.Timestamp);
-    for(uint8_t i = 0;i < can_rx_msg.DLC;i++)
-    {
-        mini_printf("CAN_Infomation[%d] = 0x%02x\r\n",i,g_canrxbuf[i]);
-    }
-#endif
+    HAL_CAN_IRQHandler(&hCAN2);
 }
 
 /**
@@ -708,17 +672,46 @@ void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan)
 */
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
-#if TRUE == BSP_CAN_LOG_ECHO
     if(hcan == &hCAN1)
     {
-        mini_printf("CAN1 持续接收数据fifo0\r\n");
+        memset(&can_rx_msg,0,sizeof(can_rx_msg));
+        memset(&g_canrxbuf,0,sizeof(g_canrxbuf));
+        HAL_CAN_GetRxMessage(&hCAN1, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
+        #if TRUE == BSP_CAN_LOG_ECHO
+            mini_printf("\r\n");
+            mini_printf("CAN1.StdId is     0x%x\r\n",can_rx_msg.StdId);
+            mini_printf("CAN1.ExtId is     0x%x\r\n",can_rx_msg.ExtId);
+            mini_printf("CAN1.IDE is       %d\r\n",can_rx_msg.IDE);
+            mini_printf("CAN1.RTR is       %d\r\n",can_rx_msg.RTR);
+            mini_printf("CAN1.DLC is       %d\r\n",can_rx_msg.DLC);
+            mini_printf("CAN1.Timestamp is %d\r\n",can_rx_msg.Timestamp);
+            for(uint8_t i = 0;i < can_rx_msg.DLC;i++)
+            {
+                mini_printf("CAN_Data[%d] = 0x%02x\r\n",i,g_canrxbuf[i]);
+            }
+        #endif
     }
     
     if(hcan == &hCAN2)
     {
-        mini_printf("CAN2 持续接收数据fifo0\r\n");
+        memset(&can_rx_msg,0,sizeof(can_rx_msg));
+        memset(&g_canrxbuf,0,sizeof(g_canrxbuf));
+        HAL_CAN_GetRxMessage(&hCAN2, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
+        #if TRUE == BSP_CAN_LOG_ECHO
+            mini_printf("\r\n");
+            mini_printf("CAN2.StdId is     0x%x\r\n",can_rx_msg.StdId);
+            mini_printf("CAN2.ExtId is     0x%x\r\n",can_rx_msg.ExtId);
+            mini_printf("CAN2.IDE is       %d\r\n",can_rx_msg.IDE);
+            mini_printf("CAN2.RTR is       %d\r\n",can_rx_msg.RTR);
+            mini_printf("CAN2.DLC is       %d\r\n",can_rx_msg.DLC);
+            mini_printf("CAN2.Timestamp is %d\r\n",can_rx_msg.Timestamp);
+            for(uint8_t i = 0;i < can_rx_msg.DLC;i++)
+            {
+                mini_printf("CAN_Data[%d] = 0x%02x\r\n",i,g_canrxbuf[i]);
+            }
+        #endif
     }
-#endif
+
 }
 
 /**

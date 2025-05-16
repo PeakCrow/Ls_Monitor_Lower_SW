@@ -17,7 +17,7 @@
 
 
 /* 使用1Mflash大小的最后128k进行测试 */
-#define FLASH_BASE_ADDR     0x080e0000          /* Flash基地址 */
+#define FLASH_BASE_ADDR     0x08014000          /* Flash基地址 */
 #define FLASH_SIZE          (1*1024*1024)       /* Flash 容量 */
 
 /* Base address of the Flash sectors */

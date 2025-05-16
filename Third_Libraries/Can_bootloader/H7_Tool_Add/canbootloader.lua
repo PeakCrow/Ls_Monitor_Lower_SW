@@ -63,8 +63,8 @@ byte3 = ((filesize >> 24) & 0xFF)
 --发送固件大小给目标板
 --发送*号表示固件大小命令
 --发送固件大小
---固定发送64字节
-str_offset = string.format("%02d", 64 - 5)
+--固定发送8字节
+str_offset = string.format("%02d", 8 - 5)
 str= string.format("%c%c%c%c%c".."%"..str_offset.."s", 42, byte0, byte1, byte2, byte3, "A")
 
 print(str)
@@ -90,7 +90,7 @@ delayms(2000)
 offset = 0
 -- 第1个参数是路径，第2个参数的偏移地址，第3个参数读取大小
 -- 返回值bytes表示读取的字节数，bin表示都回的数据
-bytes, bin = f_read(filepath, 0, 32) 
+bytes, bin = f_read(filepath, 0, 5) 
 offset = offset + bytes
 
 -- 读取数据为0，表示传输完毕
@@ -98,7 +98,7 @@ while(bytes > 0)
 do
     -- 发送$表示开始传输固件命令
     -- 发送固件数据给目标板
-    -- 固定每次发送64个字节
+    -- 固定每次发送8个字节
     count = 8 - 2 - bytes
     str_offset = string.format("%02d", count)
     str_offset1 = string.format("%"..str_offset.."s", "A")
@@ -111,13 +111,14 @@ do
     -- 暂时用延迟实现
     delayms(30)
     
-    bytes, bin = f_read(filepath, offset, 32)  -- 继续读取数据
+    bytes, bin = f_read(filepath, offset, 5)  -- 继续读取数据
     offset = offset + bytes
     if(bytes ~= 0) then                         -- 读取不为0，打印发送的总字节数
         print("发送固件:", offset)
     end
 end
-
+print("数据bin文件传输完毕")
+    
 -------------------------------------------------------
 --   第5步：发送传输结束命令
 -------------------------------------------------------
@@ -129,3 +130,4 @@ print("固件传输完成")
 -------------------------------------------------------
 --  end of file
 -------------------------------------------------------
+

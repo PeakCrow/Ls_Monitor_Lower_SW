@@ -33,7 +33,7 @@ void can_DeInit(void);
 *	                                       宏定义
 *********************************************************************************************************
 */
-#define AppAddr  0x0800f000    /* APP地址 */
+#define AppAddr  0x08014000    /* APP地址 */
 
 /*
 *********************************************************************************************************
@@ -88,16 +88,16 @@ void DemoCANUpdate(void)
 			switch (msg.MsgCode)
 			{
 				case MSG_CAN1_RX:		/* 接收到CAN设备的应答 */
-					cmd = g_Can1RxData[0];
-					printf("size = %d, cmd = %c\r\n",g_Can1RxHeader.DLC>>16, cmd);
+					cmd = g_canrxbuf[0];
+					printf("size = %d, cmd = %c\r\n",can_rx_msg.DLC, cmd);
 					/* 开始传输固件命令 **************/
 					if(cmd == '$')
 					{					   
-						/* 接收够224个数据 */
-						RecSize = g_Can1RxData[1];
+						/* 接收够5个数据 */
+						RecSize = g_canrxbuf[1];
 						
 						/* 编程内部Flash, */
-						ucState = bsp_WriteCpuFlash((uint32_t)(AppAddr + TotalSize),  (uint8_t *)&g_Can1RxData[2], RecSize);
+						ucState = bsp_WriteCpuFlash((uint32_t)(AppAddr + TotalSize),  (uint8_t *)&g_canrxbuf[2], RecSize);
 						TotalSize += RecSize;
 						printf("=====%d\r\n", TotalSize);
 						
@@ -119,7 +119,7 @@ void DemoCANUpdate(void)
 					/* 接收固件大小命令 */
 					if(cmd == '*')
 					{
-						filesize = g_Can1RxData[1] + (g_Can1RxData[2] << 8) + (g_Can1RxData[3] << 16) + (g_Can1RxData[4] << 24);
+						filesize = g_canrxbuf[1] + (g_canrxbuf[2] << 8) + (g_canrxbuf[3] << 16) + (g_canrxbuf[4] << 24);
 						uwAppSize = filesize;
 						SectorCount = filesize/(128*1024);
 						SectorRemain = filesize%(128*1024);	
