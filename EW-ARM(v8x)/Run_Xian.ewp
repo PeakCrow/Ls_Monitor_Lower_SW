@@ -1181,6 +1181,12 @@
             <name>$PROJ_DIR$\..\Hal_Libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_eth.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\Hal_Libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Hal_Libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\Hal_Libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c</name>
         </file>
         <file>
@@ -1722,6 +1728,9 @@
         <name>System</name>
         <file>
             <name>$PROJ_DIR$\..\System\can\bsp_can_bus.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\System\flash\bsp_cpu_flash.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\System\ticktim\bsp_dwt.c</name>

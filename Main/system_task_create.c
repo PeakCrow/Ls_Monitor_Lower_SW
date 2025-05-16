@@ -204,6 +204,51 @@ void bsp_RunPer10ms()
 }
     
 
+/*
+*    函 数 名: board_led_Contro
+*    功能说明: 控制板载的led灯是否打开
+*    形    参 : argc 传入参数的个数
+*            : arhv 传入参数的地址索引
+*    返 回 值: 无
+*/
+void board_led_Contro(char argc, char *argv)
+{
+    uint8_t _step_index = atoi(&(argv[argv[1]]));
+    uint8_t _thread_status = 0xff;
+    
+    if(0x1u == _step_index)
+    {
+        /**************创建COM任务*********************/
+        _thread_status = tx_thread_create(&AppTaskCOMTCB,"App Task COM",AppTaskCOM,0,&AppTaskCOMStk[0],APP_CFG_TASK_COM_STK_SIZE,
+                            APP_CFG_TASK_COM_PRIO,APP_CFG_TASK_COM_PRIO,TX_NO_TIME_SLICE,TX_AUTO_START);
+        if(0x0u == _thread_status)
+        {
+            mini_printf("led tash create sucess!\r\n");
+        }
+        else
+        {
+            mini_printf("led tash create failed ,status is %d!\r\n",_thread_status);
+        }
+
+    }else if(0x0u == _step_index)
+    {
+        /**************删除COM任务*********************/
+        _thread_status = tx_thread_delete(&AppTaskCOMTCB);
+        if(0x0u == _thread_status)
+        {
+            mini_printf("led tash delete sucess!\r\n");
+        }
+        else
+        {
+            mini_printf("led tash delete failed ,status is %d!\r\n",_thread_status);
+        }
+    }
+    else
+    {
+        mini_printf("invalid paramts\r\n");
+    }
+}
+NR_SHELL_CMD_EXPORT(board_on_off, board_led_Contro,"controller board led to on or off; 1 open;0 close")
 
 
 

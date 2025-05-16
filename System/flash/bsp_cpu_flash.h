@@ -13,7 +13,7 @@
 #ifndef _BSP_CPU_FLASH_H_
 #define _BSP_CPU_FLASH_H_
 
-#include "bsp.h"
+#include "sys.h"
 
 
 /* 使用1Mflash大小的最后128k进行测试 */

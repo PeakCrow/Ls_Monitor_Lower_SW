@@ -76,7 +76,7 @@ extern "C"
 #include "iwdg.h"                   /* 看门狗模块 */
 #include "system_task_create.h"     /* threadx 操作系统任务 */
 #include "bsp_sram.h"               /* 板载1M SRAM */
-
+#include "bsp_cpu_flash.h"          /* 擦除写入mcu内部flash */
 
 
 /*

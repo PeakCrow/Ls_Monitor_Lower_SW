@@ -107,7 +107,7 @@ The end of line.
 #define NR_SHELL_USER_NAME_MAX_LENGTH 30
 
 /* Maximum command name length. */
-#define NR_SHELL_CMD_NAME_MAX_LENGTH 10
+#define NR_SHELL_CMD_NAME_MAX_LENGTH 30
 
 /* Command line buffer size. */
 #define NR_SHELL_CMD_LINE_MAX_LENGTH NR_ANSI_LINE_SIZE

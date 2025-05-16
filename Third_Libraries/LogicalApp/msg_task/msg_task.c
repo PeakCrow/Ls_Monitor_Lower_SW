@@ -108,9 +108,28 @@ void AppTaskUserIF(ULONG thread_input)
     }
 }
 
-/**
- * @brief ls command
- */
+/*
+*    函 数 名: App_I2C_EE_BufferWrite
+*    功能说明: 线程安全的eeprom写人方式
+*    形    参 : 同I2C_EE_BufferWrite的参数。
+*    返 回 值: 无
+*/
+void App_I2C_EE_BufferWrite(uint8_t* pBuffer, uint8_t WriteAddr,uint16_t NumByteToWrite)
+{
+    /* 互斥操作 */
+    tx_mutex_get(&App_PowerDownSave, TX_WAIT_FOREVER);
+    I2C_EE_BufferWrite(pBuffer,WriteAddr,NumByteToWrite);
+    tx_mutex_put(&App_PowerDownSave);    
+}
+
+
+/*
+*    函 数 名: shell_ls_cmd
+*    功能说明: 将注册的所有用例展示出来
+*    形    参 : argc 传入参数的个数
+*            : arhv 传入参数的地址索引
+*    返 回 值: 无
+*/
 void shell_ls_cmd(char argc, char *argv)
 {
     unsigned int i = 0;
@@ -144,9 +163,13 @@ void shell_ls_cmd(char argc, char *argv)
 }
 NR_SHELL_CMD_EXPORT(ls, shell_ls_cmd,"shell demo cmd for ls,paras [cmd][-v][-h]")
 
-/**
- * @brief test command
- */
+/*
+*    函 数 名: shell_test_cmd
+*    功能说明: 能够打印出所有的传入的参数
+*    形    参 : argc 传入参数的个数
+*            : arhv 传入参数的地址索引
+*    返 回 值: 无
+*/
 void shell_test_cmd(char argc, char *argv)
 {
     unsigned int i;
@@ -158,9 +181,13 @@ void shell_test_cmd(char argc, char *argv)
 }
 NR_SHELL_CMD_EXPORT(test, shell_test_cmd,"shell demo cmd for test,traverse all paras")
 
-/**
- * @brief ls command
- */
+/*
+*    函 数 名: can1_sent_demo
+*    功能说明: can1发送8帧报文 ID 0x55
+*    形    参 : argc 传入参数的个数
+*            : arhv 传入参数的地址索引
+*    返 回 值: 无
+*/
 void can1_sent_demo(char argc, char *argv)
 {
     uint32_t _id = 0x55;
@@ -173,6 +200,14 @@ void can1_sent_demo(char argc, char *argv)
 }
 NR_SHELL_CMD_EXPORT(can1_send, can1_sent_demo,"can1 to send once!")
 
+
+/*
+*    函 数 名: can2_sent_demo
+*    功能说明: can2发送8帧报文 ID 0x77
+*    形    参 : argc 传入参数的个数
+*            : arhv 传入参数的地址索引
+*    返 回 值: 无
+*/
 void can2_sent_demo(char argc, char *argv)
 {
     uint32_t _id = 0x77;
@@ -185,6 +220,14 @@ void can2_sent_demo(char argc, char *argv)
 }
 NR_SHELL_CMD_EXPORT(can2_send, can2_sent_demo,"can2 to send once!")
 
+
+/*
+*    函 数 名: JumpToApp
+*    功能说明: boot 跳转 app
+*    形    参 : argc 传入参数的个数
+*            : arhv 传入参数的地址索引
+*    返 回 值: 无
+*/
 static void JumpToApp(char argc, char *argv)
 {
     uint32_t i=0;
@@ -236,6 +279,14 @@ static void JumpToApp(char argc, char *argv)
 }
 NR_SHELL_CMD_EXPORT(jumptoapp, JumpToApp,"JumpToApp!")
 
+
+/*
+*    函 数 名: JumpToBoot
+*    功能说明: app 跳转 boot
+*    形    参 : argc 传入参数的个数
+*            : arhv 传入参数的地址索引
+*    返 回 值: 无
+*/
 static void JumpToBoot(char argc, char *argv)
 {
     uint32_t i=0;
@@ -293,25 +344,23 @@ NR_SHELL_CMD_EXPORT(jumptoboot, JumpToBoot,"JumpToBoot!")
 //NR_SHELL_CMD_EXPORT(test, shell_test_cmd);
 //#else
 //const static_cmd_st static_cmd[] =
-//	{
-//		{"ls", shell_ls_cmd},
-//		{"test", shell_test_cmd},
-//		{"\0", NULL}};
+//  {
+//      {"ls", shell_ls_cmd},
+//      {"test", shell_test_cmd},
+//      {"\0", NULL}};
 //#endif
 
 /*
-* 
 *    函 数 名: APRINTntf
-*    功能说明: �PRINT�全的printf方式
+*    功能说明: 互斥的printf方式
 *    形    参 : PRINTntf的参数。
 *             在C中，当无法列出传递函数的所有实参的类型和数目时,
 *             可以用省略号指定参数表
 *    返 回 值: 无
-* 
 */
 void App_printf(const char *fmt, ...)
 {
-    char  buf_str[200 + 1];/* 特别注�PRINT�果printf的变量较多，注意此局部变量的大小是否够用 */
+    char  buf_str[200 + 1];/* 特别注意如果传入的printf变量比较多，注意此局部变量的大小是否够用 */
     va_list   v_args;
     va_start(v_args, fmt);
    (void)vsnprintf((char       *)&buf_str[0],
@@ -324,209 +373,14 @@ void App_printf(const char *fmt, ...)
     PRINT("%s", buf_str);
     tx_mutex_put(&AppPrintfSemp);
 }
+
 /*
-* 
-*    函 数 名: App_I2C_EE_BufferWrite
-*    功能说明: 线程安全的eeprom写人方式
-*    形    参 : 同I2C_EE_BufferWrite的参数。
+*    函 数 名: shell_mini_printf_cmd
+*    功能说明: 测试独立的mini_printf是否打印正常
+*    形    参 : argc 传入参数的个数
+*            : arhv 传入参数的地址索引
 *    返 回 值: 无
-* 
 */
-void App_I2C_EE_BufferWrite(uint8_t* pBuffer, uint8_t WriteAddr,uint16_t NumByteToWrite)
-{
-    /* 互斥操作 */
-    tx_mutex_get(&App_PowerDownSave, TX_WAIT_FOREVER);
-    I2C_EE_BufferWrite(pBuffer,WriteAddr,NumByteToWrite);
-    tx_mutex_put(&App_PowerDownSave);    
-}
-
-static const char assic[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-                             'a', 'b', 'c', 'd', 'e', 'f'
-                            };
-
-static const unsigned int dec_base[] = {
-    1UL,
-    10UL,
-    100UL,
-    1000UL,
-    10000UL,
-    100000UL,
-    1000000UL,
-    10000000UL,
-    100000000UL,
-    1000000000UL,
-};
-
-void send_char(uint8_t c)
-{
-    //uart_tx(TTY_UART, &c, 1);
-    comSendChar(COM1, c);
-}
-/*
- * Format tag prototype is "%[flags][width][.precision][length]specifier"
- *      flags: -, +, space, #, O
- *      .precision: .number
- *      length: h, I, L
- *      width: number, *
- */
-int mini_printf(const char *fmt, ...)
-{
-    va_list args;
-    const char *p = NULL, *str = NULL;//*scan = NULL;
-    int ival = 0, i = 0;
-    unsigned int digit = 0, msb_processed = 0, index = 0, width = 8;
-    float fv;
-
-    va_start(args, fmt);
-
-#if defined(CFG_AOS)
-    //TaskSuspendAll();
-#endif
-//    for (scan = fmt; *scan; scan++) {
-//        if (*scan == '\n') {
-//            PRINT_core();
-//            break;
-//        }
-//    }
-
-    for (p = fmt; *p; p++) {
-        if (*p != '%') {
-            if (*p == '\n') {
-                uint8_t c = '\r';
-                send_char(c);
-            }
-
-            send_char(*p);
-            continue;
-        }
-
-        p++;
-
-        while (*p != 'c' && *p != 'd'
-               && *p != 'X' && *p != 'x'
-               && *p != 'p' && *p != 'u'
-               && *p != 's' && *p != 'f') {
-            if (*p >= '0' && *p <= '9' && *(p - 1) != '.' && *(p - 2) != '.') {
-                width = *p - '0';
-
-                if (width < 1) {
-                    width = 1;
-                }
-            }
-
-            p++;
-        }
-
-        switch (*p) {
-        case 'd':
-            ival = va_arg(args, int);
-
-            if (ival < 0) {
-                send_char('-');
-                ival = 0 - ival;
-            }
-
-            msb_processed = 0;
-
-            for (i = 9; i >= 0; i--) {
-                digit = ival / dec_base[i];
-                ival = ival % dec_base[i];
-
-                if ((digit > 0) || (msb_processed)) {
-                    send_char(digit + '0');
-                    msb_processed = 1;
-                }
-            }
-
-            /* all digits are zeros */
-            if (!msb_processed) {
-                send_char('0');
-            }
-
-            break;
-
-        case 'x':
-        case 'X':
-        case 'u':
-        case 'p':
-            ival = va_arg(args, int);
-
-            for (i = width - 1; i >= 0; i--) {
-                index = (ival >> (i) * 4) & 0xFUL;
-                send_char(assic[index]);
-            }
-
-            width = 8;
-            break;
-
-        case 's':
-            for (str = va_arg(args, char *); *str; str++) {
-                send_char(*str);
-            }
-
-            break;
-
-        case 'c':
-            send_char(va_arg(args, int));
-            break;
-        case 'f':
-
-            fv = va_arg(args, double);
-            ival = (int)fv;
-            if (ival < 0) {
-                ival = - ival;
-                send_char('-');
-            }
-
-            msb_processed = 0;
-            for (i = 9; i >= 0; i--) {
-                digit = ival / dec_base[i];
-                ival = ival % dec_base[i];
-                if ((digit > 0) || (msb_processed)) {
-                    send_char(digit + '0');
-                    msb_processed = 1;
-                }
-            }
-            /* all digits are zeros */
-            if (!msb_processed) {
-                send_char('0');
-            }
-            send_char('.');
-            /* remain four digits after the decimal point */
-            ival = (int)(fv * 10000);
-            ival = ival % 10000;
-            msb_processed = 0;
-            for (i = 3; i >= 0; i--) {
-                digit = ival / dec_base[i];
-                ival = ival % dec_base[i];
-                if(digit != 0)
-                {
-                    msb_processed = 1;
-                }
-                send_char(digit + '0');
-            }
-            /* all digits are zeros */
-            if (!msb_processed) {
-                send_char('0');
-            }
-
-            break;
-        default:
-            break;
-        }
-    }
-
-#if defined(CFG_AOS)
-    //xTaskResumeAll();
-#endif
-    va_end(args);
-
-    return 0;
-}
-
-/**
- * @brief m_PRINT command
- */
 void shell_mini_printf_cmd(char argc, char *argv)
 {
     mini_printf("test for mini PRINT !\r\n");
@@ -534,4 +388,41 @@ void shell_mini_printf_cmd(char argc, char *argv)
     mini_printf("the %s value is 0x%x !\r\n","float",0x10);
 }
 NR_SHELL_CMD_EXPORT(m_printf, shell_mini_printf_cmd,"for practice mini PRINT")
+
+
+/*
+*    函 数 名: onchip_flash_opertion
+*    功能说明: 测试擦写pflash的最后的128k的 
+*            : 0x080e0000 地址的 8 字节写入是否正常
+*    形    参 : argc 传入参数的个数
+*            : arhv 传入参数的地址索引
+*    返 回 值: 无
+*/
+void onchip_flash_opertion(char argc, char *argv)
+{
+    mini_printf("onchip_flash_opertion !\r\n");
+    uint8_t _w_flash_draft[8] = {0x66,0x66,0x66,0x66,0x77,0x77,0x77,0x88};
+    
+    uint8_t _r_flsah_data[8];
+    memset(_r_flsah_data,0,sizeof(_r_flsah_data));
+
+    uint8_t _ret =  bsp_WriteCpuFlash(FLASH_BASE_ADDR,_w_flash_draft,sizeof(_w_flash_draft));
+    mini_printf("flash write is voer,the ret is %d\r\n",_ret);
+
+    _ret = bsp_ReadCpuFlash(FLASH_BASE_ADDR,_r_flsah_data,sizeof(_r_flsah_data));
+    mini_printf("flash read is voer,the ret is %d\r\n",_ret);
+
+    mini_printf("\r\n");
+    for(uint8_t i = 0;i < sizeof(_r_flsah_data);i++)
+    {
+        mini_printf("memory read data is 0x%02x\r\n",*((uint8_t *)(0x080e0000 +i) ));
+    }
+}
+NR_SHELL_CMD_EXPORT(onchip_flash, onchip_flash_opertion,"erase and write stm32f407 onchip flash")
+
+
+
+
+
+
 
