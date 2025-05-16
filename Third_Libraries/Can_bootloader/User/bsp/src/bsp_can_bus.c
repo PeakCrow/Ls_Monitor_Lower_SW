@@ -7,7 +7,7 @@ CAN_HandleTypeDef hCAN2;
 CAN_RxHeaderTypeDef can_rx_msg;
 uint8_t g_canrxbuf[8] = {0};
 
-#define BSP_CAN_LOG_ECHO TRUE
+#define BSP_CAN_LOG_ECHO FALSE
 
 /**
   * @FunctionName: bsp_InitCan1Bus

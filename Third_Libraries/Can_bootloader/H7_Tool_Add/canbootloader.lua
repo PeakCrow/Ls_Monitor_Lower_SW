@@ -109,7 +109,7 @@ do
     -- 等待目标板返回确认数据0x30
     -- 返回0x30表示发送成功
     -- 暂时用延迟实现
-    delayms(30)
+    delayms(120)
     
     bytes, bin = f_read(filepath, offset, 5)  -- 继续读取数据
     offset = offset + bytes
