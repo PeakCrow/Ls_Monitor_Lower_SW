@@ -32,8 +32,8 @@
 #define EXAMPLE_DATE	"2019-04-23"
 #define DEMO_VER		"1.0"
 
-static void PrintfLogo(void);
-static void PrintfHelp(void);
+static void mini_printfLogo(void);
+static void mini_printfHelp(void);
 
 /*
 *********************************************************************************************************
@@ -48,8 +48,8 @@ int main(void)
 
 	bsp_Init();		/* 硬件初始化 */
 	
-	PrintfLogo();	/* 打印例程名称和版本等信息 */
-	PrintfHelp();	/* 打印操作提示 */
+	mini_printfLogo();	/* 打印例程名称和版本等信息 */
+	mini_printfHelp();	/* 打印操作提示 */
 
 	/* 先做个LED1的亮灭显示 */
 	bsp_LedOn(1);
@@ -85,30 +85,30 @@ int main(void)
 
 /*
 *********************************************************************************************************
-*	函 数 名: PrintfHelp
+*	函 数 名: mini_printfHelp
 *	功能说明: 打印操作提示
 *	形    参: 无
 *	返 回 值: 无
 *********************************************************************************************************
 */
-static void PrintfHelp(void)
+static void mini_printfHelp(void)
 {
-	printf("操作提示:\r\n");
-	printf("1. 启动一个自动重装软件定时器，每100ms翻转一次LED1和LED2\r\n");
-	printf("2. 再启动一个自动重装软件定时器，每500ms翻转一次LED3和LED4\r\n");
+	mini_printf("操作提示:\r\n");
+	mini_printf("1. 启动一个自动重装软件定时器，每100ms翻转一次LED1和LED2\r\n");
+	mini_printf("2. 再启动一个自动重装软件定时器，每500ms翻转一次LED3和LED4\r\n");
 }
 
 /*
 *********************************************************************************************************
-*	函 数 名: PrintfLogo
+*	函 数 名: mini_printfLogo
 *	功能说明: 打印例程名称和例程发布日期, 接上串口线后，打开PC机的超级终端软件可以观察结果
 *	形    参: 无
 *	返 回 值: 无
 *********************************************************************************************************
 */
-static void PrintfLogo(void)
+static void mini_printfLogo(void)
 {
-	printf("*************************************************************\n\r");
+	mini_printf("*************************************************************\n\r");
 	
 	/* 检测CPU ID */
 	{
@@ -118,26 +118,210 @@ static void PrintfLogo(void)
 		CPU_Sn1 = *(__IO uint32_t*)(0x1FFF7A10 + 4);
 		CPU_Sn2 = *(__IO uint32_t*)(0x1FFF7A10 + 8);
 
-		printf("\r\nCPU : STM32F407IGT6, LQFP176, 主频: %dMHz\r\n", SystemCoreClock / 1000000);
-		printf("UID = %08X %08X %08X\n\r", CPU_Sn2, CPU_Sn1, CPU_Sn0);
+		mini_printf("\r\nCPU : STM32F407IGT6, LQFP176, 主频: %dMHz\r\n", SystemCoreClock / 1000000);
+		mini_printf("UID = %08X %08X %08X\n\r", CPU_Sn2, CPU_Sn1, CPU_Sn0);
 	}
 
-	printf("\n\r");
-	printf("*************************************************************\n\r");
-//	printf("* 例程名称   : %s\r\n", EXAMPLE_NAME);	/* 打印例程名称 */
-	printf("* 例程版本   : %s\r\n", DEMO_VER);		/* 打印例程版本 */
-	printf("* 发布日期   : %s\r\n", EXAMPLE_DATE);	/* 打印例程日期 */
+	mini_printf("\n\r");
+	mini_printf("*************************************************************\n\r");
+//	mini_printf("* 例程名称   : %s\r\n", EXAMPLE_NAME);	/* 打印例程名称 */
+	mini_printf("* 例程版本   : %s\r\n", DEMO_VER);		/* 打印例程版本 */
+	mini_printf("* 发布日期   : %s\r\n", EXAMPLE_DATE);	/* 打印例程日期 */
 
 	/* 打印ST的HAL库版本 */
-	printf("* HAL库版本  : V2.4.0 (STM32F407 HAL Driver)\r\n");
-	printf("* \r\n");	/* 打印一行空格 */
-	printf("* QQ    : 1295744630 \r\n");
-	printf("* 旺旺  : armfly\r\n");
-	printf("* Email : armfly@qq.com \r\n");
-	printf("* 微信公众号: armfly_com \r\n");
-	printf("* 淘宝店: armfly.taobao.com\r\n");
-	printf("* Copyright www.armfly.com 安富莱电子\r\n");
-	printf("*************************************************************\n\r");
+	mini_printf("* HAL库版本  : V2.4.0 (STM32F407 HAL Driver)\r\n");
+	mini_printf("* \r\n");	/* 打印一行空格 */
+	mini_printf("* QQ    : 1295744630 \r\n");
+	mini_printf("* 旺旺  : armfly\r\n");
+	mini_printf("* Email : armfly@qq.com \r\n");
+	mini_printf("* 微信公众号: armfly_com \r\n");
+	mini_printf("* 淘宝店: armfly.taobao.com\r\n");
+	mini_printf("* Copyright www.armfly.com 安富莱电子\r\n");
+	mini_printf("*************************************************************\n\r");
 }
 
 /***************************** 安富莱电子 www.armfly.com (END OF FILE) *********************************/
+                            static const char assic[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                             'a', 'b', 'c', 'd', 'e', 'f'
+                            };
+
+static const unsigned int dec_base[] = {
+    1UL,
+    10UL,
+    100UL,
+    1000UL,
+    10000UL,
+    100000UL,
+    1000000UL,
+    10000000UL,
+    100000000UL,
+    1000000000UL,
+};
+
+void send_char(uint8_t c)
+{
+    //uart_tx(TTY_UART, &c, 1);
+    comSendChar(COM1, c);
+}
+/*
+ * Format tag prototype is "%[flags][width][.precision][length]specifier"
+ *      flags: -, +, space, #, O
+ *      .precision: .number
+ *      length: h, I, L
+ *      width: number, *
+ */
+int mini_printf(const char *fmt, ...)
+{
+    va_list args;
+    const char *p = NULL, *str = NULL;//*scan = NULL;
+    int ival = 0, i = 0;
+    unsigned int digit = 0, msb_processed = 0, index = 0, width = 8;
+    float fv;
+
+    va_start(args, fmt);
+
+#if defined(CFG_AOS)
+    //TaskSuspendAll();
+#endif
+//    for (scan = fmt; *scan; scan++) {
+//        if (*scan == '\n') {
+//            PRINT_core();
+//            break;
+//        }
+//    }
+
+    for (p = fmt; *p; p++) {
+        if (*p != '%') {
+            if (*p == '\n') {
+                uint8_t c = '\r';
+                send_char(c);
+            }
+
+            send_char(*p);
+            continue;
+        }
+
+        p++;
+
+        while (*p != 'c' && *p != 'd'
+               && *p != 'X' && *p != 'x'
+               && *p != 'p' && *p != 'u'
+               && *p != 's' && *p != 'f') {
+            if (*p >= '0' && *p <= '9' && *(p - 1) != '.' && *(p - 2) != '.') {
+                width = *p - '0';
+
+                if (width < 1) {
+                    width = 1;
+                }
+            }
+
+            p++;
+        }
+
+        switch (*p) {
+        case 'd':
+            ival = va_arg(args, int);
+
+            if (ival < 0) {
+                send_char('-');
+                ival = 0 - ival;
+            }
+
+            msb_processed = 0;
+
+            for (i = 9; i >= 0; i--) {
+                digit = ival / dec_base[i];
+                ival = ival % dec_base[i];
+
+                if ((digit > 0) || (msb_processed)) {
+                    send_char(digit + '0');
+                    msb_processed = 1;
+                }
+            }
+
+            /* all digits are zeros */
+            if (!msb_processed) {
+                send_char('0');
+            }
+
+            break;
+
+        case 'x':
+        case 'X':
+        case 'u':
+        case 'p':
+            ival = va_arg(args, int);
+
+            for (i = width - 1; i >= 0; i--) {
+                index = (ival >> (i) * 4) & 0xFUL;
+                send_char(assic[index]);
+            }
+
+            width = 8;
+            break;
+
+        case 's':
+            for (str = va_arg(args, char *); *str; str++) {
+                send_char(*str);
+            }
+
+            break;
+
+        case 'c':
+            send_char(va_arg(args, int));
+            break;
+        case 'f':
+
+            fv = va_arg(args, double);
+            ival = (int)fv;
+            if (ival < 0) {
+                ival = - ival;
+                send_char('-');
+            }
+
+            msb_processed = 0;
+            for (i = 9; i >= 0; i--) {
+                digit = ival / dec_base[i];
+                ival = ival % dec_base[i];
+                if ((digit > 0) || (msb_processed)) {
+                    send_char(digit + '0');
+                    msb_processed = 1;
+                }
+            }
+            /* all digits are zeros */
+            if (!msb_processed) {
+                send_char('0');
+            }
+            send_char('.');
+            /* remain four digits after the decimal point */
+            ival = (int)(fv * 10000);
+            ival = ival % 10000;
+            msb_processed = 0;
+            for (i = 3; i >= 0; i--) {
+                digit = ival / dec_base[i];
+                ival = ival % dec_base[i];
+                if(digit != 0)
+                {
+                    msb_processed = 1;
+                }
+                send_char(digit + '0');
+            }
+            /* all digits are zeros */
+            if (!msb_processed) {
+                send_char('0');
+            }
+
+            break;
+        default:
+            break;
+        }
+    }
+
+#if defined(CFG_AOS)
+    //xTaskResumeAll();
+#endif
+    va_end(args);
+
+    return 0;
+}
+

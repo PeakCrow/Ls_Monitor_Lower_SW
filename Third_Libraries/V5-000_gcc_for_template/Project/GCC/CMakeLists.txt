@@ -36,9 +36,7 @@ set(CMAKE_SZ arm-none-eabi-size)
 set(MCU_FLAGS "-mcpu=cortex-m4 -mthumb ")
 set(FPU_FLAGS "")
 set(LINKER_SCRIPT "${CMAKE_SOURCE_DIR}/stm32f407.ld")
-# set(LIBS "-lc -lm -lnosys") 
-
-# target_link_libraries(${PROJECT_NAME} -lc -lm -lnosys)
+set(LIBS "-lc -lm -lnosys") 
 
 # 添加需要编译的所有源码
 set(C_SOURCES
@@ -99,6 +97,8 @@ target_link_options(${PROJECT_NAME}.elf PRIVATE
     -Wl,-Map=${CMAKE_BINARY_DIR}/${PROJECT_NAME}.map,--cref
     -Wl,--gc-sections
 )
+
+# target_link_libraries(${PROJECT_NAME} -lc -lm -lnosys)
 
 
 # 添加生成 .hex 和 .bin 文件的自定义命令

@@ -55,6 +55,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdarg.h>     /* 参数个数未知时获取函数中的参数 */
+#include <stdio.h>      /* 标准输入输出函数 */
+#include <stdlib.h>     /* 变量类型,一些宏和各种通用工具函数 */
+#include <math.h>       /* 各种数学函数 */
+#include <string.h>     /* 各种操作字符数组的函数 */
 
 #ifndef TRUE
 	#define TRUE  1
@@ -131,6 +136,7 @@ void bsp_Idle(void);
 
 void bsp_GetCpuID(uint32_t *_id);
 void Error_Handler(char *file, uint32_t line);
+int mini_printf(const char *fmt, ...);
 
 #endif
 
