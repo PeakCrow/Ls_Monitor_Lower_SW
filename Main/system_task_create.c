@@ -219,28 +219,36 @@ void board_led_Contro(char argc, char *argv)
     if(0x1u == _step_index)
     {
         /**************创建COM任务*********************/
-        _thread_status = tx_thread_create(&AppTaskCOMTCB,"App Task COM",AppTaskCOM,0,&AppTaskCOMStk[0],APP_CFG_TASK_COM_STK_SIZE,
-                            APP_CFG_TASK_COM_PRIO,APP_CFG_TASK_COM_PRIO,TX_NO_TIME_SLICE,TX_AUTO_START);
+        _thread_status = tx_thread_reset(&AppTaskCOMTCB);
         if(0x0u == _thread_status)
         {
-            mini_printf("led tash create sucess!\r\n");
+            mini_printf("led task reset sucess!\r\n");
         }
         else
         {
-            mini_printf("led tash create failed ,status is %d!\r\n",_thread_status);
+            mini_printf("led task reset failed ,status is %d!\r\n",_thread_status);
+        }
+        _thread_status = tx_thread_resume(&AppTaskCOMTCB);
+        if(0x0u == _thread_status)
+        {
+            mini_printf("led task resume sucess!\r\n");
+        }
+        else
+        {
+            mini_printf("led task resume failed ,status is %d!\r\n",_thread_status);
         }
 
     }else if(0x0u == _step_index)
     {
         /**************删除COM任务*********************/
-        _thread_status = tx_thread_delete(&AppTaskCOMTCB);
+        _thread_status = tx_thread_terminate(&AppTaskCOMTCB);
         if(0x0u == _thread_status)
         {
-            mini_printf("led tash delete sucess!\r\n");
+            mini_printf("led task terminate sucess!\r\n");
         }
         else
         {
-            mini_printf("led tash delete failed ,status is %d!\r\n",_thread_status);
+            mini_printf("led task terminate failed ,status is %d!\r\n",_thread_status);
         }
     }
     else

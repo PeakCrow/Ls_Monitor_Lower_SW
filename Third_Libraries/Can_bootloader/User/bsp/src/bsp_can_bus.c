@@ -7,7 +7,7 @@ CAN_HandleTypeDef hCAN2;
 CAN_RxHeaderTypeDef can_rx_msg;
 uint8_t g_canrxbuf[8] = {0};
 
-#define BSP_CAN_LOG_ECHO FALSE
+#define BSP_CAN_LOG_ECHO TRUE
 
 /**
   * @FunctionName: bsp_InitCan1Bus
@@ -39,7 +39,7 @@ void bsp_InitCan1Bus(void)
     HAL_StatusTypeDef ret = HAL_CAN_Init(&hCAN1);
     if(HAL_OK != ret)
     {
-        printf("HAL_CAN_Init CAN1 ret not ok %d !\n",ret);
+        mini_printf("HAL_CAN_Init CAN1 ret not ok %d !\n",ret);
     }
     
     /*CAN过滤器初始化*/
@@ -58,7 +58,7 @@ void bsp_InitCan1Bus(void)
     ret = HAL_CAN_ConfigFilter(&hCAN1, &sFilterConfig);
     if(HAL_OK != ret)
     {
-        printf("HAL_CAN_ConfigFilter0 CAN1 ret not ok %d !\n",ret);
+        mini_printf("HAL_CAN_ConfigFilter0 CAN1 ret not ok %d !\n",ret);
     }
     
     /*CAN过滤器初始化*/
@@ -74,7 +74,7 @@ void bsp_InitCan1Bus(void)
     ret = HAL_CAN_ConfigFilter(&hCAN1, &sFilterConfig2);
     if(HAL_OK != ret)
     {
-        printf("HAL_CAN_ConfigFilter1 CAN1 ret not ok %d !\n",ret);
+        mini_printf("HAL_CAN_ConfigFilter1 CAN1 ret not ok %d !\n",ret);
     }
 
     /*CAN过滤器初始化*/
@@ -90,7 +90,7 @@ void bsp_InitCan1Bus(void)
     ret = HAL_CAN_ConfigFilter(&hCAN1, &sFilterConfig2);
     if(HAL_OK != ret)
     {
-        printf("HAL_CAN_ConfigFilter2 CAN1 ret not ok %d !\n",ret);
+        mini_printf("HAL_CAN_ConfigFilter2 CAN1 ret not ok %d !\n",ret);
     }
     
     
@@ -99,43 +99,43 @@ void bsp_InitCan1Bus(void)
     /* 配置邮箱0接收过程中断 */
     if(HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
     {
-        printf("CAN1 CAN_IT_RX_FIFO0_MSG_PENDING config error!\r\n");
+        mini_printf("CAN1 CAN_IT_RX_FIFO0_MSG_PENDING config error!\r\n");
     }
 
     /* 配置邮箱0接收完全中断 */
     if(HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO0_FULL) != HAL_OK)
     {
-        printf("CAN1 CAN_IT_RX_FIFO0_FULL config error!\r\n");
+        mini_printf("CAN1 CAN_IT_RX_FIFO0_FULL config error!\r\n");
     }
 
     /* 配置邮箱接0收溢出中断 */
     if(HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO0_OVERRUN) != HAL_OK)
     {
-        printf("CAN1 CAN_IT_RX_FIFO0_OVERRUN config error!\r\n");
+        mini_printf("CAN1 CAN_IT_RX_FIFO0_OVERRUN config error!\r\n");
     }
 
     /* 配置邮箱接收过程中断 */
     if(HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO1_MSG_PENDING) != HAL_OK)
     {
-        printf("CAN1 CAN_IT_RX_FIFO1_MSG_PENDING config error!\r\n");
+        mini_printf("CAN1 CAN_IT_RX_FIFO1_MSG_PENDING config error!\r\n");
     }
 
     /* 配置邮箱接收完全中断 */
     if(HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO1_FULL) != HAL_OK)
     {
-        printf("CAN1 CAN_IT_RX_FIFO1_FULL config error!\r\n");
+        mini_printf("CAN1 CAN_IT_RX_FIFO1_FULL config error!\r\n");
     }
 
     /* 配置邮箱1接收溢出中断 */
     if(HAL_CAN_ActivateNotification(&hCAN1,CAN_IT_RX_FIFO1_OVERRUN) != HAL_OK)
     {
-        printf("CAN1 CAN_IT_RX_FIFO1_OVERRUN config error!\r\n");
+        mini_printf("CAN1 CAN_IT_RX_FIFO1_OVERRUN config error!\r\n");
     }
     
     /* 配置邮箱发送空中断 */
     if (HAL_CAN_ActivateNotification(&hCAN1, CAN_IT_TX_MAILBOX_EMPTY) != HAL_OK)
     {
-        printf("CAN1 CAN_IT_TX_MAILBOX_EMPTY config error!\r\n");
+        mini_printf("CAN1 CAN_IT_TX_MAILBOX_EMPTY config error!\r\n");
     }
 }
 
@@ -164,7 +164,7 @@ HAL_StatusTypeDef bsp_Can1_Send_buf(uint32_t _id,uint8_t _buf[],uint8_t _dlc)
     }
     else
     {
-        printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
+        mini_printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
     }
     if (_dlc >8)
     {
@@ -246,7 +246,7 @@ uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
             _buf[i] = g_canrxbuf[i];
         }
         else
-            printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
+            mini_printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
     }
     else if(IS_CAN_EXTID(_id))
     {
@@ -258,7 +258,7 @@ uint8_t bsp_Can1_Receive_buf(uint32_t _id,uint8_t _buf[])
         }
     }
     else
-        printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
+        mini_printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
     }
     return can_rx_msg.DLC;
 }
@@ -294,7 +294,7 @@ void bsp_InitCan2Bus(void)
     HAL_StatusTypeDef ret = HAL_CAN_Init(&hCAN2);
     if(HAL_OK != ret)
     {
-        printf("HAL_CAN_Init CAN2 ret not ok %d !\n",ret);
+        mini_printf("HAL_CAN_Init CAN2 ret not ok %d !\n",ret);
     }
     
     /*CAN过滤器初始化*/
@@ -313,7 +313,7 @@ void bsp_InitCan2Bus(void)
     ret = HAL_CAN_ConfigFilter(&hCAN2, &sFilterConfig);
     if(HAL_OK != ret)
     {
-        printf("HAL_CAN_ConfigFilter0 CAN2 ret not ok %d !\n",ret);
+        mini_printf("HAL_CAN_ConfigFilter0 CAN2 ret not ok %d !\n",ret);
     }
     
     /*CAN过滤器初始化*/
@@ -329,7 +329,7 @@ void bsp_InitCan2Bus(void)
     ret = HAL_CAN_ConfigFilter(&hCAN2, &sFilterConfig2);
     if(HAL_OK != ret)
     {
-        printf("HAL_CAN_ConfigFilter1 CAN2 ret not ok %d !\n",ret);
+        mini_printf("HAL_CAN_ConfigFilter1 CAN2 ret not ok %d !\n",ret);
     }
 
     /*CAN过滤器初始化*/
@@ -345,7 +345,7 @@ void bsp_InitCan2Bus(void)
     ret = HAL_CAN_ConfigFilter(&hCAN2, &sFilterConfig2);
     if(HAL_OK != ret)
     {
-        printf("HAL_CAN_ConfigFilter2 CAN2 ret not ok %d !\n",ret);
+        mini_printf("HAL_CAN_ConfigFilter2 CAN2 ret not ok %d !\n",ret);
     }
     
     
@@ -354,43 +354,43 @@ void bsp_InitCan2Bus(void)
     /* 配置邮箱0接收过程中断 */
     if(HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
     {
-        printf("CAN2 CAN_IT_RX_FIFO0_MSG_PENDING config error!\r\n");
+        mini_printf("CAN2 CAN_IT_RX_FIFO0_MSG_PENDING config error!\r\n");
     }
 
     /* 配置邮箱0接收完全中断 */
     if(HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO0_FULL) != HAL_OK)
     {
-        printf("CAN2 CAN_IT_RX_FIFO0_FULL config error!\r\n");
+        mini_printf("CAN2 CAN_IT_RX_FIFO0_FULL config error!\r\n");
     }
 
     /* 配置邮箱接0收溢出中断 */
     if(HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO0_OVERRUN) != HAL_OK)
     {
-        printf("CAN2 CAN_IT_RX_FIFO0_OVERRUN config error!\r\n");
+        mini_printf("CAN2 CAN_IT_RX_FIFO0_OVERRUN config error!\r\n");
     }
 
     /* 配置邮箱接收过程中断 */
     if(HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO1_MSG_PENDING) != HAL_OK)
     {
-        printf("CAN2 CAN_IT_RX_FIFO1_MSG_PENDING config error!\r\n");
+        mini_printf("CAN2 CAN_IT_RX_FIFO1_MSG_PENDING config error!\r\n");
     }
 
     /* 配置邮箱接收完全中断 */
     if(HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO1_FULL) != HAL_OK)
     {
-        printf("CAN2 CAN_IT_RX_FIFO1_FULL config error!\r\n");
+        mini_printf("CAN2 CAN_IT_RX_FIFO1_FULL config error!\r\n");
     }
 
     /* 配置邮箱1接收溢出中断 */
     if(HAL_CAN_ActivateNotification(&hCAN2,CAN_IT_RX_FIFO1_OVERRUN) != HAL_OK)
     {
-        printf("CAN2 CAN_IT_RX_FIFO1_OVERRUN config error!\r\n");
+        mini_printf("CAN2 CAN_IT_RX_FIFO1_OVERRUN config error!\r\n");
     }
     
     /* 配置邮箱发送空中断 */
     if (HAL_CAN_ActivateNotification(&hCAN2, CAN_IT_TX_MAILBOX_EMPTY) != HAL_OK)
     {
-        printf("CAN2 CAN_IT_TX_MAILBOX_EMPTY config error!\r\n");
+        mini_printf("CAN2 CAN_IT_TX_MAILBOX_EMPTY config error!\r\n");
     }
 }
 /**
@@ -418,7 +418,7 @@ HAL_StatusTypeDef bsp_Can2_Send_buf(uint32_t _id,uint8_t _buf[],uint8_t _dlc)
     }
     else
     {
-        printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
+        mini_printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
     }
     if (_dlc >8)
     {
@@ -488,7 +488,7 @@ uint8_t bsp_Can2_Receive_buf(uint32_t _id,uint8_t _buf[])
             _buf[i] = g_canrxbuf[i];
         }
         else
-            printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
+            mini_printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
     }
     else if(IS_CAN_EXTID(_id))
     {
@@ -500,7 +500,7 @@ uint8_t bsp_Can2_Receive_buf(uint32_t _id,uint8_t _buf[])
         }
     }
     else
-        printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
+        mini_printf("Wrong parameters value: file %s on line %d\r\n",__FILE__,__LINE__);
     }
     return can_rx_msg.DLC;
 }
@@ -652,12 +652,12 @@ void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan)
 #if TRUE == BSP_CAN_LOG_ECHO
     if(hcan == &hCAN1)
     {
-        printf("CAN1 fifo0数据接收满\r\n");
+        mini_printf("CAN1 fifo0数据接收满\r\n");
     }
     
     if(hcan == &hCAN2)
     {
-        printf("CAN2 fifo0数据接收满\r\n");
+        mini_printf("CAN2 fifo0数据接收满\r\n");
     }
 #endif
 }
@@ -678,16 +678,16 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
         memset(&g_canrxbuf,0,sizeof(g_canrxbuf));
         HAL_CAN_GetRxMessage(&hCAN1, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
         #if TRUE == BSP_CAN_LOG_ECHO
-            printf("\r\n");
-            printf("CAN1.StdId is     0x%x\r\n",can_rx_msg.StdId);
-            printf("CAN1.ExtId is     0x%x\r\n",can_rx_msg.ExtId);
-            printf("CAN1.IDE is       %d\r\n",can_rx_msg.IDE);
-            printf("CAN1.RTR is       %d\r\n",can_rx_msg.RTR);
-            printf("CAN1.DLC is       %d\r\n",can_rx_msg.DLC);
-            printf("CAN1.Timestamp is %d\r\n",can_rx_msg.Timestamp);
+            mini_printf("\r\n");
+            mini_printf("CAN1.StdId is     0x%x\r\n",can_rx_msg.StdId);
+            mini_printf("CAN1.ExtId is     0x%x\r\n",can_rx_msg.ExtId);
+            mini_printf("CAN1.IDE is       %d\r\n",can_rx_msg.IDE);
+            mini_printf("CAN1.RTR is       %d\r\n",can_rx_msg.RTR);
+            mini_printf("CAN1.DLC is       %d\r\n",can_rx_msg.DLC);
+            mini_printf("CAN1.Timestamp is %d\r\n",can_rx_msg.Timestamp);
             for(uint8_t i = 0;i < can_rx_msg.DLC;i++)
             {
-                printf("CAN_Data[%d] = 0x%02x\r\n",i,g_canrxbuf[i]);
+                mini_printf("CAN_Data[%d] = 0x%02x\r\n",i,g_canrxbuf[i]);
             }
         #endif
             if (can_rx_msg.StdId == 0x111 && can_rx_msg.IDE == CAN_ID_STD)
@@ -702,16 +702,16 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
         memset(&g_canrxbuf,0,sizeof(g_canrxbuf));
         HAL_CAN_GetRxMessage(&hCAN2, CAN_FILTER_FIFO0,&can_rx_msg,g_canrxbuf);
         #if TRUE == BSP_CAN_LOG_ECHO
-            printf("\r\n");
-            printf("CAN2.StdId is     0x%x\r\n",can_rx_msg.StdId);
-            printf("CAN2.ExtId is     0x%x\r\n",can_rx_msg.ExtId);
-            printf("CAN2.IDE is       %d\r\n",can_rx_msg.IDE);
-            printf("CAN2.RTR is       %d\r\n",can_rx_msg.RTR);
-            printf("CAN2.DLC is       %d\r\n",can_rx_msg.DLC);
-            printf("CAN2.Timestamp is %d\r\n",can_rx_msg.Timestamp);
+            mini_printf("\r\n");
+            mini_printf("CAN2.StdId is     0x%x\r\n",can_rx_msg.StdId);
+            mini_printf("CAN2.ExtId is     0x%x\r\n",can_rx_msg.ExtId);
+            mini_printf("CAN2.IDE is       %d\r\n",can_rx_msg.IDE);
+            mini_printf("CAN2.RTR is       %d\r\n",can_rx_msg.RTR);
+            mini_printf("CAN2.DLC is       %d\r\n",can_rx_msg.DLC);
+            mini_printf("CAN2.Timestamp is %d\r\n",can_rx_msg.Timestamp);
             for(uint8_t i = 0;i < can_rx_msg.DLC;i++)
             {
-                printf("CAN_Data[%d] = 0x%02x\r\n",i,g_canrxbuf[i]);
+                mini_printf("CAN_Data[%d] = 0x%02x\r\n",i,g_canrxbuf[i]);
             }
         #endif
     }
@@ -731,12 +731,12 @@ void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan)
 #if TRUE == BSP_CAN_LOG_ECHO
     if(hcan == &hCAN1)
     {
-        printf("CAN1 持续接收数据fifo1\r\n");
+        mini_printf("CAN1 持续接收数据fifo1\r\n");
     }
     
     if(hcan == &hCAN2)
     {
-        printf("CAN2 持续接收数据fifo1\r\n");
+        mini_printf("CAN2 持续接收数据fifo1\r\n");
     }
 #endif
 }
@@ -754,12 +754,12 @@ void HAL_CAN_TxMailbox0CompleteCallback(CAN_HandleTypeDef *hcan)
 #if TRUE == BSP_CAN_LOG_ECHO
     if(hcan == &hCAN1)
     {
-        printf("CAN1 HAL_CAN_TxMailbox0CompleteCallback\r\n");
+        mini_printf("CAN1 HAL_CAN_TxMailbox0CompleteCallback\r\n");
     }
     
     if(hcan == &hCAN2)
     {
-        printf("CAN2 HAL_CAN_TxMailbox0CompleteCallback\r\n");
+        mini_printf("CAN2 HAL_CAN_TxMailbox0CompleteCallback\r\n");
     }
 #endif
 }
@@ -777,12 +777,12 @@ void HAL_CAN_TxMailbox1CompleteCallback(CAN_HandleTypeDef *hcan)
 #if TRUE == BSP_CAN_LOG_ECHO
     if(hcan == &hCAN1)
     {
-        printf("CAN1 HAL_CAN_TxMailbox1CompleteCallback\r\n");
+        mini_printf("CAN1 HAL_CAN_TxMailbox1CompleteCallback\r\n");
     }
     
     if(hcan == &hCAN2)
     {
-        printf("CAN2 HAL_CAN_TxMailbox1CompleteCallback\r\n");
+        mini_printf("CAN2 HAL_CAN_TxMailbox1CompleteCallback\r\n");
     }
 #endif
 }
@@ -800,12 +800,12 @@ void HAL_CAN_TxMailbox2CompleteCallback(CAN_HandleTypeDef *hcan)
 #if TRUE == BSP_CAN_LOG_ECHO
     if(hcan == &hCAN1)
     {
-        printf("CAN1 HAL_CAN_TxMailbox2CompleteCallback\r\n");
+        mini_printf("CAN1 HAL_CAN_TxMailbox2CompleteCallback\r\n");
     }
     
     if(hcan == &hCAN2)
     {
-        printf("CAN2 HAL_CAN_TxMailbox2CompleteCallback\r\n");
+        mini_printf("CAN2 HAL_CAN_TxMailbox2CompleteCallback\r\n");
     }
 #endif
 }
