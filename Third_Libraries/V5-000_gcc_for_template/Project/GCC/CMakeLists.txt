@@ -6,6 +6,8 @@ SET(CMAKE_SYSTEM_NAME Generic)
 SET(CMAKE_SYSTEM_PROCESSOR arm)#这个不重要，arm也能行
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
+project(STM32F407_Project C CXX ASM)
+
 # 设置 CMake 输出目录
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build)
@@ -15,9 +17,11 @@ set(CMAKE_C_STANDARD 11)
 
 # 定义 STM32F103xB 作为目标设备
 add_definitions(-DSTM32F407IGTx)
-add_definitions(-DDUSE_HAL_DRIVER)
-add_definitions(-DDUSTM32F407xx)
-add_definitions(-DDUSE_FULL_LL_DRIVER)
+add_definitions(-DUSE_HAL_DRIVER)
+add_definitions(-DSTM32F407xx)
+add_definitions(-DUSE_FULL_LL_DRIVER)
+
+
 
 # 设置编译器和工具链路径（确保 arm-none-eabi 工具链已安装并正确配置）
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
@@ -27,16 +31,17 @@ set(CMAKE_AR arm-none-eabi-ar)
 set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
 set(CMAKE_SZ arm-none-eabi-size)
 
-project(STM32F407_Project C CXX ASM)
 
 # STM32 系列 MCU 配置
 set(MCU_FLAGS "-mcpu=cortex-m4 -mthumb ")
 set(FPU_FLAGS "")
 set(LINKER_SCRIPT "${CMAKE_SOURCE_DIR}/stm32f407.ld")
-# set(LIBS "-lc -lm -lnosys")#不使用操作系统时可不添加库
+# set(LIBS "-lc -lm -lnosys") 
+
+# target_link_libraries(${PROJECT_NAME} -lc -lm -lnosys)
 
 # 添加需要编译的所有源码
-add_executable(${PROJECT_NAME}
+set(C_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}../../../User/main.c
     ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/bsp.c
     ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/stm32f4xx_it.c
@@ -60,20 +65,17 @@ add_executable(${PROJECT_NAME}
 
 #启动文件
 set(ASM_SOURCES
-    "${CMAKE_CURRENT_SOURCE_DIR}/startup_stm32f407xx.s"
+    "${CMAKE_SOURCE_DIR}/startup_stm32f407xx.S"
 )
 
 # 指定头文件目录
-target_include_directories(${PROJECT_NAME} PRIVATE
+include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp
     ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/inc
     ${CMAKE_CURRENT_SOURCE_DIR}../../../Libraries/CMSIS/Device/ST/STM32F4xx/Include
 	${CMAKE_CURRENT_SOURCE_DIR}../../../Libraries/CMSIS/Include
     ${CMAKE_CURRENT_SOURCE_DIR}../../../Libraries/STM32F4xx_HAL_Driver/Inc
 )
-
-# 定义用于条件编译的宏
-target_compile_definitions(${PROJECT_NAME} PRIVATE STM32F407xx)
 
 # 设置 CFLAGS
 set(CMAKE_C_FLAGS "${MCU_FLAGS} ${FPU_FLAGS} -Wall -fdata-sections -ffunction-sections -Og")
@@ -89,17 +91,14 @@ set(CMAKE_ASM_FLAGS "${MCU_FLAGS} ${FPU_FLAGS} -x assembler-with-cpp -Wall -fdat
 # 创建目标文件（对象文件）
 add_executable(${PROJECT_NAME}.elf ${C_SOURCES} ${ASM_SOURCES})
 
-
-
-# 设置链接选项
 target_link_options(${PROJECT_NAME}.elf PRIVATE
     -T ${LINKER_SCRIPT}
+	-specs=nosys.specs
     -specs=nano.specs
-    ${LIBS}
+    # ${LIBS}
     -Wl,-Map=${CMAKE_BINARY_DIR}/${PROJECT_NAME}.map,--cref
     -Wl,--gc-sections
 )
-
 
 
 # 添加生成 .hex 和 .bin 文件的自定义命令

@@ -124,7 +124,7 @@ static void PrintfLogo(void)
 
 	printf("\n\r");
 	printf("*************************************************************\n\r");
-	printf("* 例程名称   : %s\r\n", EXAMPLE_NAME);	/* 打印例程名称 */
+//	printf("* 例程名称   : %s\r\n", EXAMPLE_NAME);	/* 打印例程名称 */
 	printf("* 例程版本   : %s\r\n", DEMO_VER);		/* 打印例程版本 */
 	printf("* 发布日期   : %s\r\n", EXAMPLE_DATE);	/* 打印例程日期 */
 

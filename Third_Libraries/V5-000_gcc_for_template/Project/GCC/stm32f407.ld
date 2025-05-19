@@ -16,21 +16,15 @@ ENTRY(Reset_Handler)
 SECTIONS
 {
   /* 中断向量表，必须放在 FLASH 中 */
-  .isr_vector :
+  .text : 
   {
-    . = ALIGN(4);
     KEEP(*(.isr_vector))
-    . = ALIGN(4);
-  } > FLASH
-
-  /* 代码和只读数据放在 FLASH */
-  .text :
-  {
-    . = ALIGN(4);
-    _etext = .;       /* 保存 .text 段结束处地址 */
-    *(.text*)        /* 所有代码段 */
-    *(.rodata*)      /* 所有只读数据 */
-    . = ALIGN(4);
+    *(.text*)
+    *(.rodata*)
+    *(.init*)     /* 把 .init 段内容放进来 */
+    *(.fini*)
+    *(.ARM.exidx*)    /* 将异常处理表合入 text 段 */
+    _etext = .;
   } > FLASH
 
   /* 初始化数据段：在 FLASH 中存放初始化值，运行时复制到 RAM */
@@ -54,6 +48,9 @@ SECTIONS
     . = ALIGN(4);
     _ebss = .;        /* .bss 在 RAM 中结束地址 */
   } > RAM
+
+  /* 定义 end 符号，指向静态分配区的末尾 */
+  PROVIDE(end = .);
 
   /* 定义堆栈结束符（堆栈从 RAM 顶部向下降） */
   _estack = ORIGIN(RAM) + LENGTH(RAM);
