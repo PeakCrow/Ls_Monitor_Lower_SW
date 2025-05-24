@@ -43,10 +43,10 @@ set(C_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}../../../User/main.c
     ${CMAKE_CURRENT_SOURCE_DIR}../../../User/demo_canfd_update.c
     ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/bsp.c
-	${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/bsp_msg.c
+    ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/bsp_msg.c
     ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/stm32f4xx_it.c
-	${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/src/bsp_can_bus.c
-	${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/src/bsp_cpu_flash.c
+    ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/src/bsp_can_bus.c
+    ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/src/bsp_cpu_flash.c
     ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/src/bsp_key.c
     ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/src/bsp_led.c
     ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/src/bsp_timer.c
@@ -78,7 +78,7 @@ include_directories(
     "${CMAKE_SOURCE_DIR}/../../User/bsp"
     "${CMAKE_SOURCE_DIR}/../../User/bsp/inc"
     "${CMAKE_SOURCE_DIR}/../../Libraries/CMSIS/Device/ST/STM32F4xx/Include"
-	"${CMAKE_SOURCE_DIR}/../../Libraries/CMSIS/Include"
+    "${CMAKE_SOURCE_DIR}/../../Libraries/CMSIS/Include"
     "${CMAKE_SOURCE_DIR}/../../Libraries/STM32F4xx_HAL_Driver/Inc"
 )
 
@@ -98,7 +98,7 @@ add_executable(${PROJECT_NAME}.elf ${C_SOURCES} ${ASM_SOURCES})
 
 target_link_options(${PROJECT_NAME}.elf PRIVATE
     -T ${LINKER_SCRIPT}
-	-specs=nosys.specs
+    -specs=nosys.specs
     -specs=nano.specs
     # ${LIBS}
     -Wl,-Map=${CMAKE_BINARY_DIR}/${PROJECT_NAME}.map,--cref
