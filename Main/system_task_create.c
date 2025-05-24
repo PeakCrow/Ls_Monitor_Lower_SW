@@ -192,8 +192,8 @@ static  void  AppSysObjCreate (void)
                     TimerCallback, 
                     0,                  /* 传递的参数 */
                     500,                /* 设置定时器时间溢出的初始延迟，单位ThreadX系统时间节拍数 */
-                    1,                     /* 设置初始延迟后的定时器运行周期，如果设置为0，表示单次定时器,单位ms */
-                    TX_AUTO_ACTIVATE);    /* 激活定时器 */
+                    1,                  /* 设置初始延迟后的定时器运行周期，如果设置为0，表示单次定时器,单位ms */
+                    TX_AUTO_ACTIVATE);  /* 激活定时器 */
     
     /* 创建事件标志组 */
     tx_event_flags_create(&EventGroup, "EventGroupName");
@@ -218,35 +218,23 @@ void board_led_Contro(char argc, char *argv)
     
     if(0x1u == _step_index)
     {
-        /**************创建COM任务*********************/
+        /**************恢复COM任务*********************/
         _thread_status = tx_thread_reset(&AppTaskCOMTCB);
-        if(0x0u == _thread_status)
-        {
-            mini_printf("led task reset sucess!\r\n");
-        }
-        else
+        if(0x0u != _thread_status)
         {
             mini_printf("led task reset failed ,status is %d!\r\n",_thread_status);
         }
         _thread_status = tx_thread_resume(&AppTaskCOMTCB);
-        if(0x0u == _thread_status)
-        {
-            mini_printf("led task resume sucess!\r\n");
-        }
-        else
+        if(0x0u != _thread_status)
         {
             mini_printf("led task resume failed ,status is %d!\r\n",_thread_status);
         }
-
-    }else if(0x0u == _step_index)
+    }
+    else if(0x0u == _step_index)
     {
-        /**************删除COM任务*********************/
+        /**************终止COM任务*********************/
         _thread_status = tx_thread_terminate(&AppTaskCOMTCB);
-        if(0x0u == _thread_status)
-        {
-            mini_printf("led task terminate sucess!\r\n");
-        }
-        else
+        if(0x0u != _thread_status)
         {
             mini_printf("led task terminate failed ,status is %d!\r\n",_thread_status);
         }

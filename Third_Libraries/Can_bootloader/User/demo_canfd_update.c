@@ -89,7 +89,7 @@ void DemoCANUpdate(void)
 			{
 				case MSG_CAN1_RX:		/* 接收到CAN设备的应答 */
 					cmd = g_canrxbuf[0];
-					printf("size = %d, cmd = %c\r\n",can_rx_msg.DLC, cmd);
+					printf("size = %ld, cmd = %c\r\n",can_rx_msg.DLC, cmd);
 					/* 开始传输固件命令 **************/
 					if(cmd == '$')
 					{					   
@@ -99,7 +99,7 @@ void DemoCANUpdate(void)
 						/* 编程内部Flash, */
 						ucState = bsp_WriteCpuFlash((uint32_t)(AppAddr + TotalSize),  (uint8_t *)&g_canrxbuf[2], RecSize);
 						TotalSize += RecSize;
-						printf("=====%d\r\n", TotalSize);
+						printf("=====%ld\r\n", TotalSize);
 						
 						/* 如果返回非0，表示编程失败 */
 						if(ucState != 0)
@@ -124,7 +124,7 @@ void DemoCANUpdate(void)
 						SectorCount = filesize/(128*1024);
 						SectorRemain = filesize%(128*1024);	
 						
-						printf("filesize = %d\r\n", filesize);
+						printf("filesize = %ld\r\n", filesize);
 						for(i = 0; i < SectorCount; i++)
 						{
 							bsp_EraseCpuFlash((uint32_t)(AppAddr + i*128*1024));

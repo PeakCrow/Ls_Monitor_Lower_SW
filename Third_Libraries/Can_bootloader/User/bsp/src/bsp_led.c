@@ -145,7 +145,7 @@ uint8_t bsp_IsLedOn(uint8_t _no)
 {
     if (_no == 1)
     {
-        if ((GPIO_PORT_LED1->ODR & GPIO_PIN_LED1) == 1)
+        if ((GPIO_PORT_LED1->ODR & GPIO_PIN_LED1) == 0)
         {
             return 1;
         }
@@ -153,7 +153,7 @@ uint8_t bsp_IsLedOn(uint8_t _no)
     }
     else if (_no == 2)
     {
-        if ((GPIO_PORT_LED2->ODR & GPIO_PIN_LED2) == 1)
+        if ((GPIO_PORT_LED2->ODR & GPIO_PIN_LED2) == 0)
         {
             return 1;
         }

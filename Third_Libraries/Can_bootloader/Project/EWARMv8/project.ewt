@@ -2848,10 +2848,19 @@
             <name>$PROJ_DIR$\..\..\User\bsp\bsp.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\User\bsp\src\bsp_can_bus.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\User\bsp\src\bsp_cpu_flash.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\User\bsp\src\bsp_key.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\User\bsp\src\bsp_led.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\User\bsp\bsp_msg.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\User\bsp\src\bsp_timer.c</name>
@@ -2902,6 +2911,9 @@
             <name>$PROJ_DIR$\..\..\Libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\Libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_can.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\Libraries\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c</name>
         </file>
         <file>
@@ -2940,6 +2952,9 @@
     </group>
     <group>
         <name>User</name>
+        <file>
+            <name>$PROJ_DIR$\..\..\User\demo_canfd_update.c</name>
+        </file>
         <file>
             <name>$PROJ_DIR$\..\..\User\main.c</name>
         </file>

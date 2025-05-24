@@ -75,11 +75,11 @@ set(ASM_SOURCES
 
 # 指定头文件目录
 include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp
-    ${CMAKE_CURRENT_SOURCE_DIR}../../../User/bsp/inc
-    ${CMAKE_CURRENT_SOURCE_DIR}../../../Libraries/CMSIS/Device/ST/STM32F4xx/Include
-	${CMAKE_CURRENT_SOURCE_DIR}../../../Libraries/CMSIS/Include
-    ${CMAKE_CURRENT_SOURCE_DIR}../../../Libraries/STM32F4xx_HAL_Driver/Inc
+    "${CMAKE_SOURCE_DIR}/../../User/bsp"
+    "${CMAKE_SOURCE_DIR}/../../User/bsp/inc"
+    "${CMAKE_SOURCE_DIR}/../../Libraries/CMSIS/Device/ST/STM32F4xx/Include"
+	"${CMAKE_SOURCE_DIR}/../../Libraries/CMSIS/Include"
+    "${CMAKE_SOURCE_DIR}/../../Libraries/STM32F4xx_HAL_Driver/Inc"
 )
 
 # 设置 CFLAGS
