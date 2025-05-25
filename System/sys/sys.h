@@ -21,7 +21,6 @@ extern "C"
 *                                           ST HAL 
 * 
 */
-#include "stm32F407xx.h"
 #include "stm32f4xx.h"
 /*
 * 
@@ -47,7 +46,7 @@ extern "C"
 #include "lvgl.h"
 #include "lv_port_disp_template.h"
 #include "lv_port_indev_template.h"
-#include "Monitor.h"
+#include "monitor.h"
 /*
 * 
 *                                           BSP
@@ -59,7 +58,7 @@ extern "C"
 #include "bsp_spi_flash_demo.h"     /* spi flash demo */
 #include "bsp_spi_bus.h"            /* spi1 spi2 总线 */
 #include "bsp_iic_bus.h"            /* iic1 总线(AT24C02) */
-#include "EPD_Test.h"               /* 墨水屏驱动 */
+//#include "EPD_Test.h"               /* 墨水屏驱动 */
 #include "DEV_Config.h"             /* 墨水屏底层配置 */
 #include "bsp_font.h"               /* 墨水屏字库 */
 #include "bsp_dwt.h"                /* 芯片DWT模块 安富莱驱动提供 */

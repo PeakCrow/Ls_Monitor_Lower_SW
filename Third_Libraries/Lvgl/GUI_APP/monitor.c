@@ -1,7 +1,7 @@
 #include "monitor.h"
 
 static lv_obj_t* Monitor_Speed_Meter;
-static void lv_example_Monitor_Speed_Meter(void);
+void lv_example_Monitor_Speed_Meter(void);
 
 #define scr_act_height() lv_obj_get_height(lv_scr_act())
 #define scr_act_width()  lv_obj_get_width(lv_scr_act())
@@ -74,7 +74,8 @@ static void anim_2_indic_cb(lv_meter_indicator_t* indic, int32_t value)
 {
     lv_meter_set_indicator_end_value(Monitor_Speed_Meter, indic, value);
 }
-static void lv_example_Monitor_Speed_Meter(void)
+
+void lv_example_Monitor_Speed_Meter(void)
 {
     const lv_font_t* font = &myFont36;
 
