@@ -6,6 +6,14 @@ SET(CMAKE_SYSTEM_NAME Generic)
 SET(CMAKE_SYSTEM_PROCESSOR arm)#这个不重要，arm也能行
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
+# 设置编译器和工具链路径（确保 arm-none-eabi 工具链已安装并正确配置）
+set(CMAKE_C_COMPILER arm-none-eabi-gcc)
+set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
+set(CMAKE_ASM_COMPILER arm-none-eabi-gcc)
+set(CMAKE_AR arm-none-eabi-ar)
+set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
+set(CMAKE_SZ arm-none-eabi-size)
+
 project(STM32F407_Project C CXX ASM)
 
 # 设置 CMake 输出目录
@@ -20,16 +28,6 @@ add_definitions(-DSTM32F407IGTx)
 add_definitions(-DUSE_HAL_DRIVER)
 add_definitions(-DSTM32F407xx)
 add_definitions(-DUSE_FULL_LL_DRIVER)
-
-
-
-# 设置编译器和工具链路径（确保 arm-none-eabi 工具链已安装并正确配置）
-set(CMAKE_C_COMPILER arm-none-eabi-gcc)
-set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
-set(CMAKE_ASM_COMPILER arm-none-eabi-gcc)
-set(CMAKE_AR arm-none-eabi-ar)
-set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
-set(CMAKE_SZ arm-none-eabi-size)
 
 
 # STM32 系列 MCU 配置
