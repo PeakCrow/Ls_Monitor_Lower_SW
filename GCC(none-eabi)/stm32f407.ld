@@ -1,32 +1,3 @@
-/*
-*****************************************************************************
-**
-**  File        : stm32_flash.ld
-**
-**  Abstract    : Linker script for STM32F407VG Device with
-**                1024KByte FLASH, 128KByte RAM
-**
-**                Set heap size, stack size and stack location according
-**                to application requirements.
-**
-**                Set memory bank area and size if external memory is used.
-**
-**  Target      : STMicroelectronics STM32
-**
-**  Environment : Atollic TrueSTUDIO(R)
-**
-**  Distribution: The file is distributed 揳s is,?without any warranty
-**                of any kind.
-**
-**  (c)Copyright Atollic AB.
-**  You may use this file as-is or modify it according to the needs of your
-**  project. This file may only be built (assembled or compiled and linked)
-**  using the Atollic TrueSTUDIO(R) product. The use of this file together
-**  with other tools than Atollic TrueSTUDIO(R) is not permitted.
-**
-*****************************************************************************
-*/
-
 /* Entry Point */
 ENTRY(Reset_Handler)
 
@@ -35,7 +6,7 @@ _estack = 0x2001FFFF;    /* end of RAM */
 
 /* Generate a link error if heap and stack don't fit into RAM */
 _Min_Heap_Size = 0x400;      /* required amount of heap  */
-_Min_Stack_Size = 0x800; /* required amount of stack */
+_Min_Stack_Size = 0x800;     /* required amount of stack */
 
 /* Specify the memory areas */
 MEMORY
@@ -55,6 +26,7 @@ SECTIONS
     . = ALIGN(4);
     KEEP(*(.vectors)) /* Startup code */
     . = ALIGN(4);
+    _vectors = .; /* Define _vectors at the end of the vector table */
   } >FLASH
 
   /* The program code and other data goes into FLASH */
@@ -71,7 +43,7 @@ SECTIONS
     KEEP (*(.fini))
 
     . = ALIGN(4);
-    _etext = .;        /* define a global symbols at end of code */
+    _etext = .;        /* define a global symbol at end of code */
   } >FLASH
 
   /* Constant data goes into FLASH */
@@ -172,6 +144,9 @@ SECTIONS
     _ebss = .;         /* define a global symbol at bss end */
     __bss_end__ = _ebss;
   } >RAM
+
+  /* Add __RAM_segment_used_end__ here to mark the end of the RAM segment */
+  __RAM_segment_used_end__ = .;
 
   /* User_heap_stack section, used to check that there is enough RAM left */
   ._user_heap_stack :
