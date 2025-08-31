@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.50.9.278/W32 for ARM                  20/May/2025  09:32:34
+# IAR ELF Linker V8.50.9.278/W32 for ARM                  06/Jun/2025  11:10:48
 # Copyright 2007-2020 IAR Systems AB.
 #
 #    Output file  =
@@ -8,7 +8,7 @@
 #    Map file     =
 #        D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\List\Run_Xian.map
 #    Command line =
-#        -f C:\Users\tian_\AppData\Local\Temp\EWC27C.tmp
+#        -f C:\Users\tian_\AppData\Local\Temp\EWE4F4.tmp
 #        ("D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\about_phone_ui.o"
 #        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\adjust_pedal.o"
 #        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\ansi.o"
@@ -174,7 +174,7 @@
 #        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_utils.o"
 #        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\lv_win.o"
 #        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\main.o"
-#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\Monitor.o"
+#        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\monitor.o"
 #        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\motor_control_ui.o"
 #        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\msg_task.o"
 #        "D:\Ls_Monitor_Lower\Ls_Monitor_Lower_SW\EW-ARM(v8x)\Flash\Obj\myFont20.o"
