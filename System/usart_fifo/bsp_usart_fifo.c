@@ -166,11 +166,18 @@ void InitHardUart(void)
     GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = USART1_TX_AF;
     HAL_GPIO_Init(USART1_TX_GPIO_PORT, &GPIO_InitStruct);
-
+    
     /* 配置RX引脚 */
     GPIO_InitStruct.Pin = USART1_RX_PIN;
     GPIO_InitStruct.Alternate = USART1_RX_AF;
     HAL_GPIO_Init(USART1_RX_GPIO_PORT, &GPIO_InitStruct);
+    
+    /* 配置 RESET 引脚 */
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+    GPIO_InitStruct.Pin = GPIO_PIN_7;
+    GPIO_InitStruct.Pull      = GPIO_PULLUP;
+    GPIO_InitStruct.Alternate = GPIO_MODE_AF_PP;
+    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
     /* 配置NVIC the NVIC for UART */
     HAL_NVIC_SetPriority(USART1_IRQn, 0, 1);

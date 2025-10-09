@@ -17,7 +17,11 @@ void AppTaskTFTLCD    (ULONG thread_input)
     (VOID)thread_input;
     uint8_t lcd_id[12];                /* 存放LCD ID字符串 */
     App_printf((char*)lcd_id,"LCD ID:%04X\n",lcddev.id);
-    #if 1
+#if TRUE == LCD_WITHOUT_LVGL_CONFIG
+    Load_Drow_Dialog();
+    if(tp_dev.touchtype&0X80)
+        ctp_test();
+#else
     tx_mutex_get(&AppLCDSemp, TX_WAIT_FOREVER);
     Gui_Monitor_App();    /* 运行lvgl例程 */
     tx_mutex_put(&AppLCDSemp);
@@ -28,13 +32,8 @@ void AppTaskTFTLCD    (ULONG thread_input)
         //IWDG_Feed();
         tx_mutex_put(&AppLCDSemp);
         tx_thread_sleep(5);
-    }
-    
-    #else
-     //Load_Drow_Dialog();
-    if(tp_dev.touchtype&0X80)
-        ctp_test();
-    #endif
+    }    
+#endif
 }
 
 

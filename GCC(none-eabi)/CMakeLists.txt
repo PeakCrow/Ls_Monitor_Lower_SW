@@ -519,15 +519,19 @@ endif()
 set(CMAKE_ASM_FLAGS "${MCU_FLAGS} ${FPU_FLAGS} -x assembler-with-cpp -Wall -fdata-sections -ffunction-sections -Og")
 
 # 创建目标文件（对象文件）
-add_executable(${PROJECT_NAME}.elf ${C_SOURCES} ${ASM_SOURCES})
+add_executable(${PROJECT_NAME}.elf 
+        ${C_SOURCES} 
+        ${ASM_SOURCES}
+)
 
 target_link_options(${PROJECT_NAME}.elf PRIVATE
-    -T ${LINKER_SCRIPT}
-    -specs=nosys.specs
-    -specs=nano.specs
+    -Wl,-T ${LINKER_SCRIPT}
+    --specs=nosys.specs
+    --specs=nano.specs
     # ${LIBS}
     -Wl,-Map=${CMAKE_BINARY_DIR}/${PROJECT_NAME}.map,--cref
     -Wl,--gc-sections
+    -Wl,--start-group -lc -lm -lnosys -Wl,--end-group
 )
 
 # 添加生成 .hex 和 .bin 文件的自定义命令

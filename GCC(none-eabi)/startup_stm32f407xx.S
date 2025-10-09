@@ -77,6 +77,14 @@ defined in linker script */
 Reset_Handler:  
   ldr   sp, =_estack     /* set stack pointer */
 
+    /* 关键FPU启用代码 */
+  ldr r0, =0xE000ED88
+  ldr r1, [r0]
+  orr r1, r1, #(0xF << 20)
+  str r1, [r0]
+  dsb
+  isb
+
 /* Copy the data segment initializers from flash to SRAM */  
   movs  r1, #0
   b  LoopCopyDataInit

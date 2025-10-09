@@ -148,6 +148,7 @@ typedef __I uint8_t vuc8;
 
 
 #define PRINT(fmt, args...)  (void)mini_printf(fmt, ##args);
+#define LCD_WITHOUT_LVGL_CONFIG   TRUE
 
 /* 方便RTOS里面使用 */
 extern void SysTick_ISR(void);      /* 滴答定时器中断外部文件声明*/
