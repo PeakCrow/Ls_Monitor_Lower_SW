@@ -137,13 +137,13 @@ SECTIONS
 	.extern_sram :
 	{
 		. = ALIGN(4);
-		_sccmram = .;       /* create a global symbol at ccmram start */
+		_sextern_sram = .;       /* create a global symbol at ccmram start */
 		*(.EXTERN_SRAM)
 		*(.EXTERN_SRAM*)
 
 		. = ALIGN(4);
-		_extern_sram = .;       /* create a global symbol at ccmram end */
-	} >EXTERN_SRAM AT> FLASH
+		_eextern_sram = .;       /* create a global symbol at ccmram end */
+	} >EXTERN_SRAM
 
   
 	/* Uninitialized data section */

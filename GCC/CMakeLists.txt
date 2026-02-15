@@ -561,7 +561,13 @@ target_link_options(${PROJECT_NAME}.elf PRIVATE
 # 添加生成 .hex 和 .bin 文件的自定义命令
 add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
     COMMAND ${CMAKE_OBJCOPY} -O ihex ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.elf ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.hex
-    COMMAND ${CMAKE_OBJCOPY} -O binary -S ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.elf ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.bin
+    COMMAND ${CMAKE_OBJCOPY} -O binary -S
+        --remove-section=.bss
+        --remove-section=.extern_sram
+        --remove-section=.ccmram
+        ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.elf
+        ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.bin
+
 )
 
 # 设置清理命令
