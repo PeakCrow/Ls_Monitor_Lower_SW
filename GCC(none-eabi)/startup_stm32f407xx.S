@@ -77,29 +77,7 @@
     .global   Reset_Handler
     .type     Reset_Handler, %function
 Reset_Handler:  
-<<<<<<< HEAD
-    ldr sp, =_estack     	/* set stack pointer */
-=======
   ldr   sp, =_estack     /* set stack pointer */
-
-    /* 关键FPU启用代码 */
-  ldr r0, =0xE000ED88
-  ldr r1, [r0]
-  orr r1, r1, #(0xF << 20)
-  str r1, [r0]
-  dsb
-  isb
-
-/* Copy the data segment initializers from flash to SRAM */  
-  movs  r1, #0
-  b  LoopCopyDataInit
-
-CopyDataInit:
-  ldr  r3, =_sidata
-  ldr  r3, [r3, r1]
-  str  r3, [r0, r1]
-  adds  r1, r1, #4
->>>>>>> c4f45e0d551af6ca924abd41c3ef819295513d75
     
     /* Enable FPU - MUST be done before any flaoting point operations */
     ldr r0, =0xE000ED88		/* CPACR address */
