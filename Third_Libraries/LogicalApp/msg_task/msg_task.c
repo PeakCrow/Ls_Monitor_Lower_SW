@@ -76,31 +76,31 @@ void AppTaskUserIF(ULONG thread_input)
             switch(ucKeyCode)
             {
             case KEY_0_UP:
-                App_printf("k0按键弹起\r\n");
+                mini_printf("k0按键弹起\r\n");
                 break;
             case KEY_0_DOWN:
-                App_printf("k0按键按下\r\n");
+                mini_printf("k0按键按下\r\n");
                 break;
             case KEY_UP_UP:
-                App_printf("kup按键弹起\r\n");
+                mini_printf("kup按键弹起\r\n");
                 break;
             case KEY_UP_DOWN:
-                App_printf("kup按键按下\r\n");
+                mini_printf("kup按键按下\r\n");
                 break;
             case KEY_0_LONG:
-                App_printf("k0按键长按\r\n");
+                mini_printf("k0按键长按\r\n");
                 break;
             case KEY_UP_LONG:
-                App_printf("kup按键长按\r\n");
+                mini_printf("kup按键长按\r\n");
                 break;
             case KEY_MULTI_DOWM:
-                App_printf("kmulti按键按下\r\n");
+                mini_printf("kmulti按键按下\r\n");
                 break;
             case KEY_MULTI_UP:
-                App_printf("kmulti按键弹起\r\n");
+                mini_printf("kmulti按键弹起\r\n");
                 break;
             case KEY_MULTI_LONG:
-                App_printf("kmulti按键长按\r\n");
+                mini_printf("kmulti按键长按\r\n");
                 break;
             }
         }

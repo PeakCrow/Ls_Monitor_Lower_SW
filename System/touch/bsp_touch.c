@@ -561,7 +561,7 @@ uint8_t GT9147_Scan(uint8_t mode)
                         tp_dev.x[i]=((uint16_t)buf[1]<<8)+buf[0];
                         tp_dev.y[i]=((uint16_t)buf[3]<<8)+buf[2];
                     }  
-                    PRINT("Touch area : [%d]\r\n",temp_area3);
+                    //PRINT("Touch area : [%d]\r\n",temp_area3);
                     
                 }            
             } 
