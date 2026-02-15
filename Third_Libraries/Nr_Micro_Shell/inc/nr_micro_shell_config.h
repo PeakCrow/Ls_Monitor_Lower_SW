@@ -140,7 +140,8 @@ The end of line.
 
 /* If you use RTOS, you may need to do some special processing for printf(). */
 #define shell_printf(fmt, args...) mini_printf(fmt, ##args);
-#define ansi_show_char(x) putchar(x)
+void nr_shell_putchar(char c);
+#define ansi_show_char(x) nr_shell_putchar((char)(x))
 
 #endif
 

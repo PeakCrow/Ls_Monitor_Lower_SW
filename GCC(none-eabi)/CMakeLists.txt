@@ -8,6 +8,12 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 project(Ls_Monitor_Lower_SW C CXX ASM)
 
+# 设置默认构建类型为 Debug (用于调试器显示源码)
+if(NOT CMAKE_BUILD_TYPE)
+	set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type" FORCE)
+endif()
+message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+
 # 设置 CMake 输出目录
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build)
@@ -15,7 +21,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
 
-# 定义 STM32F103xB 作为目标设备
+# 定义 STM32F407ZGTx 作为目标设备
 add_definitions(-DSTM32F407ZGTx)
 add_definitions(-DUSE_HAL_DRIVER)
 add_definitions(-DSTM32F407xx)
@@ -40,7 +46,7 @@ set(CMAKE_SZ arm-none-eabi-size)
 set(MCU_FLAGS "-mcpu=cortex-m4 -mthumb ")
 set(FPU_FLAGS "-mfpu=fpv4-sp-d16 -mfloat-abi=hard")
 set(LINKER_SCRIPT "${CMAKE_SOURCE_DIR}/stm32f407.ld")
-set(LIBS "-lc -lm -lnosys") 
+set(LIBS "-lc -lm -lnosys")
 
 # 添加需要编译的所有源码
 set(C_SOURCES
@@ -442,7 +448,7 @@ set(C_SOURCES
 
 #启动文件
 set(ASM_SOURCES
-    "${CMAKE_SOURCE_DIR}/startup_stm32f407xx.S" 
+    "${CMAKE_SOURCE_DIR}/startup_stm32f407xx.S"
     "${CMAKE_SOURCE_DIR}/../Third_Libraries/ThreadX/ports/cortex_m4/gnu/src/tx_thread_context_restore.S"
     "${CMAKE_SOURCE_DIR}/../Third_Libraries/ThreadX/ports/cortex_m4/gnu/src/tx_thread_interrupt_control.S"
     "${CMAKE_SOURCE_DIR}/../Third_Libraries/ThreadX/ports/cortex_m4/gnu/src/tx_thread_context_save.S"
@@ -507,27 +513,49 @@ include_directories(
     "${CMAKE_SOURCE_DIR}/../Third_Libraries/FatFs/src/drivers"
 )
 
-# 设置 CFLAGS
-set(CMAKE_C_FLAGS "${MCU_FLAGS} ${FPU_FLAGS} -Wall -fdata-sections -ffunction-sections -Og")
-
-# 添加调试选项（如果是调试构建）
+# 设置编译标志
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -gdwarf-2")
+	# Debug 模式：包含完整调试信息 使用 -Og 优化以保持可调试性
+	set(CMAKE_C_FLAGS "${MCU_FLAGS} ${FPU_FLAGS} -Wall -fdata-sections -ffunction-sections -Og -g3 -gdwarf-2")
+	set(CMAKE_CXX_FLAGS "${MCU_FLAGS} ${FPU_FLAGS} -Wall -fdata-sections -ffunction-sections -Og -g3 -gdwarf-2")
+	set(CMAKE_ASM_FLAGS "${MCU_FLAGS} ${FPU_FLAGS} -x assembler-with-cpp -Wall -fdata-sections -g3 -gdwarf-2")
+else()
+	# Release 模式：使用 -Os 优化代码大小 类似 IAR 的平衡优化
+	set(CMAKE_C_FLAGS "${MCU_FLAGS} ${FPU_FLAGS} -Wall -fdata-sections -ffunction-sections -Os -g")
+	set(CMAKE_CXX_FLAGS "${MCU_FLAGS} ${FPU_FLAGS} -Wall -fdata-sections -ffunction-sections -Os -g")
+	set(CMAKE_ASM_FLAGS "${MCU_FLAGS} ${FPU_FLAGS} -x assembler-with-cpp -Wall -fdata-sections -ffunction-sections")
 endif()
 
-# 设置汇编文件的编译标志
-set(CMAKE_ASM_FLAGS "${MCU_FLAGS} ${FPU_FLAGS} -x assembler-with-cpp -Wall -fdata-sections -ffunction-sections -Og")
+# 创建目标文件 - 对象文件
+add_executable(${PROJECT_NAME}.elf
+		${C_SOURCES}
+		${ASM_SOURCES}
+)
 
-# 创建目标文件（对象文件）
-add_executable(${PROJECT_NAME}.elf ${C_SOURCES} ${ASM_SOURCES})
+# Ensure changes to the linker script trigger a relink.
+set_target_properties(${PROJECT_NAME}.elf PROPERTIES LINK_DEPENDS ${LINKER_SCRIPT})
+
+# NR Micro Shell uses 'char' for argv/offset storage. GCC defaults to signed char
+# on many targets, which can cause negative indices when values exceed 127.
+# Apply unsigned-char behavior only to the shell sources to match common IDE defaults.
+set_source_files_properties(
+	"${CMAKE_CURRENT_SOURCE_DIR}/../Third_Libraries/Nr_Micro_Shell/src/ansi.c"
+	"${CMAKE_CURRENT_SOURCE_DIR}/../Third_Libraries/Nr_Micro_Shell/src/ansi_port.c"
+	"${CMAKE_CURRENT_SOURCE_DIR}/../Third_Libraries/Nr_Micro_Shell/src/nr_micro_shell.c"
+	PROPERTIES COMPILE_OPTIONS "-funsigned-char"
+)
 
 target_link_options(${PROJECT_NAME}.elf PRIVATE
-    -T ${LINKER_SCRIPT}
-    -specs=nosys.specs
-    -specs=nano.specs
-    # ${LIBS}
-    -Wl,-Map=${CMAKE_BINARY_DIR}/${PROJECT_NAME}.map,--cref
-    -Wl,--gc-sections
+	-mcpu=cortex-m4
+	-mthumb
+	-mfpu=fpv4-sp-d16
+	-mfloat-abi=hard
+	-T${LINKER_SCRIPT}
+	--specs=nosys.specs
+	--specs=nano.specs
+	-Wl,-Map=${CMAKE_BINARY_DIR}/${PROJECT_NAME}.map,--cref
+	-Wl,--gc-sections
+	-Wl,-start-group -lc -lm -lnosys -Wl,--end-group
 )
 
 # 添加生成 .hex 和 .bin 文件的自定义命令
@@ -542,3 +570,4 @@ add_custom_target(clean-all
     COMMAND rm -rf ${CMAKE_BINARY_DIR}/*.elf
     COMMENT "Cleaning build files..."
 )
+

@@ -127,6 +127,20 @@ void send_char(uint8_t c)
     //uart_tx(TTY_UART, &c, 1);
     comSendChar(COM1, c);
 }
+
+void nr_shell_putchar(char c)
+{
+    static char last = 0;
+
+    /* Convert LF to CRLF for common serial terminals (Windows) */
+    if(c == '\n' && last != '\r')
+    {
+        comSendChar(COM1, '\r');
+    }
+
+    comSendChar(COM1, (uint8_t)c);
+    last = c;
+}
 /*
  * Format tag prototype is "%[flags][width][.precision][length]specifier"
  *      flags: -, +, space, #, O

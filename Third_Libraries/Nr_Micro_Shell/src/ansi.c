@@ -116,6 +116,16 @@ char ansi_get_char(char x, ansi_st *ansi)
 
     if (ansi->combine_state == ANSI_NO_CTRL_CHAR)
     {
+        /* many serial terminals send DEL(0x&F) for the Backspace key.
+         * If we treat it as a normal printable char, it will be inserted into
+         * current_line and commands will no longer match even if they look the same.
+         Therefore handle 0x7F the same an '\b'. */
+        if((unsigned char)x == 0x7Fu)
+        {
+            nr_ansi_in_backspace(ansi);
+            return x;
+        }
+        
         cmd_id = ansi_search_char(x, nr_ansi_in_special_symbol);
         if (cmd_id >= 0)
         {

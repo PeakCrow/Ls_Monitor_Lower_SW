@@ -114,6 +114,17 @@ void _shell_init(shell_st *shell)
 
 shell_fun_t shell_search_cmd(shell_st *shell, char *str)
 {
+#if defined(NR_SHELL_USING_EXPORT_CMD) && defined(__GNUC__) && !defined(__ARMCC_VERSION)
+    const static_cmd_st *cmd;
+    for(cmd = shell->static_cmd;cmd < nr_cmd_end_add;cmd++)
+    {
+        if(!strcmp(str,cmd->cmd))
+        {
+            return cmd->fp;
+        }
+    }
+    return NULL;
+#else
     unsigned int i = 0;
     while (shell->static_cmd[i].fp != NULL)
     {
@@ -125,6 +136,7 @@ shell_fun_t shell_search_cmd(shell_st *shell, char *str)
     }
     
     return NULL;
+#endif    
 }
 
 void shell_parser(shell_st *shell, char *str)
@@ -189,8 +201,25 @@ char *shell_cmd_complete(shell_st *shell, char *str)
     unsigned char i;
     char *best_matched = NULL;
     unsigned char min_position = 255;
-    
-    for (i = 0; shell->static_cmd[i].cmd[0] != '\0'; i++)
+
+#if defined(NR_SHELL_USING_EXPORT_CMD) && defined(__GNUC__) && !defined(__ARMCC_VERSION)
+    const static_cmd_st *cmd;
+    for(cmd = shell->static_cmd; cmd < nr_cmd_end_add; cmd++)
+    {
+        temp = NULL;
+        temp = strstr(cmd->cmd, str);
+        if(temp != NULL && ((unsigned long)temp - (unsigned long)cmd < min_position))
+        {
+            min_position = (unsigned long)temp - (unsigned long)cmd;
+            best_matched = (char *)cmd;
+            if(0 == min_position)
+            {
+                break;
+            }
+        }
+    }
+#else
+    for (i = 0; shell->static_cmd[i].fp != NULL; i++)
     {
         temp = NULL;
         temp = strstr(shell->static_cmd[i].cmd, str);
@@ -204,6 +233,7 @@ char *shell_cmd_complete(shell_st *shell, char *str)
             }
         }
     }
+#endif
     
     return best_matched;
 }
@@ -380,13 +410,24 @@ void shell_help_cmd(char argc, char *argv)
         shell_printf("Do not need parm!\r\n");
     }else
     {
-        for (i = 0; nr_shell.static_cmd[i].fp != NULL; i++)
-        {
-            shell_printf("%s",nr_shell.static_cmd[i].cmd);
-            /* NR_SHELL_CMD_NAME_MAX_LENGTH is 10 ,so \t\t is ok */
-            shell_printf("\r\t\t%s",nr_shell.static_cmd[i].description);
-            shell_printf("\r\n");
-        }
+#if defined(NR_SHELL_USING_EXPORT_CMD) && defined(__GNUC__) && !defined(__ARMCC_VERSION)
+    const static_cmd_st *cmd;
+    for(cmd = nr_shell.static_cmd; cmd < nr_cmd_end_add; cmd++)
+    {
+        shell_printf("%s",cmd->cmd);
+        /* NR_SHELL_CMD_NAME_MAX_LENGTH is 10, so \t\t is ok */
+        shell_printf("\r\t\t%s", cmd->description);
+        shell_printf("\r\n");
+    }
+#else
+    for (i = 0; nr_shell.static_cmd[i].fp != NULL; i++)
+    {
+        shell_printf("%s",nr_shell.static_cmd[i].cmd);
+        /* NR_SHELL_CMD_NAME_MAX_LENGTH is 10 ,so \t\t is ok */
+        shell_printf("\r\t\t%s",nr_shell.static_cmd[i].description);
+        shell_printf("\r\n");
+    }
+#endif        
     }
 }
 NR_SHELL_CMD_EXPORT(listcase, shell_help_cmd,"To display all cmd list and description")

@@ -41,16 +41,19 @@
   ******************************************************************************
   */
     
-  .syntax unified
-  .cpu cortex-m4
-  .fpu softvfp
-  .thumb
+.syntax unified 		/* 使用 unified 汇编语法 ARM/Thumb 统一写法 */
+.cpu cortex-m4			/* 声明目标 CPU 为 Cortex-M4 影响可用指令和优化 */
+.fpu fpv4-sp-d16		/* 声明 FPU 类型 单精度 VFPv4 16 个 S 寄存器组 */
+.thumb					/* 后续代码按照 Thumb/Thumb-2 指令集汇编 Cortex-M 必须 */
 
 .global  g_pfnVectors
+.global  _vectors
 .global  Default_Handler
 
-/* start address for the initialization values of the .data section. 
-defined in linker script */
+.global __tx_PendSVHandler
+.global __tx_SysTickHandler
+
+/* start address for the initialization values of the .data section. defined in linker script */
 .word  _sidata
 /* start address for the .data section. defined in linker script */  
 .word  _sdata
@@ -69,49 +72,70 @@ defined in linker script */
  *          supplied main() routine is called. 
  * @param  None
  * @retval : None
-*/
-
-  .section  .text.Reset_Handler
-  .weak  Reset_Handler
-  .type  Reset_Handler, %function
+*/  
+    .section  .text.Reset_Handler
+    .global   Reset_Handler
+    .type     Reset_Handler, %function
 Reset_Handler:  
-  ldr   sp, =_estack     /* set stack pointer */
-
-/* Copy the data segment initializers from flash to SRAM */  
-  movs  r1, #0
-  b  LoopCopyDataInit
-
-CopyDataInit:
-  ldr  r3, =_sidata
-  ldr  r3, [r3, r1]
-  str  r3, [r0, r1]
-  adds  r1, r1, #4
+    ldr sp, =_estack     	/* set stack pointer */
     
+    /* Enable FPU - MUST be done before any flaoting point operations */
+    ldr r0, =0xE000ED88		/* CPACR address */
+	ldr r1,	[r0]
+	orr r1,	r1,	#(0xF << 20)/* Enable CP10 and CP11 coprocessors */
+	str r1,	[r0]
+	dsb						/* Data Synchronization Barrier */
+	isb						/* Instruction Synchronization Barrier */
+
+	/* Disable FPU lazy stacking (CRITICAL for ThreadX with FPU) */
+	/* bic - 数据处理指令 用来清除某些位 */
+	ldr r0,	=0xE000EF34		/* FPCCR address */
+	ldr r1,	[r0]
+	bic r1,	r1,	#0xC0000000	/* Clear ASPEN and LSPEN bits (disable lazy stacking) */
+	str r1, [r0]
+	dsb
+	isb
+
+	/* Copy the data segment initializers from flash to sram */
+	ldr r0, =_sdata
+	ldr r1,	=_edata
+	ldr r2,	=_sidata
+
+/* bcc - 条件跳转指令 看 C标志位 决定跳不跳 */
+/* cmp - 比较指令 只更新标志位不保存结果 */
 LoopCopyDataInit:
-  ldr  r0, =_sdata
-  ldr  r3, =_edata
-  adds  r2, r0, r1
-  cmp  r2, r3
-  bcc  CopyDataInit
-  ldr  r2, =_sbss
-  b  LoopFillZerobss
-/* Zero fill the bss segment. */  
-FillZerobss:
-  movs  r3, #0
-  str  r3, [r2], #4
-    
+	cmp r0,	r1
+	bcc CopyDataInit
+	b InitBss
+
+/* str - 存储指令 把寄存器里的数值写到内存里 */
+CopyDataInit:
+	ldr r3,	[r2],	#4
+	str r3,	[r0],	#4
+	b	LoopCopyDataInit
+	  
+/* Zero fill the bss segment. */
+/* movs - 移动立即数/寄存器到目标寄存器 并更新标志位 Thumb 常用 */
+InitBss:
+	ldr r0,	=_sbss
+	ldr r1,	=_ebss
+	movs	r2,	#0
 LoopFillZerobss:
-  ldr  r3, = _ebss
-  cmp  r2, r3
-  bcc  FillZerobss
+	cmp r0,	r1
+	bcc	FillZerobss
+	b	AfterBss
+FillZerobss:
+	str	r2,	[r0],	#4
+	b	LoopFillZerobss
+AfterBss:	
 
 /* Call the clock system intitialization function.*/
-  bl  SystemInit   
+	bl  SystemInit   
 /* Call static constructors */
     bl __libc_init_array
 /* Call the application's entry point.*/
-  bl  main
-  bx  lr    
+  	bl  main
+  	bx  lr    
 .size  Reset_Handler, .-Reset_Handler
 
 /**
@@ -133,12 +157,13 @@ Infinite_Loop:
 * 0x0000.0000.
 * 
 *******************************************************************************/
-  .section  ._vectors,"a",%progbits
-  .type  g_pfnVectors, %object
-  .size  g_pfnVectors, .-g_pfnVectors
+  .section  ._vectors,"a",%progbits		/* 把后续内容放进指定段 */
+  .type  g_pfnVectors, %object			/* 标注符号类型 (函数/对象) 用于调试链接信息 */
+  .size  g_pfnVectors, .-g_pfnVectors	/* 标注符号的大小 (调试/链接)信息 */
     
     
 g_pfnVectors:
+_vectors:								/* Alias for ThreadX compatibility */
   .word  _estack
   .word  Reset_Handler
   .word  NMI_Handler
@@ -153,8 +178,8 @@ g_pfnVectors:
   .word  SVC_Handler
   .word  DebugMon_Handler
   .word  0
-  .word  PendSV_Handler
-  .word  SysTick_Handler
+  .word  __tx_PendSVHandler+1				/* ThreadX PendSV handler (with Thumb bit) */
+  .word  __tx_SysTickHandler+1				/* ThreadX SysTick handler (with Thumb bit) */
   
   /* External Interrupts */
   .word     WWDG_IRQHandler                   /* Window WatchDog              */                                        
@@ -248,6 +273,7 @@ g_pfnVectors:
 * this definition.
 * 
 *******************************************************************************/
+/* .thumb_set A,B 把符号 A 设为 B 的别名/重定向(常用于把未实现的中断处理函数指向 Default_Handler) */
    .weak      NMI_Handler
    .thumb_set NMI_Handler,Default_Handler
   
@@ -269,11 +295,11 @@ g_pfnVectors:
    .weak      DebugMon_Handler
    .thumb_set DebugMon_Handler,Default_Handler
 
-   .weak      PendSV_Handler
-   .thumb_set PendSV_Handler,Default_Handler
+   # .weak      PendSV_Handler
+   # .thumb_set PendSV_Handler,Default_Handler
 
-   .weak      SysTick_Handler
-   .thumb_set SysTick_Handler,Default_Handler              
+   # .weak      SysTick_Handler
+   # .thumb_set SysTick_Handler,Default_Handler              
   
    .weak      WWDG_IRQHandler                   
    .thumb_set WWDG_IRQHandler,Default_Handler      

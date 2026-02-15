@@ -7,7 +7,7 @@
 #define  APP_CFG_TASK_COM_PRIO           7u
 #define  APP_CFG_TASK_COM_STK_SIZE       1024u
 #define  TASK_START_CREATE_PRIO          7u
-#define  TASK_START_CREATE_SIZE          1024u
+#define  TASK_START_CREATE_SIZE          4096u
 /*
 * 
 *                                       静态全局变量
@@ -15,8 +15,9 @@
 */
 static  TX_THREAD   AppTaskCOMTCB;
 static  uint64_t    AppTaskCOMStk[APP_CFG_TASK_COM_STK_SIZE/8];
-static  TX_THREAD   AppTaskStartTCB;
-static  uint64_t    AppTaskStartStk[TASK_START_CREATE_SIZE/8];
+/* AppTaskStartTCB 在 statisitc_task.c 中定义 */
+extern  TX_THREAD   AppTaskStartTCB;
+extern  uint64_t    AppTaskStartStk[TASK_START_CREATE_SIZE/8];
 /*
 * 
 *                                       软件定时器变量
@@ -34,15 +35,30 @@ static  void  AppTaskCOM            (ULONG thread_input);
 static  void  AppTaskCreate         (void);
 static  void  AppSysObjCreate       (void);
         void  TimerCallback         (ULONG thread_input);
+
+static volatile TX_THREAD *g_stack_error_thread;
+static volatile ULONG g_stack_error_thread_id;
+
+static void AppThreadStackErrorHandler(TX_THREAD *thread_ptr)
+{
+    g_stack_error_thread = thread_ptr;
+    g_stack_error_thread_id = (thread_ptr != TX_NULL) ? thread_ptr->tx_thread_id : 0U;
+    __disable_irq();
+    while(1)
+    {
+        __BKPT(0);
+    }
+}
+        
 /*
 *    函 数 名: tx_application_define
 *    功能说明: ThreadX专用的任务创建，通信组件创建函数，此函数会在tx_kernel_enter函数中被调用
 *    形    参 : first_unused_memory  未使用的地址空间
 *    返 回 值: 无
 */
-void  tx_application_define(void *first_unused_memory)
+void tx_application_define(void *first_unused_memory)
 {
-    
+    (void)tx_thread_stack_error_notify(AppThreadStackErrorHandler);
     /*
        如果实现任务CPU利用率统计的话，此函数仅用于实现启动任务，统计任务和空闲任务，其它任务在函数
        AppTaskCreate里面创建。
@@ -125,11 +141,16 @@ static  void  AppTaskStart (ULONG thread_input)
     bsp_SetTIMOutPWM(GPIOB,GPIO_PIN_6,TIM4,1,1000,5500);/* 生成一个1k，50占空比的方波，用来验证脉冲计数 */
     bsp_InitSPI1Bus();                            /* SPI1总线初始化 */
     bsp_InitSFlash();                            /* 初始化SPI FLASH芯片 */
-//    bsp_InitSram();                             /* 外部sram初始化 */
-//    lv_init();                                     /* lvgl 系统初始化 */
-//    lv_port_disp_init();                         /* lvgl 显示接口初始化,放在 lv_init()的后面 */
-//    lv_port_indev_init();                        /* lvgl 输入接口初始化,放在 lv_init()的后面 */
-    
+#if TRUE == LCD_WITHOUT_LVGL_CONFIG
+//    bsp_Initlcd();                             /* lcd 初始化 */
+//    bsp_InitLcdTouch();                       /* lcd touch 初始化 */
+#else
+    bsp_InitSram();                             /* 外部sram初始化 */
+    lv_init();                                     /* lvgl 系统初始化 */
+    lv_port_disp_init();                         /* lvgl 显示接口初始化,放在 lv_init()的后面 */
+    lv_port_indev_init();                        /* lvgl 输入接口初始化,放在 lv_init()的后面 */
+#endif
+
     shell_init();
     PRINT("Rebuild Boot time is %s and date is %s !",__TIME__,__DATE__);
     /* 创建任务间通信机制,主要是各种任务间通讯函数 */
@@ -219,13 +240,23 @@ void board_led_Contro(char argc, char *argv)
     if(0x1u == _step_index)
     {
         /**************恢复COM任务*********************/
+        /* 检查当前线程状态 */
+        UINT thread_state = AppTaskCOMTCB.tx_thread_state;
+        mini_printf("Current thread state: 0x%X\r\n",thread_state);
+
+        /* reset 只能在 TERMINATED(TX_COMPLETED = 7 或 TX_TERMINATED = 13) 状态时调用 */
         _thread_status = tx_thread_reset(&AppTaskCOMTCB);
-        if(0x0u != _thread_status)
+        if(TX_SUCCESS != _thread_status)
         {
             mini_printf("led task reset failed ,status is %d!\r\n",_thread_status);
+            if(_thread_status == 0x08) /* TX_NOT_DONE */
+            {
+                mini_printf(" Reason: Therad not in TERMINATED/COMPLETED state\r\n");
+                mini_printf(" Please terminate the thread first (use param 0)\r\n");
+            }
         }
         _thread_status = tx_thread_resume(&AppTaskCOMTCB);
-        if(0x0u != _thread_status)
+        if(TX_SUCCESS != _thread_status)
         {
             mini_printf("led task resume failed ,status is %d!\r\n",_thread_status);
         }
@@ -234,14 +265,21 @@ void board_led_Contro(char argc, char *argv)
     {
         /**************终止COM任务*********************/
         _thread_status = tx_thread_terminate(&AppTaskCOMTCB);
-        if(0x0u != _thread_status)
+        if(TX_SUCCESS != _thread_status)
         {
             mini_printf("led task terminate failed ,status is %d!\r\n",_thread_status);
+        }
+        else
+        {
+            mini_printf("led task terminated successfully!\r\n");
         }
     }
     else
     {
-        mini_printf("invalid paramts\r\n");
+        mini_printf("Invalid parameter!\r\n");
+        mini_printf("Usage: board_on_off <0|1>\r\n");
+        mini_printf(" 0 = Terminate LED task\r\n");
+        mini_printf(" 1 = Reset and Resume LED task (must terminate first)\r\n");
     }
 }
 NR_SHELL_CMD_EXPORT(board_on_off, board_led_Contro,"controller board led to on or off; 1 open;0 close")

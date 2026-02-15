@@ -138,9 +138,28 @@ extern shell_st nr_shell;
             NR_USED const static_cmd_st _nr_cmd_##cmd NR_SECTION(".rodata.nr_shell_cmd1") = {#cmd, func, desc}; 
     #define NR_SHELL_CMD_EXPORT_END(cmd, func)\
             NR_USED const static_cmd_st _nr_cmd_end_ NR_SECTION(".rodata.nr_shell_cmd1.end")={#cmd,NULL}
-        
+
+#elif defined(__GNUC__) && !defined(__ARMCC_VERSION)
+    /* GNU GCC + GNU ld (arm-none-eabi). */
+    #define NR_USED __attribute__((used))
+    #define NR_SECTION(x)   __attribute__((section(x)))
+
+    /* Exported command entry section (no linker-scripte ordering assumptiions) */
+    #define NR_SHELL_CMD_SECTION_NAME ".nr_shell_cmd"
+
+    /* With __start/__stop boundaries, explicit sentinels are not required */
+    #define NR_SHELL_CMD_EXPORT_START(cmd, func)
+    #define NR_SHELL_CMD_EXPORT_END(cmd, func)
+
+    #define NR_SHELL_CMD_EXPORT(cmd, func, desc) \
+        NR_USED const static_cmd_st _nr_cmd_##cmd NR_SECTION(NR_SHELL_CMD_SECTION_NAME) = {#cmd, func, desc};
+
+    /* Boundary symbols provided by the GNU ld linker scropt. */
+    extern const static_cmd_st __start_nr_shell_cmd[];
+    extern const static_cmd_st __stop_nr_shell_cmd[];
+    
 #else //defined (__GNUC__) && !defined (__CC_ARM) /* nr_micro_shell 源码 */
-#define NR_USED __attribute__((used))
+    #define NR_USED __attribute__((used))
     #define NR_SECTION(x) __attribute__((section(".rodata.nr_shell_cmd" x)))
     #define NR_SHELL_CMD_EXPORT_START(cmd, func) \
         NR_USED const static_cmd_st _nr_cmd_start_ NR_SECTION("0.end") = {#cmd, NULL}
@@ -153,8 +172,13 @@ extern shell_st nr_shell;
 
     
 #ifdef NR_SHELL_USING_EXPORT_CMD
-    extern const static_cmd_st _nr_cmd_start_;
-#define nr_cmd_start_add (&_nr_cmd_start_+1)
+    #if defined(__GNUC__) && !defined(__ARMCC_VERSION) && !defined(__ICCARM__)
+        #define nr_cmd_start_add (__start_nr_shell_cmd)
+        #define nr_cmd_end_add  (__stop_nr_shell_cmd)
+    #else
+        extern const static_cmd_st _nr_cmd_start_;
+        #define nr_cmd_start_add (&_nr_cmd_start_+1)
+    #endif
 #else
     extern const static_cmd_st static_cmd[];
 #define nr_cmd_start_add (&static_cmd[0])
