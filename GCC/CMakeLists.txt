@@ -6,6 +6,17 @@ SET(CMAKE_SYSTEM_NAME Generic)
 SET(CMAKE_SYSTEM_PROCESSOR arm)#这个不重要，arm也能行
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
+# 定义 STM32F407ZGTx 作为目标设备
+add_definitions(-DSTM32F407ZGTx)
+add_definitions(-DUSE_HAL_DRIVER)
+add_definitions(-DSTM32F407xx)
+add_definitions(-DUSE_FULL_LL_DRIVER)
+add_definitions(-DTX_ENABLE_FPU_SUPPORT)
+add_definitions(-DTX_ENABLE_STACK_CHECKING)
+add_definitions(-DTX_INCLUDE_USER_DEFINE_FILE)
+add_definitions(-DNR_SHELL_USING_EXPORT_CMD)
+
+
 project(Ls_Monitor_Lower_SW C CXX ASM)
 
 # 设置默认构建类型为 Debug (用于调试器显示源码)
@@ -20,17 +31,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
-
-# 定义 STM32F407ZGTx 作为目标设备
-add_definitions(-DSTM32F407ZGTx)
-add_definitions(-DUSE_HAL_DRIVER)
-add_definitions(-DSTM32F407xx)
-add_definitions(-DUSE_FULL_LL_DRIVER)
-add_definitions(-DTX_ENABLE_FPU_SUPPORT)
-add_definitions(-DTX_ENABLE_STACK_CHECKING)
-add_definitions(-DTX_INCLUDE_USER_DEFINE_FILE)
-add_definitions(-DNR_SHELL_USING_EXPORT_CMD)
-
 
 
 # 设置编译器和工具链路径（确保 arm-none-eabi 工具链已安装并正确配置）
@@ -555,7 +555,7 @@ target_link_options(${PROJECT_NAME}.elf PRIVATE
 	--specs=nano.specs
 	-Wl,-Map=${CMAKE_BINARY_DIR}/${PROJECT_NAME}.map,--cref
 	-Wl,--gc-sections
-	-Wl,-start-group -lc -lm -lnosys -Wl,--end-group
+	-Wl,--start-group -lc -lm -lnosys -Wl,--end-group
 )
 
 # 添加生成 .hex 和 .bin 文件的自定义命令

@@ -157,7 +157,7 @@ Infinite_Loop:
 * 0x0000.0000.
 * 
 *******************************************************************************/
-  .section  ._vectors,"a",%progbits		/* 把后续内容放进指定段 */
+  .section  .vectors,"a",%progbits		/* 把后续内容放进指定段 */
   .type  g_pfnVectors, %object			/* 标注符号类型 (函数/对象) 用于调试链接信息 */
   .size  g_pfnVectors, .-g_pfnVectors	/* 标注符号的大小 (调试/链接)信息 */
     
