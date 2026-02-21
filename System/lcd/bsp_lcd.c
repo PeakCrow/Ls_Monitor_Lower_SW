@@ -182,6 +182,15 @@ void bsp_Initlcd(void)
     GPIO_Initure.Speed=GPIO_SPEED_HIGH;     //高速
     HAL_GPIO_Init(GPIOB,&GPIO_Initure); 
 
+    __HAL_RCC_GPIOA_CLK_ENABLE();            //开启GPIOA时钟
+    GPIO_Initure.Pin=GPIO_PIN_1;              //PA1,复位控制 低有效
+    GPIO_Initure.Mode=GPIO_MODE_OUTPUT_PP;  //推挽输出
+    GPIO_Initure.Pull=GPIO_PULLUP;          //上拉
+    GPIO_Initure.Speed=GPIO_SPEED_HIGH;     //高速
+    HAL_GPIO_Init(GPIOA,&GPIO_Initure);     
+    LCD_RESET = 0x0U;
+    LCD_RESET = 0x1U;
+    
     TFTSRAM_Handler.Instance=FSMC_NORSRAM_DEVICE;                
     TFTSRAM_Handler.Extended=FSMC_NORSRAM_EXTENDED_DEVICE;    
     
